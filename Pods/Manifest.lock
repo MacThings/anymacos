@@ -1,0 +1,16 @@
+PODS:
+  - Sparkle (1.21.3)
+
+DEPENDENCIES:
+  - Sparkle
+
+SPEC REPOS:
+  https://github.com/CocoaPods/Specs.git:
+    - Sparkle
+
+SPEC CHECKSUMS:
+  Sparkle: 3f75576db8b0265adef36c43249d747f22d0b708
+
+PODFILE CHECKSUM: 6eed123390dfc3d4830f2a4ee0854104975b3b01
+
+COCOAPODS: 1.8.0.beta.1

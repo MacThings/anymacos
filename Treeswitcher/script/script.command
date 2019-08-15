@@ -1,0 +1,71 @@
+#!/bin/bash
+
+ScriptHome=$(echo $HOME)
+MY_PATH="`dirname \"$0\"`"
+cd "$MY_PATH"
+cd ../bin
+
+function _initial()
+{
+    ./treeswitcher _initial
+}
+
+function _check_seed()
+{
+    ./treeswitcher _check_seed
+}
+
+function _select_macos()
+{
+    ./treeswitcher _select_macos
+}
+
+function _setseed()
+{
+    ./treeswitcher _setseed
+}
+
+function _download_macos()
+{
+    ./treeswitcher _download_macos
+}
+
+function _kill_aria()
+{
+    ./treeswitcher _kill_aria
+    for KILLPID in `ps ax | grep 'aria' | awk ' { print $1;}'`; do
+        kill -kill $KILLPID;
+    done
+}
+
+function _get_drives()
+{
+    ./treeswitcher _get_drives
+}
+
+function _get_drive_info()
+{
+    ./treeswitcher _get_drive_info
+}
+
+function _start_installer_creation()
+{
+   ./treeswitcher _start_installer_creation
+}
+
+function _abort_installer_creation()
+{
+   ./treeswitcher _abort_installer_creation
+}
+
+function _start_onephase_installer()
+{
+    ./treeswitcher _start_onephase_installer
+}
+
+function _reset_settings()
+{
+    ./treeswitcher _reset_settings
+}
+
+$1
