@@ -49,7 +49,7 @@ class DownloadmacOS: NSViewController {
             DispatchQueue.main.async {
                 self.pulldown_menu?.isEnabled=true
                 self.download_button?.isEnabled=true
-                UserDefaults.standard.set("", forKey: "Statustext")
+                UserDefaults.standard.set("Idle ...", forKey: "Statustext")
                 self.progress_wheel?.stopAnimation(self);
             }
         }

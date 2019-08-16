@@ -23,6 +23,10 @@ ScriptHome=$(echo $HOME)
 MY_PATH="`dirname \"$0\"`"
 cd "$MY_PATH"
 
+if [ ! -d /private/tmp/treeswitcher ]; then
+    mkdir /private/tmp/treeswitcher
+fi
+
 download_path=$( _helpDefaultRead "Downloadpath" )
 temp_path="/private/tmp/treeswitcher"
 sparseimage_path=$( _helpDefaultRead "Imagepath" )
@@ -121,8 +125,6 @@ function _setseed()
 function _select_macos()
 {
 
-    mkdir "$sparseimage_path" 2> /dev/null
-    mkdir "$download_path" 2> /dev/null
     mkdir "$temp_path" 2> /dev/null
 
     if [[ $seed_choice = "CustomerSeed" ]]; then
@@ -173,7 +175,12 @@ function _download_macos()
     Imagepath=$( _helpDefaultRead "Imagepath" |sed 's/\ /\\\\\ /g' )
     parallel_downloads=$( _helpDefaultRead "ParaDL" )
 
-
+    if [ ! -d "$sparseimage_path" ]; then
+        mkdir "$sparseimage_path"
+    fi
+    if [ ! -d "$download_path" ]; then
+        mkdir "$download_path"
+    fi
 
     if [ -f "$download_path"/.downloaded_files ]; then
         _helpDefaultWrite "Statustext" "Cleaning Downloadfolder"
@@ -248,7 +255,7 @@ if [[ $choice != "" ]] && [[ $choice != "0" ]]; then
     fi
 
     if [ -d /Volumes/"$volume_name" ]; then
-        _helpDefaultWrite "Statustext" "Removing previous Sparseimage."
+        _helpDefaultWrite "Statustext" "Removing previous Sparseimage ..."
         diskutil unmountDisk force /Volumes/"$volume_name" 2> /dev/null
         rm  "$sparseimage_path"/"$Imagename".sparseimage
     fi
@@ -257,16 +264,16 @@ if [[ $choice != "" ]] && [[ $choice != "0" ]]; then
         rm  "$sparseimage_path"/"$Imagename".sparseimage
     fi
 
-    _helpDefaultWrite "Statustext" "Creating Sparseimage"
+    _helpDefaultWrite "Statustext" "Creating Sparseimage ..."
 
     /usr/bin/hdiutil create -size "$Imagesize"g -fs HFS+ -volname "$volume_name" -type SPARSE "$sparseimage_path"/"$Imagename" 2> /dev/null
     _helpDefaultWrite "Statustext" "Mounting Sparseimage"
     open "$sparseimage_path"/"$Imagename".sparseimage
-    _helpDefaultWrite "Statustext" "Creating Installer-Application."
+    _helpDefaultWrite "Statustext" "Creating Installer-Application ..."
 
     kill_download=$( _helpDefaultRead "KillDL" )
     if [[ $kill_download = 1 ]]; then
-        _helpDefaultWrite "Statustext" "Downloading aborted"
+        _helpDefaultWrite "Statustext" "Downloading aborted."
         exit
     fi
 
@@ -299,6 +306,16 @@ function _kill_aria()
     #if [ -d "$download_path" ]; then
     #rm "$download_path"/*  2> /dev/null
     #fi
+
+ if [ -f "$download_path"/.downloaded_files ]; then
+        _helpDefaultWrite "Statustext" "Cleaning Downloadfolder ..."
+        while IFS= read -r line
+        do
+            rm "$download_path"/"$line" 2> /dev/null
+        done < ""$download_path"/.downloaded_files"
+        rm "$download_path"/*English.dist 2> /dev/null
+        rm "$download_path"/.downloaded_files
+    fi
 
     for KILLPID in `ps ax | grep 'script.command _download_os' | awk ' { print $1;}'`; do
         kill -kill $KILLPID;
@@ -375,6 +392,20 @@ function _get_drive_info()
 
 }
 
+function _check_if_valid()
+{
+
+    applicationpath=$( _helpDefaultRead "Applicationpath" )
+
+    if [ ! -d "$applicationpath/Contents/SharedSupport" ]; then
+        _helpDefaultWrite "AppValid" "No"
+        echo "You selected a non valid Application! Please choose another one."
+    else
+        _helpDefaultDelete "AppValid"
+    fi
+
+}
+
 function _start_installer_creation()
 {
     targetvolume=$( _helpDefaultRead "DRMntPoint" )
@@ -382,8 +413,10 @@ function _start_installer_creation()
 
     if [[ $applicationpath = "" ]]; then
         echo "You did not set an Installer Application. Please select one and try again."
-    exit
+        exit
     fi
+
+    _helpDefaultWrite "Statustext" "Please enter your Root Password to start the Process."
 
     osascript -e 'do shell script "sudo '"'$applicationpath'"''"'/Contents/Resources/createinstallmedia'"' --volume '"'$targetvolume'"' --applicationpath '"'$applicationpath'"' --nointeraction" with administrator privileges'
 }
@@ -420,11 +453,11 @@ function _start_onephase_installer()
         basedmgdir="macOS Base System"
     fi
 
-    rm "/Volumes/$basedmgdir/System/Installation/Packages"
-    cp -rp /Volumes/install_app/Packages "/Volumes/$basedmgdir/System/Installation/"
+    rm -v "/Volumes/$basedmgdir/System/Installation/Packages"
+    cp -rvp /Volumes/install_app/Packages "/Volumes/$basedmgdir/System/Installation/"
 
-    cp -rp "$download_path/BaseSystem.chunklist" "/Volumes/$basedmgdir/BaseSystem.chunklist"
-    cp -rp "$download_path/BaseSystem.dmg" "/Volumes/$basedmgdir/BaseSystem.dmg"
+    cp -rvp "$download_path/BaseSystem.chunklist" "/Volumes/$basedmgdir/BaseSystem.chunklist"
+    cp -rvp "$download_path/BaseSystem.dmg" "/Volumes/$basedmgdir/BaseSystem.dmg"
     hdiutil detach /Volumes/install_app
     hdiutil detach "/Volumes/$basedmgdir/"
 

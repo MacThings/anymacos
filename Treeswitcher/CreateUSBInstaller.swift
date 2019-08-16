@@ -84,9 +84,8 @@ class CreateUSBInstaller: NSViewController {
                 self.select_volume_label.isHidden=false
                 self.one_phase_checkbox.isHidden=false
                 self.one_phase_label.isHidden=false
-                UserDefaults.standard.set("", forKey: "StatustextUSB")
                 self.progress_wheel?.stopAnimation(self);
-                UserDefaults.standard.set("Idleing ...", forKey: "StatustextUSB")
+                UserDefaults.standard.set("Idle ...", forKey: "StatustextUSB")
             }
             
 
@@ -112,7 +111,7 @@ class CreateUSBInstaller: NSViewController {
                 self.one_phase_label.isHidden=false
                 self.start_button?.isEnabled=true
                 self.refresh_button.isEnabled=true
-                UserDefaults.standard.set("Idleing ...", forKey: "StatustextUSB")
+                UserDefaults.standard.set("Idle ...", forKey: "StatustextUSB")
             }
             
         }

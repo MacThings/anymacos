@@ -80,12 +80,16 @@ class ChangeUpdateTree: NSViewController {
         }
         let statustextusbinit = UserDefaults.standard.string(forKey: "StatustextUSB")
         if statustextusbinit == nil{
-            let defaultname = "Idle"
+            let defaultname = "Idle ..."
             UserDefaults.standard.set(defaultname, forKey: "StatustextUSB")
         }
         let onephaseinit = UserDefaults.standard.string(forKey: "OnePhaseInstall")
         if onephaseinit == nil{
             UserDefaults.standard.set(false, forKey: "OnePhaseInstall")
+        }
+        let appvalidinit = UserDefaults.standard.string(forKey: "AppValid")
+        if appvalidinit == nil{
+            UserDefaults.standard.set(false, forKey: "AppValid")
         }
         
         let defaults = UserDefaults.standard
@@ -99,6 +103,7 @@ class ChangeUpdateTree: NSViewController {
         defaults.removeObject(forKey: "KillDL")
         defaults.removeObject(forKey: "Applicationpath")
         defaults.removeObject(forKey: "OnePhaseInstallPID")
+        defaults.removeObject(forKey: "AppValid")
         defaults.synchronize()
 
     }

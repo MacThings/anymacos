@@ -472,7 +472,7 @@
                                     <action selector="select_os_pd:" target="gJF-20-phu" id="e8a-Um-aYq"/>
                                 </connections>
                             </popUpButton>
-                            <box fixedFrame="YES" title="Actual Status" translatesAutoresizingMaskIntoConstraints="NO" id="9HU-Td-exC">
+                            <box fixedFrame="YES" title="Current Status" translatesAutoresizingMaskIntoConstraints="NO" id="9HU-Td-exC">
                                 <rect key="frame" x="24" y="49" width="321" height="37"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <view key="contentView" id="MIU-BJ-41n">
@@ -1000,7 +1000,7 @@
                                 <rect key="frame" x="151" y="292" width="16" height="16"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                             </progressIndicator>
-                            <box fixedFrame="YES" title="Actual Status" translatesAutoresizingMaskIntoConstraints="NO" id="5ZY-Qb-SWU">
+                            <box fixedFrame="YES" title="Current Status" translatesAutoresizingMaskIntoConstraints="NO" id="5ZY-Qb-SWU">
                                 <rect key="frame" x="9" y="39" width="352" height="37"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <view key="contentView" id="V3a-vA-SA6">

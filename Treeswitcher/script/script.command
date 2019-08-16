@@ -48,6 +48,11 @@ function _get_drive_info()
     ./treeswitcher _get_drive_info
 }
 
+function _check_if_valid()
+{
+    ./treeswitcher _check_if_valid
+}
+
 function _start_installer_creation()
 {
    ./treeswitcher _start_installer_creation
