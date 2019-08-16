@@ -472,11 +472,9 @@ function _reset_settings()
     tsroot=$( pwd | sed "s/\/Tree.*//g" )
     pid=$( ps |grep Treeswitcher |sed 's/tty.*//g' |xargs )
 
-    echo "rm ~/Library/Preferences/com.slsoft.treeswitcher.plist" > "$temp_path"/tsrestarter
-    echo "rm -r ~/Library/Caches/com.slsoft.treeswitcher" >> "$temp_path"/tsrestarter
-    echo "kill -term $pid" >> /tmp/kurestarter
+    echo "kill -term $pid" > /tmp/kurestarter
     echo "osascript -e 'tell application \"Treeswitcher\" to quit'" >> "$temp_path"/tsrestarter
-    echo "sleep 1" >> "$temp_path"/tsrestarter
+    echo "rm -r ~/Library/Caches/com.slsoft.treeswitcher" >> "$temp_path"/tsrestarter
     echo "open \"$tsroot\"/Treeswitcher.app" >> "$temp_path"/tsrestarter
     echo "rm $temp_path/tsrestarter" >> "$temp_path"/tsrestarter
     bash "$temp_path"/tsrestarter

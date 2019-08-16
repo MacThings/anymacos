@@ -22,6 +22,10 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }
 
     @IBAction func reset_settings(_ sender: Any) {
+        
+        UserDefaults.standard.removePersistentDomain(forName: Bundle.main.bundleIdentifier!)
+        UserDefaults.standard.synchronize()
+        
         DispatchQueue.global(qos: .background).async {
             self.syncShellExec(path: self.scriptPath, args: ["_reset_settings"])
         }
