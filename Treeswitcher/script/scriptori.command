@@ -397,15 +397,14 @@ function _check_if_valid()
 
     applicationpath=$( _helpDefaultRead "Applicationpath" )
 
-    echo "Checking of your Application is valid ..."
-    echo " "
+    echo -e "Checking if your Application is valid ...\n"
 
-    if [ ! -d "$applicationpath/Contents/SharedSupport" ]; then
+    if [ ! -f "$applicationpath/Contents/SharedSupport/InstallESD.dmg" ]; then
         _helpDefaultWrite "AppValid" "No"
         echo "You selected a non valid Application! ☝🏼 Please choose another one."
     else
         _helpDefaultDelete "AppValid"
-        echo "Your App seems to be valid. 👍🏼 Let´s go ..."
+        echo "Your App seems to be valid. 👍🏼 Let´s go and press \"Start\""
     fi
 
 }
