@@ -22,12 +22,13 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }
 
     @IBAction func reset_settings(_ sender: Any) {
-        
         UserDefaults.standard.removePersistentDomain(forName: Bundle.main.bundleIdentifier!)
         UserDefaults.standard.synchronize()
-        
-        DispatchQueue.global(qos: .background).async {
-            self.syncShellExec(path: self.scriptPath, args: ["_reset_settings"])
+        if let path = Bundle.main.resourceURL?.deletingLastPathComponent().deletingLastPathComponent().absoluteString {
+            NSLog("restart \(path)")
+            _ = Process.launchedProcess(launchPath: "/usr/bin/open", arguments: [path])
+            NSApp.terminate(self)
+            exit(0)
         }
     }
 
@@ -45,8 +46,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         process.standardOutput = outputPipe
         process.launch()
         process.waitUntilExit()
-        
     }
     
 }
-

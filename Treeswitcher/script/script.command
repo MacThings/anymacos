@@ -68,9 +68,4 @@ function _start_onephase_installer()
     ./treeswitcher _start_onephase_installer
 }
 
-function _reset_settings()
-{
-    ./treeswitcher _reset_settings
-}
-
 $1

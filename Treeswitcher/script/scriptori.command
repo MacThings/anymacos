@@ -77,6 +77,7 @@ function _helpDefaultDelete()
 
 function _check_seed()
 {
+
     seed=$( _helpDefaultRead "CurrentSeed" )
     if [[ $seed = "" ]]; then
         seed=$( osascript -e 'do shell script "sudo /System/Library/PrivateFrameworks/Seeding.framework/Resources/seedutil current |grep \"Currently enrolled in\" |sed \"s/.*: //g\"" with administrator privileges' )
@@ -85,9 +86,6 @@ function _check_seed()
     if [[ $seed != "" ]]; then
         _helpDefaultWrite "CurrentSeed" "$seed"
     fi
-
-    #seed=$( _helpDefaultRead "CurrentSeed" )
-    #echo "You are using $seed at the Moment."
 
 }
 
@@ -463,21 +461,6 @@ function _start_onephase_installer()
     cp -rvp "$download_path/BaseSystem.dmg" "/Volumes/$basedmgdir/BaseSystem.dmg"
     hdiutil detach /Volumes/install_app
     hdiutil detach "/Volumes/$basedmgdir/"
-
-}
-
-
-function _reset_settings()
-{
-    tsroot=$( pwd | sed "s/\/Tree.*//g" )
-    pid=$( ps |grep Treeswitcher |sed 's/tty.*//g' |xargs )
-
-    echo "kill -term $pid" > /tmp/kurestarter
-    echo "osascript -e 'tell application \"Treeswitcher\" to quit'" >> "$temp_path"/tsrestarter
-    echo "rm -r ~/Library/Caches/com.slsoft.treeswitcher" >> "$temp_path"/tsrestarter
-    echo "open \"$tsroot\"/Treeswitcher.app" >> "$temp_path"/tsrestarter
-    echo "rm $temp_path/tsrestarter" >> "$temp_path"/tsrestarter
-    bash "$temp_path"/tsrestarter
 
 }
 

@@ -27,6 +27,8 @@ class CreateUSBInstaller: NSViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do view setup here.
+        
+        // Fix Window Size
         self.preferredContentSize = NSMakeSize(self.view.frame.size.width, self.view.frame.size.height);
 
         let defaults = UserDefaults.standard
@@ -117,8 +119,6 @@ class CreateUSBInstaller: NSViewController {
         }
     }
     
-    
-    
     @IBAction func refresh_drives(_ sender: Any) {
         let defaults = UserDefaults.standard
         defaults.removeObject(forKey: "DRVolName")
@@ -141,7 +141,6 @@ class CreateUSBInstaller: NSViewController {
         process.standardOutput = outputPipe
         process.launch()
         process.waitUntilExit()
-        
     }
     
     func asyncShellExec(path: String, args: [String] = []) {
@@ -167,5 +166,4 @@ class CreateUSBInstaller: NSViewController {
             }
         }
     }
-
 }
