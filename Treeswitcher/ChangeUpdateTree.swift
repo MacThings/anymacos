@@ -16,6 +16,7 @@ class ChangeUpdateTree: NSViewController {
     @IBOutlet weak var paypal: NSImageView!
     @IBOutlet weak var paypal_button: NSButton!
     @IBOutlet weak var version_label: NSTextField!
+    @IBOutlet weak var download_button: NSButton!
     
    
     var process:Process!
@@ -99,6 +100,11 @@ class ChangeUpdateTree: NSViewController {
             UserDefaults.standard.set(false, forKey: "AppValid")
         }
         
+        let seedinit = UserDefaults.standard.string(forKey: "CurrentSeed")
+        if seedinit == "Unenroll"{
+            self.download_button.isEnabled=false
+        }
+        
         let defaults = UserDefaults.standard
         defaults.removeObject(forKey: "DRVolName")
         defaults.removeObject(forKey: "DRPartType")
@@ -143,6 +149,14 @@ class ChangeUpdateTree: NSViewController {
                 self.paypal_button.isHidden=true
                 self.output_window.isHidden=false
                 self.content_scroller.isHidden=false
+                let seedinit = UserDefaults.standard.string(forKey: "CurrentSeed")
+                if seedinit == "Unenroll"{
+                    self.download_button.isEnabled=false
+                } else {
+                    self.download_button.isEnabled=true
+                }
+                
+                
             }
         }
     }

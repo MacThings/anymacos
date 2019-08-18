@@ -385,6 +385,7 @@
                     </view>
                     <connections>
                         <outlet property="content_scroller" destination="lgC-pq-66l" id="AIy-vm-zdh"/>
+                        <outlet property="download_button" destination="jNH-3O-ewm" id="GDN-EB-NQe"/>
                         <outlet property="logo" destination="rbe-Ia-rk3" id="t5Y-Cr-t1o"/>
                         <outlet property="output_window" destination="KU1-UV-vlh" id="se0-xw-Hwf"/>
                         <outlet property="paypal" destination="3DP-FV-Aup" id="DDN-7d-gl0"/>
