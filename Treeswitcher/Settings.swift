@@ -13,6 +13,8 @@ class Settings: NSViewController {
     @IBOutlet weak var download_path_textfield: NSTextFieldCell!
     @IBOutlet weak var image_path_textfield: NSTextField!
 
+    let languageinit = UserDefaults.standard.string(forKey: "Language")
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do view setup here.

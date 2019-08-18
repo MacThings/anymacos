@@ -22,6 +22,7 @@ class DownloadmacOS: NSViewController {
     @IBOutlet weak var close_button: NSButton!
     
     let scriptPath = Bundle.main.path(forResource: "/script/script", ofType: "command")!
+    let languageinit = UserDefaults.standard.string(forKey: "Language")
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -32,7 +33,13 @@ class DownloadmacOS: NSViewController {
         // Do view setup here.
         self.preferredContentSize = NSMakeSize(self.view.frame.size.width, self.view.frame.size.height);
         self.progress_wheel?.startAnimation(self);
-        UserDefaults.standard.set("Retrieving information ...", forKey: "Statustext")
+            if languageinit == "en" {
+                let defaultname = "Retrieving information ..."
+				UserDefaults.standard.set(defaultname, forKey: "Statustext")
+            } else {
+                let defaultname = "Lese Informationen aus ..."
+				UserDefaults.standard.set(defaultname, forKey: "Statustext")
+            }
         DispatchQueue.global(qos: .background).async {
             self.syncShellExec(path: self.scriptPath, args: ["_select_macos"])
             
@@ -49,7 +56,13 @@ class DownloadmacOS: NSViewController {
             DispatchQueue.main.async {
                 self.pulldown_menu?.isEnabled=true
                 self.download_button?.isEnabled=true
-                UserDefaults.standard.set("Idle ...", forKey: "Statustext")
+                if self.languageinit == "en" {
+                    let defaultname = "Idle ..."
+                    UserDefaults.standard.set(defaultname, forKey: "Statustext")
+                } else {
+                    let defaultname = "Warte ..."
+                    UserDefaults.standard.set(defaultname, forKey: "Statustext")
+                }
                 self.progress_wheel?.stopAnimation(self);
             }
         }
@@ -82,7 +95,13 @@ class DownloadmacOS: NSViewController {
     }
     
     @IBAction func stop_download(_ sender: Any) {
-        UserDefaults.standard.set("Canceling Operation ...", forKey: "Statustext")
+        if languageinit == "en" {
+            let defaultname = "Canceling Operation ..."
+			UserDefaults.standard.set(defaultname, forKey: "Statustext")
+        } else {
+            let defaultname = "Breche Operation ab ..."
+			UserDefaults.standard.set(defaultname, forKey: "Statustext")
+        }
         UserDefaults.standard.set(true, forKey: "KillDL")
         DispatchQueue.global(qos: .background).async {
             self.syncShellExec(path: self.scriptPath, args: ["_kill_aria"])
@@ -91,9 +110,14 @@ class DownloadmacOS: NSViewController {
                 self.download_button.isHidden=false
                 self.abort_button.isHidden=true
                 self.progress_wheel?.stopAnimation(self);
-                UserDefaults.standard.set("Operation aborted.", forKey: "Statustext")
+                if self.languageinit == "en" {
+                    let defaultname = "Operation aborted."
+                    UserDefaults.standard.set(defaultname, forKey: "Statustext")
+                } else {
+                    let defaultname = "Operation abgebrochen."
+                    UserDefaults.standard.set(defaultname, forKey: "Statustext")
+                }
             }
-            
         }
     }
     

@@ -24,6 +24,7 @@ class CreateUSBInstallerTerminal: NSViewController {
     @IBOutlet weak var close_button: NSButton!
     
     let scriptPath = Bundle.main.path(forResource: "/script/script", ofType: "command")!
+    let languageinit = UserDefaults.standard.string(forKey: "Language")
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -95,7 +96,11 @@ class CreateUSBInstallerTerminal: NSViewController {
         
         let dialog = NSOpenPanel();
         
-        dialog.title                   = "Choose an Application";
+        if languageinit == "en" {
+            dialog.title                   = "Choose an Application";
+        } else {
+            dialog.title                   = "Wähle eine Applikation";
+        }
         dialog.showsResizeIndicator    = true;
         dialog.showsHiddenFiles        = false;
         dialog.canChooseDirectories    = true;

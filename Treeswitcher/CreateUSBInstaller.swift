@@ -23,6 +23,7 @@ class CreateUSBInstaller: NSViewController {
     @IBOutlet weak var one_phase_label: NSTextField!
     
     let scriptPath = Bundle.main.path(forResource: "/script/script", ofType: "command")!
+    let languageinit = UserDefaults.standard.string(forKey: "Language")
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -47,7 +48,13 @@ class CreateUSBInstaller: NSViewController {
         self.select_volume_label.isHidden=true
         self.one_phase_checkbox.isHidden=true
         self.one_phase_label.isHidden=true
-        UserDefaults.standard.set("Looking for suitable Drives ...", forKey: "StatustextUSB")
+        if languageinit == "en" {
+            let defaultname = "Looking for suitable Drives ..."
+            UserDefaults.standard.set(defaultname, forKey: "StatustextUSB")
+        } else {
+            let defaultname = "Suche nach geeigneten Laufwerken ..."
+			UserDefaults.standard.set(defaultname, forKey: "StatustextUSB")
+        }
         DispatchQueue.global(qos: .background).async {
             self.syncShellExec(path: self.scriptPath, args: ["_get_drives"])
             
@@ -72,7 +79,13 @@ class CreateUSBInstaller: NSViewController {
                 if (FileManager.default.fileExists(atPath: filePath)) {
                     print("")
                 } else{
-                    UserDefaults.standard.set("No Drive found.", forKey: "StatustextUSB")
+                    if self.languageinit == "en" {
+                        let defaultname = "No Drive found ..."
+                        UserDefaults.standard.set(defaultname, forKey: "StatustextUSB")
+                    } else {
+                        let defaultname = "Kein Laufwerk gefunden ..."
+                        UserDefaults.standard.set(defaultname, forKey: "StatustextUSB")
+                    }
                     self.refresh_button.isEnabled=true
                     self.progress_wheel?.stopAnimation(self);
                     self.pulldown_menu.isEnabled=false
@@ -87,7 +100,13 @@ class CreateUSBInstaller: NSViewController {
                 self.one_phase_checkbox.isHidden=false
                 self.one_phase_label.isHidden=false
                 self.progress_wheel?.stopAnimation(self);
-                UserDefaults.standard.set("Idle ...", forKey: "StatustextUSB")
+                if self.languageinit == "en" {
+                    let defaultname = "Idle ..."
+                    UserDefaults.standard.set(defaultname, forKey: "StatustextUSB")
+                } else {
+                    let defaultname = "Warte ..."
+                    UserDefaults.standard.set(defaultname, forKey: "StatustextUSB")
+                }
             }
             
 
@@ -101,7 +120,13 @@ class CreateUSBInstaller: NSViewController {
         self.select_volume_label.isHidden=true
         self.one_phase_checkbox.isHidden=true
         self.one_phase_label.isHidden=true
-        UserDefaults.standard.set("Getting Driveinfos ...", forKey: "StatustextUSB")
+        if languageinit == "en" {
+            let defaultname = "Getting Driveinfos ..."
+            UserDefaults.standard.set(defaultname, forKey: "StatustextUSB")
+        } else {
+            let defaultname = "Lese Festplatteninformationen ..."
+			UserDefaults.standard.set(defaultname, forKey: "StatustextUSB")
+        }
         DispatchQueue.global(qos: .background).async {
             UserDefaults.standard.set(sender.title, forKey: "DriveInfo")
             self.syncShellExec(path: self.scriptPath, args: ["_get_drive_info"])
@@ -113,7 +138,13 @@ class CreateUSBInstaller: NSViewController {
                 self.one_phase_label.isHidden=false
                 self.start_button?.isEnabled=true
                 self.refresh_button.isEnabled=true
-                UserDefaults.standard.set("Idle ...", forKey: "StatustextUSB")
+                if self.languageinit == "en" {
+                    let defaultname = "Idle ..."
+                    UserDefaults.standard.set(defaultname, forKey: "StatustextUSB")
+                } else {
+                    let defaultname = "Warte ..."
+                    UserDefaults.standard.set(defaultname, forKey: "StatustextUSB")
+                }
             }
             
         }

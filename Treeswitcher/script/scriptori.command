@@ -27,6 +27,7 @@ if [ ! -d /private/tmp/treeswitcher ]; then
     mkdir /private/tmp/treeswitcher
 fi
 
+sys_language=$( defaults read -g AppleLocale )
 download_path=$( _helpDefaultRead "Downloadpath" )
 temp_path="/private/tmp/treeswitcher"
 sparseimage_path=$( _helpDefaultRead "Imagepath" )
@@ -47,6 +48,14 @@ _helpDefaultWrite "OSBuild" "$osbuild"
 _helpDefaultWrite "Modelname" "$modelname"
 _helpDefaultWrite "ModelID" "$modelid"
 _helpDefaultWrite "CPUType" "$cputype"
+
+if [[ $sys_language = de* ]]; then
+    syslang="de"
+    _helpDefaultWrite "Language" "de"
+else
+    syslang="en"
+    _helpDefaultWrite "Language" "en"
+fi
 
 function _initial()
 {
@@ -160,7 +169,11 @@ function _select_macos()
 
     perl -e 'truncate $ARGV[0], ((-s $ARGV[0]) - 1)' "$temp_path"/selection
 
-    _helpDefaultWrite "Statustext" "Ready..."
+    if [[ "$syslang" = "en" ]]; then
+        _helpDefaultWrite "Statustext" "Ready..."
+    else
+        _helpDefaultWrite "Statustext" "Bereit..."
+    fi
 }
 
 function _download_macos()
@@ -181,7 +194,11 @@ function _download_macos()
     fi
 
     if [ -f "$download_path"/.downloaded_files ]; then
-        _helpDefaultWrite "Statustext" "Cleaning Downloadfolder"
+        if [[ "$syslang" = "en" ]]; then
+            _helpDefaultWrite "Statustext" "Cleaning Downloadfolder"
+        else
+            _helpDefaultWrite "Statustext" "Bereinige Downloadordner"
+        fi
         while IFS= read -r line
         do
             rm "$download_path"/"$line" 2> /dev/null
@@ -205,10 +222,18 @@ if [[ $choice != "" ]] && [[ $choice != "0" ]]; then
     do
     kill_download=$( _helpDefaultRead "KillDL" )
     if [[ $kill_download = 1 ]]; then
-        _helpDefaultWrite "Statustext" "Downloading aborted"
+        if [[ "$syslang" = "en" ]]; then
+            _helpDefaultWrite "Statustext" "Downloading aborted"
+        else
+            _helpDefaultWrite "Statustext" "Download abgebrochen"
+        fi
         exit
     fi
-    _helpDefaultWrite "Statustext" "Downloading: $line"
+    if [[ "$syslang" = "en" ]]; then
+        _helpDefaultWrite "Statustext" "Downloading: $line"
+    else
+        _helpDefaultWrite "Statustext" "Downloade: $line"
+    fi
     echo "$line" >> "$download_path"/.downloaded_files
 ../bin/./aria2c -q -x "$parallel_downloads" --file-allocation=none -d "$download_path" "$seed_url""$line"
 
@@ -220,10 +245,18 @@ if [[ $choice != "" ]] && [[ $choice != "0" ]]; then
     do
     kill_download=$( _helpDefaultRead "KillDL" )
     if [[ $kill_download = 1 ]]; then
-        _helpDefaultWrite "Statustext" "Downloading aborted"
+        if [[ "$syslang" = "en" ]]; then
+            _helpDefaultWrite "Statustext" "Downloading aborted"
+        else
+            _helpDefaultWrite "Statustext" "Download abgebrochen"
+        fi
         exit
     fi
-    _helpDefaultWrite "Statustext" "Downloading: $line"
+    if [[ "$syslang" = "en" ]]; then
+        _helpDefaultWrite "Statustext" "Downloading: $line"
+    else
+        _helpDefaultWrite "Statustext" "Downloade: $line"
+    fi
     echo "$line" >> "$download_path"/.downloaded_files
 ../bin/./aria2c -q -x "$parallel_downloads" --file-allocation=none -d "$download_path" "$seed_url""$line"
     done < ""$temp_path"/selection_files3"
@@ -234,10 +267,18 @@ if [[ $choice != "" ]] && [[ $choice != "0" ]]; then
     do
     kill_download=$( _helpDefaultRead "KillDL" )
     if [[ $kill_download = 1 ]]; then
-        _helpDefaultWrite "Statustext" "Downloading aborted"
+        if [[ "$syslang" = "en" ]]; then
+            _helpDefaultWrite "Statustext" "Downloading aborted"
+        else
+            _helpDefaultWrite "Statustext" "Download abgebrochen"
+        fi
         exit
     fi
-    _helpDefaultWrite "Statustext" "Downloading: $line"
+    if [[ "$syslang" = "en" ]]; then
+        _helpDefaultWrite "Statustext" "Downloading: $line"
+    else
+        _helpDefaultWrite "Statustext" "Downloade: $line"
+    fi
     echo "$line" >> "$download_path"/.downloaded_files
 ../bin/./aria2c -q -x "$parallel_downloads" --file-allocation=none -d "$download_path" "$seed_url""$line"
     done < ""$temp_path"/selection_files4"
@@ -248,12 +289,20 @@ if [[ $choice != "" ]] && [[ $choice != "0" ]]; then
 
     kill_download=$( _helpDefaultRead "KillDL" )
     if [[ $kill_download = 1 ]]; then
-        _helpDefaultWrite "Statustext" "Downloading aborted"
-    exit
+        if [[ "$syslang" = "en" ]]; then
+            _helpDefaultWrite "Statustext" "Downloading aborted"
+        else
+            _helpDefaultWrite "Statustext" "Download abgebrochen"
+        fi
+        exit
     fi
 
     if [ -d /Volumes/"$volume_name" ]; then
-        _helpDefaultWrite "Statustext" "Removing previous Sparseimage ..."
+        if [[ "$syslang" = "en" ]]; then
+            _helpDefaultWrite "Statustext" "Removing previous Sparseimage ..."
+        else
+            _helpDefaultWrite "Statustext" "Entferne vorheriges Sparseimage ..."
+        fi
         diskutil unmountDisk force /Volumes/"$volume_name" 2> /dev/null
         rm  "$sparseimage_path"/"$Imagename".sparseimage
     fi
@@ -262,16 +311,32 @@ if [[ $choice != "" ]] && [[ $choice != "0" ]]; then
         rm  "$sparseimage_path"/"$Imagename".sparseimage
     fi
 
-    _helpDefaultWrite "Statustext" "Creating Sparseimage ..."
+    if [[ "$syslang" = "en" ]]; then
+        _helpDefaultWrite "Statustext" "Creating Sparseimage ..."
+    else
+        _helpDefaultWrite "Statustext" "Erzeuge Sparseimage ..."
+    fi
 
     /usr/bin/hdiutil create -size "$Imagesize"g -fs HFS+ -volname "$volume_name" -type SPARSE "$sparseimage_path"/"$Imagename" 2> /dev/null
-    _helpDefaultWrite "Statustext" "Mounting Sparseimage"
+    if [[ "$syslang" = "en" ]]; then
+        _helpDefaultWrite "Statustext" "Mounting Sparseimage ..."
+    else
+        _helpDefaultWrite "Statustext" "Mounte Sparseimage ..."
+    fi
     open "$sparseimage_path"/"$Imagename".sparseimage
-    _helpDefaultWrite "Statustext" "Creating Installer-Application ..."
+    if [[ "$syslang" = "en" ]]; then
+        _helpDefaultWrite "Statustext" "Creating Installer-Application ..."
+    else
+        _helpDefaultWrite "Statustext" "Erzeuge Installer-Application ..."
+    fi
 
     kill_download=$( _helpDefaultRead "KillDL" )
     if [[ $kill_download = 1 ]]; then
-        _helpDefaultWrite "Statustext" "Downloading aborted."
+        if [[ "$syslang" = "en" ]]; then
+            _helpDefaultWrite "Statustext" "Downloading aborted"
+        else
+            _helpDefaultWrite "Statustext" "Download abgebrochen"
+        fi
         exit
     fi
 
@@ -284,12 +349,24 @@ if [[ $choice != "" ]] && [[ $choice != "0" ]]; then
         cp "$download_path"/BaseS* /Volumes/"$volume_name"/Applications/*nstall*/Contents/SharedSupport/.
     fi
     if [[ "$installok" = "0" ]]; then
-        _helpDefaultWrite "Statustext" "Done!"
+        if [[ "$syslang" = "en" ]]; then
+            _helpDefaultWrite "Statustext" "Done"
+        else
+            _helpDefaultWrite "Statustext" "Fertig"
+        fi
     else
-        _helpDefaultWrite "Statustext" "Creation failed! Please try again."
+        if [[ "$syslang" = "en" ]]; then
+            _helpDefaultWrite "Statustext" "Creation failed! Please try again."
+        else
+            _helpDefaultWrite "Statustext" "Erstellung fehlgeschlagen. Bitte versuche es erneut."
+        fi
     fi
 else
-    _helpDefaultWrite "Statustext" "Error! Nothing selected."
+    if [[ "$syslang" = "en" ]]; then
+        _helpDefaultWrite "Statustext" "Error! Nothing selected."
+    else
+        _helpDefaultWrite "Statustext" "Fehler! Es wurde nichts ausgewählt."
+    fi
 fi
 
 }
@@ -306,7 +383,11 @@ function _kill_aria()
     #fi
 
  if [ -f "$download_path"/.downloaded_files ]; then
-        _helpDefaultWrite "Statustext" "Cleaning Downloadfolder ..."
+        if [[ "$syslang" = "en" ]]; then
+            _helpDefaultWrite "Statustext" "Cleaning Downloadfolder"
+        else
+            _helpDefaultWrite "Statustext" "Bereinige Downloadornder"
+        fi
         while IFS= read -r line
         do
             rm "$download_path"/"$line" 2> /dev/null
@@ -395,14 +476,26 @@ function _check_if_valid()
 
     applicationpath=$( _helpDefaultRead "Applicationpath" )
 
-    echo -e "Checking if your Application is valid ...\n"
+    if [[ "$syslang" = "en" ]]; then
+        echo -e "Checking if your Application is valid ...\n"
+    else
+        echo -e "Es wird geprüft ob die gewählte Applikation gültig ist ...\n"
+    fi
 
     if [ ! -f "$applicationpath/Contents/SharedSupport/InstallESD.dmg" ]; then
         _helpDefaultWrite "AppValid" "No"
-        echo "You selected a non valid Application! ☝🏼 Please choose another one."
+        if [[ "$syslang" = "en" ]]; then
+            echo "You selected a non valid Application! ☝🏼 Please choose another one."
+        else
+            echo "Die gewählte Applikation ist nicht gültig! ☝🏼 Bitte wähle eine Andere."
+        fi
     else
         _helpDefaultDelete "AppValid"
-        echo "Your App seems to be valid. 👍🏼 Let´s go and press \"Start\""
+        if [[ "$syslang" = "en" ]]; then
+            echo "Your App seems to be valid. 👍🏼 Let´s go and press \"Start\"."
+        else
+            echo "Die gewählte Applikation scheint gültig zu sein. 👍🏼 Dann lass uns loslegen und drücke auf \"Start\"."
+        fi
     fi
 
 }
@@ -410,14 +503,25 @@ function _check_if_valid()
 function _start_installer_creation()
 {
     targetvolume=$( _helpDefaultRead "DRMntPoint" )
+    targetvolumename=$( echo "$targetvolume" |sed 's/.*\///g' )
     applicationpath=$( _helpDefaultRead "Applicationpath" )
 
     if [[ $applicationpath = "" ]]; then
-        echo "You did not set an Installer Application. Please select one and try again."
+        if [[ "$syslang" = "en" ]]; then
+            echo "You did not set an Installer Application. Please select one and try again."
+        else
+            echo "Es wurde noch keine Installer Applikation ausgewählt. Bitte wähle eine aus und versuche es erneut."
+        fi
         exit
     fi
 
-    _helpDefaultWrite "Statustext" "Please enter your Root Password to start the Process."
+    if [[ "$syslang" = "en" ]]; then
+        _helpDefaultWrite "Statustext" "Please enter your Root Password to start the Process."
+    else
+        _helpDefaultWrite "Statustext" "Bitte gib Dein Rootpasswort ein um den Prozess zu starten."
+    fi
+
+    diskutil eraseVolume JHFS+ "$targetvolumename" "$targetvolume"
 
     osascript -e 'do shell script "sudo '"'$applicationpath'"''"'/Contents/Resources/createinstallmedia'"' --volume '"'$targetvolume'"' --applicationpath '"'$applicationpath'"' --nointeraction" with administrator privileges'
 }

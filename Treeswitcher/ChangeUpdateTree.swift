@@ -43,6 +43,8 @@ class ChangeUpdateTree: NSViewController {
     
         UserDefaults.standard.set(NSUserName(), forKey: "User Name")
         
+        let languageinit = UserDefaults.standard.string(forKey: "Language")
+        
         let downloadpathinit = UserDefaults.standard.string(forKey: "Downloadpath")
         if downloadpathinit == nil{
             let defaultdir = "/Users/" + NSUserName() + "/Desktop/Treeswitcher/Download"
@@ -80,8 +82,13 @@ class ChangeUpdateTree: NSViewController {
         }
         let statustextusbinit = UserDefaults.standard.string(forKey: "StatustextUSB")
         if statustextusbinit == nil{
-            let defaultname = "Idle ..."
-            UserDefaults.standard.set(defaultname, forKey: "StatustextUSB")
+            if languageinit == "en" {
+                let defaultname = "Idle ..."
+                UserDefaults.standard.set(defaultname, forKey: "StatustextUSB")
+            } else {
+                let defaultname = "Warte ..."
+                UserDefaults.standard.set(defaultname, forKey: "StatustextUSB")
+            }
         }
         let onephaseinit = UserDefaults.standard.string(forKey: "OnePhaseInstall")
         if onephaseinit == nil{
