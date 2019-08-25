@@ -19,13 +19,26 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
-		0E178E581F8587BF14F173F484302E90 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F940C819049CFF8741C0F5E3E075E607 /* Cocoa.framework */; };
-		804E68C8F2F8B6659143CEB63CD4E590 /* Pods-Treeswitcher-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 2D614FB20516C7880AC632A0D33B3D1C /* Pods-Treeswitcher-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		D81FC3A2FD9E7D435F83D6D5702EFE7B /* Pods-Treeswitcher-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = E6048D8A9C749FF4C73994B6DCF23A10 /* Pods-Treeswitcher-dummy.m */; };
+		091E0F213780E3553C0163E95755E878 /* Pods-Treeswitcher-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 2D614FB20516C7880AC632A0D33B3D1C /* Pods-Treeswitcher-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		320E018022758AFD782991C7D8854DB1 /* TegKeychainConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB6313F92388B5DEA22D8CF45957A3A6 /* TegKeychainConstants.swift */; };
+		485A776035D4B1EF97E8AE0E95A66502 /* KeychainSwiftAccessOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADCED0E6E68974792C2EE690F6C7741F /* KeychainSwiftAccessOptions.swift */; };
+		4B255EB0716A1BB473E696C20812C697 /* KeychainSwift-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 07E58E1B16CFC94ED486AA8F304B48A3 /* KeychainSwift-dummy.m */; };
+		4DC6C132AEF3E02BDD5ABC89333233B3 /* KeychainSwift.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E3277FFA0882204781EDE79A5AE55DE /* KeychainSwift.swift */; };
+		53151C3D490A5B675B2FD90FEF27AC1A /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F940C819049CFF8741C0F5E3E075E607 /* Cocoa.framework */; };
+		75F5967BDDEEEE2B2068BC34F0BA9E4C /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F940C819049CFF8741C0F5E3E075E607 /* Cocoa.framework */; };
+		C3905037CE8620D38EF4DA0AB90C106C /* KeychainSwift-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = D38D15FF399FDD7725932FD92412B50B /* KeychainSwift-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		C93A5BE408EEED7AEB01573B3530DDB8 /* Pods-Treeswitcher-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = E6048D8A9C749FF4C73994B6DCF23A10 /* Pods-Treeswitcher-dummy.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		A05A663EE2D716EA6005093EA96D4EF0 /* PBXContainerItemProxy */ = {
+		33977C8B555550B52EEC17F71216F770 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 07E54A78BCF82272E99319D7F7F5E8C1;
+			remoteInfo = KeychainSwift;
+		};
+		7910573119E0FCFD8E0054BE1132C1F9 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
 			proxyType = 1;
@@ -35,103 +48,134 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		0332A469918DDC7200DC05857FD3100A /* SPUDownloaderSession.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SPUDownloaderSession.h; path = Sparkle.framework/Versions/A/Headers/SPUDownloaderSession.h; sourceTree = "<group>"; };
-		05C8EC1E598BF8EFC6CE546C9CA3C3A2 /* SUVersionComparisonProtocol.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SUVersionComparisonProtocol.h; path = Sparkle.framework/Versions/A/Headers/SUVersionComparisonProtocol.h; sourceTree = "<group>"; };
-		164A58EB240E3D712158E07256E9D04C /* Sparkle.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Sparkle.xcconfig; sourceTree = "<group>"; };
-		20B1BA6068BA2FBD15C3EA42CC318BBE /* SUVersionDisplayProtocol.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SUVersionDisplayProtocol.h; path = Sparkle.framework/Versions/A/Headers/SUVersionDisplayProtocol.h; sourceTree = "<group>"; };
-		2179011B680B8576C8D36EA8FCFDCF1F /* SUCodeSigningVerifier.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SUCodeSigningVerifier.h; path = Sparkle.framework/Versions/A/Headers/SUCodeSigningVerifier.h; sourceTree = "<group>"; };
-		23A4C129EAD89A35261E5FE317CC8171 /* SPUURLRequest.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SPUURLRequest.h; path = Sparkle.framework/Versions/A/Headers/SPUURLRequest.h; sourceTree = "<group>"; };
+		02283120AD1E29BF1EB62C4136569068 /* SUVersionComparisonProtocol.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SUVersionComparisonProtocol.h; path = Sparkle.framework/Versions/A/Headers/SUVersionComparisonProtocol.h; sourceTree = "<group>"; };
+		07E58E1B16CFC94ED486AA8F304B48A3 /* KeychainSwift-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "KeychainSwift-dummy.m"; sourceTree = "<group>"; };
+		1A25369A0B2CFF196774F90B1A44CE03 /* KeychainSwift.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = KeychainSwift.modulemap; sourceTree = "<group>"; };
+		1C488DFC79E875580D5A3EA9304749C6 /* SPUDownloader.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SPUDownloader.h; path = Sparkle.framework/Versions/A/Headers/SPUDownloader.h; sourceTree = "<group>"; };
+		203F34156A03596E7D6C5B86A6430D65 /* SUExport.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SUExport.h; path = Sparkle.framework/Versions/A/Headers/SUExport.h; sourceTree = "<group>"; };
+		207F726774B9A4A16338EC869E5E6C0C /* Sparkle.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Sparkle.framework; sourceTree = "<group>"; };
 		26AAB118957B1964FBF248734FA8BC9E /* Pods-Treeswitcher.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Treeswitcher.debug.xcconfig"; sourceTree = "<group>"; };
+		2753152EFE01E20A2106D6CD3976E1C9 /* KeychainSwift-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "KeychainSwift-Info.plist"; sourceTree = "<group>"; };
 		29D8B85B5516D94DA46990626BBC4082 /* Pods_Treeswitcher.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_Treeswitcher.framework; path = "Pods-Treeswitcher.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		2A573150B0AC17D8ACD506D85E7CE0AE /* Sparkle.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Sparkle.xcconfig; sourceTree = "<group>"; };
 		2D614FB20516C7880AC632A0D33B3D1C /* Pods-Treeswitcher-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-Treeswitcher-umbrella.h"; sourceTree = "<group>"; };
-		399C150840A1C2150618FB5BFE42DA9C /* SUAppcast.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SUAppcast.h; path = Sparkle.framework/Versions/A/Headers/SUAppcast.h; sourceTree = "<group>"; };
-		4141435D9975E8E9CDCC84B3A32156A8 /* SUUpdater.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SUUpdater.h; path = Sparkle.framework/Versions/A/Headers/SUUpdater.h; sourceTree = "<group>"; };
-		46B023E24F28228A4B1DA7F0B65B1D5B /* SPUDownloaderDeprecated.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SPUDownloaderDeprecated.h; path = Sparkle.framework/Versions/A/Headers/SPUDownloaderDeprecated.h; sourceTree = "<group>"; };
-		75B6BAD4FC04FDB5CEFAD21C75978880 /* SPUDownloaderDelegate.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SPUDownloaderDelegate.h; path = Sparkle.framework/Versions/A/Headers/SPUDownloaderDelegate.h; sourceTree = "<group>"; };
-		7C4B85ACED8A4A539141162B46F38D5E /* SUErrors.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SUErrors.h; path = Sparkle.framework/Versions/A/Headers/SUErrors.h; sourceTree = "<group>"; };
-		88CBE879FF4DD55903E06901F54BDFBC /* Sparkle.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = Sparkle.h; path = Sparkle.framework/Versions/A/Headers/Sparkle.h; sourceTree = "<group>"; };
+		313767C44CFEE77C18BD17E9C67E7730 /* SUAppcastItem.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SUAppcastItem.h; path = Sparkle.framework/Versions/A/Headers/SUAppcastItem.h; sourceTree = "<group>"; };
+		3763BA5A127E52442F447DD684570218 /* Sparkle.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = Sparkle.h; path = Sparkle.framework/Versions/A/Headers/Sparkle.h; sourceTree = "<group>"; };
+		52F2C0B446908DDFA6FAD3FB7CAD58E3 /* SPUDownloaderSession.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SPUDownloaderSession.h; path = Sparkle.framework/Versions/A/Headers/SPUDownloaderSession.h; sourceTree = "<group>"; };
+		615F38340E8F4BCCF914FC40BCEFF8CE /* SPUDownloaderDelegate.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SPUDownloaderDelegate.h; path = Sparkle.framework/Versions/A/Headers/SPUDownloaderDelegate.h; sourceTree = "<group>"; };
+		7E3277FFA0882204781EDE79A5AE55DE /* KeychainSwift.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = KeychainSwift.swift; path = Sources/KeychainSwift.swift; sourceTree = "<group>"; };
+		93516A5E7188DE37F9DD571265265780 /* SUErrors.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SUErrors.h; path = Sparkle.framework/Versions/A/Headers/SUErrors.h; sourceTree = "<group>"; };
 		9390468C98F6F36D5DD7F45FE041E9B4 /* Pods-Treeswitcher-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-Treeswitcher-acknowledgements.markdown"; sourceTree = "<group>"; };
+		940E2DEEBBC7FA0C8963286578733D0E /* SUAppcast.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SUAppcast.h; path = Sparkle.framework/Versions/A/Headers/SUAppcast.h; sourceTree = "<group>"; };
 		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
-		A1DCDD048D9768B2491A5D8089A5D831 /* SUUpdaterDelegate.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SUUpdaterDelegate.h; path = Sparkle.framework/Versions/A/Headers/SUUpdaterDelegate.h; sourceTree = "<group>"; };
-		A8D51759FC12EDB9BE2ECC669775F03D /* SPUDownloaderProtocol.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SPUDownloaderProtocol.h; path = Sparkle.framework/Versions/A/Headers/SPUDownloaderProtocol.h; sourceTree = "<group>"; };
-		AB47098B18B0AA0B475BE81F48995DA3 /* SUAppcastItem.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SUAppcastItem.h; path = Sparkle.framework/Versions/A/Headers/SUAppcastItem.h; sourceTree = "<group>"; };
-		AC1D679DFE4A295F2C0AC6C04BE57433 /* SPUDownloader.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SPUDownloader.h; path = Sparkle.framework/Versions/A/Headers/SPUDownloader.h; sourceTree = "<group>"; };
-		ACFCACB1A9A0AB52E8633CFFD7FA7B6F /* SUStandardVersionComparator.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SUStandardVersionComparator.h; path = Sparkle.framework/Versions/A/Headers/SUStandardVersionComparator.h; sourceTree = "<group>"; };
+		9E0FD012ADC3C7179C684035672383E5 /* KeychainSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = KeychainSwift.framework; path = KeychainSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A77AB29C6D75463E6DBF2397822572B9 /* KeychainSwift.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = KeychainSwift.xcconfig; sourceTree = "<group>"; };
+		A9BBF5A151072F72C06E19FB8A67EB9E /* SPUDownloadData.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SPUDownloadData.h; path = Sparkle.framework/Versions/A/Headers/SPUDownloadData.h; sourceTree = "<group>"; };
 		ADC042C238D951FBFBC66C8059FED6BF /* Pods-Treeswitcher-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Treeswitcher-Info.plist"; sourceTree = "<group>"; };
+		ADCED0E6E68974792C2EE690F6C7741F /* KeychainSwiftAccessOptions.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = KeychainSwiftAccessOptions.swift; path = Sources/KeychainSwiftAccessOptions.swift; sourceTree = "<group>"; };
 		BE1D6D8981E41C2A78A9747240F892C5 /* Pods-Treeswitcher-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Treeswitcher-acknowledgements.plist"; sourceTree = "<group>"; };
-		C1C41C0B34DA9C481BE2B7DFE91FDA4D /* Sparkle.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Sparkle.framework; sourceTree = "<group>"; };
-		C1FE5D1EC05D923EC7B0C4816C5EF449 /* SUExport.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SUExport.h; path = Sparkle.framework/Versions/A/Headers/SUExport.h; sourceTree = "<group>"; };
+		C52BC067AEE4671856FB0FCC01F038DD /* SUCodeSigningVerifier.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SUCodeSigningVerifier.h; path = Sparkle.framework/Versions/A/Headers/SUCodeSigningVerifier.h; sourceTree = "<group>"; };
+		C84B4CC2F27807680269F67EA89D76E1 /* SPUDownloaderProtocol.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SPUDownloaderProtocol.h; path = Sparkle.framework/Versions/A/Headers/SPUDownloaderProtocol.h; sourceTree = "<group>"; };
+		C968C38A81316A422680ECEE4E1ED5E3 /* SUStandardVersionComparator.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SUStandardVersionComparator.h; path = Sparkle.framework/Versions/A/Headers/SUStandardVersionComparator.h; sourceTree = "<group>"; };
+		C9FA6BB83261798205980549776E201B /* KeychainSwift-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "KeychainSwift-prefix.pch"; sourceTree = "<group>"; };
+		CEDB23C35CA7024B32D6A3A78FFF76DE /* SPUURLRequest.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SPUURLRequest.h; path = Sparkle.framework/Versions/A/Headers/SPUURLRequest.h; sourceTree = "<group>"; };
+		D38D15FF399FDD7725932FD92412B50B /* KeychainSwift-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "KeychainSwift-umbrella.h"; sourceTree = "<group>"; };
+		D47382B972DE13534BB1F228719C22E9 /* SPUDownloaderDeprecated.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SPUDownloaderDeprecated.h; path = Sparkle.framework/Versions/A/Headers/SPUDownloaderDeprecated.h; sourceTree = "<group>"; };
 		D7AA5F6FEF4DAAD5EADC1CFDB7EDDF50 /* Pods-Treeswitcher-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-Treeswitcher-frameworks.sh"; sourceTree = "<group>"; };
+		DD7822744A69A2ED047447D53256AE55 /* SUVersionDisplayProtocol.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SUVersionDisplayProtocol.h; path = Sparkle.framework/Versions/A/Headers/SUVersionDisplayProtocol.h; sourceTree = "<group>"; };
 		E58F8796382FF56D577FCF3270791331 /* Pods-Treeswitcher.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-Treeswitcher.modulemap"; sourceTree = "<group>"; };
-		E5A710B46FF7C977041D3A5FB03B3C7F /* SPUDownloadData.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SPUDownloadData.h; path = Sparkle.framework/Versions/A/Headers/SPUDownloadData.h; sourceTree = "<group>"; };
 		E6048D8A9C749FF4C73994B6DCF23A10 /* Pods-Treeswitcher-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-Treeswitcher-dummy.m"; sourceTree = "<group>"; };
 		E6EFF8387FB5D17671713BB313AAE1A1 /* Pods-Treeswitcher.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Treeswitcher.release.xcconfig"; sourceTree = "<group>"; };
+		E8A3E0F20A20ACAFC307043882805463 /* SUUpdaterDelegate.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SUUpdaterDelegate.h; path = Sparkle.framework/Versions/A/Headers/SUUpdaterDelegate.h; sourceTree = "<group>"; };
+		EC4C6E766332161C325DD887EA99551F /* SUUpdater.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SUUpdater.h; path = Sparkle.framework/Versions/A/Headers/SUUpdater.h; sourceTree = "<group>"; };
 		F940C819049CFF8741C0F5E3E075E607 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.14.sdk/System/Library/Frameworks/Cocoa.framework; sourceTree = DEVELOPER_DIR; };
+		FB6313F92388B5DEA22D8CF45957A3A6 /* TegKeychainConstants.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TegKeychainConstants.swift; path = Sources/TegKeychainConstants.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		1FCC5BAD54C4E026E5A0BF3B0691FC84 /* Frameworks */ = {
+		2863E3AD62C2A9E4E38F9733C1C5FAE5 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0E178E581F8587BF14F173F484302E90 /* Cocoa.framework in Frameworks */,
+				75F5967BDDEEEE2B2068BC34F0BA9E4C /* Cocoa.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BDA2C994D9A1A7A77E66F608C8D53206 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				53151C3D490A5B675B2FD90FEF27AC1A /* Cocoa.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		458F5FE2377A7011FB8CD827A459EE5A /* Sparkle */ = {
+		02061A5F30E1633637B56C27A2B889C6 /* Sparkle */ = {
 			isa = PBXGroup;
 			children = (
-				88CBE879FF4DD55903E06901F54BDFBC /* Sparkle.h */,
-				E5A710B46FF7C977041D3A5FB03B3C7F /* SPUDownloadData.h */,
-				AC1D679DFE4A295F2C0AC6C04BE57433 /* SPUDownloader.h */,
-				75B6BAD4FC04FDB5CEFAD21C75978880 /* SPUDownloaderDelegate.h */,
-				46B023E24F28228A4B1DA7F0B65B1D5B /* SPUDownloaderDeprecated.h */,
-				A8D51759FC12EDB9BE2ECC669775F03D /* SPUDownloaderProtocol.h */,
-				0332A469918DDC7200DC05857FD3100A /* SPUDownloaderSession.h */,
-				23A4C129EAD89A35261E5FE317CC8171 /* SPUURLRequest.h */,
-				399C150840A1C2150618FB5BFE42DA9C /* SUAppcast.h */,
-				AB47098B18B0AA0B475BE81F48995DA3 /* SUAppcastItem.h */,
-				2179011B680B8576C8D36EA8FCFDCF1F /* SUCodeSigningVerifier.h */,
-				7C4B85ACED8A4A539141162B46F38D5E /* SUErrors.h */,
-				C1FE5D1EC05D923EC7B0C4816C5EF449 /* SUExport.h */,
-				ACFCACB1A9A0AB52E8633CFFD7FA7B6F /* SUStandardVersionComparator.h */,
-				4141435D9975E8E9CDCC84B3A32156A8 /* SUUpdater.h */,
-				A1DCDD048D9768B2491A5D8089A5D831 /* SUUpdaterDelegate.h */,
-				05C8EC1E598BF8EFC6CE546C9CA3C3A2 /* SUVersionComparisonProtocol.h */,
-				20B1BA6068BA2FBD15C3EA42CC318BBE /* SUVersionDisplayProtocol.h */,
-				F27610214F2DFB81D3505CB8D0773C27 /* Frameworks */,
-				9D967989E3894A7199B4724025FA7425 /* Support Files */,
+				3763BA5A127E52442F447DD684570218 /* Sparkle.h */,
+				A9BBF5A151072F72C06E19FB8A67EB9E /* SPUDownloadData.h */,
+				1C488DFC79E875580D5A3EA9304749C6 /* SPUDownloader.h */,
+				615F38340E8F4BCCF914FC40BCEFF8CE /* SPUDownloaderDelegate.h */,
+				D47382B972DE13534BB1F228719C22E9 /* SPUDownloaderDeprecated.h */,
+				C84B4CC2F27807680269F67EA89D76E1 /* SPUDownloaderProtocol.h */,
+				52F2C0B446908DDFA6FAD3FB7CAD58E3 /* SPUDownloaderSession.h */,
+				CEDB23C35CA7024B32D6A3A78FFF76DE /* SPUURLRequest.h */,
+				940E2DEEBBC7FA0C8963286578733D0E /* SUAppcast.h */,
+				313767C44CFEE77C18BD17E9C67E7730 /* SUAppcastItem.h */,
+				C52BC067AEE4671856FB0FCC01F038DD /* SUCodeSigningVerifier.h */,
+				93516A5E7188DE37F9DD571265265780 /* SUErrors.h */,
+				203F34156A03596E7D6C5B86A6430D65 /* SUExport.h */,
+				C968C38A81316A422680ECEE4E1ED5E3 /* SUStandardVersionComparator.h */,
+				EC4C6E766332161C325DD887EA99551F /* SUUpdater.h */,
+				E8A3E0F20A20ACAFC307043882805463 /* SUUpdaterDelegate.h */,
+				02283120AD1E29BF1EB62C4136569068 /* SUVersionComparisonProtocol.h */,
+				DD7822744A69A2ED047447D53256AE55 /* SUVersionDisplayProtocol.h */,
+				18C1E7366379176F3D30C53F8D997B56 /* Frameworks */,
+				78A9437723A6E071FDF65E1EFAADAF25 /* Support Files */,
 			);
 			name = Sparkle;
 			path = Sparkle;
 			sourceTree = "<group>";
 		};
-		74924609A5200EB49EE32720C989B12D /* Pods */ = {
+		18C1E7366379176F3D30C53F8D997B56 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				458F5FE2377A7011FB8CD827A459EE5A /* Sparkle */,
+				207F726774B9A4A16338EC869E5E6C0C /* Sparkle.framework */,
 			);
-			name = Pods;
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		8CA535CFEA80562E85EE3BCC212DA22F /* Products */ = {
+		4630459460E25B05AEFF7A8BDCF82CEB /* KeychainSwift */ = {
 			isa = PBXGroup;
 			children = (
-				29D8B85B5516D94DA46990626BBC4082 /* Pods_Treeswitcher.framework */,
+				7E3277FFA0882204781EDE79A5AE55DE /* KeychainSwift.swift */,
+				ADCED0E6E68974792C2EE690F6C7741F /* KeychainSwiftAccessOptions.swift */,
+				FB6313F92388B5DEA22D8CF45957A3A6 /* TegKeychainConstants.swift */,
+				DE3D3735C11088102E122497E0EFB4AD /* Support Files */,
 			);
-			name = Products;
+			name = KeychainSwift;
+			path = KeychainSwift;
 			sourceTree = "<group>";
 		};
-		9D967989E3894A7199B4724025FA7425 /* Support Files */ = {
+		78A9437723A6E071FDF65E1EFAADAF25 /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
-				164A58EB240E3D712158E07256E9D04C /* Sparkle.xcconfig */,
+				2A573150B0AC17D8ACD506D85E7CE0AE /* Sparkle.xcconfig */,
 			);
 			name = "Support Files";
 			path = "../Target Support Files/Sparkle";
+			sourceTree = "<group>";
+		};
+		8455407734C93224E18676D134CF8F96 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				4630459460E25B05AEFF7A8BDCF82CEB /* KeychainSwift */,
+				02061A5F30E1633637B56C27A2B889C6 /* Sparkle */,
+			);
+			name = Pods;
 			sourceTree = "<group>";
 		};
 		A4F4C9B290E056877D53A54D844B4437 /* Targets Support Files */ = {
@@ -159,6 +203,15 @@
 			path = "Target Support Files/Pods-Treeswitcher";
 			sourceTree = "<group>";
 		};
+		B5BAA8F2A6297532B106E0E13167781D /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				9E0FD012ADC3C7179C684035672383E5 /* KeychainSwift.framework */,
+				29D8B85B5516D94DA46990626BBC4082 /* Pods_Treeswitcher.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		CBD43E0947D94E318A0ED1350CFF29ED /* OS X */ = {
 			isa = PBXGroup;
 			children = (
@@ -172,10 +225,24 @@
 			children = (
 				9D940727FF8FB9C785EB98E56350EF41 /* Podfile */,
 				E0A1E60606E0BF6E2E10F1F01350DFE8 /* Frameworks */,
-				74924609A5200EB49EE32720C989B12D /* Pods */,
-				8CA535CFEA80562E85EE3BCC212DA22F /* Products */,
+				8455407734C93224E18676D134CF8F96 /* Pods */,
+				B5BAA8F2A6297532B106E0E13167781D /* Products */,
 				A4F4C9B290E056877D53A54D844B4437 /* Targets Support Files */,
 			);
+			sourceTree = "<group>";
+		};
+		DE3D3735C11088102E122497E0EFB4AD /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				1A25369A0B2CFF196774F90B1A44CE03 /* KeychainSwift.modulemap */,
+				A77AB29C6D75463E6DBF2397822572B9 /* KeychainSwift.xcconfig */,
+				07E58E1B16CFC94ED486AA8F304B48A3 /* KeychainSwift-dummy.m */,
+				2753152EFE01E20A2106D6CD3976E1C9 /* KeychainSwift-Info.plist */,
+				C9FA6BB83261798205980549776E201B /* KeychainSwift-prefix.pch */,
+				D38D15FF399FDD7725932FD92412B50B /* KeychainSwift-umbrella.h */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/KeychainSwift";
 			sourceTree = "<group>";
 		};
 		E0A1E60606E0BF6E2E10F1F01350DFE8 /* Frameworks */ = {
@@ -186,22 +253,22 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		F27610214F2DFB81D3505CB8D0773C27 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				C1C41C0B34DA9C481BE2B7DFE91FDA4D /* Sparkle.framework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
-		43946917DA59C326CEE45B0C2925C4D2 /* Headers */ = {
+		97BD77ADDCAB6FA6CF7529B5308B0918 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				804E68C8F2F8B6659143CEB63CD4E590 /* Pods-Treeswitcher-umbrella.h in Headers */,
+				C3905037CE8620D38EF4DA0AB90C106C /* KeychainSwift-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BB890E0C245FE16482261373C935D7BD /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				091E0F213780E3553C0163E95755E878 /* Pods-Treeswitcher-umbrella.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -210,21 +277,40 @@
 /* Begin PBXNativeTarget section */
 		01205FA85B71557FF416E3B9F7616F29 /* Pods-Treeswitcher */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = C0AE79AB1AA0CB47D214BA5B495B9DC1 /* Build configuration list for PBXNativeTarget "Pods-Treeswitcher" */;
+			buildConfigurationList = 45E4D799FDACBB14DEDF029B9CAFF9D3 /* Build configuration list for PBXNativeTarget "Pods-Treeswitcher" */;
 			buildPhases = (
-				43946917DA59C326CEE45B0C2925C4D2 /* Headers */,
-				E4E0B0B939EA666C3C89B4248918E89B /* Sources */,
-				1FCC5BAD54C4E026E5A0BF3B0691FC84 /* Frameworks */,
-				87FCEEC258EB6102CCB01108FF6855CB /* Resources */,
+				BB890E0C245FE16482261373C935D7BD /* Headers */,
+				AEB56DB1E7882A94823FD8B3A6C9FD60 /* Sources */,
+				2863E3AD62C2A9E4E38F9733C1C5FAE5 /* Frameworks */,
+				647A90A8F17D2C1A215692716045E4CB /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				38E561E0766FB8F3E663FAEB69E7C2C9 /* PBXTargetDependency */,
+				9F4CD6798945961E0A9B2F2CBB47FC94 /* PBXTargetDependency */,
+				26921FE5B9A5E180EDCDBF8B31889E99 /* PBXTargetDependency */,
 			);
 			name = "Pods-Treeswitcher";
 			productName = "Pods-Treeswitcher";
 			productReference = 29D8B85B5516D94DA46990626BBC4082 /* Pods_Treeswitcher.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		07E54A78BCF82272E99319D7F7F5E8C1 /* KeychainSwift */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B6B334E2C50C2C0C66D96CADAEE2EA01 /* Build configuration list for PBXNativeTarget "KeychainSwift" */;
+			buildPhases = (
+				97BD77ADDCAB6FA6CF7529B5308B0918 /* Headers */,
+				E3B35C6F6E358284C831471583BD04CD /* Sources */,
+				BDA2C994D9A1A7A77E66F608C8D53206 /* Frameworks */,
+				29186A7FC9690C20BDE41949C4FFD3AC /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = KeychainSwift;
+			productName = KeychainSwift;
+			productReference = 9E0FD012ADC3C7179C684035672383E5 /* KeychainSwift.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 /* End PBXNativeTarget section */
@@ -244,10 +330,11 @@
 				en,
 			);
 			mainGroup = CF1408CF629C7361332E53B88F7BD30C;
-			productRefGroup = 8CA535CFEA80562E85EE3BCC212DA22F /* Products */;
+			productRefGroup = B5BAA8F2A6297532B106E0E13167781D /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
+				07E54A78BCF82272E99319D7F7F5E8C1 /* KeychainSwift */,
 				01205FA85B71557FF416E3B9F7616F29 /* Pods-Treeswitcher */,
 				ED77B4B88587C894E85C361023D67C53 /* Sparkle */,
 			);
@@ -255,7 +342,14 @@
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		87FCEEC258EB6102CCB01108FF6855CB /* Resources */ = {
+		29186A7FC9690C20BDE41949C4FFD3AC /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		647A90A8F17D2C1A215692716045E4CB /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -265,22 +359,39 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		E4E0B0B939EA666C3C89B4248918E89B /* Sources */ = {
+		AEB56DB1E7882A94823FD8B3A6C9FD60 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D81FC3A2FD9E7D435F83D6D5702EFE7B /* Pods-Treeswitcher-dummy.m in Sources */,
+				C93A5BE408EEED7AEB01573B3530DDB8 /* Pods-Treeswitcher-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E3B35C6F6E358284C831471583BD04CD /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4B255EB0716A1BB473E696C20812C697 /* KeychainSwift-dummy.m in Sources */,
+				4DC6C132AEF3E02BDD5ABC89333233B3 /* KeychainSwift.swift in Sources */,
+				485A776035D4B1EF97E8AE0E95A66502 /* KeychainSwiftAccessOptions.swift in Sources */,
+				320E018022758AFD782991C7D8854DB1 /* TegKeychainConstants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		38E561E0766FB8F3E663FAEB69E7C2C9 /* PBXTargetDependency */ = {
+		26921FE5B9A5E180EDCDBF8B31889E99 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = Sparkle;
 			target = ED77B4B88587C894E85C361023D67C53 /* Sparkle */;
-			targetProxy = A05A663EE2D716EA6005093EA96D4EF0 /* PBXContainerItemProxy */;
+			targetProxy = 7910573119E0FCFD8E0054BE1132C1F9 /* PBXContainerItemProxy */;
+		};
+		9F4CD6798945961E0A9B2F2CBB47FC94 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = KeychainSwift;
+			target = 07E54A78BCF82272E99319D7F7F5E8C1 /* KeychainSwift */;
+			targetProxy = 33977C8B555550B52EEC17F71216F770 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -345,7 +456,7 @@
 			};
 			name = Release;
 		};
-		1E099CBA81A3110655D1394E2BC83959 /* Debug */ = {
+		0E4F8893E8EF293FA0B117B10CB5280A /* Debug */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 26AAB118957B1964FBF248734FA8BC9E /* Pods-Treeswitcher.debug.xcconfig */;
 			buildSettings = {
@@ -387,7 +498,7 @@
 		};
 		21221507EB6C5017FA40BD87C8A5AE87 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 164A58EB240E3D712158E07256E9D04C /* Sparkle.xcconfig */;
+			baseConfigurationReference = 2A573150B0AC17D8ACD506D85E7CE0AE /* Sparkle.xcconfig */;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -402,49 +513,9 @@
 			};
 			name = Release;
 		};
-		3F70FAC0A5529434A43207A562F2907C /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = E6EFF8387FB5D17671713BB313AAE1A1 /* Pods-Treeswitcher.release.xcconfig */;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
-				CLANG_ENABLE_OBJC_WEAK = NO;
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				FRAMEWORK_VERSION = A;
-				INFOPLIST_FILE = "Target Support Files/Pods-Treeswitcher/Pods-Treeswitcher-Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/../Frameworks",
-					"@loader_path/Frameworks",
-				);
-				MACH_O_TYPE = staticlib;
-				MACOSX_DEPLOYMENT_TARGET = 10.10;
-				MODULEMAP_FILE = "Target Support Files/Pods-Treeswitcher/Pods-Treeswitcher.modulemap";
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
-				SDKROOT = macosx;
-				SKIP_INSTALL = YES;
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
-		};
 		5AFD67EFA6B3F27B4F0B0F8027C335F7 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 164A58EB240E3D712158E07256E9D04C /* Sparkle.xcconfig */;
+			baseConfigurationReference = 2A573150B0AC17D8ACD506D85E7CE0AE /* Sparkle.xcconfig */;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -523,6 +594,122 @@
 			};
 			name = Debug;
 		};
+		709E4E3E5672A39B8D6DD45D3EE6F7E2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = E6EFF8387FB5D17671713BB313AAE1A1 /* Pods-Treeswitcher.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_VERSION = A;
+				INFOPLIST_FILE = "Target Support Files/Pods-Treeswitcher/Pods-Treeswitcher-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACH_O_TYPE = staticlib;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MODULEMAP_FILE = "Target Support Files/Pods-Treeswitcher/Pods-Treeswitcher.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		775A56694B1D7FA171FB650398A52D8A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = A77AB29C6D75463E6DBF2397822572B9 /* KeychainSwift.xcconfig */;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_VERSION = A;
+				GCC_PREFIX_HEADER = "Target Support Files/KeychainSwift/KeychainSwift-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/KeychainSwift/KeychainSwift-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MODULEMAP_FILE = "Target Support Files/KeychainSwift/KeychainSwift.modulemap";
+				PRODUCT_MODULE_NAME = KeychainSwift;
+				PRODUCT_NAME = KeychainSwift;
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 5.0;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		A4AEDDD26A2A8A3126EFE5DF0DC6472F /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = A77AB29C6D75463E6DBF2397822572B9 /* KeychainSwift.xcconfig */;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_VERSION = A;
+				GCC_PREFIX_HEADER = "Target Support Files/KeychainSwift/KeychainSwift-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/KeychainSwift/KeychainSwift-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MODULEMAP_FILE = "Target Support Files/KeychainSwift/KeychainSwift.modulemap";
+				PRODUCT_MODULE_NAME = KeychainSwift;
+				PRODUCT_NAME = KeychainSwift;
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 5.0;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -531,6 +718,15 @@
 			buildConfigurations = (
 				5AFD67EFA6B3F27B4F0B0F8027C335F7 /* Debug */,
 				21221507EB6C5017FA40BD87C8A5AE87 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		45E4D799FDACBB14DEDF029B9CAFF9D3 /* Build configuration list for PBXNativeTarget "Pods-Treeswitcher" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0E4F8893E8EF293FA0B117B10CB5280A /* Debug */,
+				709E4E3E5672A39B8D6DD45D3EE6F7E2 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -544,11 +740,11 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		C0AE79AB1AA0CB47D214BA5B495B9DC1 /* Build configuration list for PBXNativeTarget "Pods-Treeswitcher" */ = {
+		B6B334E2C50C2C0C66D96CADAEE2EA01 /* Build configuration list for PBXNativeTarget "KeychainSwift" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				1E099CBA81A3110655D1394E2BC83959 /* Debug */,
-				3F70FAC0A5529434A43207A562F2907C /* Release */,
+				775A56694B1D7FA171FB650398A52D8A /* Debug */,
+				A4AEDDD26A2A8A3126EFE5DF0DC6472F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

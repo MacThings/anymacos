@@ -18,10 +18,10 @@
 		2A14A723230322F80048B14A /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A14A71D230322F80048B14A /* Settings.swift */; };
 		2A14A724230322F80048B14A /* Website.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A14A71E230322F80048B14A /* Website.swift */; };
 		2A14A725230322F80048B14A /* CreateUSBInstaller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A14A71F230322F80048B14A /* CreateUSBInstaller.swift */; };
-		2ABA6A5523042A200020ED1F /* treeswitcher in CopyFiles */ = {isa = PBXBuildFile; fileRef = 2ABA6A5323042A140020ED1F /* treeswitcher */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		2ABA6A5523042A200020ED1F /* treeswitcher in CopyFiles */ = {isa = PBXBuildFile; fileRef = 2ABA6A5323042A140020ED1F /* treeswitcher */; };
 		2AE5A77023006BCE00FFD472 /* script.command in CopyFiles */ = {isa = PBXBuildFile; fileRef = 2A93CF3723004091004C832D /* script.command */; };
-		2AE5A77323006BDE00FFD472 /* aria2c in CopyFiles */ = {isa = PBXBuildFile; fileRef = 2A93CF3C23004097004C832D /* aria2c */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
-		2AE5A77523006BDE00FFD472 /* PlistBuddy in CopyFiles */ = {isa = PBXBuildFile; fileRef = 2A93CF3E23004097004C832D /* PlistBuddy */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		2AE5A77323006BDE00FFD472 /* aria2c in CopyFiles */ = {isa = PBXBuildFile; fileRef = 2A93CF3C23004097004C832D /* aria2c */; };
+		2AE5A77523006BDE00FFD472 /* PlistBuddy in CopyFiles */ = {isa = PBXBuildFile; fileRef = 2A93CF3E23004097004C832D /* PlistBuddy */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
