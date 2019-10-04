@@ -12,7 +12,6 @@
 		1FA7862323002556002CDB52 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FA7862223002556002CDB52 /* ViewController.swift */; };
 		1FA7862523002558002CDB52 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1FA7862423002558002CDB52 /* Assets.xcassets */; };
 		1FA7862823002558002CDB52 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1FA7862623002558002CDB52 /* Main.storyboard */; };
-		2A0A7D752347B3070081F997 /* treeswitcher.html in Resources */ = {isa = PBXBuildFile; fileRef = 2A0A7D742347B3070081F997 /* treeswitcher.html */; };
 		2A14A720230322F80048B14A /* CreateUSBInstallerTerminal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A14A71A230322F80048B14A /* CreateUSBInstallerTerminal.swift */; };
 		2A14A721230322F80048B14A /* DownloadmacOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A14A71B230322F80048B14A /* DownloadmacOS.swift */; };
 		2A14A722230322F80048B14A /* ChangeUpdateTree.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A14A71C230322F80048B14A /* ChangeUpdateTree.swift */; };
@@ -235,7 +234,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				1FA7862523002558002CDB52 /* Assets.xcassets in Resources */,
-				2A0A7D752347B3070081F997 /* treeswitcher.html in Resources */,
 				1FA7862823002558002CDB52 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
