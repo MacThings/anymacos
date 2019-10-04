@@ -147,7 +147,7 @@ function _select_macos()
         curl -s "$seed_url" |gunzip -c > "$temp_path"/"$sucatalog"
     fi
 
-    seed_ids=$( cat "$temp_path"/seed.sucatalog |grep InstallESDDmg.*pkg\< |cut -d/ -f8,8 )
+    seed_ids=$( cat "$temp_path"/seed.sucatalog |grep InstallESDDmg.*pkg\< |cut -d/ -f8,8 |cut -d- -f1,2 )
     echo "$seed_ids" > "$temp_path"/seed_ids
 
     if [ -f "$temp_path"/selection ]; then
@@ -386,7 +386,7 @@ function _kill_aria()
         if [[ "$syslang" = "en" ]]; then
             _helpDefaultWrite "Statustext" "Cleaning Downloadfolder"
         else
-            _helpDefaultWrite "Statustext" "Bereinige Downloadornder"
+            _helpDefaultWrite "Statustext" "Bereinige Downloadordner"
         fi
         while IFS= read -r line
         do
