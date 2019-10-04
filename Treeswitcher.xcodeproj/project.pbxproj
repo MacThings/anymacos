@@ -12,13 +12,14 @@
 		1FA7862323002556002CDB52 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FA7862223002556002CDB52 /* ViewController.swift */; };
 		1FA7862523002558002CDB52 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1FA7862423002558002CDB52 /* Assets.xcassets */; };
 		1FA7862823002558002CDB52 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1FA7862623002558002CDB52 /* Main.storyboard */; };
+		2A0A7D752347B3070081F997 /* treeswitcher.html in Resources */ = {isa = PBXBuildFile; fileRef = 2A0A7D742347B3070081F997 /* treeswitcher.html */; };
 		2A14A720230322F80048B14A /* CreateUSBInstallerTerminal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A14A71A230322F80048B14A /* CreateUSBInstallerTerminal.swift */; };
 		2A14A721230322F80048B14A /* DownloadmacOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A14A71B230322F80048B14A /* DownloadmacOS.swift */; };
 		2A14A722230322F80048B14A /* ChangeUpdateTree.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A14A71C230322F80048B14A /* ChangeUpdateTree.swift */; };
 		2A14A723230322F80048B14A /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A14A71D230322F80048B14A /* Settings.swift */; };
 		2A14A724230322F80048B14A /* Website.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A14A71E230322F80048B14A /* Website.swift */; };
 		2A14A725230322F80048B14A /* CreateUSBInstaller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A14A71F230322F80048B14A /* CreateUSBInstaller.swift */; };
-		2ABA6A5523042A200020ED1F /* treeswitcher in CopyFiles */ = {isa = PBXBuildFile; fileRef = 2ABA6A5323042A140020ED1F /* treeswitcher */; };
+		2ABA6A5523042A200020ED1F /* treeswitcher in CopyFiles */ = {isa = PBXBuildFile; fileRef = 2ABA6A5323042A140020ED1F /* treeswitcher */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		2AE5A77023006BCE00FFD472 /* script.command in CopyFiles */ = {isa = PBXBuildFile; fileRef = 2A93CF3723004091004C832D /* script.command */; };
 		2AE5A77323006BDE00FFD472 /* aria2c in CopyFiles */ = {isa = PBXBuildFile; fileRef = 2A93CF3C23004097004C832D /* aria2c */; };
 		2AE5A77523006BDE00FFD472 /* PlistBuddy in CopyFiles */ = {isa = PBXBuildFile; fileRef = 2A93CF3E23004097004C832D /* PlistBuddy */; };
@@ -56,6 +57,7 @@
 		1FA7862423002558002CDB52 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1FA7862723002558002CDB52 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		1FA7862923002558002CDB52 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2A0A7D742347B3070081F997 /* treeswitcher.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = treeswitcher.html; sourceTree = "<group>"; };
 		2A14A71A230322F80048B14A /* CreateUSBInstallerTerminal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateUSBInstallerTerminal.swift; sourceTree = "<group>"; };
 		2A14A71B230322F80048B14A /* DownloadmacOS.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DownloadmacOS.swift; sourceTree = "<group>"; };
 		2A14A71C230322F80048B14A /* ChangeUpdateTree.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChangeUpdateTree.swift; sourceTree = "<group>"; };
@@ -117,6 +119,7 @@
 				2A14A71D230322F80048B14A /* Settings.swift */,
 				2A14A71E230322F80048B14A /* Website.swift */,
 				1FA7862223002556002CDB52 /* ViewController.swift */,
+				2A0A7D742347B3070081F997 /* treeswitcher.html */,
 				1FA7862423002558002CDB52 /* Assets.xcassets */,
 				1FA7862623002558002CDB52 /* Main.storyboard */,
 				1FA7862923002558002CDB52 /* Info.plist */,
@@ -232,6 +235,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1FA7862523002558002CDB52 /* Assets.xcassets in Resources */,
+				2A0A7D752347B3070081F997 /* treeswitcher.html in Resources */,
 				1FA7862823002558002CDB52 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -290,7 +294,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/bash;
-			shellScript = "#/bin/bash\n#\ncp -r \"${TARGET_BUILD_DIR}\"/Treeswitcher.app /Applications/\nif [ -d /Volumes/Homeshare/treeswitcher ]; then\n    rm /Volumes/Homeshare/treeswitcher/upload/treeswitcher.zip 2> /dev/null\n    cd /Applications\n    ditto -c -k --sequesterRsrc --keepParent Treeswitcher.app /Volumes/Homeshare/treeswitcher/upload/treeswitcher.zip\nfi\n";
+			shellScript = "#/bin/bash\n#\ncp -r \"${TARGET_BUILD_DIR}\"/Treeswitcher.app /Applications/\nif [ -d /Volumes/Homeshare/treeswitcher ]; then\n    cp \"/Users/luigi/Documents/treeswitcher/Treeswitcher/treeswitcher.html\" \"/Volumes/Homeshare/kextupdater/upload/treeswitcher.html\"\n    rm /Volumes/Homeshare/treeswitcher/upload/treeswitcher.zip 2> /dev/null\n    cd /Applications\n    ditto -c -k --sequesterRsrc --keepParent Treeswitcher.app /Volumes/Homeshare/treeswitcher/upload/treeswitcher.zip\nfi\n";
 		};
 		450B6E2735A8E868DECFCF9F /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
