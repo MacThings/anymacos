@@ -46,7 +46,7 @@ class Settings: NSViewController {
             return
         }
     }
-    
+
     @IBAction func set_image_path(_ sender: Any) {
         let dialog = NSOpenPanel();
         

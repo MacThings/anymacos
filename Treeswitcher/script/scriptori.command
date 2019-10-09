@@ -92,10 +92,13 @@ function _check_seed()
         seed=$( osascript -e 'do shell script "sudo /System/Library/PrivateFrameworks/Seeding.framework/Resources/seedutil current |grep \"Currently enrolled in\" |sed \"s/.*: //g\"" with administrator privileges' )
     fi
 
-    if [[ $seed != "" ]]; then
-        _helpDefaultWrite "CurrentSeed" "$seed"
+    if [[ $seed = *null* ]]; then
+        _helpDefaultWrite "CurrentSeed" "Unenroll"
+    else
+        if [[ $seed != "" ]]; then
+            _helpDefaultWrite "CurrentSeed" "$seed"
+        fi
     fi
-
 }
 
 function _setseed()
