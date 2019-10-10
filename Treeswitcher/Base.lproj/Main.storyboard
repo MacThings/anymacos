@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="15400" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="14868" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="15400"/>
-        <plugIn identifier="com.apple.WebKitIBPlugin" version="15400"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14868"/>
+        <plugIn identifier="com.apple.WebKitIBPlugin" version="14868"/>
         <capability name="System colors introduced in macOS 10.14" minToolsVersion="10.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -376,7 +376,7 @@
                                 <rect key="frame" x="341" y="1" width="31" height="13"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <textFieldCell key="cell" lineBreakMode="clipping" title="Label" id="jAE-Ti-jBA">
-                                    <font key="font" metaFont="menu" size="10"/>
+                                    <font key="font" metaFont="system" size="10"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
@@ -1109,7 +1109,7 @@
                             <textField hidden="YES" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="BrL-r0-1tr">
                                 <rect key="frame" x="22" y="268" width="151" height="17"/>
                                 <autoresizingMask key="autoresizingMask"/>
-                                <textFieldCell key="cell" lineBreakMode="clipping" alignment="right" title="One Pass Install" id="EsK-Ub-wae">
+                                <textFieldCell key="cell" lineBreakMode="clipping" enabled="NO" alignment="right" title="One Pass Install" id="EsK-Ub-wae">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -1126,7 +1126,7 @@
                                     <action selector="dismissController:" target="aiQ-Qc-zPO" id="54q-0U-I3L"/>
                                 </connections>
                             </button>
-                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uZV-lc-YQz">
+                            <button hidden="YES" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uZV-lc-YQz">
                                 <rect key="frame" x="177" y="266" width="22" height="18"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <buttonCell key="cell" type="check" bezelStyle="regularSquare" imagePosition="left" enabled="NO" inset="2" id="zxx-sw-1q8">
@@ -1151,8 +1151,9 @@
                         </subviews>
                     </view>
                     <connections>
+                        <outlet property="one_pass_checkbox" destination="uZV-lc-YQz" id="bjP-R4-rPG"/>
+                        <outlet property="one_pass_label" destination="BrL-r0-1tr" id="Djf-gs-Amf"/>
                         <outlet property="one_phase_checkbox" destination="uZV-lc-YQz" id="2X3-Oc-8CH"/>
-                        <outlet property="one_phase_label" destination="BrL-r0-1tr" id="LVj-75-1EQ"/>
                         <outlet property="progress_wheel" destination="4FP-N5-Qbf" id="sQ8-yw-jKC"/>
                         <outlet property="pulldown_menu" destination="wXP-Xc-Niw" id="V8O-1d-pYh"/>
                         <outlet property="refresh_button" destination="Vkk-Se-Nrz" id="FJB-pf-sVw"/>
@@ -1350,7 +1351,7 @@
                                     <binding destination="24u-hY-E9q" name="value" keyPath="values.Downloadpath" id="4b6-ld-5s7"/>
                                 </connections>
                             </textField>
-                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="JOL-L0-ums" userLabel="Start button One Phase">
+                            <button hidden="YES" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="JOL-L0-ums" userLabel="Start button One Phase">
                                 <rect key="frame" x="117" y="2" width="100" height="42"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <buttonCell key="cell" type="push" title="Start" bezelStyle="rounded" alignment="center" enabled="NO" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Xa2-ir-04v">

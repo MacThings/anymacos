@@ -181,7 +181,6 @@ function _select_macos()
 
 function _download_macos()
 {
-
     choice=$( _helpDefaultRead "Choice" )
     choice=$( grep -n "$choice" "$temp_path"/selection | head -n 1 | cut -d: -f1 )
     Imagesize=$( _helpDefaultRead "Imagesize" |sed 's/,.*//' )
@@ -505,6 +504,25 @@ function _check_if_valid()
 
 function _start_installer_creation()
 {
+
+    #sipcheck1=$( csrutil status | grep "Kext Signing" | sed "s/.*\://g" | xargs )
+    #sipcheck2=$( csrutil status | grep "System Integrity Protection status" | sed -e "s/.*\://g" -e "s/\ (.*//g" -e "s/\.//g" | xargs )
+    #if [[ $sipcheck1 = "disabled" ]]; then
+    #sipcheck="disabled"
+    #elif [[ $sipcheck2 = "disabled" ]]; then
+    #sipcheck="disabled"
+    #fi
+
+    #if [[ $sipcheck != "disabled" ]]; then
+        #if [[ "$syslang" = "en" ]]; then
+            #echo "🚫 Error. You must disable SIP first."
+            #exit
+        #else
+            #echo "🚫 Fehler. Du musst erst SIP deaktivieren."
+            #exit
+        #fi
+   #fi
+
     targetvolume=$( _helpDefaultRead "DRMntPoint" )
     targetvolumename=$( echo "$targetvolume" |sed 's/.*\///g' )
     applicationpath=$( _helpDefaultRead "Applicationpath" )

@@ -74,7 +74,7 @@ class CreateUSBInstallerTerminal: NSViewController {
         self.close_button.isEnabled=false
         self.start_button_one_phase.isEnabled=false
         DispatchQueue.global(qos: .background).async {
-            self.syncShellExec(path: self.scriptPath, args: ["_start_onephase_installer"])
+            self.syncShellExec(path: self.scriptPath, args: ["_start_installer_creation"])
             
             DispatchQueue.main.async {
                 self.abort_button.isEnabled=false

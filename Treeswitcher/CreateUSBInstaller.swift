@@ -19,8 +19,8 @@ class CreateUSBInstaller: NSViewController {
     @IBOutlet weak var start_button: NSButton!
     @IBOutlet weak var select_volume_label: NSTextField!
     @IBOutlet weak var refresh_button: NSButton!
-    @IBOutlet weak var one_phase_checkbox: NSButton!
-    @IBOutlet weak var one_phase_label: NSTextField!
+    @IBOutlet weak var one_pass_checkbox: NSButton!
+    @IBOutlet weak var one_pass_label: NSTextField!
     
     let scriptPath = Bundle.main.path(forResource: "/script/script", ofType: "command")!
     let languageinit = UserDefaults.standard.string(forKey: "Language")
@@ -46,8 +46,8 @@ class CreateUSBInstaller: NSViewController {
         self.refresh_button.isEnabled=false
         self.start_button.isEnabled=false
         self.select_volume_label.isHidden=true
-        self.one_phase_checkbox.isHidden=true
-        self.one_phase_label.isHidden=true
+        //self.one_pass_checkbox.isHidden=true
+        //self.one_pass_label.isHidden=true
         if languageinit == "en" {
             let defaultname = "Looking for suitable Drives ..."
             UserDefaults.standard.set(defaultname, forKey: "StatustextUSB")
@@ -97,8 +97,8 @@ class CreateUSBInstaller: NSViewController {
                 self.pulldown_menu?.isEnabled=true
                 //self.start_button?.isEnabled=true
                 self.select_volume_label.isHidden=false
-                self.one_phase_checkbox.isHidden=false
-                self.one_phase_label.isHidden=false
+                //self.one_pass_checkbox.isHidden=false
+                //self.one_pass_label.isHidden=false
                 self.progress_wheel?.stopAnimation(self);
                 if self.languageinit == "en" {
                     let defaultname = "Idle ..."
@@ -118,8 +118,8 @@ class CreateUSBInstaller: NSViewController {
         self.start_button.isEnabled=false
         self.refresh_button.isEnabled=false
         self.select_volume_label.isHidden=true
-        self.one_phase_checkbox.isHidden=true
-        self.one_phase_label.isHidden=true
+        //self.one_pass_checkbox.isHidden=true
+        //self.one_pass_label.isHidden=true
         if languageinit == "en" {
             let defaultname = "Getting Driveinfos ..."
             UserDefaults.standard.set(defaultname, forKey: "StatustextUSB")
@@ -134,8 +134,8 @@ class CreateUSBInstaller: NSViewController {
             DispatchQueue.main.async {
                 self.progress_wheel?.stopAnimation(self);
                 self.select_volume_label.isHidden=false
-                self.one_phase_checkbox.isHidden=false
-                self.one_phase_label.isHidden=false
+                //self.one_pass_checkbox.isHidden=false
+                //self.one_pass_label.isHidden=false
                 self.start_button?.isEnabled=true
                 self.refresh_button.isEnabled=true
                 if self.languageinit == "en" {

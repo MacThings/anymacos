@@ -120,6 +120,7 @@ class ChangeUpdateTree: NSViewController {
         defaults.removeObject(forKey: "Applicationpath")
         defaults.removeObject(forKey: "OnePhaseInstallPID")
         defaults.removeObject(forKey: "AppValid")
+        defaults.removeObject(forKey: "OnePhaseInstall")
         defaults.synchronize()
 
     }
