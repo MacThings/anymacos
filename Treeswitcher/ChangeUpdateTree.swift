@@ -60,7 +60,10 @@ class ChangeUpdateTree: NSViewController {
         
         let imagesizeinit = UserDefaults.standard.string(forKey: "Imagesize")
         if imagesizeinit == nil{
-            let defaultsize = "8"
+            let defaultsize = "20"
+            UserDefaults.standard.set(defaultsize, forKey: "Imagesize")
+        } else if imagesizeinit == "8"{
+            let defaultsize = "20"
             UserDefaults.standard.set(defaultsize, forKey: "Imagesize")
         }
         
@@ -103,7 +106,7 @@ class ChangeUpdateTree: NSViewController {
         let seedinit = UserDefaults.standard.string(forKey: "CurrentSeed")
         if seedinit == "Unenroll"{
             self.download_button.isEnabled=false
-        }
+        } 
         
         let defaults = UserDefaults.standard
         defaults.removeObject(forKey: "DRVolName")

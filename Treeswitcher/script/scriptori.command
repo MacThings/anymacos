@@ -2,21 +2,21 @@
 
 function _helpDefaultWrite()
 {
-VAL=$1
-local VAL1=$2
+    VAL=$1
+    local VAL1=$2
 
-if [ ! -z "$VAL" ] || [ ! -z "$VAL1" ]; then
-    defaults write "${ScriptHome}/Library/Preferences/com.slsoft.treeswitcher.plist" "$VAL" "$VAL1"
-fi
+    if [ ! -z "$VAL" ] || [ ! -z "$VAL1" ]; then
+        defaults write "${ScriptHome}/Library/Preferences/com.slsoft.treeswitcher.plist" "$VAL" "$VAL1"
+    fi
 }
 
 function _helpDefaultRead()
 {
-VAL=$1
+    VAL=$1
 
-if [ ! -z "$VAL" ]; then
-    defaults read "${ScriptHome}/Library/Preferences/com.slsoft.treeswitcher.plist" "$VAL"
-fi
+    if [ ! -z "$VAL" ]; then
+        defaults read "${ScriptHome}/Library/Preferences/com.slsoft.treeswitcher.plist" "$VAL"
+    fi
 }
 
 ScriptHome=$(echo $HOME)
@@ -345,12 +345,12 @@ if [[ $choice != "" ]] && [[ $choice != "0" ]]; then
 
     osascript -e 'do shell script "sudo /usr/sbin/installer -pkg '"'$download_path'"'/*English.dist -target /Volumes/'"'$volume_name'"'" with administrator privileges'
     installok="$?"
-    if [ ! -f /Volumes/"$volume_name"/Applications/*insta*/Contents/SharedSupport/AppleD* ]; then
+    #if [ ! -f /Volumes/"$volume_name"/Applications/*insta*/Contents/SharedSupport/AppleD* ]; then
         cp "$download_path"/AppleD* /Volumes/"$volume_name"/Applications/*nstall*/Contents/SharedSupport/.
-    fi
-    if [ ! -f /Volumes/"$volume_name"/Applications/*insta*/Contents/SharedSupport/BaseS* ]; then
+    #fi
+    #if [ ! -f /Volumes/"$volume_name"/Applications/*insta*/Contents/SharedSupport/BaseS* ]; then
         cp "$download_path"/BaseS* /Volumes/"$volume_name"/Applications/*nstall*/Contents/SharedSupport/.
-    fi
+    #fi
     if [[ "$installok" = "0" ]]; then
         if [[ "$syslang" = "en" ]]; then
             _helpDefaultWrite "Statustext" "Done"
