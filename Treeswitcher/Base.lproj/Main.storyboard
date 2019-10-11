@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="14868" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="15400" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14868"/>
-        <plugIn identifier="com.apple.WebKitIBPlugin" version="14868"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="15400"/>
+        <plugIn identifier="com.apple.WebKitIBPlugin" version="15400"/>
         <capability name="System colors introduced in macOS 10.14" minToolsVersion="10.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -1153,13 +1153,11 @@
                     <connections>
                         <outlet property="one_pass_checkbox" destination="uZV-lc-YQz" id="bjP-R4-rPG"/>
                         <outlet property="one_pass_label" destination="BrL-r0-1tr" id="Djf-gs-Amf"/>
-                        <outlet property="one_phase_checkbox" destination="uZV-lc-YQz" id="2X3-Oc-8CH"/>
                         <outlet property="progress_wheel" destination="4FP-N5-Qbf" id="sQ8-yw-jKC"/>
                         <outlet property="pulldown_menu" destination="wXP-Xc-Niw" id="V8O-1d-pYh"/>
                         <outlet property="refresh_button" destination="Vkk-Se-Nrz" id="FJB-pf-sVw"/>
                         <outlet property="select_volume_label" destination="7WF-r2-vPt" id="fCx-hM-S7W"/>
                         <outlet property="start_button" destination="NXK-cz-l1c" id="28W-xa-zqx"/>
-                        <outlet property="start_button_one_phase" destination="JOL-L0-ums" id="NQl-dM-He2"/>
                     </connections>
                 </viewController>
                 <customObject id="q0C-aX-wyg" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
