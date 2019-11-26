@@ -1,6 +1,6 @@
 PODS:
-  - KeychainSwift (16.0.1)
-  - Sparkle (1.21.3)
+  - KeychainSwift (18.0.0)
+  - Sparkle (1.22.0)
 
 DEPENDENCIES:
   - KeychainSwift
@@ -12,8 +12,8 @@ SPEC REPOS:
     - Sparkle
 
 SPEC CHECKSUMS:
-  KeychainSwift: 4209611373ca4a098e09b1e547eebd87c544dcc4
-  Sparkle: 3f75576db8b0265adef36c43249d747f22d0b708
+  KeychainSwift: c46e1438d121e47459fb304ac88c5e058a2a91ed
+  Sparkle: 593ac2e677c07bcb6c3b22d621240e7cbedaab57
 
 PODFILE CHECKSUM: af98bd35a81ed6b782c3600a75e59070aabde134
 

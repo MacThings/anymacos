@@ -170,6 +170,7 @@ function _select_macos()
         echo -e "$seed_url" >> "$temp_path"/selection_urls
     done <<< "$seed_ids"
 
+
     perl -e 'truncate $ARGV[0], ((-s $ARGV[0]) - 1)' "$temp_path"/selection
 
     if [[ "$syslang" = "en" ]]; then
@@ -237,7 +238,7 @@ if [[ $choice != "" ]] && [[ $choice != "0" ]]; then
         _helpDefaultWrite "Statustext" "Downloade: $line"
     fi
     echo "$line" >> "$download_path"/.downloaded_files
-../bin/./aria2c -q -x "$parallel_downloads" --file-allocation=none -d "$download_path" "$seed_url""$line"
+    ../bin/./aria2c -q -x "$parallel_downloads" --file-allocation=none -d "$download_path" "$seed_url""$line"
 
     done < ""$temp_path"/selection_files2"
 
@@ -260,7 +261,7 @@ if [[ $choice != "" ]] && [[ $choice != "0" ]]; then
         _helpDefaultWrite "Statustext" "Downloade: $line"
     fi
     echo "$line" >> "$download_path"/.downloaded_files
-../bin/./aria2c -q -x "$parallel_downloads" --file-allocation=none -d "$download_path" "$seed_url""$line"
+    ../bin/./aria2c -q -x "$parallel_downloads" --file-allocation=none -d "$download_path" "$seed_url""$line"
     done < ""$temp_path"/selection_files3"
 
     cat "$temp_path"/selection_files3 |sed 's/pkm/smd/g' > "$temp_path"/selection_files4
@@ -282,7 +283,7 @@ if [[ $choice != "" ]] && [[ $choice != "0" ]]; then
         _helpDefaultWrite "Statustext" "Downloade: $line"
     fi
     echo "$line" >> "$download_path"/.downloaded_files
-../bin/./aria2c -q -x "$parallel_downloads" --file-allocation=none -d "$download_path" "$seed_url""$line"
+    ../bin/./aria2c -q -x "$parallel_downloads" --file-allocation=none -d "$download_path" "$seed_url""$line"
     done < ""$temp_path"/selection_files4"
 
     seed_id=$( sed -n "$choice"'p' < "$temp_path"/seed_ids )
@@ -341,7 +342,10 @@ if [[ $choice != "" ]] && [[ $choice != "0" ]]; then
         fi
         exit
     fi
-
+        
+    sed -ib "/installation-check/d" "$download_path"/*English.dist
+    rm "$download_path"/*English.distb
+    
     osascript -e 'do shell script "sudo /usr/sbin/installer -pkg '"'$download_path'"'/*English.dist -target /Volumes/'"'$volume_name'"'" with administrator privileges'
     installok="$?"
     #if [ ! -f /Volumes/"$volume_name"/Applications/*insta*/Contents/SharedSupport/AppleD* ]; then
