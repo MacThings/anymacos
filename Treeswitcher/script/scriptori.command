@@ -57,6 +57,24 @@ else
     _helpDefaultWrite "Language" "en"
 fi
 
+#========================= Language Detection =========================#
+function _languageselect()
+{
+    if [[ $lan2 = de* ]]; then
+    export LC_ALL=de_DE
+    language="de"
+    else
+    export LC_ALL=en_EN
+    language="en"
+    fi
+    if [ ! -d "$temp_path" ]; then
+        mkdir "$temp_path"
+    fi
+    cat ../bashstrings/$language.bashstrings > ${temp_path}/locale.tmp
+    source ${temp_path}/locale.tmp
+}
+
+
 function _initial()
 {
 
@@ -135,6 +153,8 @@ function _setseed()
 function _select_macos()
 {
 
+    _languageselect
+    
     mkdir "$temp_path" 2> /dev/null
 
     if [[ $seed_choice = "CustomerSeed" ]]; then
@@ -173,11 +193,11 @@ function _select_macos()
 
     perl -e 'truncate $ARGV[0], ((-s $ARGV[0]) - 1)' "$temp_path"/selection
 
-    if [[ "$syslang" = "en" ]]; then
-        _helpDefaultWrite "Statustext" "Ready..."
-    else
-        _helpDefaultWrite "Statustext" "Bereit..."
-    fi
+    #if [[ "$syslang" = "en" ]]; then
+        _helpDefaultWrite "Statustext" "$statustext"
+    #//else
+     #   _helpDefaultWrite "Statustext" "Bereit..."
+    #fi
 }
 
 function _download_macos()
