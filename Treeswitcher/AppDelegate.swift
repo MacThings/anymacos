@@ -13,6 +13,11 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     let scriptPath = Bundle.main.path(forResource: "/script/script", ofType: "command")!
     
+    func applicationShouldTerminateAfterLastWindowClosed (_
+        theApplication: NSApplication) -> Bool {
+        return true
+    }
+    
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         // Insert code here to initialize your application
     }
