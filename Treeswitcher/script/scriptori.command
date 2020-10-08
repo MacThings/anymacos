@@ -320,33 +320,35 @@ if [[ $choice != "" ]] && [[ $choice != "0" ]]; then
         exit
     fi
 
-    if [ -d /Volumes/"$volume_name" ]; then
-        if [[ "$syslang" = "en" ]]; then
-            _helpDefaultWrite "Statustext" "Removing previous Sparseimage ..."
-        else
-            _helpDefaultWrite "Statustext" "Entferne vorheriges Sparseimage ..."
-        fi
-        diskutil unmountDisk force /Volumes/"$volume_name" 2> /dev/null
-        rm  "$sparseimage_path"/"$Imagename".sparseimage
-    fi
 
-    if [ -f "$sparseimage_path"/"$Imagename".sparseimage ]; then
-        rm  "$sparseimage_path"/"$Imagename".sparseimage
-    fi
+#    if [ -d /Volumes/"$volume_name" ]; then
+#        if [[ "$syslang" = "en" ]]; then
+#            _helpDefaultWrite "Statustext" "Removing previous Sparseimage ..."
+#        else
+#            _helpDefaultWrite "Statustext" "Entferne vorheriges Sparseimage ..."
+#        fi
+#        diskutil unmountDisk force /Volumes/"$volume_name" 2> /dev/null
+#        rm  "$sparseimage_path"/"$Imagename".sparseimage
+#    fi
+#
+#    if [ -f "$sparseimage_path"/"$Imagename".sparseimage ]; then
+#        rm  "$sparseimage_path"/"$Imagename".sparseimage
+#    fi
+#
+#    if [[ "$syslang" = "en" ]]; then
+#        _helpDefaultWrite "Statustext" "Creating Sparseimage ..."
+#    else
+#        _helpDefaultWrite "Statustext" "Erzeuge Sparseimage ..."
+#    fi
 
-    if [[ "$syslang" = "en" ]]; then
-        _helpDefaultWrite "Statustext" "Creating Sparseimage ..."
-    else
-        _helpDefaultWrite "Statustext" "Erzeuge Sparseimage ..."
-    fi
+#   /usr/bin/hdiutil create -size "$Imagesize"g -fs HFS+ -volname "$volume_name" -type SPARSE "$sparseimage_path"/"$Imagename" 2> /dev/null
+#    if [[ "$syslang" = "en" ]]; then
+#        _helpDefaultWrite "Statustext" "Mounting Sparseimage ..."
+#    else
+#        _helpDefaultWrite "Statustext" "Mounte Sparseimage ..."
+#    fi
+#    open "$sparseimage_path"/"$Imagename".sparseimage
 
-    /usr/bin/hdiutil create -size "$Imagesize"g -fs HFS+ -volname "$volume_name" -type SPARSE "$sparseimage_path"/"$Imagename" 2> /dev/null
-    if [[ "$syslang" = "en" ]]; then
-        _helpDefaultWrite "Statustext" "Mounting Sparseimage ..."
-    else
-        _helpDefaultWrite "Statustext" "Mounte Sparseimage ..."
-    fi
-    open "$sparseimage_path"/"$Imagename".sparseimage
     if [[ "$syslang" = "en" ]]; then
         _helpDefaultWrite "Statustext" "Creating Installer-Application ..."
     else
@@ -369,17 +371,17 @@ if [[ $choice != "" ]] && [[ $choice != "0" ]]; then
     ### Checks if BigSur is downloading
     
     if [ -f "$download_path/UpdateBrain.zip" ]; then
-        osascript -e 'do shell script "sudo /usr/sbin/installer -pkg '"'$download_path'"'/InstallAssistant.pkg -target /Volumes/'"'$volume_name'"'" with administrator privileges'
+        osascript -e 'do shell script "sudo /usr/sbin/installer -pkg '"'$download_path'"'/InstallAssistant.pkg -target /Applications" with administrator privileges'
     else
-        osascript -e 'do shell script "sudo /usr/sbin/installer -pkg '"'$download_path'"'/*English.dist -target /Volumes/'"'$volume_name'"'" with administrator privileges'
+        osascript -e 'do shell script "sudo /usr/sbin/installer -pkg '"'$download_path'"'/*English.dist -target /Applications" with administrator privileges'
     fi
     
     installok="$?"
     #if [ ! -f /Volumes/"$volume_name"/Applications/*insta*/Contents/SharedSupport/AppleD* ]; then
-        cp "$download_path"/AppleD* /Volumes/"$volume_name"/Applications/*nstall*/Contents/SharedSupport/.
+        #cp "$download_path"/AppleD* /Applications/*nstall*/Contents/SharedSupport/.
     #fi
     #if [ ! -f /Volumes/"$volume_name"/Applications/*insta*/Contents/SharedSupport/BaseS* ]; then
-        cp "$download_path"/BaseS* /Volumes/"$volume_name"/Applications/*nstall*/Contents/SharedSupport/.
+        #cp "$download_path"/BaseS* /Applications/*nstall*/Contents/SharedSupport/.
     #fi
     if [[ "$installok" = "0" ]]; then
         if [[ "$syslang" = "en" ]]; then
