@@ -1,20 +1,16 @@
 PODS:
-  - KeychainSwift (18.0.0)
   - Sparkle (1.22.0)
 
 DEPENDENCIES:
-  - KeychainSwift
   - Sparkle
 
 SPEC REPOS:
   https://github.com/CocoaPods/Specs.git:
-    - KeychainSwift
     - Sparkle
 
 SPEC CHECKSUMS:
-  KeychainSwift: c46e1438d121e47459fb304ac88c5e058a2a91ed
   Sparkle: 593ac2e677c07bcb6c3b22d621240e7cbedaab57
 
-PODFILE CHECKSUM: af98bd35a81ed6b782c3600a75e59070aabde134
+PODFILE CHECKSUM: 6eed123390dfc3d4830f2a4ee0854104975b3b01
 
-COCOAPODS: 1.8.3
+COCOAPODS: 1.9.3

@@ -19,13 +19,13 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
-		0E178E581F8587BF14F173F484302E90 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F940C819049CFF8741C0F5E3E075E607 /* Cocoa.framework */; };
-		804E68C8F2F8B6659143CEB63CD4E590 /* Pods-Treeswitcher-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 2D614FB20516C7880AC632A0D33B3D1C /* Pods-Treeswitcher-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		D81FC3A2FD9E7D435F83D6D5702EFE7B /* Pods-Treeswitcher-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = E6048D8A9C749FF4C73994B6DCF23A10 /* Pods-Treeswitcher-dummy.m */; };
+		286D10E17B7EE9C2C42C99F2B7307B4F /* Pods-Treeswitcher-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = E6048D8A9C749FF4C73994B6DCF23A10 /* Pods-Treeswitcher-dummy.m */; };
+		48E1A9B3730EEAA6DD00DF32D4754985 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F940C819049CFF8741C0F5E3E075E607 /* Cocoa.framework */; };
+		F0AC7937DE7E56402B2AAA092C225CB2 /* Pods-Treeswitcher-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 2D614FB20516C7880AC632A0D33B3D1C /* Pods-Treeswitcher-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		A05A663EE2D716EA6005093EA96D4EF0 /* PBXContainerItemProxy */ = {
+		42FE1829EB33706E6FD766A2EB74544D /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
 			proxyType = 1;
@@ -71,11 +71,11 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		1FCC5BAD54C4E026E5A0BF3B0691FC84 /* Frameworks */ = {
+		FF911539539ECA28254872D8EE8EA1A5 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0E178E581F8587BF14F173F484302E90 /* Cocoa.framework in Frameworks */,
+				48E1A9B3730EEAA6DD00DF32D4754985 /* Cocoa.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -199,11 +199,11 @@
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
-		43946917DA59C326CEE45B0C2925C4D2 /* Headers */ = {
+		D128BE12D12F48082B57BAF3AE956A76 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				804E68C8F2F8B6659143CEB63CD4E590 /* Pods-Treeswitcher-umbrella.h in Headers */,
+				F0AC7937DE7E56402B2AAA092C225CB2 /* Pods-Treeswitcher-umbrella.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -212,17 +212,17 @@
 /* Begin PBXNativeTarget section */
 		01205FA85B71557FF416E3B9F7616F29 /* Pods-Treeswitcher */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = C0AE79AB1AA0CB47D214BA5B495B9DC1 /* Build configuration list for PBXNativeTarget "Pods-Treeswitcher" */;
+			buildConfigurationList = CD3871E4C06D5903313AB96099266A2F /* Build configuration list for PBXNativeTarget "Pods-Treeswitcher" */;
 			buildPhases = (
-				43946917DA59C326CEE45B0C2925C4D2 /* Headers */,
-				E4E0B0B939EA666C3C89B4248918E89B /* Sources */,
-				1FCC5BAD54C4E026E5A0BF3B0691FC84 /* Frameworks */,
-				87FCEEC258EB6102CCB01108FF6855CB /* Resources */,
+				D128BE12D12F48082B57BAF3AE956A76 /* Headers */,
+				A1F11D16BBD1DC416E732189627A5C28 /* Sources */,
+				FF911539539ECA28254872D8EE8EA1A5 /* Frameworks */,
+				CC5929C8A25C94541C0CF7BF4B96109A /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				38E561E0766FB8F3E663FAEB69E7C2C9 /* PBXTargetDependency */,
+				2EEAD4D2D63285A2BA0A6801157DEA6A /* PBXTargetDependency */,
 			);
 			name = "Pods-Treeswitcher";
 			productName = "Pods-Treeswitcher";
@@ -258,7 +258,7 @@
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		87FCEEC258EB6102CCB01108FF6855CB /* Resources */ = {
+		CC5929C8A25C94541C0CF7BF4B96109A /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -268,22 +268,22 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		E4E0B0B939EA666C3C89B4248918E89B /* Sources */ = {
+		A1F11D16BBD1DC416E732189627A5C28 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D81FC3A2FD9E7D435F83D6D5702EFE7B /* Pods-Treeswitcher-dummy.m in Sources */,
+				286D10E17B7EE9C2C42C99F2B7307B4F /* Pods-Treeswitcher-dummy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		38E561E0766FB8F3E663FAEB69E7C2C9 /* PBXTargetDependency */ = {
+		2EEAD4D2D63285A2BA0A6801157DEA6A /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = Sparkle;
 			target = ED77B4B88587C894E85C361023D67C53 /* Sparkle */;
-			targetProxy = A05A663EE2D716EA6005093EA96D4EF0 /* PBXContainerItemProxy */;
+			targetProxy = 42FE1829EB33706E6FD766A2EB74544D /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -345,86 +345,6 @@
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				SWIFT_VERSION = 5.0;
 				SYMROOT = "${SRCROOT}/../build";
-			};
-			name = Release;
-		};
-		1E099CBA81A3110655D1394E2BC83959 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 26AAB118957B1964FBF248734FA8BC9E /* Pods-Treeswitcher.debug.xcconfig */;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
-				CLANG_ENABLE_OBJC_WEAK = NO;
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				FRAMEWORK_VERSION = A;
-				INFOPLIST_FILE = "Target Support Files/Pods-Treeswitcher/Pods-Treeswitcher-Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/../Frameworks",
-					"@loader_path/Frameworks",
-				);
-				MACH_O_TYPE = staticlib;
-				MACOSX_DEPLOYMENT_TARGET = 10.10;
-				MODULEMAP_FILE = "Target Support Files/Pods-Treeswitcher/Pods-Treeswitcher.modulemap";
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
-				SDKROOT = macosx;
-				SKIP_INSTALL = YES;
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
-		};
-		3F70FAC0A5529434A43207A562F2907C /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = E6EFF8387FB5D17671713BB313AAE1A1 /* Pods-Treeswitcher.release.xcconfig */;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
-				CLANG_ENABLE_OBJC_WEAK = NO;
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				FRAMEWORK_VERSION = A;
-				INFOPLIST_FILE = "Target Support Files/Pods-Treeswitcher/Pods-Treeswitcher-Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/../Frameworks",
-					"@loader_path/Frameworks",
-				);
-				MACH_O_TYPE = staticlib;
-				MACOSX_DEPLOYMENT_TARGET = 10.10;
-				MODULEMAP_FILE = "Target Support Files/Pods-Treeswitcher/Pods-Treeswitcher.modulemap";
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
-				SDKROOT = macosx;
-				SKIP_INSTALL = YES;
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
 			};
 			name = Release;
 		};
@@ -509,6 +429,86 @@
 			};
 			name = Debug;
 		};
+		7AA8E4850424F3125BBCAAFC32E7217A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 26AAB118957B1964FBF248734FA8BC9E /* Pods-Treeswitcher.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_VERSION = A;
+				INFOPLIST_FILE = "Target Support Files/Pods-Treeswitcher/Pods-Treeswitcher-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACH_O_TYPE = staticlib;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MODULEMAP_FILE = "Target Support Files/Pods-Treeswitcher/Pods-Treeswitcher.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		A8656670DF1536A3CBB99B9DB16C686D /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = E6EFF8387FB5D17671713BB313AAE1A1 /* Pods-Treeswitcher.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_VERSION = A;
+				INFOPLIST_FILE = "Target Support Files/Pods-Treeswitcher/Pods-Treeswitcher-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACH_O_TYPE = staticlib;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MODULEMAP_FILE = "Target Support Files/Pods-Treeswitcher/Pods-Treeswitcher.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
 		D24DE9D59732B3D89F58ACD78EB5F326 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = A37B8B95646BBFD400DA1D0A2F73FC0E /* Sparkle.debug.xcconfig */;
@@ -547,11 +547,11 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		C0AE79AB1AA0CB47D214BA5B495B9DC1 /* Build configuration list for PBXNativeTarget "Pods-Treeswitcher" */ = {
+		CD3871E4C06D5903313AB96099266A2F /* Build configuration list for PBXNativeTarget "Pods-Treeswitcher" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				1E099CBA81A3110655D1394E2BC83959 /* Debug */,
-				3F70FAC0A5529434A43207A562F2907C /* Release */,
+				7AA8E4850424F3125BBCAAFC32E7217A /* Debug */,
+				A8656670DF1536A3CBB99B9DB16C686D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
