@@ -170,7 +170,7 @@ function _select_macos()
         curl -s "$seed_url" |gunzip -c > "$temp_path"/"$sucatalog"
     fi
 
-    seed_ids=$( cat "$temp_path"/seed.sucatalog |grep InstallESDDmg.*pkg\< |cut -d/ -f8,8 |cut -d- -f1,2 )
+    seed_ids=$( cat "$temp_path"/seed.sucatalog |grep MajorOSInfo.pkg\< |cut -d/ -f8,8 |cut -d- -f1,2 )
     echo "$seed_ids" > "$temp_path"/seed_ids
 
     if [ -f "$temp_path"/selection ]; then
@@ -366,7 +366,14 @@ if [[ $choice != "" ]] && [[ $choice != "0" ]]; then
     sed -ib "/installation-check/d" "$download_path"/*English.dist
     rm "$download_path"/*English.distb
     
-    osascript -e 'do shell script "sudo /usr/sbin/installer -pkg '"'$download_path'"'/*English.dist -target /Volumes/'"'$volume_name'"'" with administrator privileges'
+    ### Checks if BigSur is downloading
+    
+    if [ -f "$download_path/UpdateBrain.zip" ]; then
+        osascript -e 'do shell script "sudo /usr/sbin/installer -pkg '"'$download_path'"'/InstallAssistant.pkg -target /Volumes/'"'$volume_name'"'" with administrator privileges'
+    else
+        osascript -e 'do shell script "sudo /usr/sbin/installer -pkg '"'$download_path'"'/*English.dist -target /Volumes/'"'$volume_name'"'" with administrator privileges'
+    fi
+    
     installok="$?"
     #if [ ! -f /Volumes/"$volume_name"/Applications/*insta*/Contents/SharedSupport/AppleD* ]; then
         cp "$download_path"/AppleD* /Volumes/"$volume_name"/Applications/*nstall*/Contents/SharedSupport/.
@@ -508,7 +515,7 @@ function _check_if_valid()
         echo -e "Es wird geprüft ob die gewählte Applikation gültig ist ...\n"
     fi
 
-    if [ ! -f "$applicationpath/Contents/SharedSupport/InstallESD.dmg" ]; then
+    if [ ! -f "$applicationpath/Contents/Info.plist" ]; then
         _helpDefaultWrite "AppValid" "No"
         if [[ "$syslang" = "en" ]]; then
             echo "You selected a non valid Application! ☝🏼 Please choose another one."
