@@ -412,12 +412,14 @@ if [[ $choice != "" ]] && [[ $choice != "0" ]]; then
         #cp "$download_path"/BaseS* /Applications/*nstall*/Contents/SharedSupport/.
     #fi
     if [[ "$installok" = "0" ]]; then
+            _helpDefaultWrite "InstallerAppDone" "Yes"
         if [[ "$syslang" = "en" ]]; then
             _helpDefaultWrite "Statustext" "Done"
         else
             _helpDefaultWrite "Statustext" "Fertig"
         fi
     else
+        _helpDefaultWrite "InstallerAppDone" "No"
         if [[ "$syslang" = "en" ]]; then
             _helpDefaultWrite "Statustext" "Creation failed! Please try again."
         else

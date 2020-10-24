@@ -18,6 +18,7 @@
 		2A14A723230322F80048B14A /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A14A71D230322F80048B14A /* Settings.swift */; };
 		2A14A724230322F80048B14A /* Website.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A14A71E230322F80048B14A /* Website.swift */; };
 		2A14A725230322F80048B14A /* CreateUSBInstaller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A14A71F230322F80048B14A /* CreateUSBInstaller.swift */; };
+		2A8EB9912544AD5500F79DED /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2A8EB98F2544AD5500F79DED /* Localizable.strings */; };
 		2ABA6A5523042A200020ED1F /* treeswitcher in CopyFiles */ = {isa = PBXBuildFile; fileRef = 2ABA6A5323042A140020ED1F /* treeswitcher */; };
 		2AC6612E239F84AE00E859D7 /* WindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AC6612D239F84AE00E859D7 /* WindowController.swift */; };
 		2AC66135239F873C00E859D7 /* de.bashstrings in Copy Bashstrings */ = {isa = PBXBuildFile; fileRef = 2AC66130239F85B100E859D7 /* de.bashstrings */; };
@@ -79,6 +80,7 @@
 		2A14A71E230322F80048B14A /* Website.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Website.swift; sourceTree = "<group>"; };
 		2A14A71F230322F80048B14A /* CreateUSBInstaller.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateUSBInstaller.swift; sourceTree = "<group>"; };
 		2A2879F423094D2F00C29553 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Main.strings; sourceTree = "<group>"; };
+		2A8EB9902544AD5500F79DED /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
 		2A93CF3723004091004C832D /* script.command */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = script.command; sourceTree = "<group>"; };
 		2A93CF3823004091004C832D /* scriptori.command */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = scriptori.command; sourceTree = "<group>"; };
 		2A93CF3C23004097004C832D /* aria2c */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = aria2c; sourceTree = "<group>"; };
@@ -142,6 +144,7 @@
 				1FA7862423002558002CDB52 /* Assets.xcassets */,
 				1FA7862623002558002CDB52 /* Main.storyboard */,
 				1FA7862923002558002CDB52 /* Info.plist */,
+				2A8EB98F2544AD5500F79DED /* Localizable.strings */,
 				2A9CA38823003BCC0091C7FA /* Treeswitcher.entitlements */,
 			);
 			path = Treeswitcher;
@@ -264,6 +267,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1FA7862523002558002CDB52 /* Assets.xcassets in Resources */,
+				2A8EB9912544AD5500F79DED /* Localizable.strings in Resources */,
 				1FA7862823002558002CDB52 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -375,6 +379,14 @@
 				2A2879F423094D2F00C29553 /* de */,
 			);
 			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		2A8EB98F2544AD5500F79DED /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				2A8EB9902544AD5500F79DED /* de */,
+			);
+			name = Localizable.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -514,7 +526,7 @@
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 117;
+				CURRENT_PROJECT_VERSION = 118;
 				DEVELOPMENT_TEAM = "";
 				ENABLE_HARDENED_RUNTIME = YES;
 				INFOPLIST_FILE = Treeswitcher/Info.plist;
@@ -522,7 +534,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MARKETING_VERSION = 1.1.7;
+				MARKETING_VERSION = 1.1.8;
 				PRODUCT_BUNDLE_IDENTIFIER = com.slsoft.treeswitcher;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -540,7 +552,7 @@
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 117;
+				CURRENT_PROJECT_VERSION = 118;
 				DEVELOPMENT_TEAM = "";
 				ENABLE_HARDENED_RUNTIME = YES;
 				INFOPLIST_FILE = Treeswitcher/Info.plist;
@@ -548,7 +560,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MARKETING_VERSION = 1.1.7;
+				MARKETING_VERSION = 1.1.8;
 				PRODUCT_BUNDLE_IDENTIFIER = com.slsoft.treeswitcher;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";

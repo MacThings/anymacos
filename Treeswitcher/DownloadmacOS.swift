@@ -78,6 +78,7 @@ class DownloadmacOS: NSViewController {
     }
     
     @IBAction func download_os_button(_ sender: Any) {
+        UserDefaults.standard.removeObject(forKey: "InstallerAppDone")
         UserDefaults.standard.set(false, forKey: "KillDL")
         self.close_button.isEnabled=false
         self.download_button.isHidden=true
@@ -87,6 +88,23 @@ class DownloadmacOS: NSViewController {
             self.syncShellExec(path: self.scriptPath, args: ["_download_macos"])
             
             DispatchQueue.main.async {
+                let installerapp_done = UserDefaults.standard.string(forKey: "InstallerAppDone")
+                let alert = NSAlert()
+                if installerapp_done == "Yes"{
+                    alert.messageText = NSLocalizedString("macOS Installer App creation done.", comment: "")
+                    alert.informativeText = NSLocalizedString("You can find it Applications Folder", comment: "")
+                    alert.alertStyle = .informational
+                    alert.icon = NSImage(named: "NSInfo")
+                } else {
+                    alert.messageText = NSLocalizedString("An error has occured!", comment: "")
+                    alert.informativeText = NSLocalizedString("The creation of the Installer App failed. Please try again.", comment: "")
+                    alert.alertStyle = .warning
+                    alert.icon = NSImage(named: "NSError")
+                }
+                let Button = NSLocalizedString("Ok", comment: "")
+                alert.addButton(withTitle: Button)
+                alert.runModal()
+                
                 self.progress_wheel?.stopAnimation(self);
                 self.close_button.isEnabled=true
             }
