@@ -364,9 +364,14 @@ if [[ $choice != "" ]] && [[ $choice != "0" ]]; then
         fi
         exit
     fi
-        
-    sed -ib "/installation-check/d" "$download_path"/*English.dist
-    rm "$download_path"/*English.distb
+    
+    cp "$download_path"/*English.dist "$temp_path"/.
+    
+    sed -ib "/installation-check/d" "$temp_path"/*English.dist
+    
+    cp "$temp_path"/*English.dist "$download_path"/.
+    
+    #rm "$download_path"/*English.distb
     
     ### Checks if BigSur is downloading
     
