@@ -332,7 +332,7 @@ if [[ $choice != "" ]] && [[ $choice != "0" ]]; then
 
     curl -f -s "$seed_url""$seed_id".English.dist |gunzip -c > "$download_path"/"$seed_id".English.dist
     if [[ "$?" = "1" ]]; then
-        curl -f -s "$seed_url""$seed_id".English.dist > "$download_path"/"$seed_id".English.dis
+        curl -f -s "$seed_url""$seed_id".English.dist > "$download_path"/"$seed_id".English.dist
     fi
 
     kill_download=$( _helpDefaultRead "KillDL" )
@@ -390,13 +390,11 @@ if [[ $choice != "" ]] && [[ $choice != "0" ]]; then
         exit
     fi
     
-    cp "$download_path"/*English.dist "$temp_path"/.
+    #cp "$download_path"/*English.dist "$temp_path"/.
+    sed -ib "/installation-check/d" "$download_path"/*English.dist
+    #cp "$temp_path"/*English.dist "$download_path"/.
     
-    sed -ib "/installation-check/d" "$temp_path"/*English.dist
-    
-    cp "$temp_path"/*English.dist "$download_path"/.
-    
-    #rm "$download_path"/*English.distb
+    rm "$download_path"/*English.distb
     
     ### Checks if BigSur is downloading
     
