@@ -160,14 +160,31 @@ function _select_macos()
     if [[ $seed_choice = "CustomerSeed" ]]; then
         seed_url=$( ../bin/./PlistBuddy -c "Print CustomerSeed" "$seedcatalog_path" )
         curl -s "$seed_url" |gunzip -c > "$temp_path"/"$sucatalog"
+        if [[ "$?" = "1" ]]; then
+            curl -s "$seed_url" > "$temp_path"/"$sucatalog"
+        fi
     fi
     if [[ $seed_choice = "DeveloperSeed" ]]; then
         seed_url=$( ../bin/./PlistBuddy -c "Print DeveloperSeed" "$seedcatalog_path" )
         curl -s "$seed_url" |gunzip -c > "$temp_path"/"$sucatalog"
+        if [[ "$?" = "1" ]]; then
+            curl -s "$seed_url" > "$temp_path"/"$sucatalog"
+        fi
     fi
     if [[ $seed_choice = "PublicSeed" ]]; then
         seed_url=$( ../bin/./PlistBuddy -c "Print PublicSeed" "$seedcatalog_path" )
         curl -s "$seed_url" |gunzip -c > "$temp_path"/"$sucatalog"
+        if [[ "$?" = "1" ]]; then
+            curl -s "$seed_url" > "$temp_path"/"$sucatalog"
+        fi
+    fi
+
+    mv "$temp_path"/seed.sucatalog "$temp_path"/seed.gz
+    gunzip "$temp_path"/seed.gz
+    if [[ "$?" = "1" ]]; then
+        mv "$temp_path"/seed.gz "$temp_path"/seed.sucatalog
+    else
+        mv "$temp_path"/seed "$temp_path"/seed.sucatalog
     fi
 
     seed_ids=$( cat "$temp_path"/seed.sucatalog |grep MajorOSInfo.pkg\< |cut -d/ -f8,8 |cut -d- -f1,2 )
@@ -179,7 +196,10 @@ function _select_macos()
 
     while IFS= read -r line; do
         seed_url=$( ../bin/./PlistBuddy -c "Print Products:$line" "$temp_path"/"$sucatalog" |grep "English.dist" | sed 's/.*=\ //g' )
-        curl -s "$seed_url" | gunzip | sed '1,/auxinfo/d' > "$temp_path"/seedfiles
+        curl -s "$seed_url" | sed '1,/auxinfo/d' > "$temp_path"/seedfiles
+        #if [[ "$?" = "1" ]]; then
+        #    curl -s "$seed_url" | sed '1,/auxinfo/d' > "$temp_path"/seedfiles
+        #fi
         build=$( ../bin/./PlistBuddy -c "Print BUILD" "$temp_path"/seedfiles )
         version=$( ../bin/./PlistBuddy -c "Print VERSION" "$temp_path"/seedfiles )
         count=$( echo -n $version | wc -c )
@@ -233,8 +253,10 @@ function _download_macos()
 if [[ $choice != "" ]] && [[ $choice != "0" ]]; then
     seed_url=$( sed -n "$choice"'p' < "$temp_path"/selection_urls )
     curl -s "$seed_url" |gunzip -c > "$temp_path"/sucatalog
-
-    cat "$temp_path"/sucatalog |grep pkg-ref |sed -e 's/.*">//g' -e '/[0-9]/d' -e 's/<.*//g' >> "$temp_path"/selection_files
+    if [[ "$?" = "1" ]]; then
+        curl -s "$seed_url" > "$temp_path"/sucatalog
+    fi
+    cat "$temp_path"/sucatalog |grep pkg-ref |sed -e 's/.*">//g' -e '/[0-9]/d' -e 's/<.*//g' -e '/^[[:space:]]*$/d' >> "$temp_path"/selection_files
     cat -n "$temp_path"/selection_files | sort -uk2 | sort -nk1 | cut -f2- |uniq -u > "$temp_path"/selection_files2
 
     seed_url=$( cat "$temp_path"/selection_urls |sed -n "$choice"'p' |sed 's![^/]*$!!' )
@@ -309,6 +331,9 @@ if [[ $choice != "" ]] && [[ $choice != "0" ]]; then
     seed_id=$( sed -n "$choice"'p' < "$temp_path"/seed_ids )
 
     curl -f -s "$seed_url""$seed_id".English.dist |gunzip -c > "$download_path"/"$seed_id".English.dist
+    if [[ "$?" = "1" ]]; then
+        curl -f -s "$seed_url""$seed_id".English.dist > "$download_path"/"$seed_id".English.dis
+    fi
 
     kill_download=$( _helpDefaultRead "KillDL" )
     if [[ $kill_download = 1 ]]; then
