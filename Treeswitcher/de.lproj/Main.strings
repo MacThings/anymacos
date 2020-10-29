@@ -112,6 +112,9 @@
 /* Class = "NSTextFieldCell"; title = "Label"; ObjectID = "E0f-Df-Hcw"; */
 "E0f-Df-Hcw.title" = "Label";
 
+/* Class = "NSTextFieldCell"; title = "Filesize:"; ObjectID = "E3E-x8-Pqw"; */
+"E3E-x8-Pqw.title" = "Dateigröße:";
+
 /* Class = "NSMenuItem"; title = "Reset Settings..."; ObjectID = "EAs-TM-q5v"; */
 "EAs-TM-q5v.title" = "Voreinstellungen zurücksetzen...";
 
@@ -234,6 +237,9 @@
 
 /* Class = "NSTextFieldCell"; title = "CPU Type:"; ObjectID = "rEJ-UN-aGJ"; */
 "rEJ-UN-aGJ.title" = "CPU Type:";
+
+/* Class = "NSTextFieldCell"; title = "Downloaded:"; ObjectID = "sas-98-6im"; */
+"sas-98-6im.title" = "Runtergeladen:";
 
 /* Class = "NSButtonCell"; title = "Start"; ObjectID = "SLF-3F-5CL"; */
 "SLF-3F-5CL.title" = "Start";

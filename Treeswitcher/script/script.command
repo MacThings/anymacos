@@ -5,6 +5,11 @@ MY_PATH="`dirname \"$0\"`"
 cd "$MY_PATH"
 cd ../bin
 
+function _download_counter()
+{
+    ./treeswitcher _download_counter
+}
+
 function _initial()
 {
     ./treeswitcher _initial

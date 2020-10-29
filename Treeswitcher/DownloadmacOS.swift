@@ -107,12 +107,22 @@ class DownloadmacOS: NSViewController {
                 
                 self.progress_wheel?.stopAnimation(self);
                 self.close_button.isEnabled=true
+                let defaults = UserDefaults.standard
+                defaults.removeObject(forKey: "DLDone")
+                defaults.removeObject(forKey: "DLSize")
+                defaults.synchronize()
             }
             
         }
     }
     
     @IBAction func stop_download(_ sender: Any) {
+        
+        let defaults = UserDefaults.standard
+        defaults.removeObject(forKey: "DLDone")
+        defaults.removeObject(forKey: "DLSize")
+        defaults.synchronize()
+        
         if languageinit == "en" {
             let defaultname = "Canceling Operation ..."
 			UserDefaults.standard.set(defaultname, forKey: "Statustext")

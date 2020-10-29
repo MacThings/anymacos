@@ -220,8 +220,24 @@ function _select_macos()
     #fi
 }
 
+
+function _download_counter()
+{
+        COUNTER=0
+         while [  $COUNTER -lt 1000 ]; do
+            file_downloading=$( _helpDefaultRead "Statustext" )
+            file_downloading=$( echo "$file_downloading" | sed 's/.*://g' | xargs )
+            file_done=$( stat -f%z "$download_path"/"$file_downloading" | awk '{ byte =$1 /1024/1024; print byte " MB" }' | awk '{printf "%.2f\n", $1}' )
+            #file_done=$( echo "$file_done" " MB" )
+            _helpDefaultWrite "DLDone" "$file_done"
+            let COUNTER=COUNTER+1
+            sleep 1
+         done
+}
 function _download_macos()
 {
+    _download_counter &
+
     choice=$( _helpDefaultRead "Choice" )
     choice=$( grep -n "$choice" "$temp_path"/selection | head -n 1 | cut -d: -f1 )
     Imagesize=$( _helpDefaultRead "Imagesize" |sed 's/,.*//' )
@@ -280,7 +296,12 @@ if [[ $choice != "" ]] && [[ $choice != "0" ]]; then
         _helpDefaultWrite "Statustext" "Downloade: $line"
     fi
     echo "$line" >> "$download_path"/.downloaded_files
-    ../bin/./aria2c -q -x "$parallel_downloads" --file-allocation=none -d "$download_path" "$seed_url""$line"
+    
+    dl_size=$( /usr/bin/curl -s -L -I "$seed_url""$line" | grep "ength:" | sed 's/.*th://g' | xargs | awk '{ byte =$1 /1024/1024; print byte " MB" }' | awk '{printf "%.2f\n", $1}' )
+    #dl_size=$( echo "$dl_size" " MB" )
+    _helpDefaultWrite "DLSize" "$dl_size"
+
+    ../bin/./aria2c --file-allocation=none -q -x "$parallel_downloads" -d "$download_path" "$seed_url""$line"
 
     done < ""$temp_path"/selection_files2"
 
@@ -303,7 +324,8 @@ if [[ $choice != "" ]] && [[ $choice != "0" ]]; then
         _helpDefaultWrite "Statustext" "Downloade: $line"
     fi
     echo "$line" >> "$download_path"/.downloaded_files
-    ../bin/./aria2c -q -x "$parallel_downloads" --file-allocation=none -d "$download_path" "$seed_url""$line"
+    
+    ../bin/./aria2c --file-allocation=none -q -x "$parallel_downloads" -d "$download_path" "$seed_url""$line"
     done < ""$temp_path"/selection_files3"
 
     cat "$temp_path"/selection_files3 |sed 's/pkm/smd/g' > "$temp_path"/selection_files4
@@ -325,7 +347,9 @@ if [[ $choice != "" ]] && [[ $choice != "0" ]]; then
         _helpDefaultWrite "Statustext" "Downloade: $line"
     fi
     echo "$line" >> "$download_path"/.downloaded_files
-    ../bin/./aria2c -q -x "$parallel_downloads" --file-allocation=none -d "$download_path" "$seed_url""$line"
+
+    ../bin/./aria2c --file-allocation=none -q -x "$parallel_downloads" -d "$download_path" "$seed_url""$line"
+
     done < ""$temp_path"/selection_files4"
 
     seed_id=$( sed -n "$choice"'p' < "$temp_path"/seed_ids )
