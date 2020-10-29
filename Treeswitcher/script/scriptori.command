@@ -224,7 +224,7 @@ function _select_macos()
 function _download_counter()
 {
         COUNTER=0
-         while [  $COUNTER -lt 1000 ]; do
+         while [  $COUNTER -lt 100000000000000 ]; do
             file_downloading=$( _helpDefaultRead "Statustext" )
             file_downloading=$( echo "$file_downloading" | sed 's/.*://g' | xargs )
             file_done=$( stat -f%z "$download_path"/"$file_downloading" | awk '{ byte =$1 /1024/1024; print byte " MB" }' | awk '{printf "%.2f\n", $1}' )
