@@ -301,7 +301,7 @@ if [[ $choice != "" ]] && [[ $choice != "0" ]]; then
     #dl_size=$( echo "$dl_size" " MB" )
     _helpDefaultWrite "DLSize" "$dl_size"
 
-    ../bin/./aria2c --file-allocation=none -q -x "$parallel_downloads" -d "$download_path" "$seed_url""$line"
+    ../bin/./aria2c --file-allocation=none -c -x "$parallel_downloads" -d "$download_path" "$seed_url""$line"
 
     done < ""$temp_path"/selection_files2"
 
@@ -325,7 +325,7 @@ if [[ $choice != "" ]] && [[ $choice != "0" ]]; then
     fi
     echo "$line" >> "$download_path"/.downloaded_files
     
-    ../bin/./aria2c --file-allocation=none -q -x "$parallel_downloads" -d "$download_path" "$seed_url""$line"
+    ../bin/./aria2c --file-allocation=none -c -q -x "$parallel_downloads" -d "$download_path" "$seed_url""$line"
     done < ""$temp_path"/selection_files3"
 
     cat "$temp_path"/selection_files3 |sed 's/pkm/smd/g' > "$temp_path"/selection_files4
@@ -348,7 +348,7 @@ if [[ $choice != "" ]] && [[ $choice != "0" ]]; then
     fi
     echo "$line" >> "$download_path"/.downloaded_files
 
-    ../bin/./aria2c --file-allocation=none -q -x "$parallel_downloads" -d "$download_path" "$seed_url""$line"
+    ../bin/./aria2c --file-allocation=none -c -q -x "$parallel_downloads" -d "$download_path" "$seed_url""$line"
 
     done < ""$temp_path"/selection_files4"
 
@@ -471,18 +471,18 @@ function _kill_aria()
     #rm "$download_path"/*  2> /dev/null
     #fi
 
- if [ -f "$download_path"/.downloaded_files ]; then
+    if [ -f "$download_path"/.downloaded_files ]; then
         if [[ "$syslang" = "en" ]]; then
             _helpDefaultWrite "Statustext" "Cleaning Downloadfolder"
         else
             _helpDefaultWrite "Statustext" "Bereinige Downloadordner"
         fi
-        while IFS= read -r line
-        do
-            rm "$download_path"/"$line" 2> /dev/null
-        done < ""$download_path"/.downloaded_files"
-        rm "$download_path"/*English.dist 2> /dev/null
-        rm "$download_path"/.downloaded_files
+#        while IFS= read -r line
+#        do
+#            rm "$download_path"/"$line" 2> /dev/null
+#        done < ""$download_path"/.downloaded_files"
+#        rm "$download_path"/*English.dist 2> /dev/null
+#        rm "$download_path"/.downloaded_files
     fi
 
     for KILLPID in `ps ax | grep 'script.command _download_os' | awk ' { print $1;}'`; do

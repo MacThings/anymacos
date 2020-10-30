@@ -14,6 +14,7 @@ class DownloadmacOS: NSViewController {
     var out:FileHandle?
     var outputTimer: Timer?
     
+    @IBOutlet var content_scroller: NSTextView!
     @IBOutlet weak var select_os_pd: NSPopUpButton!
     @IBOutlet weak var progress_wheel: NSProgressIndicator!
     @IBOutlet weak var pulldown_menu: NSPopUpButton!
@@ -66,6 +67,11 @@ class DownloadmacOS: NSViewController {
                 self.progress_wheel?.stopAnimation(self);
             }
         }
+        
+        let fontsize = CGFloat(12)
+        let fontfamily = "Menlo"
+        content_scroller.font = NSFont(name: fontfamily, size: fontsize)
+
     }
     
     @objc func menuItemClicked(_ sender: NSMenuItem) {
@@ -154,23 +160,34 @@ class DownloadmacOS: NSViewController {
         process.launchPath     = "/bin/bash"
         process.arguments      = [path] + args
         let outputPipe         = Pipe()
-        process.standardOutput = outputPipe
-        process.launch()
-        process.waitUntilExit()
-    }
-
-    func asyncShellExec(path: String, args: [String] = []) {
-        let process            = Process.init()
-        process.launchPath     = "/bin/bash"
-        process.arguments      = [path] + args
-        let outputPipe         = Pipe()
+        let filelHandler       = outputPipe.fileHandleForReading
         process.standardOutput = outputPipe
         process.launch()
         
-        DispatchQueue.global().async {
-            process.waitUntilExit()
+        filelHandler.readabilityHandler = { pipe in
+            let data = pipe.availableData
+            if let line = String(data: data, encoding: .utf8) {
+                DispatchQueue.main.sync {
+                    self.content_scroller.textStorage?.mutableString.setString("")
+                    let result = String(line.dropFirst(9))
+                    let result2 = String(result.dropLast(2))
+                    let result3 = String(result2.replacingOccurrences(of: "/", with: " / "))
+                    let result4 = String(result3.replacingOccurrences(of: "(", with: " ("))
+                    let result5 = String(result4.replacingOccurrences(of: "MiB ETA", with: " MB/s \r\nETA"))
+                    let result6 = String(result5.replacingOccurrences(of: "MiB", with: " MB"))
+                    let result7 = String(result6.replacingOccurrences(of: "GiB", with: " GB"))
+                    let result8 = String(result7.replacingOccurrences(of: ":", with: ": "))
+                    let result9 = String(result8.replacingOccurrences(of: "CN", with: "\r\nConnections"))
+                    let result10 = String(result9.replacingOccurrences(of: "DL", with: "\r\nSpeed"))
+                    self.content_scroller.string += result10
+                    self.content_scroller.scrollToEndOfDocument(nil)
+                }
+            } else {
+                print("Error decoding data: \(data.base64EncodedString())")
+            }
         }
-        
+        process.waitUntilExit()
+        filelHandler.readabilityHandler = nil
     }
     
     override var representedObject: Any? {
