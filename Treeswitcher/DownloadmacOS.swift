@@ -122,9 +122,12 @@ class DownloadmacOS: NSViewController {
                 defaults.removeObject(forKey: "DLDone")
                 defaults.removeObject(forKey: "DLSize")
                 defaults.synchronize()
+                self.syncShellExec(path: self.scriptPath, args: ["_remove_temp"])
+                
             }
             
         }
+        
     }
     
     @IBAction func stop_download(_ sender: Any) {
@@ -146,6 +149,7 @@ class DownloadmacOS: NSViewController {
             self.syncShellExec(path: self.scriptPath, args: ["_kill_aria"])
             
             DispatchQueue.main.async {
+                self.syncShellExec(path: self.scriptPath, args: ["_remove_temp"])
                 self.download_button.isHidden=false
                 self.abort_button.isHidden=true
                 self.progress_wheel?.stopAnimation(self);
@@ -158,6 +162,7 @@ class DownloadmacOS: NSViewController {
                 }
             }
         }
+
     }
     
     func syncShellExec(path: String, args: [String] = []) {

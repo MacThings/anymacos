@@ -15,6 +15,11 @@ function _initial()
     ./treeswitcher _initial
 }
 
+function _remove_temp()
+{
+    ./treeswitcher _remove_temp
+}
+
 function _check_seed()
 {
     ./treeswitcher _check_seed

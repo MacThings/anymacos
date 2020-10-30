@@ -448,7 +448,12 @@ function _remove_downloads()
 
 }
 
+function _remove_temp()
+{
 
+    rm -f /private/tmp/treeswitcher/selection_fil*
+
+}
 function _kill_aria()
 {
 
