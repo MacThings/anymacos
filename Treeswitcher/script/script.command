@@ -39,7 +39,7 @@ function _kill_aria()
 {
     ./treeswitcher _kill_aria
     for KILLPID in `ps ax | grep 'aria' | awk ' { print $1;}'`; do
-        kill -kill $KILLPID;
+        kill -term $KILLPID;
     done
 }
 
@@ -71,6 +71,11 @@ function _abort_installer_creation()
 function _start_onephase_installer()
 {
     ./treeswitcher _start_onephase_installer
+}
+
+function _remove_downloads()
+{
+    ./treeswitcher _remove_downloads
 }
 
 $1

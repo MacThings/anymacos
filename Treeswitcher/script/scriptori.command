@@ -224,12 +224,16 @@ function _select_macos()
 function _download_counter()
 {
         COUNTER=0
+        TAB=$(printf '\t')
          while [  $COUNTER -lt 100000000000000 ]; do
             file_downloading=$( _helpDefaultRead "Statustext" )
             file_downloading=$( echo "$file_downloading" | sed 's/.*://g' | xargs )
-            file_done=$( stat -f%z "$download_path"/"$file_downloading" | awk '{ byte =$1 /1024/1024; print byte " MB" }' | awk '{printf "%.2f\n", $1}' )
+            file_done=$( du -hm "$download_path"/"$file_downloading" | sed "s/${TAB}.*//g" |xargs )
             #file_done=$( echo "$file_done" " MB" )
             _helpDefaultWrite "DLDone" "$file_done"
+            filesize=$( _helpDefaultRead "DLSize" )
+            percent=$( echo $(( file_done*100/filesize )) )
+            _helpDefaultWrite "DLProgress" "$percent"
             let COUNTER=COUNTER+1
             sleep 1
          done
@@ -240,31 +244,26 @@ function _download_macos()
 
     choice=$( _helpDefaultRead "Choice" )
     choice=$( grep -n "$choice" "$temp_path"/selection | head -n 1 | cut -d: -f1 )
-    Imagesize=$( _helpDefaultRead "Imagesize" |sed 's/,.*//' )
-    Imagename=$( _helpDefaultRead "Imagename" )
-    Imagepath=$( _helpDefaultRead "Imagepath" |sed 's/\ /\\\\\ /g' )
     parallel_downloads=$( _helpDefaultRead "ParaDL" )
+    download_path=$( _helpDefaultRead "Downloadpath" )
 
-    if [ ! -d "$sparseimage_path" ]; then
-        mkdir "$sparseimage_path"
-    fi
     if [ ! -d "$download_path" ]; then
         mkdir "$download_path"
     fi
 
-    if [ -f "$download_path"/.downloaded_files ]; then
-        if [[ "$syslang" = "en" ]]; then
-            _helpDefaultWrite "Statustext" "Cleaning Downloadfolder"
-        else
-            _helpDefaultWrite "Statustext" "Bereinige Downloadordner"
-        fi
-        while IFS= read -r line
-        do
-            rm "$download_path"/"$line" 2> /dev/null
-        done < ""$download_path"/.downloaded_files"
-        rm "$download_path"/*English.dist 2> /dev/null
-        rm "$download_path"/.downloaded_files
-    fi
+#    if [ -f "$download_path"/.downloaded_files ]; then
+#        if [[ "$syslang" = "en" ]]; then
+#            _helpDefaultWrite "Statustext" "Cleaning Downloadfolder"
+#        else
+#            _helpDefaultWrite "Statustext" "Bereinige Downloadordner"
+#        fi
+#        while IFS= read -r line
+#        do
+#            rm "$download_path"/"$line" 2> /dev/null
+#        done < ""$download_path"/.downloaded_files"
+#        rm "$download_path"/*English.dist 2> /dev/null
+#        rm "$download_path"/.downloaded_files
+#    fi
 
 if [[ $choice != "" ]] && [[ $choice != "0" ]]; then
     seed_url=$( sed -n "$choice"'p' < "$temp_path"/selection_urls )
@@ -297,11 +296,11 @@ if [[ $choice != "" ]] && [[ $choice != "0" ]]; then
     fi
     echo "$line" >> "$download_path"/.downloaded_files
     
-    dl_size=$( /usr/bin/curl -s -L -I "$seed_url""$line" | grep "ength:" | sed 's/.*th://g' | xargs | awk '{ byte =$1 /1024/1024; print byte " MB" }' | awk '{printf "%.2f\n", $1}' )
+    dl_size=$( /usr/bin/curl -s -L -I "$seed_url""$line" | grep "ength:" | sed 's/.*th://g' | xargs | awk '{ byte =$1 /1024/1024; print byte " MB" }' | awk '{printf "%.0f\n", $1}' )
     #dl_size=$( echo "$dl_size" " MB" )
     _helpDefaultWrite "DLSize" "$dl_size"
 
-    ../bin/./aria2c --file-allocation=none -c -x "$parallel_downloads" -d "$download_path" "$seed_url""$line"
+    ../bin/./aria2c --file-allocation=none -c -q -x "$parallel_downloads" -d "$download_path" "$seed_url""$line"
 
     done < ""$temp_path"/selection_files2"
 
@@ -369,35 +368,6 @@ if [[ $choice != "" ]] && [[ $choice != "0" ]]; then
         exit
     fi
 
-
-#    if [ -d /Volumes/"$volume_name" ]; then
-#        if [[ "$syslang" = "en" ]]; then
-#            _helpDefaultWrite "Statustext" "Removing previous Sparseimage ..."
-#        else
-#            _helpDefaultWrite "Statustext" "Entferne vorheriges Sparseimage ..."
-#        fi
-#        diskutil unmountDisk force /Volumes/"$volume_name" 2> /dev/null
-#        rm  "$sparseimage_path"/"$Imagename".sparseimage
-#    fi
-#
-#    if [ -f "$sparseimage_path"/"$Imagename".sparseimage ]; then
-#        rm  "$sparseimage_path"/"$Imagename".sparseimage
-#    fi
-#
-#    if [[ "$syslang" = "en" ]]; then
-#        _helpDefaultWrite "Statustext" "Creating Sparseimage ..."
-#    else
-#        _helpDefaultWrite "Statustext" "Erzeuge Sparseimage ..."
-#    fi
-
-#   /usr/bin/hdiutil create -size "$Imagesize"g -fs HFS+ -volname "$volume_name" -type SPARSE "$sparseimage_path"/"$Imagename" 2> /dev/null
-#    if [[ "$syslang" = "en" ]]; then
-#        _helpDefaultWrite "Statustext" "Mounting Sparseimage ..."
-#    else
-#        _helpDefaultWrite "Statustext" "Mounte Sparseimage ..."
-#    fi
-#    open "$sparseimage_path"/"$Imagename".sparseimage
-
     if [[ "$syslang" = "en" ]]; then
         _helpDefaultWrite "Statustext" "Creating Installer-Application ..."
     else
@@ -413,11 +383,9 @@ if [[ $choice != "" ]] && [[ $choice != "0" ]]; then
         fi
         exit
     fi
-    
-    #cp "$download_path"/*English.dist "$temp_path"/.
+
     sed -ib "/installation-check/d" "$download_path"/*English.dist
-    #cp "$temp_path"/*English.dist "$download_path"/.
-    
+
     rm "$download_path"/*English.distb
     
     ### Checks if BigSur is downloading
@@ -460,46 +428,46 @@ fi
 
 }
 
-function _kill_aria()
+
+function _remove_downloads()
 {
 
-    #if [ -d "$temp_path" ]; then
-    #rm "$temp_path"/*  2> /dev/null
-    #fi
-
-    #if [ -d "$download_path" ]; then
-    #rm "$download_path"/*  2> /dev/null
-    #fi
-
-    if [ -f "$download_path"/.downloaded_files ]; then
+ if [ -f "$download_path"/.downloaded_files ]; then
         if [[ "$syslang" = "en" ]]; then
             _helpDefaultWrite "Statustext" "Cleaning Downloadfolder"
         else
             _helpDefaultWrite "Statustext" "Bereinige Downloadordner"
         fi
-#        while IFS= read -r line
-#        do
-#            rm "$download_path"/"$line" 2> /dev/null
-#        done < ""$download_path"/.downloaded_files"
-#        rm "$download_path"/*English.dist 2> /dev/null
-#        rm "$download_path"/.downloaded_files
+        while IFS= read -r line
+        do
+            rm "$download_path"/"$line" 2> /dev/null
+        done < ""$download_path"/.downloaded_files"
+        rm "$download_path"/*English.dist 2> /dev/null
+        rm "$download_path"/.downloaded_files
     fi
 
-    for KILLPID in `ps ax | grep 'script.command _download_os' | awk ' { print $1;}'`; do
-        kill -kill $KILLPID;
+}
+
+
+function _kill_aria()
+{
+
+ for KILLPID in `ps ax | grep 'script.command _download_os' | awk ' { print $1;}'`; do
+        kill -term $KILLPID;
     done
     for KILLPID in `ps ax | grep 'aria' | awk ' { print $1;}'`; do
-        kill -kill $KILLPID;
+        kill -term $KILLPID;
     done
-
-    #if [ -d "$sparseimage_path" ]; then
-    #diskutil eject /Volumes/"$volume_name" 2> /dev/null
-    #rm "$sparseimage_path"/*sparse*  2> /dev/null
-    #fi
 
     for KILLPID in `ps ax | grep 'treeswitcher' | awk ' { print $1;}'`; do
-        kill -kill $KILLPID;
+        kill -term $KILLPID;
     done
+    
+    if [[ "$syslang" = "en" ]]; then
+        _helpDefaultWrite "Statustext" "Done"
+    else
+        _helpDefaultWrite "Statustext" "Fertig"
+    fi
 
 }
 
@@ -644,36 +612,6 @@ function _abort_installer_creation()
         pkill treeswitcher
         osascript -e 'do shell script "sudo pkill createinstallmedia eraseVolume noverify && kill -kill '"'$onephasepid'"'" with administrator privileges'
     fi
-}
-
-function _start_onephase_installer()
-{
-
-    _helpDefaultWrite "OnePhaseInstallPID" "$$"
-
-    target_volume=$( _helpDefaultRead "DRMntPoint" )
-    new_target_volume="macBoot"
-    installesd_path=$( find "/Volumes/$volume_name/" -name "*nstall*dmg" |sed 's/\/\//\//g' )
-    hdiutil attach "$installesd_path" -noverify -nobrowse -mountpoint /Volumes/install_app
-
-    diskutil eraseVolume JHFS+ "$new_target_volume" "$target_volume"
-    #asr restore -source "$download_path/BaseSystem.dmg" -target "/Volumes/$new_target_volume" -noprompt -noverify -erase
-    osascript -e 'do shell script "sudo asr restore -source '"'$download_path'"''"'/BaseSystem.dmg'"' -target '"'/Volumes/'"''"'$new_target_volume'"' -noprompt -noverify -erase" with administrator privileges'
-
-    if [ -d "/Volumes/OS X Base System" ]; then
-        basedmgdir="OS X Base System"
-    else
-        basedmgdir="macOS Base System"
-    fi
-
-    rm -v "/Volumes/$basedmgdir/System/Installation/Packages"
-    cp -rvp /Volumes/install_app/Packages "/Volumes/$basedmgdir/System/Installation/"
-
-    cp -rvp "$download_path/BaseSystem.chunklist" "/Volumes/$basedmgdir/BaseSystem.chunklist"
-    cp -rvp "$download_path/BaseSystem.dmg" "/Volumes/$basedmgdir/BaseSystem.dmg"
-    hdiutil detach /Volumes/install_app
-    hdiutil detach "/Volumes/$basedmgdir/"
-
 }
 
 $1

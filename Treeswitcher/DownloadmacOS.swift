@@ -14,7 +14,6 @@ class DownloadmacOS: NSViewController {
     var out:FileHandle?
     var outputTimer: Timer?
     
-    @IBOutlet var content_scroller: NSTextView!
     @IBOutlet weak var select_os_pd: NSPopUpButton!
     @IBOutlet weak var progress_wheel: NSProgressIndicator!
     @IBOutlet weak var pulldown_menu: NSPopUpButton!
@@ -67,11 +66,6 @@ class DownloadmacOS: NSViewController {
                 self.progress_wheel?.stopAnimation(self);
             }
         }
-        
-        let fontsize = CGFloat(12)
-        let fontfamily = "Menlo"
-        content_scroller.font = NSFont(name: fontfamily, size: fontsize)
-
     }
     
     @objc func menuItemClicked(_ sender: NSMenuItem) {
@@ -98,19 +92,30 @@ class DownloadmacOS: NSViewController {
                 let alert = NSAlert()
                 if installerapp_done == "Yes"{
                     alert.messageText = NSLocalizedString("macOS Installer App creation done.", comment: "")
-                    alert.informativeText = NSLocalizedString("You can find it Applications Folder", comment: "")
+                    alert.informativeText = NSLocalizedString("You can find it Applications Folder. Do you want to clean up the Treeswitcher downloads?", comment: "")
                     alert.alertStyle = .informational
                     alert.icon = NSImage(named: "NSInfo")
+                    let Button = NSLocalizedString("Yes", comment: "")
+                    alert.addButton(withTitle: Button)
+                    let CancelButtonText = NSLocalizedString("No", comment: "")
+                    alert.addButton(withTitle: CancelButtonText)
                 } else {
                     alert.messageText = NSLocalizedString("An error has occured!", comment: "")
-                    alert.informativeText = NSLocalizedString("The creation of the Installer App failed. Please try again.", comment: "")
+                    alert.informativeText = NSLocalizedString("The creation of the Installer App failed. Please try again. Do you want to clean up the Treeswitcher downloads?", comment: "")
                     alert.alertStyle = .warning
                     alert.icon = NSImage(named: "NSError")
+                    let Button = NSLocalizedString("Yes", comment: "")
+                    alert.addButton(withTitle: Button)
+                    let CancelButtonText = NSLocalizedString("No", comment: "")
+                    alert.addButton(withTitle: CancelButtonText)
                 }
-                let Button = NSLocalizedString("Ok", comment: "")
-                alert.addButton(withTitle: Button)
-                alert.runModal()
                 
+                if alert.runModal() == .alertFirstButtonReturn {
+                    self.syncShellExec(path: self.scriptPath, args: ["_remove_downloads"])
+                }
+                
+                self.download_button.isHidden=false
+                self.abort_button.isHidden=true
                 self.progress_wheel?.stopAnimation(self);
                 self.close_button.isEnabled=true
                 let defaults = UserDefaults.standard
@@ -160,34 +165,23 @@ class DownloadmacOS: NSViewController {
         process.launchPath     = "/bin/bash"
         process.arguments      = [path] + args
         let outputPipe         = Pipe()
-        let filelHandler       = outputPipe.fileHandleForReading
+        process.standardOutput = outputPipe
+        process.launch()
+        process.waitUntilExit()
+    }
+
+    func asyncShellExec(path: String, args: [String] = []) {
+        let process            = Process.init()
+        process.launchPath     = "/bin/bash"
+        process.arguments      = [path] + args
+        let outputPipe         = Pipe()
         process.standardOutput = outputPipe
         process.launch()
         
-        filelHandler.readabilityHandler = { pipe in
-            let data = pipe.availableData
-            if let line = String(data: data, encoding: .utf8) {
-                DispatchQueue.main.sync {
-                    self.content_scroller.textStorage?.mutableString.setString("")
-                    let result = String(line.dropFirst(9))
-                    let result2 = String(result.dropLast(2))
-                    let result3 = String(result2.replacingOccurrences(of: "/", with: " / "))
-                    let result4 = String(result3.replacingOccurrences(of: "(", with: " ("))
-                    let result5 = String(result4.replacingOccurrences(of: "MiB ETA", with: " MB/s \r\nETA"))
-                    let result6 = String(result5.replacingOccurrences(of: "MiB", with: " MB"))
-                    let result7 = String(result6.replacingOccurrences(of: "GiB", with: " GB"))
-                    let result8 = String(result7.replacingOccurrences(of: ":", with: ": "))
-                    let result9 = String(result8.replacingOccurrences(of: "CN", with: "\r\nConnections"))
-                    let result10 = String(result9.replacingOccurrences(of: "DL", with: "\r\nSpeed"))
-                    self.content_scroller.string += result10
-                    self.content_scroller.scrollToEndOfDocument(nil)
-                }
-            } else {
-                print("Error decoding data: \(data.base64EncodedString())")
-            }
+        DispatchQueue.global().async {
+            process.waitUntilExit()
         }
-        process.waitUntilExit()
-        filelHandler.readabilityHandler = nil
+        
     }
     
     override var representedObject: Any? {

@@ -5,11 +5,14 @@
 "macOS Installer App creation done." = "macOS Installer App wurde erstellt.";
 
 /* No comment provided by engineer. */
-"Ok" = "Ok";
+"No" = "Nein";
 
 /* No comment provided by engineer. */
-"The creation of the Installer App failed. Please try again." = "Die Erstellung der Installer App ist fehlgeschlagen. Bitte versuche es noch einmal.";
+"The creation of the Installer App failed. Please try again. Do you want to clean up the Treeswitcher downloads?" = "Die Erstellung der Installer Applikation ist fehlgeschlagen. Bitte versuche es erneut. Möchtest Du die  heruntergeladenen Treeswitcher Dateien löschen?";
 
 /* No comment provided by engineer. */
-"You can find it Applications Folder" = "Sie befindet sich im Applications Ordner.";
+"Yes" = "Ja";
+
+/* No comment provided by engineer. */
+"You can find it Applications Folder. Do you want to clean up the Treeswitcher downloads?" = "Die findest sie im Applikationen Ordner. Möchtest Du die heruntergeladenen Treeswitcher Dateien löschen?";
 

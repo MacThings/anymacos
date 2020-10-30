@@ -124,11 +124,6 @@ class ChangeUpdateTree: NSViewController {
         defaults.removeObject(forKey: "DLDone")
         defaults.removeObject(forKey: "DLSize")
         defaults.synchronize()
-        
-        let str = "[#ad8cbb 13270MiB/13.0GiB(26%) CN:1 DL:29MiB ETA:25s]"
-        let result = String(str.dropFirst(9))
-        let result2 = String(result.dropLast(1))
-        print(result2)
 
     }
     
