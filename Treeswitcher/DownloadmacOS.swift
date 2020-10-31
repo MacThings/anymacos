@@ -124,6 +124,7 @@ class DownloadmacOS: NSViewController {
     }
     
     @IBAction func stop_download(_ sender: Any) {
+        UserDefaults.standard.removeObject(forKey: "DLProgress")
         let defaults = UserDefaults.standard
         defaults.removeObject(forKey: "DLDone")
         defaults.removeObject(forKey: "DLSize")
