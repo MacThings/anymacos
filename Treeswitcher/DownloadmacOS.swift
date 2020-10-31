@@ -123,6 +123,7 @@ class DownloadmacOS: NSViewController {
                 defaults.removeObject(forKey: "DLSize")
                 defaults.synchronize()
                 self.syncShellExec(path: self.scriptPath, args: ["_remove_temp"])
+                self.syncShellExec(path: self.scriptPath, args: ["_check_seed"])
                 
             }
             
@@ -150,6 +151,8 @@ class DownloadmacOS: NSViewController {
             
             DispatchQueue.main.async {
                 self.syncShellExec(path: self.scriptPath, args: ["_remove_temp"])
+                self.syncShellExec(path: self.scriptPath, args: ["_remove_downloads"])
+                self.syncShellExec(path: self.scriptPath, args: ["_check_seed"])
                 self.download_button.isHidden=false
                 self.abort_button.isHidden=true
                 self.progress_wheel?.stopAnimation(self);
