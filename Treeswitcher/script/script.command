@@ -83,4 +83,9 @@ function _remove_downloads()
     ./treeswitcher _remove_downloads
 }
 
+function _open_utilities()
+{
+    ./treeswitcher _open_utilities
+}
+
 $1

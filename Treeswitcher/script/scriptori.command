@@ -77,20 +77,9 @@ function _languageselect()
 
 function _initial()
 {
-
     if [ -d "$temp_path" ]; then
         rm "$temp_path"/*  2> /dev/null
     fi
-
-    #if [ -d "$download_path" ]; then
-    #rm "$download_path"/*  2> /dev/null
-    #fi
-
-    #if [ -d "$sparseimage_path" ]; then
-    #diskutil eject /Volumes/"$volume_name" 2> /dev/null
-    #rm "$sparseimage_path"/*sparse*  2> /dev/null
-    #fi
-
 }
 
 function _helpDefaultDelete()
@@ -197,9 +186,6 @@ function _select_macos()
     while IFS= read -r line; do
         seed_url=$( ../bin/./PlistBuddy -c "Print Products:$line" "$temp_path"/"$sucatalog" |grep "English.dist" | sed 's/.*=\ //g' )
         curl -s "$seed_url" | sed '1,/auxinfo/d' > "$temp_path"/seedfiles
-        #if [[ "$?" = "1" ]]; then
-        #    curl -s "$seed_url" | sed '1,/auxinfo/d' > "$temp_path"/seedfiles
-        #fi
         build=$( ../bin/./PlistBuddy -c "Print BUILD" "$temp_path"/seedfiles )
         version=$( ../bin/./PlistBuddy -c "Print VERSION" "$temp_path"/seedfiles )
         count=$( echo -n $version | wc -c )
@@ -213,28 +199,22 @@ function _select_macos()
 
     perl -e 'truncate $ARGV[0], ((-s $ARGV[0]) - 1)' "$temp_path"/selection
 
-    #if [[ "$syslang" = "en" ]]; then
-        _helpDefaultWrite "Statustext" "$statustext"
-    #//else
-     #   _helpDefaultWrite "Statustext" "Bereit..."
-    #fi
+    _helpDefaultWrite "Statustext" "$statustext"
 }
 
 
 function _download_counter()
 {
-        COUNTER=0
         TAB=$(printf '\t')
-         while [  $COUNTER -lt 100000000000000 ]; do
+        while :
+        do
             file_downloading=$( _helpDefaultRead "Statustext" )
             file_downloading=$( echo "$file_downloading" | sed 's/.*://g' | xargs )
             file_done=$( du -hm "$download_path"/"$file_downloading" | sed "s/${TAB}.*//g" |xargs )
-            #file_done=$( echo "$file_done" " MB" )
             _helpDefaultWrite "DLDone" "$file_done"
             filesize=$( _helpDefaultRead "DLSize" )
             percent=$( echo $(( file_done*100/filesize )) )
             _helpDefaultWrite "DLProgress" "$percent"
-            let COUNTER=COUNTER+1
             sleep 1
          done
 }
@@ -297,7 +277,6 @@ if [[ $choice != "" ]] && [[ $choice != "0" ]]; then
     echo "$line" >> "$download_path"/.downloaded_files
     
     dl_size=$( /usr/bin/curl -s -L -I "$seed_url""$line" | grep "ength:" | sed 's/.*th://g' | xargs | awk '{ byte =$1 /1024/1024; print byte " MB" }' | awk '{printf "%.0f\n", $1}' )
-    #dl_size=$( echo "$dl_size" " MB" )
     _helpDefaultWrite "DLSize" "$dl_size"
 
     ../bin/./aria2c --file-allocation=none -c -q -x "$parallel_downloads" -d "$download_path" "$seed_url""$line"
@@ -392,17 +371,12 @@ if [[ $choice != "" ]] && [[ $choice != "0" ]]; then
     
     if [ -f "$download_path/UpdateBrain.zip" ]; then
         osascript -e 'do shell script "sudo /usr/sbin/installer -pkg '"'$download_path'"'/InstallAssistant.pkg -target /Applications" with administrator privileges'
+        installok="$?"
     else
         osascript -e 'do shell script "sudo /usr/sbin/installer -pkg '"'$download_path'"'/*English.dist -target /Applications" with administrator privileges'
+        installok="$?"
     fi
     
-    installok="$?"
-    #if [ ! -f /Volumes/"$volume_name"/Applications/*insta*/Contents/SharedSupport/AppleD* ]; then
-        #cp "$download_path"/AppleD* /Applications/*nstall*/Contents/SharedSupport/.
-    #fi
-    #if [ ! -f /Volumes/"$volume_name"/Applications/*insta*/Contents/SharedSupport/BaseS* ]; then
-        #cp "$download_path"/BaseS* /Applications/*nstall*/Contents/SharedSupport/.
-    #fi
     if [[ "$installok" = "0" ]]; then
             _helpDefaultWrite "InstallerAppDone" "Yes"
         if [[ "$syslang" = "en" ]]; then
@@ -443,6 +417,7 @@ function _remove_downloads()
             rm "$download_path"/"$line" 2> /dev/null
         done < ""$download_path"/.downloaded_files"
         rm "$download_path"/*English.dist 2> /dev/null
+        rm "$download_path"/*.aria2 2> /dev/null
         rm "$download_path"/.downloaded_files
     fi
 
@@ -617,6 +592,11 @@ function _abort_installer_creation()
         pkill treeswitcher
         osascript -e 'do shell script "sudo pkill createinstallmedia eraseVolume noverify && kill -kill '"'$onephasepid'"'" with administrator privileges'
     fi
+}
+
+function _open_utilities()
+{
+    open /Applications/Utilities
 }
 
 $1
