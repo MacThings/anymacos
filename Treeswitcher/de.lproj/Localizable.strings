@@ -2,13 +2,22 @@
 "An error has occured!" = "Ein Fehler ist aufgetreten!";
 
 /* No comment provided by engineer. */
-"Canceling Operation ..." = "Breche Vorgang ab...";
+"Canceling Operation ..." = "Breche Vorgang ab ...";
 
 /* No comment provided by engineer. */
-"Getting Deviceinfos ..." = "Lese Geräteinformationen";
+"Choose a Folder" = "Bitte wähle einen Ordner";
 
 /* No comment provided by engineer. */
-"Idle ..." = "Warte...";
+"Choose an Application" = "Bitte wähle eine Applikation";
+
+/* No comment provided by engineer. */
+"Getting Deviceinfos ..." = "Lese Geräteinformationen ...";
+
+/* No comment provided by engineer. */
+"Idle ..." = "Warte ...";
+
+/* No comment provided by engineer. */
+"Looking for suitable Drives ..." = "Suche nach geeigneten Laufwerken ...";
 
 /* No comment provided by engineer. */
 "macOS Installer App creation done." = "macOS Installer App wurde erstellt.";
@@ -17,10 +26,13 @@
 "No" = "Nein";
 
 /* No comment provided by engineer. */
+"No Drive found ..." = "Kein geeignetes Laufwerk gefunden";
+
+/* No comment provided by engineer. */
 "Operation aborted." = "Vorgang abgebrochen.";
 
 /* No comment provided by engineer. */
-"Retrieving information ..." = "Hole Informationen";
+"Retrieving information ..." = "Hole Informationen ...";
 
 /* No comment provided by engineer. */
 "The creation of the Installer App failed. Please try again. Do you want to clean up the Treeswitcher downloads?" = "Die Erstellung der Installer Applikation ist fehlgeschlagen. Bitte versuche es erneut. Möchtest Du die  heruntergeladenen Treeswitcher Dateien löschen?";

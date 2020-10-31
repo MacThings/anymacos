@@ -48,13 +48,9 @@ class CreateUSBInstaller: NSViewController {
         self.select_volume_label.isHidden=false
         //self.one_pass_checkbox.isHidden=true
         //self.one_pass_label.isHidden=true
-        if languageinit == "en" {
-            let defaultname = "Looking for suitable Drives ..."
-            UserDefaults.standard.set(defaultname, forKey: "StatustextUSB")
-        } else {
-            let defaultname = "Suche nach geeigneten Laufwerken ..."
-			UserDefaults.standard.set(defaultname, forKey: "StatustextUSB")
-        }
+        var defaultname = NSLocalizedString("Looking for suitable Drives ...", comment: "")
+        UserDefaults.standard.set(defaultname, forKey: "StatustextUSB")
+        
         DispatchQueue.global(qos: .background).async {
             self.syncShellExec(path: self.scriptPath, args: ["_get_drives"])
             
@@ -80,13 +76,8 @@ class CreateUSBInstaller: NSViewController {
                 if (FileManager.default.fileExists(atPath: filePath)) {
                     print("")
                 } else{
-                    if self.languageinit == "en" {
-                        let defaultname = "No Drive found ..."
-                        UserDefaults.standard.set(defaultname, forKey: "StatustextUSB")
-                    } else {
-                        let defaultname = "Kein Laufwerk gefunden ..."
-                        UserDefaults.standard.set(defaultname, forKey: "StatustextUSB")
-                    }
+                    let defaultname = NSLocalizedString("No Drive found ...", comment: "")
+                    UserDefaults.standard.set(defaultname, forKey: "StatustextUSB")
                     self.refresh_button.isEnabled=true
                     self.progress_wheel?.stopAnimation(self);
                     self.pulldown_menu.isEnabled=false
@@ -101,16 +92,9 @@ class CreateUSBInstaller: NSViewController {
                 //self.one_pass_checkbox.isHidden=false
                 //self.one_pass_label.isHidden=false
                 self.progress_wheel?.stopAnimation(self);
-                if self.languageinit == "en" {
-                    let defaultname = "Idle ..."
-                    UserDefaults.standard.set(defaultname, forKey: "StatustextUSB")
-                } else {
-                    let defaultname = "Warte ..."
-                    UserDefaults.standard.set(defaultname, forKey: "StatustextUSB")
-                }
+                defaultname = NSLocalizedString("Idle ...", comment: "")
+                UserDefaults.standard.set(defaultname, forKey: "StatustextUSB")
             }
-            
-
         }
     }
         @objc func menuItemClicked(_ sender: NSMenuItem) {

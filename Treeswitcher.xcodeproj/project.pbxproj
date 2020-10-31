@@ -23,6 +23,7 @@
 		2AC6612E239F84AE00E859D7 /* WindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AC6612D239F84AE00E859D7 /* WindowController.swift */; };
 		2AC66135239F873C00E859D7 /* de.bashstrings in Copy Bashstrings */ = {isa = PBXBuildFile; fileRef = 2AC66130239F85B100E859D7 /* de.bashstrings */; };
 		2AC66136239F873C00E859D7 /* en.bashstrings in Copy Bashstrings */ = {isa = PBXBuildFile; fileRef = 2AC66132239F85C100E859D7 /* en.bashstrings */; };
+		2ADD75F7254D9055008271A5 /* About.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ADD75F6254D9055008271A5 /* About.swift */; };
 		2AE5A77023006BCE00FFD472 /* script.command in CopyFiles */ = {isa = PBXBuildFile; fileRef = 2A93CF3723004091004C832D /* script.command */; };
 		2AE5A77323006BDE00FFD472 /* aria2c in CopyFiles */ = {isa = PBXBuildFile; fileRef = 2A93CF3C23004097004C832D /* aria2c */; };
 		2AE5A77523006BDE00FFD472 /* PlistBuddy in CopyFiles */ = {isa = PBXBuildFile; fileRef = 2A93CF3E23004097004C832D /* PlistBuddy */; };
@@ -90,6 +91,7 @@
 		2AC6612D239F84AE00E859D7 /* WindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WindowController.swift; sourceTree = "<group>"; };
 		2AC66130239F85B100E859D7 /* de.bashstrings */ = {isa = PBXFileReference; lastKnownFileType = text; path = de.bashstrings; sourceTree = "<group>"; };
 		2AC66132239F85C100E859D7 /* en.bashstrings */ = {isa = PBXFileReference; lastKnownFileType = text; path = en.bashstrings; sourceTree = "<group>"; };
+		2ADD75F6254D9055008271A5 /* About.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = About.swift; path = Treeswitcher/About.swift; sourceTree = SOURCE_ROOT; };
 		4172A434EB3FB56BB45C514C /* Pods-Treeswitcher.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Treeswitcher.debug.xcconfig"; path = "Target Support Files/Pods-Treeswitcher/Pods-Treeswitcher.debug.xcconfig"; sourceTree = "<group>"; };
 		C835C23A99307DCD94F4A95A /* Pods-Treeswitcher.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Treeswitcher.release.xcconfig"; path = "Target Support Files/Pods-Treeswitcher/Pods-Treeswitcher.release.xcconfig"; sourceTree = "<group>"; };
 		E23FF9D8A2277DB53540BDD5 /* Pods_Treeswitcher.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Treeswitcher.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -131,6 +133,7 @@
 				2AC6612F239F852700E859D7 /* bashstrings */,
 				2A93CF3B23004097004C832D /* bin */,
 				2A93CF3623004091004C832D /* script */,
+				2ADD75F6254D9055008271A5 /* About.swift */,
 				1FA7862023002556002CDB52 /* AppDelegate.swift */,
 				2A14A71C230322F80048B14A /* ChangeUpdateTree.swift */,
 				2A14A71F230322F80048B14A /* CreateUSBInstaller.swift */,
@@ -362,6 +365,7 @@
 				2A14A724230322F80048B14A /* Website.swift in Sources */,
 				2A14A721230322F80048B14A /* DownloadmacOS.swift in Sources */,
 				2AC6612E239F84AE00E859D7 /* WindowController.swift in Sources */,
+				2ADD75F7254D9055008271A5 /* About.swift in Sources */,
 				1FA7862323002556002CDB52 /* ViewController.swift in Sources */,
 				1FA7862123002556002CDB52 /* AppDelegate.swift in Sources */,
 				2A14A722230322F80048B14A /* ChangeUpdateTree.swift in Sources */,
