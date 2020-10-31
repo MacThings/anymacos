@@ -164,6 +164,11 @@ class CreateUSBInstaller: NSViewController {
             self.viewWillAppear()
     }
     
+    @IBAction func open_utilities(_ sender: Any) {
+        self.syncShellExec(path: self.scriptPath, args: ["_open_utilities"])
+    }
+    
+    
     func syncShellExec(path: String, args: [String] = []) {
         let process            = Process()
         process.launchPath     = "/bin/bash"

@@ -443,6 +443,9 @@ function _kill_aria()
         kill -term $KILLPID;
     done
     
+    pkill .treeswitcher
+    pkill treeswitcher
+    
     if [[ "$syslang" = "en" ]]; then
         _helpDefaultWrite "Statustext" "Done"
     else
@@ -596,7 +599,10 @@ function _abort_installer_creation()
 
 function _open_utilities()
 {
-    open /Applications/Utilities
+    open -a "/System/Applications/Utilities/Disk Utility.app/Contents/MacOS/Disk Utility"
+    if [[ "$?" != "0" ]]; then
+        open -a "/Applications/Utilities/Disk Utility.app/Contents/MacOS/Disk Utility"
+    fi
 }
 
 $1

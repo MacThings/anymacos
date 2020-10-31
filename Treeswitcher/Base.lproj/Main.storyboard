@@ -1201,13 +1201,16 @@
                                     <action selector="refresh_drives:" target="aiQ-Qc-zPO" id="LNy-8E-Fd6"/>
                                 </connections>
                             </button>
-                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="RKW-yI-kR5">
+                            <button focusRingType="none" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="RKW-yI-kR5">
                                 <rect key="frame" x="172" y="258" width="184" height="32"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <buttonCell key="cell" type="push" title="Button" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="0BM-UY-UT7">
+                                <buttonCell key="cell" type="push" title="Open Apple Disk Utility" bezelStyle="rounded" alignment="center" borderStyle="border" focusRingType="none" imageScaling="proportionallyDown" inset="2" id="0BM-UY-UT7">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
+                                <connections>
+                                    <action selector="open_utilities:" target="aiQ-Qc-zPO" id="nsA-x8-pch"/>
+                                </connections>
                             </button>
                             <textField hidden="YES" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="BrL-r0-1tr">
                                 <rect key="frame" x="-24" y="268" width="151" height="17"/>
