@@ -95,12 +95,7 @@ class CreateUSBInstallerTerminal: NSViewController {
         self.output_window.textStorage?.mutableString.setString("")
         
         let dialog = NSOpenPanel();
-        
-        if languageinit == "en" {
-            dialog.title                   = "Choose an Application";
-        } else {
-            dialog.title                   = "Wähle eine Applikation";
-        }
+        dialog.title                   = NSLocalizedString("Choose an Application", comment: "")
         dialog.showsResizeIndicator    = true;
         dialog.showsHiddenFiles        = false;
         dialog.canChooseDirectories    = true;

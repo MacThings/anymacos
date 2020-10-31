@@ -80,7 +80,7 @@ function _start_onephase_installer()
 
 function _remove_downloads()
 {
-    ./treeswitcher _remove_downloads
+    ./treeswitcher _remove_downloads &
 }
 
 function _open_utilities()

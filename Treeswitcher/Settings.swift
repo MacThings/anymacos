@@ -24,7 +24,7 @@ class Settings: NSViewController {
     @IBAction func set_download_path(_ sender: Any) {
         let dialog = NSOpenPanel();
         
-        dialog.title                   = "Choose a Folder";
+        dialog.title                   = NSLocalizedString("Choose a Folder", comment: "");
         dialog.showsResizeIndicator    = true;
         dialog.showsHiddenFiles        = false;
         dialog.canChooseDirectories    = true;
@@ -50,7 +50,7 @@ class Settings: NSViewController {
     @IBAction func set_image_path(_ sender: Any) {
         let dialog = NSOpenPanel();
         
-        dialog.title                   = "Choose a Folder";
+        dialog.title                   = NSLocalizedString("Choose a Folder", comment: "");
         dialog.showsResizeIndicator    = true;
         dialog.showsHiddenFiles        = false;
         dialog.canChooseDirectories    = true;

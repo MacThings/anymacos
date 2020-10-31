@@ -14,7 +14,6 @@ class DownloadmacOS: NSViewController {
     var out:FileHandle?
     var outputTimer: Timer?
     
-    @IBOutlet weak var select_os_pd: NSPopUpButton!
     @IBOutlet weak var progress_wheel: NSProgressIndicator!
     @IBOutlet weak var pulldown_menu: NSPopUpButton!
     @IBOutlet weak var download_button: NSButton!
@@ -33,13 +32,9 @@ class DownloadmacOS: NSViewController {
         // Do view setup here.
         self.preferredContentSize = NSMakeSize(self.view.frame.size.width, self.view.frame.size.height);
         self.progress_wheel?.startAnimation(self);
-            if languageinit == "en" {
-                let defaultname = "Retrieving information ..."
+        UserDefaults.standard.removeObject(forKey: "Choice")
+                let defaultname = NSLocalizedString("Retrieving information ...", comment: "")
 				UserDefaults.standard.set(defaultname, forKey: "Statustext")
-            } else {
-                let defaultname = "Lese Informationen aus ..."
-				UserDefaults.standard.set(defaultname, forKey: "Statustext")
-            }
         DispatchQueue.global(qos: .background).async {
             self.syncShellExec(path: self.scriptPath, args: ["_select_macos"])
             
@@ -47,7 +42,7 @@ class DownloadmacOS: NSViewController {
                 let location = NSString(string:"/private/tmp/treeswitcher/selection").expandingTildeInPath
                 self.pulldown_menu.menu?.removeAllItems()
                 let fileContent = try? NSString(contentsOfFile: location, encoding: String.Encoding.utf8.rawValue)
-                
+                self.pulldown_menu.menu?.addItem(withTitle: "", action: #selector(DownloadmacOS.menuItemClicked(_:)), keyEquivalent: "")
                 for (_, seed) in (fileContent?.components(separatedBy: "\n").enumerated())! {
                     self.pulldown_menu.menu?.addItem(withTitle: seed, action: #selector(DownloadmacOS.menuItemClicked(_:)), keyEquivalent: "")
                 }
@@ -55,14 +50,9 @@ class DownloadmacOS: NSViewController {
             
             DispatchQueue.main.async {
                 self.pulldown_menu?.isEnabled=true
-                self.download_button?.isEnabled=true
-                if self.languageinit == "en" {
-                    let defaultname = "Idle ..."
-                    UserDefaults.standard.set(defaultname, forKey: "Statustext")
-                } else {
-                    let defaultname = "Warte ..."
-                    UserDefaults.standard.set(defaultname, forKey: "Statustext")
-                }
+                self.download_button?.isEnabled=false
+                let defaultname = NSLocalizedString("Idle ...", comment: "")
+                UserDefaults.standard.set(defaultname, forKey: "Statustext")
                 self.progress_wheel?.stopAnimation(self);
             }
         }
@@ -70,14 +60,15 @@ class DownloadmacOS: NSViewController {
     
     @objc func menuItemClicked(_ sender: NSMenuItem) {
         UserDefaults.standard.set(sender.title, forKey: "Choice")
-    }
- 
-    @IBAction func select_os_pd(_ sender: Any) {
-        let choicefunc = (sender as AnyObject).selectedCell()!.tag
-        UserDefaults.standard.set(choicefunc, forKey: "Choice")
+        if (sender as NSMenuItem).title != "" {
+            self.download_button?.isEnabled=true
+        } else if (sender as NSMenuItem).title == "" {
+            self.download_button?.isEnabled=false
+        }
     }
     
     @IBAction func download_os_button(_ sender: Any) {
+        self.pulldown_menu.isEnabled=false
         UserDefaults.standard.removeObject(forKey: "InstallerAppDone")
         UserDefaults.standard.set(false, forKey: "KillDL")
         self.close_button.isEnabled=false
@@ -114,6 +105,7 @@ class DownloadmacOS: NSViewController {
                     self.syncShellExec(path: self.scriptPath, args: ["_remove_downloads"])
                 }
                 
+                self.pulldown_menu.isEnabled=true
                 self.download_button.isHidden=false
                 self.abort_button.isHidden=true
                 self.progress_wheel?.stopAnimation(self);
@@ -132,40 +124,27 @@ class DownloadmacOS: NSViewController {
     }
     
     @IBAction func stop_download(_ sender: Any) {
-        
         let defaults = UserDefaults.standard
         defaults.removeObject(forKey: "DLDone")
         defaults.removeObject(forKey: "DLSize")
         defaults.synchronize()
+        let defaultname = NSLocalizedString("Canceling Operation ...", comment: "")
+		UserDefaults.standard.set(defaultname, forKey: "Statustext")
         
-        if languageinit == "en" {
-            let defaultname = "Canceling Operation ..."
-			UserDefaults.standard.set(defaultname, forKey: "Statustext")
-        } else {
-            let defaultname = "Breche Operation ab ..."
-			UserDefaults.standard.set(defaultname, forKey: "Statustext")
-        }
         UserDefaults.standard.set(true, forKey: "KillDL")
         DispatchQueue.global(qos: .background).async {
             self.syncShellExec(path: self.scriptPath, args: ["_kill_aria"])
+            self.syncShellExec(path: self.scriptPath, args: ["_remove_temp"])
+            self.syncShellExec(path: self.scriptPath, args: ["_check_seed"])
             
             DispatchQueue.main.async {
-                self.syncShellExec(path: self.scriptPath, args: ["_remove_temp"])
-                self.syncShellExec(path: self.scriptPath, args: ["_remove_downloads"])
-                self.syncShellExec(path: self.scriptPath, args: ["_check_seed"])
                 self.download_button.isHidden=false
                 self.abort_button.isHidden=true
                 self.progress_wheel?.stopAnimation(self);
-                if self.languageinit == "en" {
-                    let defaultname = "Operation aborted."
-                    UserDefaults.standard.set(defaultname, forKey: "Statustext")
-                } else {
-                    let defaultname = "Operation abgebrochen."
-                    UserDefaults.standard.set(defaultname, forKey: "Statustext")
-                }
+                let defaultname = NSLocalizedString("Operation aborted.", comment: "")
+                UserDefaults.standard.set(defaultname, forKey: "Statustext")
             }
         }
-
     }
     
     func syncShellExec(path: String, args: [String] = []) {

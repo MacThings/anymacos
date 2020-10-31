@@ -45,7 +45,7 @@ class CreateUSBInstaller: NSViewController {
         self.progress_wheel?.startAnimation(self);
         self.refresh_button.isEnabled=false
         self.start_button.isEnabled=false
-        self.select_volume_label.isHidden=true
+        self.select_volume_label.isHidden=false
         //self.one_pass_checkbox.isHidden=true
         //self.one_pass_label.isHidden=true
         if languageinit == "en" {
@@ -69,6 +69,7 @@ class CreateUSBInstaller: NSViewController {
                 let location = NSString(string:"/private/tmp/treeswitcher/volumes").expandingTildeInPath
                 self.pulldown_menu.menu?.removeAllItems()
                 let fileContent = try? NSString(contentsOfFile: location, encoding: String.Encoding.utf8.rawValue)
+                self.pulldown_menu.menu?.addItem(withTitle: "", action: #selector(DownloadmacOS.menuItemClicked(_:)), keyEquivalent: "")
                 for (_, drive) in (fileContent?.components(separatedBy: "\n").enumerated())! {
                     self.pulldown_menu.menu?.addItem(withTitle: drive, action: #selector(DownloadmacOS.menuItemClicked(_:)), keyEquivalent: "")
                 }
@@ -112,25 +113,25 @@ class CreateUSBInstaller: NSViewController {
 
         }
     }
-    
-    @objc func menuItemClicked(_ sender: NSMenuItem) {
+        @objc func menuItemClicked(_ sender: NSMenuItem) {
+        if sender.title == "" {
+            self.start_button.isEnabled=false
+            return
+        } else {
+            self.start_button.isEnabled=true
+        }
         self.progress_wheel?.startAnimation(self);
         self.start_button.isEnabled=false
         self.refresh_button.isEnabled=false
-        self.select_volume_label.isHidden=true
+        self.select_volume_label.isHidden=false
         //self.one_pass_checkbox.isHidden=true
         //self.one_pass_label.isHidden=true
-        if languageinit == "en" {
-            let defaultname = "Getting Driveinfos ..."
-            UserDefaults.standard.set(defaultname, forKey: "StatustextUSB")
-        } else {
-            let defaultname = "Lese Festplatteninformationen ..."
-			UserDefaults.standard.set(defaultname, forKey: "StatustextUSB")
-        }
+        let defaultname = NSLocalizedString("Getting Deviceinfos ...", comment: "")
+        UserDefaults.standard.set(defaultname, forKey: "StatustextUSB")
+
         DispatchQueue.global(qos: .background).async {
             UserDefaults.standard.set(sender.title, forKey: "DriveInfo")
             self.syncShellExec(path: self.scriptPath, args: ["_get_drive_info"])
-            
             DispatchQueue.main.async {
                 self.progress_wheel?.stopAnimation(self);
                 self.select_volume_label.isHidden=false
@@ -138,15 +139,9 @@ class CreateUSBInstaller: NSViewController {
                 //self.one_pass_label.isHidden=false
                 self.start_button?.isEnabled=true
                 self.refresh_button.isEnabled=true
-                if self.languageinit == "en" {
-                    let defaultname = "Idle ..."
-                    UserDefaults.standard.set(defaultname, forKey: "StatustextUSB")
-                } else {
-                    let defaultname = "Warte ..."
-                    UserDefaults.standard.set(defaultname, forKey: "StatustextUSB")
-                }
+                let defaultname = NSLocalizedString("Idle ...", comment: "")
+                UserDefaults.standard.set(defaultname, forKey: "StatustextUSB")
             }
-            
         }
     }
     
@@ -165,9 +160,12 @@ class CreateUSBInstaller: NSViewController {
     }
     
     @IBAction func open_utilities(_ sender: Any) {
-        self.syncShellExec(path: self.scriptPath, args: ["_open_utilities"])
+        DispatchQueue.global(qos: .background).async {
+            self.syncShellExec(path: self.scriptPath, args: ["_open_utilities"])
+            DispatchQueue.main.async {
+              }
+        }
     }
-    
     
     func syncShellExec(path: String, args: [String] = []) {
         let process            = Process()

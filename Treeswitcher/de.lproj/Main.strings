@@ -1,3 +1,6 @@
+/* Class = "NSButtonCell"; title = "Open Apple Disk Utility"; ObjectID = "0BM-UY-UT7"; */
+"0BM-UY-UT7.title" = "Öffne Disk Utility";
+
 /* Class = "NSTextFieldCell"; title = "VOLUME_NAME"; ObjectID = "0j1-Cf-0xP"; */
 "0j1-Cf-0xP.title" = "VOLUME_NAME";
 
@@ -101,7 +104,7 @@
 "cgw-BQ-z59.title" = "© 2019 Sascha Lamprecht";
 
 /* Class = "NSButtonCell"; title = "Settings"; ObjectID = "D7G-pL-UZ7"; */
-"D7G-pL-UZ7.title" = "Einstellung";
+"D7G-pL-UZ7.title" = "Einstellungen";
 
 /* Class = "NSButtonCell"; title = "Create Installer"; ObjectID = "DAF-gX-jWX"; */
 "DAF-gX-jWX.title" = "Erzeuge Installer";
@@ -137,7 +140,7 @@
 "fN5-Aq-gRh.title" = "Derzeitige Zugehörigkeit:";
 
 /* Class = "NSTextFieldCell"; title = "Please select a Volume"; ObjectID = "g2O-9t-Kls"; */
-"g2O-9t-Kls.title" = "Volume auswählen";
+"g2O-9t-Kls.title" = "Bitte Volume auswählen";
 
 /* Class = "NSViewController"; title = "Download macOS"; ObjectID = "gJF-20-phu"; */
 "gJF-20-phu.title" = "Download macOS";

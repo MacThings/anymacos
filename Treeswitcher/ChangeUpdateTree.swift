@@ -143,7 +143,10 @@ class ChangeUpdateTree: NSViewController {
             UserDefaults.standard.set("Public", forKey: "NewSeed")
         } else if seedselect == 4 {
             UserDefaults.standard.set("Unenroll", forKey: "NewSeed")
+        } else {
+            return
         }
+        
         self.output_window.textStorage?.mutableString.setString("")
         
         DispatchQueue.global(qos: .background).async {
