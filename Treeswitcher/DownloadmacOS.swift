@@ -20,6 +20,7 @@ class DownloadmacOS: NSViewController {
     @IBOutlet weak var download_button: NSButton!
     @IBOutlet weak var abort_button: NSButton!
     @IBOutlet weak var close_button: NSButton!
+    @IBOutlet weak var percent_symbol: NSTextField!
     
     let scriptPath = Bundle.main.path(forResource: "/script/script", ofType: "command")!
     let languageinit = UserDefaults.standard.string(forKey: "Language")
@@ -70,6 +71,8 @@ class DownloadmacOS: NSViewController {
     }
 
     @IBAction func tree_select(_ sender: Any) {
+        self.download_button.isEnabled=false
+        self.pulldown_seedmenu.isEnabled=false
         self.progress_wheel?.startAnimation(self);
         self.pulldown_menu.isEnabled=false
         
@@ -95,10 +98,13 @@ class DownloadmacOS: NSViewController {
         }
         
         self.pulldown_menu.isEnabled=true
+        self.pulldown_seedmenu.isEnabled=true
+        self.download_button.isEnabled=true
         self.progress_wheel?.stopAnimation(self);
     }
     
     @IBAction func download_os_button(_ sender: Any) {
+        self.percent_symbol.isHidden=false
         self.pulldown_menu.isEnabled=false
         UserDefaults.standard.removeObject(forKey: "InstallerAppDone")
         UserDefaults.standard.set(false, forKey: "KillDL")
@@ -140,6 +146,7 @@ class DownloadmacOS: NSViewController {
                 self.download_button.isHidden=false
                 self.abort_button.isHidden=true
                 self.close_button.isEnabled=true
+                self.percent_symbol.isHidden=true
                 let defaults = UserDefaults.standard
                 defaults.removeObject(forKey: "DLDone")
                 defaults.removeObject(forKey: "DLSize")

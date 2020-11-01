@@ -37,6 +37,9 @@
 /* Class = "NSTextFieldCell"; title = "Changelog"; ObjectID = "6xt-OB-abU"; */
 "6xt-OB-abU.title" = "Changelog";
 
+/* Class = "NSMenuItem"; title = "Show all"; ObjectID = "6Yv-f5-50N"; */
+"6Yv-f5-50N.title" = "Alle zeigen";
+
 /* Class = "NSBox"; title = "Box"; ObjectID = "7nN-bg-Rpb"; */
 "7nN-bg-Rpb.title" = "Box";
 
@@ -60,6 +63,9 @@
 
 /* Class = "NSTextFieldCell"; title = "VOLUME_MNT_POINT"; ObjectID = "9Z4-uN-HcW"; */
 "9Z4-uN-HcW.title" = "VOLUME_MNT_POINT";
+
+/* Class = "NSTextFieldCell"; title = "Please select an update tree"; ObjectID = "87T-tG-CCh"; */
+"87T-tG-CCh.title" = "Bitte Update Zweig auswählen";
 
 /* Class = "NSTextFieldCell"; title = "Free Space:"; ObjectID = "98G-qZ-qed"; */
 "98G-qZ-qed.title" = "Free Space:";
@@ -99,9 +105,6 @@
 
 /* Class = "NSTextFieldCell"; title = "Image Name:"; ObjectID = "cGB-TJ-u88"; */
 "cGB-TJ-u88.title" = "Image Name:";
-
-/* Class = "NSTextFieldCell"; title = "© 2019 Sascha Lamprecht"; ObjectID = "cgw-BQ-z59"; */
-"cgw-BQ-z59.title" = "© 2019 Sascha Lamprecht";
 
 /* Class = "NSButtonCell"; title = "Settings"; ObjectID = "D7G-pL-UZ7"; */
 "D7G-pL-UZ7.title" = "Einstellungen";
@@ -319,8 +322,8 @@
 /* Class = "NSBox"; title = "Box"; ObjectID = "xaj-On-nK9"; */
 "xaj-On-nK9.title" = "Box";
 
-/* Class = "NSTextFieldCell"; title = "Please select an OS to Download"; ObjectID = "xfj-Ly-bLM"; */
-"xfj-Ly-bLM.title" = "Bitte wähle ein OS zum Download aus";
+/* Class = "NSTextFieldCell"; title = "Please select an OS"; ObjectID = "xfj-Ly-bLM"; */
+"xfj-Ly-bLM.title" = "Bitte wähle ein OS aus";
 
 /* Class = "NSTextFieldCell"; title = "VOLUME_TOT_SPACE"; ObjectID = "Yf4-Ct-QNd"; */
 "Yf4-Ct-QNd.title" = "VOLUME_TOT_SPACE";

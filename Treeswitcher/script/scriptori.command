@@ -178,7 +178,7 @@ function _download_counter()
             filesize=$( _helpDefaultRead "DLSize" )
             percent=$( echo $(( file_done*100/filesize )) )
             _helpDefaultWrite "DLProgress" "$percent"
-            sleep 1
+            sleep 0.5
          done
 }
 function _download_macos()
