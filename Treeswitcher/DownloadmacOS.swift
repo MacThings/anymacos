@@ -15,6 +15,7 @@ class DownloadmacOS: NSViewController {
     var outputTimer: Timer?
     
     @IBOutlet weak var progress_wheel: NSProgressIndicator!
+    @IBOutlet weak var pulldown_seedmenu: NSPopUpButton!
     @IBOutlet weak var pulldown_menu: NSPopUpButton!
     @IBOutlet weak var download_button: NSButton!
     @IBOutlet weak var abort_button: NSButton!
@@ -36,7 +37,7 @@ class DownloadmacOS: NSViewController {
                 let defaultname = NSLocalizedString("Retrieving information ...", comment: "")
 				UserDefaults.standard.set(defaultname, forKey: "Statustext")
         DispatchQueue.global(qos: .background).async {
-            self.syncShellExec(path: self.scriptPath, args: ["_select_macos"])
+            self.syncShellExec(path: self.scriptPath, args: ["_select_seed_all"])
             
             DispatchQueue.main.sync {
                 let location = NSString(string:"/private/tmp/treeswitcher/selection").expandingTildeInPath
@@ -46,6 +47,7 @@ class DownloadmacOS: NSViewController {
                 for (_, seed) in (fileContent?.components(separatedBy: "\n").enumerated())! {
                     self.pulldown_menu.menu?.addItem(withTitle: seed, action: #selector(DownloadmacOS.menuItemClicked(_:)), keyEquivalent: "")
                 }
+              
             }
             
             DispatchQueue.main.async {
@@ -66,6 +68,35 @@ class DownloadmacOS: NSViewController {
             self.download_button?.isEnabled=false
         }
     }
+
+    @IBAction func tree_select(_ sender: Any) {
+        self.progress_wheel?.startAnimation(self);
+        self.pulldown_menu.isEnabled=false
+        
+        if (sender as AnyObject).title.contains("ll"){
+            self.syncShellExec(path: self.scriptPath, args: ["_select_seed_all"])
+        }
+        if (sender as AnyObject).title.contains("Customer"){
+            self.syncShellExec(path: self.scriptPath, args: ["_select_seed_customer"])
+        }
+        if (sender as AnyObject).title.contains("Developer"){
+            self.syncShellExec(path: self.scriptPath, args: ["_select_seed_developer"])
+        }
+        if (sender as AnyObject).title.contains("Public"){
+            self.syncShellExec(path: self.scriptPath, args: ["_select_seed_public"])
+        }
+        
+        let location = NSString(string:"/private/tmp/treeswitcher/selection").expandingTildeInPath
+        self.pulldown_menu.menu?.removeAllItems()
+        let fileContent = try? NSString(contentsOfFile: location, encoding: String.Encoding.utf8.rawValue)
+        self.pulldown_menu.menu?.addItem(withTitle: "", action: #selector(DownloadmacOS.menuItemClicked(_:)), keyEquivalent: "")
+        for (_, seed) in (fileContent?.components(separatedBy: "\n").enumerated())! {
+            self.pulldown_menu.menu?.addItem(withTitle: seed, action: #selector(DownloadmacOS.menuItemClicked(_:)), keyEquivalent: "")
+        }
+        
+        self.pulldown_menu.isEnabled=true
+        self.progress_wheel?.stopAnimation(self);
+    }
     
     @IBAction func download_os_button(_ sender: Any) {
         self.pulldown_menu.isEnabled=false
@@ -74,7 +105,7 @@ class DownloadmacOS: NSViewController {
         self.close_button.isEnabled=false
         self.download_button.isHidden=true
         self.abort_button.isHidden=false
-        self.progress_wheel?.startAnimation(self);
+
         DispatchQueue.global(qos: .background).async {
             self.syncShellExec(path: self.scriptPath, args: ["_download_macos"])
             
@@ -108,7 +139,6 @@ class DownloadmacOS: NSViewController {
                 self.pulldown_menu.isEnabled=true
                 self.download_button.isHidden=false
                 self.abort_button.isHidden=true
-                self.progress_wheel?.stopAnimation(self);
                 self.close_button.isEnabled=true
                 let defaults = UserDefaults.standard
                 defaults.removeObject(forKey: "DLDone")

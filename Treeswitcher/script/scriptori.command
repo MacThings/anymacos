@@ -139,18 +139,33 @@ function _setseed()
     fi
 }
 
-function _select_macos()
+function _select_seed_all()
 {
-
-    _languageselect
-    
     mkdir "$temp_path" 2> /dev/null
-
     curl https://kextupdater.slsoft.de/treeswitcher/seeds/selection > "$temp_path"/selection
-
     _helpDefaultWrite "Statustext" "$statustext"
 }
 
+function _select_seed_customer()
+{
+    mkdir "$temp_path" 2> /dev/null
+    curl https://kextupdater.slsoft.de/treeswitcher/seeds/selection_customerseed > "$temp_path"/selection
+    _helpDefaultWrite "Statustext" "$statustext"
+}
+
+function _select_seed_developer()
+{
+    mkdir "$temp_path" 2> /dev/null
+    curl https://kextupdater.slsoft.de/treeswitcher/seeds/selection_beta > "$temp_path"/selection
+    _helpDefaultWrite "Statustext" "$statustext"
+}
+
+function _select_seed_public()
+{
+    mkdir "$temp_path" 2> /dev/null
+    curl https://kextupdater.slsoft.de/treeswitcher/seeds/selection_seed > "$temp_path"/selection
+    _helpDefaultWrite "Statustext" "$statustext"
+}
 
 function _download_counter()
 {

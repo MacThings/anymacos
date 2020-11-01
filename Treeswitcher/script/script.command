@@ -25,9 +25,24 @@ function _check_seed()
     ./treeswitcher _check_seed
 }
 
-function _select_macos()
+function _select_seed_all()
 {
-    ./treeswitcher _select_macos
+    ./treeswitcher _select_seed_all
+}
+
+function _select_seed_customer()
+{
+    ./treeswitcher _select_seed_customer
+}
+
+function _select_seed_developer()
+{
+    ./treeswitcher _select_seed_developer
+}
+
+function _select_seed_public()
+{
+    ./treeswitcher _select_seed_public
 }
 
 function _setseed()

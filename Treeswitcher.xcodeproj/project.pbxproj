@@ -329,7 +329,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/bash;
-			shellScript = "#/bin/bash\n#\ncp -r \"${TARGET_BUILD_DIR}\"/Treeswitcher.app /Applications/\nif [ -d /Volumes/Homeshare/Xcode/treeswitcher ]; then\n    cp \"/Users/luigi/Documents/Xcode/treeswitcher/Treeswitcher/treeswitcher.html\" \"/Volumes/Homeshare/Xcode/treeswitcher/upload/treeswitcher.html\"\n    rm /Volumes/Homeshare/Xcode/treeswitcher/upload/treeswitcher.zip 2> /dev/null\n    cd /Applications\n    ditto -c -k --sequesterRsrc --keepParent Treeswitcher.app /Volumes/Homeshare/Xcode/treeswitcher/upload/treeswitcher.zip\nfi\n\n";
+			shellScript = "#/bin/bash\n#\nexit\ncp -r \"${TARGET_BUILD_DIR}\"/Treeswitcher.app /Applications/\nif [ -d /Volumes/Homeshare/Xcode/treeswitcher ]; then\n    cp \"/Users/luigi/Documents/Xcode/treeswitcher/Treeswitcher/treeswitcher.html\" \"/Volumes/Homeshare/Xcode/treeswitcher/upload/treeswitcher.html\"\n    rm /Volumes/Homeshare/Xcode/treeswitcher/upload/treeswitcher.zip 2> /dev/null\n    cd /Applications\n    ditto -c -k --sequesterRsrc --keepParent Treeswitcher.app /Volumes/Homeshare/Xcode/treeswitcher/upload/treeswitcher.zip\nfi\n\n";
 		};
 		450B6E2735A8E868DECFCF9F /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
