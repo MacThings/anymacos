@@ -236,6 +236,8 @@ function _download_macos()
         
 done < ""$temp_path"/files"
 
+    echo Neu.dist >> "$download_path"/.downloaded_files
+
     kill_download=$( _helpDefaultRead "KillDL" )
     _helpDefaultWrite "Stop" "Yes"
     if [[ $kill_download = 1 ]]; then
@@ -272,7 +274,9 @@ done < ""$temp_path"/files"
         osascript -e 'do shell script "sudo /usr/sbin/installer -pkg '"'$download_path'"'/InstallAssistant.pkg -target /Applications" with administrator privileges'
         installok="$?"
     else
-        osascript -e 'do shell script "sudo /usr/sbin/installer -pkg '"'$download_path'"'/*English.dist -target /Applications" with administrator privileges'
+        sed '/installation-check/d' "$download_path"/*English.dist > "$download_path"/Neu.dist
+    
+        osascript -e 'do shell script "sudo /usr/sbin/installer -pkg '"'$download_path'"'/Neu.dist -target /Applications" with administrator privileges'
         installok="$?"
     fi
     
