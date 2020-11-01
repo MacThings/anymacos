@@ -49,6 +49,8 @@ _helpDefaultWrite "Modelname" "$modelname"
 _helpDefaultWrite "ModelID" "$modelid"
 _helpDefaultWrite "CPUType" "$cputype"
 
+_helpDefaultWrite "KillDL" "0"
+
 if [[ $sys_language = de* ]]; then
     syslang="de"
     _helpDefaultWrite "Language" "de"
@@ -170,8 +172,13 @@ function _select_seed_public()
 function _download_counter()
 {
         TAB=$(printf '\t')
-        while :
+       
+        until [[ $stop_loop = "1" ]]
         do
+            stop_it=$( _helpDefaultRead "Stop" )
+            if [[ "$stop_it" = "Yes" ]]; then
+                stop_loop="1"
+            fi
             file_downloading=$( _helpDefaultRead "DLFile" )
             file_done=$( du -hm "$download_path"/"$file_downloading" | sed "s/${TAB}.*//g" |xargs )
             _helpDefaultWrite "DLDone" "$file_done"
@@ -179,7 +186,8 @@ function _download_counter()
             percent=$( echo $(( file_done*100/filesize )) )
             _helpDefaultWrite "DLProgress" "$percent"
             sleep 0.5
-         done
+done
+
 }
 function _download_macos()
 {
@@ -229,6 +237,7 @@ function _download_macos()
 done < ""$temp_path"/files"
 
     kill_download=$( _helpDefaultRead "KillDL" )
+    _helpDefaultWrite "Stop" "Yes"
     if [[ $kill_download = 1 ]]; then
         if [[ "$syslang" = "en" ]]; then
             _helpDefaultWrite "Statustext" "Downloading aborted"
@@ -246,6 +255,7 @@ done < ""$temp_path"/files"
 
     kill_download=$( _helpDefaultRead "KillDL" )
     if [[ $kill_download = 1 ]]; then
+        _helpDefaultWrite "Stop" "Yes"
         if [[ "$syslang" = "en" ]]; then
             _helpDefaultWrite "Statustext" "Downloading aborted"
         else
@@ -255,6 +265,8 @@ done < ""$temp_path"/files"
     fi
     
     ### Checks if BigSur is downloading
+
+    _helpDefaultWrite "Stop" "Yes"
     
     if [ -f "$download_path/UpdateBrain.zip" ]; then
         osascript -e 'do shell script "sudo /usr/sbin/installer -pkg '"'$download_path'"'/InstallAssistant.pkg -target /Applications" with administrator privileges'

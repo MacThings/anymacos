@@ -108,6 +108,7 @@ class DownloadmacOS: NSViewController {
         self.pulldown_menu.isEnabled=false
         UserDefaults.standard.removeObject(forKey: "InstallerAppDone")
         UserDefaults.standard.set(false, forKey: "KillDL")
+        UserDefaults.standard.set("No", forKey: "Stop")
         self.close_button.isEnabled=false
         self.download_button.isHidden=true
         self.abort_button.isHidden=false
