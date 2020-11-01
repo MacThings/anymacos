@@ -146,58 +146,7 @@ function _select_macos()
     
     mkdir "$temp_path" 2> /dev/null
 
-    if [[ $seed_choice = "CustomerSeed" ]]; then
-        seed_url=$( ../bin/./PlistBuddy -c "Print CustomerSeed" "$seedcatalog_path" )
-        curl -s "$seed_url" |gunzip -c > "$temp_path"/"$sucatalog"
-        if [[ "$?" = "1" ]]; then
-            curl -s "$seed_url" > "$temp_path"/"$sucatalog"
-        fi
-    fi
-    if [[ $seed_choice = "DeveloperSeed" ]]; then
-        seed_url=$( ../bin/./PlistBuddy -c "Print DeveloperSeed" "$seedcatalog_path" )
-        curl -s "$seed_url" |gunzip -c > "$temp_path"/"$sucatalog"
-        if [[ "$?" = "1" ]]; then
-            curl -s "$seed_url" > "$temp_path"/"$sucatalog"
-        fi
-    fi
-    if [[ $seed_choice = "PublicSeed" ]]; then
-        seed_url=$( ../bin/./PlistBuddy -c "Print PublicSeed" "$seedcatalog_path" )
-        curl -s "$seed_url" |gunzip -c > "$temp_path"/"$sucatalog"
-        if [[ "$?" = "1" ]]; then
-            curl -s "$seed_url" > "$temp_path"/"$sucatalog"
-        fi
-    fi
-
-    mv "$temp_path"/seed.sucatalog "$temp_path"/seed.gz
-    gunzip "$temp_path"/seed.gz
-    if [[ "$?" = "1" ]]; then
-        mv "$temp_path"/seed.gz "$temp_path"/seed.sucatalog
-    else
-        mv "$temp_path"/seed "$temp_path"/seed.sucatalog
-    fi
-
-    seed_ids=$( cat "$temp_path"/seed.sucatalog |grep MajorOSInfo.pkg\< |cut -d/ -f8,8 |cut -d- -f1,2 )
-    echo "$seed_ids" > "$temp_path"/seed_ids
-
-    if [ -f "$temp_path"/selection ]; then
-        rm "$temp_path"/selection
-    fi
-
-    while IFS= read -r line; do
-        seed_url=$( ../bin/./PlistBuddy -c "Print Products:$line" "$temp_path"/"$sucatalog" |grep "English.dist" | sed 's/.*=\ //g' )
-        curl -s "$seed_url" | sed '1,/auxinfo/d' > "$temp_path"/seedfiles
-        build=$( ../bin/./PlistBuddy -c "Print BUILD" "$temp_path"/seedfiles )
-        version=$( ../bin/./PlistBuddy -c "Print VERSION" "$temp_path"/seedfiles )
-        count=$( echo -n $version | wc -c )
-        if [ $count == 5 ]; then
-            version="$version.0"
-        fi
-        echo -e "$version - ($build)" >> "$temp_path"/selection
-        echo -e "$seed_url" >> "$temp_path"/selection_urls
-    done <<< "$seed_ids"
-
-
-    perl -e 'truncate $ARGV[0], ((-s $ARGV[0]) - 1)' "$temp_path"/selection
+    curl https://kextupdater.slsoft.de/treeswitcher/seeds/selection > "$temp_path"/selection
 
     _helpDefaultWrite "Statustext" "$statustext"
 }
@@ -208,8 +157,7 @@ function _download_counter()
         TAB=$(printf '\t')
         while :
         do
-            file_downloading=$( _helpDefaultRead "Statustext" )
-            file_downloading=$( echo "$file_downloading" | sed 's/.*://g' | xargs )
+            file_downloading=$( _helpDefaultRead "DLFile" )
             file_done=$( du -hm "$download_path"/"$file_downloading" | sed "s/${TAB}.*//g" |xargs )
             _helpDefaultWrite "DLDone" "$file_done"
             filesize=$( _helpDefaultRead "DLSize" )
@@ -223,41 +171,18 @@ function _download_macos()
     _download_counter &
 
     choice=$( _helpDefaultRead "Choice" )
-    choice=$( grep -n "$choice" "$temp_path"/selection | head -n 1 | cut -d: -f1 )
     parallel_downloads=$( _helpDefaultRead "ParaDL" )
     download_path=$( _helpDefaultRead "Downloadpath" )
 
     if [ ! -d "$download_path" ]; then
         mkdir "$download_path"
     fi
-
-#    if [ -f "$download_path"/.downloaded_files ]; then
-#        if [[ "$syslang" = "en" ]]; then
-#            _helpDefaultWrite "Statustext" "Cleaning Downloadfolder"
-#        else
-#            _helpDefaultWrite "Statustext" "Bereinige Downloadordner"
-#        fi
-#        while IFS= read -r line
-#        do
-#            rm "$download_path"/"$line" 2> /dev/null
-#        done < ""$download_path"/.downloaded_files"
-#        rm "$download_path"/*English.dist 2> /dev/null
-#        rm "$download_path"/.downloaded_files
-#    fi
-
-if [[ $choice != "" ]] && [[ $choice != "0" ]]; then
-    seed_url=$( sed -n "$choice"'p' < "$temp_path"/selection_urls )
-    curl -s "$seed_url" |gunzip -c > "$temp_path"/sucatalog
-    if [[ "$?" = "1" ]]; then
-        curl -s "$seed_url" > "$temp_path"/sucatalog
-    fi
-    cat "$temp_path"/sucatalog |grep pkg-ref |sed -e 's/.*">//g' -e '/[0-9]/d' -e 's/<.*//g' -e '/^[[:space:]]*$/d' >> "$temp_path"/selection_files
-    cat -n "$temp_path"/selection_files | sort -uk2 | sort -nk1 | cut -f2- |uniq -u > "$temp_path"/selection_files2
-
-    seed_url=$( cat "$temp_path"/selection_urls |sed -n "$choice"'p' |sed 's![^/]*$!!' )
+    
+    rm "$temp_path"/files
+    
+    curl https://kextupdater.slsoft.de/treeswitcher/seeds/"$choice" > "$temp_path"/files
 
     touch "$download_path"/.downloaded_files
-
     while IFS= read -r line
     do
     kill_download=$( _helpDefaultRead "KillDL" )
@@ -269,73 +194,24 @@ if [[ $choice != "" ]] && [[ $choice != "0" ]]; then
         fi
         exit
     fi
-    if [[ "$syslang" = "en" ]]; then
-        _helpDefaultWrite "Statustext" "Downloading: $line"
-    else
-        _helpDefaultWrite "Statustext" "Downloade: $line"
-    fi
-    echo "$line" >> "$download_path"/.downloaded_files
+
+    checker=$( /usr/bin/curl -s -L -I "$line" )
+    if [[ $checker != *"ength: 0"* ]]; then
+        line_progress=$( echo "$line" | sed 's/.*\///g' )
+        if [[ "$syslang" = "en" ]]; then
+            _helpDefaultWrite "Statustext" "Downloading: $line_progress"
+        else
+            _helpDefaultWrite "Statustext" "Downloade: $line_progress"
+        fi
+        echo "$line_progress" >> "$download_path"/.downloaded_files
     
-    dl_size=$( /usr/bin/curl -s -L -I "$seed_url""$line" | grep "ength:" | sed 's/.*th://g' | xargs | awk '{ byte =$1 /1024/1024; print byte " MB" }' | awk '{printf "%.0f\n", $1}' )
-    _helpDefaultWrite "DLSize" "$dl_size"
-
-    ../bin/./aria2c --file-allocation=none -c -q -x "$parallel_downloads" -d "$download_path" "$seed_url""$line"
-
-    done < ""$temp_path"/selection_files2"
-
-    cat "$temp_path"/selection_files2 |grep pkg |sed 's/pkg/pkm/g' > "$temp_path"/selection_files3
-
-    while IFS= read -r line
-    do
-    kill_download=$( _helpDefaultRead "KillDL" )
-    if [[ $kill_download = 1 ]]; then
-        if [[ "$syslang" = "en" ]]; then
-            _helpDefaultWrite "Statustext" "Downloading aborted"
-        else
-            _helpDefaultWrite "Statustext" "Download abgebrochen"
-        fi
-        exit
+        dl_size=$( /usr/bin/curl -s -L -I "$line" | grep "ength:" | sed 's/.*th://g' | xargs | awk '{ byte =$1 /1024/1024; print byte " MB" }' | awk '{printf "%.0f\n", $1}' )
+        _helpDefaultWrite "DLSize" "$dl_size"
+        _helpDefaultWrite "DLFile" "$line_progress"
+        ../bin/./aria2c --file-allocation=none -c -q -x "$parallel_downloads" -d "$download_path" "$line"
     fi
-    if [[ "$syslang" = "en" ]]; then
-        _helpDefaultWrite "Statustext" "Downloading: $line"
-    else
-        _helpDefaultWrite "Statustext" "Downloade: $line"
-    fi
-    echo "$line" >> "$download_path"/.downloaded_files
-    
-    ../bin/./aria2c --file-allocation=none -c -q -x "$parallel_downloads" -d "$download_path" "$seed_url""$line"
-    done < ""$temp_path"/selection_files3"
-
-    cat "$temp_path"/selection_files3 |sed 's/pkm/smd/g' > "$temp_path"/selection_files4
-
-    while IFS= read -r line
-    do
-    kill_download=$( _helpDefaultRead "KillDL" )
-    if [[ $kill_download = 1 ]]; then
-        if [[ "$syslang" = "en" ]]; then
-            _helpDefaultWrite "Statustext" "Downloading aborted"
-        else
-            _helpDefaultWrite "Statustext" "Download abgebrochen"
-        fi
-        exit
-    fi
-    if [[ "$syslang" = "en" ]]; then
-        _helpDefaultWrite "Statustext" "Downloading: $line"
-    else
-        _helpDefaultWrite "Statustext" "Downloade: $line"
-    fi
-    echo "$line" >> "$download_path"/.downloaded_files
-
-    ../bin/./aria2c --file-allocation=none -c -q -x "$parallel_downloads" -d "$download_path" "$seed_url""$line"
-
-    done < ""$temp_path"/selection_files4"
-
-    seed_id=$( sed -n "$choice"'p' < "$temp_path"/seed_ids )
-
-    curl -f -s "$seed_url""$seed_id".English.dist |gunzip -c > "$download_path"/"$seed_id".English.dist
-    if [[ "$?" = "1" ]]; then
-        curl -f -s "$seed_url""$seed_id".English.dist > "$download_path"/"$seed_id".English.dist
-    fi
+        
+done < ""$temp_path"/files"
 
     kill_download=$( _helpDefaultRead "KillDL" )
     if [[ $kill_download = 1 ]]; then
@@ -362,10 +238,6 @@ if [[ $choice != "" ]] && [[ $choice != "0" ]]; then
         fi
         exit
     fi
-
-    sed -ib "/installation-check/d" "$download_path"/*English.dist
-
-    rm "$download_path"/*English.distb
     
     ### Checks if BigSur is downloading
     
@@ -392,14 +264,6 @@ if [[ $choice != "" ]] && [[ $choice != "0" ]]; then
             _helpDefaultWrite "Statustext" "Erstellung fehlgeschlagen. Bitte versuche es erneut."
         fi
     fi
-else
-    if [[ "$syslang" = "en" ]]; then
-        _helpDefaultWrite "Statustext" "Error! Nothing selected."
-    else
-        _helpDefaultWrite "Statustext" "Fehler! Es wurde nichts ausgewählt."
-    fi
-fi
-
 }
 
 
@@ -426,7 +290,7 @@ function _remove_downloads()
 function _remove_temp()
 {
 
-    rm -f /private/tmp/treeswitcher/selection_fil*
+    rm -f /private/tmp/treeswitcher/files
 
 }
 function _kill_aria()
@@ -442,9 +306,10 @@ function _kill_aria()
     for KILLPID in `ps ax | grep 'treeswitcher' | awk ' { print $1;}'`; do
         kill -term $KILLPID;
     done
-    
-    pkill .treeswitcher
-    pkill treeswitcher
+
+    rm "$temp_path"/files
+
+    pkill -f treeswitcher
     
     if [[ "$syslang" = "en" ]]; then
         _helpDefaultWrite "Statustext" "Done"

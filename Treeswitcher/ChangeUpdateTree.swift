@@ -105,7 +105,7 @@ class ChangeUpdateTree: NSViewController {
         
         let seedinit = UserDefaults.standard.string(forKey: "CurrentSeed")
         if seedinit == "Unenroll"{
-            self.download_button.isEnabled=false
+            self.download_button.isEnabled=true
         } 
         
         let defaults = UserDefaults.standard
@@ -160,7 +160,7 @@ class ChangeUpdateTree: NSViewController {
                 self.content_scroller.isHidden=false
                 let seedinit = UserDefaults.standard.string(forKey: "CurrentSeed")
                 if seedinit == "Unenroll"{
-                    self.download_button.isEnabled=false
+                    self.download_button.isEnabled=true
                 } else {
                     self.download_button.isEnabled=true
                 }
