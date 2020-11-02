@@ -225,9 +225,9 @@ function _download_macos()
     if [[ $checker != *"ength: 0"* ]]; then
         line_progress=$( echo "$line" | sed 's/.*\///g' )
         if [[ "$syslang" = "en" ]]; then
-            _helpDefaultWrite "Statustext" "Downloading: $line_progress"
+            _helpDefaultWrite "Statustext" "Downloading ..."
         else
-            _helpDefaultWrite "Statustext" "Downloade: $line_progress"
+            _helpDefaultWrite "Statustext" "Downloade: ..."
         fi
         echo "$line_progress" >> "$download_path"/.downloaded_files
     
@@ -237,6 +237,7 @@ function _download_macos()
         fi
         _helpDefaultWrite "DLSize" "$dl_size"
         _helpDefaultWrite "DLFile" "$line_progress"
+        
         ../bin/./aria2c --file-allocation=none -c -q -x "$parallel_downloads" -d "$download_path" "$line"
     fi
         

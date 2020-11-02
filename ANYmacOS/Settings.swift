@@ -14,11 +14,16 @@ class Settings: NSViewController {
     @IBOutlet weak var image_path_textfield: NSTextField!
 
     let languageinit = UserDefaults.standard.string(forKey: "Language")
+    let scriptPath = Bundle.main.path(forResource: "/script/script", ofType: "command")!
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do view setup here.
         self.preferredContentSize = NSMakeSize(self.view.frame.size.width, self.view.frame.size.height);
+        
+        let seedinit = UserDefaults.standard.string(forKey: "CurrentSeed")
     }
 
     @IBAction func set_download_path(_ sender: Any) {
@@ -71,6 +76,55 @@ class Settings: NSViewController {
             // User clicked on "Cancel"
             return
         }
+    }
+    
+    @IBAction func seed_select(_ sender: Any) {
+        let seedselect = (sender as AnyObject).selectedCell()!.tag
+        if seedselect == 1 {
+            UserDefaults.standard.set("Customer", forKey: "NewSeed")
+        } else if seedselect == 2 {
+            UserDefaults.standard.set("Developer", forKey: "NewSeed")
+        } else if seedselect == 3 {
+            UserDefaults.standard.set("Public", forKey: "NewSeed")
+        } else if seedselect == 4 {
+            UserDefaults.standard.set("Unenroll", forKey: "NewSeed")
+        } else {
+            return
+        }
+        
+        //self.output_window.textStorage?.mutableString.setString("")
+        
+        DispatchQueue.global(qos: .background).async {
+            self.syncShellExec(path: self.scriptPath, args: ["_setseed"])
+            
+            DispatchQueue.main.sync {
+                let seedinit = UserDefaults.standard.string(forKey: "CurrentSeed")
+                                
+            }
+        }
+    }
+    
+    func syncShellExec(path: String, args: [String] = []) {
+        let process            = Process()
+        process.launchPath     = "/bin/bash"
+        process.arguments      = [path] + args
+        let outputPipe         = Pipe()
+        let filelHandler       = outputPipe.fileHandleForReading
+        process.standardOutput = outputPipe
+        process.launch()
+        
+        filelHandler.readabilityHandler = { pipe in
+            let data = pipe.availableData
+            if let line = String(data: data, encoding: .utf8) {
+                DispatchQueue.main.sync {
+                    //self.output_window.string += line
+                }
+            } else {
+                print("Error decoding data: \(data.base64EncodedString())")
+            }
+        }
+        process.waitUntilExit()
+        filelHandler.readabilityHandler = nil
     }
     
 }

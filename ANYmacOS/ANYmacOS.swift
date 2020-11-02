@@ -24,6 +24,8 @@ class ANYmacOS: NSViewController {
     @IBOutlet weak var progress_bar: NSProgressIndicator!
     @IBOutlet weak var paypal_button: NSButton!
     @IBOutlet weak var copyright: NSTextField!
+    @IBOutlet weak var mb: NSTextField!
+    @IBOutlet weak var mb2: NSTextField!
     
     
     let scriptPath = Bundle.main.path(forResource: "/script/script", ofType: "command")!
@@ -52,6 +54,7 @@ class ANYmacOS: NSViewController {
         self.preferredContentSize = NSMakeSize(self.view.frame.size.width, self.view.frame.size.height);
         self.progress_wheel?.startAnimation(self);
         UserDefaults.standard.removeObject(forKey: "Choice")
+        UserDefaults.standard.removeObject(forKey: "DLFile")
                 let defaultname = NSLocalizedString("Retrieving information ...", comment: "")
 				UserDefaults.standard.set(defaultname, forKey: "Statustext")
         DispatchQueue.global(qos: .background).async {
@@ -130,6 +133,8 @@ class ANYmacOS: NSViewController {
         self.progress_bar.isHidden=false
         self.percent_symbol.isHidden=false
         self.pulldown_menu.isEnabled=false
+        self.mb.isHidden=false
+        self.mb2.isHidden=false
         UserDefaults.standard.removeObject(forKey: "InstallerAppDone")
         UserDefaults.standard.set(false, forKey: "KillDL")
         UserDefaults.standard.set("No", forKey: "Stop")
@@ -171,9 +176,12 @@ class ANYmacOS: NSViewController {
                 self.abort_button.isHidden=true
                 self.percent_symbol.isHidden=true
                 self.progress_bar.isHidden=false
+                self.mb.isHidden=true
+                self.mb2.isHidden=true
                 let defaults = UserDefaults.standard
                 defaults.removeObject(forKey: "DLDone")
                 defaults.removeObject(forKey: "DLSize")
+                defaults.removeObject(forKey: "DLFile")
                 defaults.synchronize()
                 self.syncShellExec(path: self.scriptPath, args: ["_remove_temp"])
                 self.syncShellExec(path: self.scriptPath, args: ["_check_seed"])
@@ -186,10 +194,13 @@ class ANYmacOS: NSViewController {
     
     @IBAction func stop_download(_ sender: Any) {
         self.percent_symbol.isHidden=true
+        self.mb.isHidden=true
+        self.mb2.isHidden=true
         UserDefaults.standard.removeObject(forKey: "DLProgress")
         let defaults = UserDefaults.standard
         defaults.removeObject(forKey: "DLDone")
         defaults.removeObject(forKey: "DLSize")
+        defaults.removeObject(forKey: "DLFile")
         defaults.synchronize()
         let defaultname = NSLocalizedString("Canceling Operation ...", comment: "")
 		UserDefaults.standard.set(defaultname, forKey: "Statustext")
