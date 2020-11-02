@@ -19,7 +19,7 @@ class ANYmacOS: NSViewController {
     @IBOutlet weak var pulldown_menu: NSPopUpButton!
     @IBOutlet weak var download_button: NSButton!
     @IBOutlet weak var abort_button: NSButton!
-    @IBOutlet weak var close_button: NSButton!
+    @IBOutlet weak var create_button: NSButton!
     @IBOutlet weak var percent_symbol: NSTextField!
     @IBOutlet weak var progress_bar: NSProgressIndicator!
     @IBOutlet weak var paypal_button: NSButton!
@@ -130,9 +130,11 @@ class ANYmacOS: NSViewController {
     }
     
     @IBAction func download_os_button(_ sender: Any) {
+        self.create_button.isEnabled=false
         self.progress_bar.isHidden=false
         self.percent_symbol.isHidden=false
         self.pulldown_menu.isEnabled=false
+        self.pulldown_seedmenu.isEnabled=false
         self.mb.isHidden=false
         self.mb2.isHidden=false
         UserDefaults.standard.removeObject(forKey: "InstallerAppDone")
@@ -172,10 +174,12 @@ class ANYmacOS: NSViewController {
                 }
                 
                 self.pulldown_menu.isEnabled=true
+                self.pulldown_seedmenu.isEnabled=true
                 self.download_button.isHidden=false
                 self.abort_button.isHidden=true
                 self.percent_symbol.isHidden=true
                 self.progress_bar.isHidden=false
+                self.create_button.isEnabled=true
                 self.mb.isHidden=true
                 self.mb2.isHidden=true
                 let defaults = UserDefaults.standard
@@ -196,6 +200,7 @@ class ANYmacOS: NSViewController {
         self.percent_symbol.isHidden=true
         self.mb.isHidden=true
         self.mb2.isHidden=true
+        self.create_button.isEnabled=false
         UserDefaults.standard.removeObject(forKey: "DLProgress")
         let defaults = UserDefaults.standard
         defaults.removeObject(forKey: "DLDone")

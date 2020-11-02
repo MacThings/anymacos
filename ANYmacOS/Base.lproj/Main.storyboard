@@ -693,6 +693,7 @@
                     <connections>
                         <outlet property="abort_button" destination="MJA-dk-2XP" id="YRs-DK-Jg5"/>
                         <outlet property="copyright" destination="DgU-13-iEN" id="Q5f-it-tnG"/>
+                        <outlet property="create_button" destination="nAu-ph-wcv" id="NKf-o6-vTY"/>
                         <outlet property="download_button" destination="Vjj-l5-8zK" id="2yt-ql-Bum"/>
                         <outlet property="mb" destination="FIq-i3-uKs" id="0ZY-gF-MOL"/>
                         <outlet property="mb2" destination="4UX-AZ-Kde" id="Xdp-OR-cGl"/>

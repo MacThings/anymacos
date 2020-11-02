@@ -100,9 +100,6 @@
 /* Class = "NSButtonCell"; title = "Close"; ObjectID = "bIj-zr-qRb"; */
 "bIj-zr-qRb.title" = "Schließen";
 
-/* Class = "NSButtonCell"; title = "Download macOS"; ObjectID = "bnF-Vg-czM"; */
-"bnF-Vg-czM.title" = "Download macOS";
-
 /* Class = "NSMenuItem"; title = "Preferences…"; ObjectID = "BOF-NM-1cW"; */
 "BOF-NM-1cW.title" = "Einstellungen…";
 
@@ -117,6 +114,9 @@
 
 /* Class = "NSButtonCell"; title = "Close"; ObjectID = "DgN-fE-I8B"; */
 "DgN-fE-I8B.title" = "Schließen";
+
+/* Class = "NSTextFieldCell"; title = "Filename:"; ObjectID = "dWR-x5-gKt"; */
+"dWR-x5-gKt.title" = "Dateiname:";
 
 /* Class = "NSTextFieldCell"; title = "Label"; ObjectID = "E0f-Df-Hcw"; */
 "E0f-Df-Hcw.title" = "Label";
@@ -148,9 +148,6 @@
 /* Class = "NSTextFieldCell"; title = "Please select a Volume"; ObjectID = "g2O-9t-Kls"; */
 "g2O-9t-Kls.title" = "Bitte Volume auswählen";
 
-/* Class = "NSViewController"; title = "Download macOS"; ObjectID = "gJF-20-phu"; */
-"gJF-20-phu.title" = "Download macOS";
-
 /* Class = "NSButtonCell"; title = "Select"; ObjectID = "GSb-tD-mf9"; */
 "GSb-tD-mf9.title" = "Auswählen";
 
@@ -171,9 +168,6 @@
 
 /* Class = "NSButtonCell"; title = "Abort"; ObjectID = "iSb-az-Lo6"; */
 "iSb-az-Lo6.title" = "Abbrechen";
-
-/* Class = "NSTextFieldCell"; title = "Label"; ObjectID = "jAE-Ti-jBA"; */
-"jAE-Ti-jBA.title" = "Label";
 
 /* Class = "NSMenuItem"; title = "Public Seed"; ObjectID = "Jiz-oW-nVd"; */
 "Jiz-oW-nVd.title" = "Public Seed";
@@ -297,9 +291,6 @@
 
 /* Class = "NSMenuItem"; title = "Changelog"; ObjectID = "VPp-3R-6C6"; */
 "VPp-3R-6C6.title" = "Changelog";
-
-/* Class = "NSTextFieldCell"; title = "Change Update Tree"; ObjectID = "vvu-ek-2mH"; */
-"vvu-ek-2mH.title" = "Ändere Update Zweig";
 
 /* Class = "NSTextFieldCell"; title = "Total Space:"; ObjectID = "vVZ-hI-NE9"; */
 "vVZ-hI-NE9.title" = "Total Space:";
