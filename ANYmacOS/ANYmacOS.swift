@@ -1,5 +1,5 @@
 //
-//  DownloadmacOS.swift
+//  ANYmacOS.swift
 //  ANYmacOS
 //
 //  Created by Sascha Lamprecht on 13/08/2019.
@@ -8,7 +8,7 @@
 
 import Cocoa
 
-class DownloadmacOS: NSViewController {
+class ANYmacOS: NSViewController {
     
     var process:Process!
     var out:FileHandle?
@@ -21,14 +21,31 @@ class DownloadmacOS: NSViewController {
     @IBOutlet weak var abort_button: NSButton!
     @IBOutlet weak var close_button: NSButton!
     @IBOutlet weak var percent_symbol: NSTextField!
+    @IBOutlet weak var progress_bar: NSProgressIndicator!
+    @IBOutlet weak var paypal_button: NSButton!
+    @IBOutlet weak var copyright: NSTextField!
+    
     
     let scriptPath = Bundle.main.path(forResource: "/script/script", ofType: "command")!
     let languageinit = UserDefaults.standard.string(forKey: "Language")
+    let appVersion = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        
     }
 
+    override func viewDidAppear() {
+        super.viewDidAppear()
+        self.view.window?.title = "ANYmacOS v. " + appVersion!
+        
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy"
+        let dateStr = formatter.string(from: NSDate() as Date)
+        self.copyright.stringValue = "© " + dateStr + " Sascha Lamprecht"
+
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do view setup here.
@@ -44,9 +61,9 @@ class DownloadmacOS: NSViewController {
                 let location = NSString(string:"/private/tmp/anymacos/selection").expandingTildeInPath
                 self.pulldown_menu.menu?.removeAllItems()
                 let fileContent = try? NSString(contentsOfFile: location, encoding: String.Encoding.utf8.rawValue)
-                self.pulldown_menu.menu?.addItem(withTitle: "", action: #selector(DownloadmacOS.menuItemClicked(_:)), keyEquivalent: "")
+                self.pulldown_menu.menu?.addItem(withTitle: "", action: #selector(ANYmacOS.menuItemClicked(_:)), keyEquivalent: "")
                 for (_, seed) in (fileContent?.components(separatedBy: "\n").enumerated())! {
-                    self.pulldown_menu.menu?.addItem(withTitle: seed, action: #selector(DownloadmacOS.menuItemClicked(_:)), keyEquivalent: "")
+                    self.pulldown_menu.menu?.addItem(withTitle: seed, action: #selector(ANYmacOS.menuItemClicked(_:)), keyEquivalent: "")
                 }
               
             }
@@ -60,6 +77,13 @@ class DownloadmacOS: NSViewController {
             }
         }
     }
+    
+    @IBAction func donate(_ sender: Any) {
+        if let url = URL(string: "https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=paypal@sl-soft.de&item_name=ANYmacOS&currency_code=EUR"),
+            NSWorkspace.shared.open(url) {
+        }
+    }
+    
     
     @objc func menuItemClicked(_ sender: NSMenuItem) {
         UserDefaults.standard.set(sender.title, forKey: "Choice")
@@ -92,9 +116,9 @@ class DownloadmacOS: NSViewController {
         let location = NSString(string:"/private/tmp/anymacos/selection").expandingTildeInPath
         self.pulldown_menu.menu?.removeAllItems()
         let fileContent = try? NSString(contentsOfFile: location, encoding: String.Encoding.utf8.rawValue)
-        self.pulldown_menu.menu?.addItem(withTitle: "", action: #selector(DownloadmacOS.menuItemClicked(_:)), keyEquivalent: "")
+        self.pulldown_menu.menu?.addItem(withTitle: "", action: #selector(ANYmacOS.menuItemClicked(_:)), keyEquivalent: "")
         for (_, seed) in (fileContent?.components(separatedBy: "\n").enumerated())! {
-            self.pulldown_menu.menu?.addItem(withTitle: seed, action: #selector(DownloadmacOS.menuItemClicked(_:)), keyEquivalent: "")
+            self.pulldown_menu.menu?.addItem(withTitle: seed, action: #selector(ANYmacOS.menuItemClicked(_:)), keyEquivalent: "")
         }
         
         self.pulldown_menu.isEnabled=true
@@ -103,12 +127,12 @@ class DownloadmacOS: NSViewController {
     }
     
     @IBAction func download_os_button(_ sender: Any) {
+        self.progress_bar.isHidden=false
         self.percent_symbol.isHidden=false
         self.pulldown_menu.isEnabled=false
         UserDefaults.standard.removeObject(forKey: "InstallerAppDone")
         UserDefaults.standard.set(false, forKey: "KillDL")
         UserDefaults.standard.set("No", forKey: "Stop")
-        self.close_button.isEnabled=false
         self.download_button.isHidden=true
         self.abort_button.isHidden=false
 
@@ -145,8 +169,8 @@ class DownloadmacOS: NSViewController {
                 self.pulldown_menu.isEnabled=true
                 self.download_button.isHidden=false
                 self.abort_button.isHidden=true
-                self.close_button.isEnabled=true
                 self.percent_symbol.isHidden=true
+                self.progress_bar.isHidden=false
                 let defaults = UserDefaults.standard
                 defaults.removeObject(forKey: "DLDone")
                 defaults.removeObject(forKey: "DLSize")

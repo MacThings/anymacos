@@ -65,9 +65,9 @@ class CreateUSBInstaller: NSViewController {
                 let location = NSString(string:"/private/tmp/anymacos/volumes").expandingTildeInPath
                 self.pulldown_menu.menu?.removeAllItems()
                 let fileContent = try? NSString(contentsOfFile: location, encoding: String.Encoding.utf8.rawValue)
-                self.pulldown_menu.menu?.addItem(withTitle: "", action: #selector(DownloadmacOS.menuItemClicked(_:)), keyEquivalent: "")
+                self.pulldown_menu.menu?.addItem(withTitle: "", action: #selector(ANYmacOS.menuItemClicked(_:)), keyEquivalent: "")
                 for (_, drive) in (fileContent?.components(separatedBy: "\n").enumerated())! {
-                    self.pulldown_menu.menu?.addItem(withTitle: drive, action: #selector(DownloadmacOS.menuItemClicked(_:)), keyEquivalent: "")
+                    self.pulldown_menu.menu?.addItem(withTitle: drive, action: #selector(ANYmacOS.menuItemClicked(_:)), keyEquivalent: "")
                 }
             }
             

@@ -16,6 +16,9 @@
 /* Class = "NSTextFieldCell"; title = "Volume Name:"; ObjectID = "3LI-JW-X7W"; */
 "3LI-JW-X7W.title" = "Volume Name:";
 
+/* Class = "NSTextFieldCell"; title = "Fetch macOS easily"; ObjectID = "3lL-bs-QCd"; */
+"3lL-bs-QCd.title" = "Ganz einfach macOS holen";
+
 /* Class = "NSMenuItem"; title = "Quit ANYmacOS"; ObjectID = "4sb-4s-VLi"; */
 "4sb-4s-VLi.title" = "Beende ANYmacOS";
 
@@ -64,14 +67,14 @@
 /* Class = "NSTextFieldCell"; title = "VOLUME_MNT_POINT"; ObjectID = "9Z4-uN-HcW"; */
 "9Z4-uN-HcW.title" = "VOLUME_MNT_POINT";
 
-/* Class = "NSTextFieldCell"; title = "Please select an update tree"; ObjectID = "87T-tG-CCh"; */
-"87T-tG-CCh.title" = "Bitte Update Zweig auswählen";
+/* Class = "NSTextFieldCell"; title = "Update tree"; ObjectID = "87T-tG-CCh"; */
+"87T-tG-CCh.title" = "Update Zweig";
 
 /* Class = "NSTextFieldCell"; title = "Free Space:"; ObjectID = "98G-qZ-qed"; */
 "98G-qZ-qed.title" = "Free Space:";
 
 /* Class = "NSViewController"; title = "Create USB Installer"; ObjectID = "aiQ-Qc-zPO"; */
-"aiQ-Qc-zPO.title" = "Erzeuge USB Installer";
+"aiQ-Qc-zPO.title" = "Erzeuge Installer";
 
 /* Class = "NSTextFieldCell"; title = "Label"; ObjectID = "AP0-MS-kzf"; */
 "AP0-MS-kzf.title" = "Label";
@@ -79,8 +82,8 @@
 /* Class = "NSMenuItem"; title = "Window"; ObjectID = "aUF-d1-5bR"; */
 "aUF-d1-5bR.title" = "Window";
 
-/* Class = "NSTextFieldCell"; title = "Download macOS"; ObjectID = "auW-AD-WoR"; */
-"auW-AD-WoR.title" = "Download macOS";
+/* Class = "NSTextFieldCell"; title = "ANYmacOS"; ObjectID = "auW-AD-WoR"; */
+"auW-AD-WoR.title" = "ANYmacOS";
 
 /* Class = "NSTextFieldCell"; title = "Image Size (GB):"; ObjectID = "AXx-VI-Gcr"; */
 "AXx-VI-Gcr.title" = "Image Größe (GB):";
@@ -205,6 +208,9 @@
 /* Class = "NSMenuItem"; title = "Services"; ObjectID = "NMo-om-nkz"; */
 "NMo-om-nkz.title" = "Services";
 
+/* Class = "NSBox"; title = "Progress"; ObjectID = "NN1-CH-htp"; */
+"NN1-CH-htp.title" = "Fortschritt";
+
 /* Class = "NSTextFieldCell"; title = "Label"; ObjectID = "nRv-3y-4dZ"; */
 "nRv-3y-4dZ.title" = "Label";
 
@@ -245,7 +251,7 @@
 "rEJ-UN-aGJ.title" = "CPU Type:";
 
 /* Class = "NSTextFieldCell"; title = "Downloaded:"; ObjectID = "sas-98-6im"; */
-"sas-98-6im.title" = "Runtergeladen:";
+"sas-98-6im.title" = "Heruntergeladen:";
 
 /* Class = "NSButtonCell"; title = "Start"; ObjectID = "SLF-3F-5CL"; */
 "SLF-3F-5CL.title" = "Start";
@@ -310,9 +316,6 @@
 /* Class = "NSMenuItem"; title = "Help"; ObjectID = "wpr-3q-Mcd"; */
 "wpr-3q-Mcd.title" = "Hilfe";
 
-/* Class = "NSButtonCell"; title = "Close"; ObjectID = "wzs-rh-ESc"; */
-"wzs-rh-ESc.title" = "Schließen";
-
 /* Class = "NSMenuItem"; title = "Copy"; ObjectID = "x3v-GG-iWU"; */
 "x3v-GG-iWU.title" = "Kopieren";
 
@@ -322,7 +325,7 @@
 /* Class = "NSBox"; title = "Box"; ObjectID = "xaj-On-nK9"; */
 "xaj-On-nK9.title" = "Box";
 
-/* Class = "NSTextFieldCell"; title = "Please select an OS"; ObjectID = "xfj-Ly-bLM"; */
+/* Class = "NSTextFieldCell"; title = "Select an OS"; ObjectID = "xfj-Ly-bLM"; */
 "xfj-Ly-bLM.title" = "Bitte wähle ein OS aus";
 
 /* Class = "NSTextFieldCell"; title = "VOLUME_TOT_SPACE"; ObjectID = "Yf4-Ct-QNd"; */

@@ -37,7 +37,7 @@
 	<key>SUEnableSystemProfiling</key>
 	<true/>
 	<key>SUFeedURL</key>
-	<string>https://update.kextupdater.de/anymacos/appcast.xml</string>
+	<string>https://www.sl-soft.de/extern/software/anymacos/appcast.xml</string>
 	<key>SUPublicEDKey</key>
 	<string>IocWX96bR2E4UoPBgFT3KVRVWbut/1HjJVrfChE6l+s=</string>
 	<key>SUScheduledCheckInterval</key>
