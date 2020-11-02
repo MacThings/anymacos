@@ -1,0 +1,604 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 52;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		1FA7862123002556002CDB52 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FA7862023002556002CDB52 /* AppDelegate.swift */; };
+		1FA7862323002556002CDB52 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FA7862223002556002CDB52 /* ViewController.swift */; };
+		1FA7862523002558002CDB52 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1FA7862423002558002CDB52 /* Assets.xcassets */; };
+		1FA7862823002558002CDB52 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1FA7862623002558002CDB52 /* Main.storyboard */; };
+		2A14A720230322F80048B14A /* CreateUSBInstallerTerminal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A14A71A230322F80048B14A /* CreateUSBInstallerTerminal.swift */; };
+		2A14A721230322F80048B14A /* DownloadmacOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A14A71B230322F80048B14A /* DownloadmacOS.swift */; };
+		2A14A722230322F80048B14A /* ChangeUpdateTree.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A14A71C230322F80048B14A /* ChangeUpdateTree.swift */; };
+		2A14A723230322F80048B14A /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A14A71D230322F80048B14A /* Settings.swift */; };
+		2A14A724230322F80048B14A /* Website.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A14A71E230322F80048B14A /* Website.swift */; };
+		2A14A725230322F80048B14A /* CreateUSBInstaller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A14A71F230322F80048B14A /* CreateUSBInstaller.swift */; };
+		2A8EB9912544AD5500F79DED /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2A8EB98F2544AD5500F79DED /* Localizable.strings */; };
+		2ABA6A5523042A200020ED1F /* anymacos in CopyFiles */ = {isa = PBXBuildFile; fileRef = 2ABA6A5323042A140020ED1F /* anymacos */; };
+		2ABDF3122550035A00B7647A /* About.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ABDF3112550035A00B7647A /* About.swift */; };
+		2AC6612E239F84AE00E859D7 /* WindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AC6612D239F84AE00E859D7 /* WindowController.swift */; };
+		2AC66135239F873C00E859D7 /* de.bashstrings in Copy Bashstrings */ = {isa = PBXBuildFile; fileRef = 2AC66130239F85B100E859D7 /* de.bashstrings */; };
+		2AC66136239F873C00E859D7 /* en.bashstrings in Copy Bashstrings */ = {isa = PBXBuildFile; fileRef = 2AC66132239F85C100E859D7 /* en.bashstrings */; };
+		2AE5A77023006BCE00FFD472 /* script.command in CopyFiles */ = {isa = PBXBuildFile; fileRef = 2A93CF3723004091004C832D /* script.command */; };
+		2AE5A77323006BDE00FFD472 /* aria2c in CopyFiles */ = {isa = PBXBuildFile; fileRef = 2A93CF3C23004097004C832D /* aria2c */; };
+		2AE5A77523006BDE00FFD472 /* PlistBuddy in CopyFiles */ = {isa = PBXBuildFile; fileRef = 2A93CF3E23004097004C832D /* PlistBuddy */; };
+		A8C7A519382814322114E58B /* Pods_ANYmacOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 812F8D56E17DD6E59694B461 /* Pods_ANYmacOS.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		2AC66134239F872C00E859D7 /* Copy Bashstrings */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = bashstrings;
+			dstSubfolderSpec = 7;
+			files = (
+				2AC66135239F873C00E859D7 /* de.bashstrings in Copy Bashstrings */,
+				2AC66136239F873C00E859D7 /* en.bashstrings in Copy Bashstrings */,
+			);
+			name = "Copy Bashstrings";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2AE5A76F23006BC000FFD472 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = script;
+			dstSubfolderSpec = 7;
+			files = (
+				2AE5A77023006BCE00FFD472 /* script.command in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2AE5A77223006BD400FFD472 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = bin;
+			dstSubfolderSpec = 7;
+			files = (
+				2ABA6A5523042A200020ED1F /* anymacos in CopyFiles */,
+				2AE5A77323006BDE00FFD472 /* aria2c in CopyFiles */,
+				2AE5A77523006BDE00FFD472 /* PlistBuddy in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		1FA7861D23002556002CDB52 /* ANYmacOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ANYmacOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		1FA7862023002556002CDB52 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		1FA7862223002556002CDB52 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		1FA7862423002558002CDB52 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		1FA7862723002558002CDB52 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		1FA7862923002558002CDB52 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2A0A7D742347B3070081F997 /* anymacos.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = anymacos.html; sourceTree = "<group>"; };
+		2A14A71A230322F80048B14A /* CreateUSBInstallerTerminal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateUSBInstallerTerminal.swift; sourceTree = "<group>"; };
+		2A14A71B230322F80048B14A /* DownloadmacOS.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DownloadmacOS.swift; sourceTree = "<group>"; };
+		2A14A71C230322F80048B14A /* ChangeUpdateTree.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChangeUpdateTree.swift; sourceTree = "<group>"; };
+		2A14A71D230322F80048B14A /* Settings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
+		2A14A71E230322F80048B14A /* Website.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Website.swift; sourceTree = "<group>"; };
+		2A14A71F230322F80048B14A /* CreateUSBInstaller.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateUSBInstaller.swift; sourceTree = "<group>"; };
+		2A2879F423094D2F00C29553 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Main.strings; sourceTree = "<group>"; };
+		2A8EB9902544AD5500F79DED /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
+		2A93CF3723004091004C832D /* script.command */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = script.command; sourceTree = "<group>"; };
+		2A93CF3823004091004C832D /* scriptori.command */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = scriptori.command; sourceTree = "<group>"; };
+		2A93CF3C23004097004C832D /* aria2c */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = aria2c; sourceTree = "<group>"; };
+		2A93CF3E23004097004C832D /* PlistBuddy */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = PlistBuddy; sourceTree = "<group>"; };
+		2A9CA38823003BCC0091C7FA /* Treeswitcher.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Treeswitcher.entitlements; sourceTree = "<group>"; };
+		2ABA6A5323042A140020ED1F /* anymacos */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = anymacos; sourceTree = "<group>"; };
+		2ABDF3112550035A00B7647A /* About.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = About.swift; path = ANYmacOS/About.swift; sourceTree = SOURCE_ROOT; };
+		2AC6612D239F84AE00E859D7 /* WindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WindowController.swift; sourceTree = "<group>"; };
+		2AC66130239F85B100E859D7 /* de.bashstrings */ = {isa = PBXFileReference; lastKnownFileType = text; path = de.bashstrings; sourceTree = "<group>"; };
+		2AC66132239F85C100E859D7 /* en.bashstrings */ = {isa = PBXFileReference; lastKnownFileType = text; path = en.bashstrings; sourceTree = "<group>"; };
+		4172A434EB3FB56BB45C514C /* Pods-Treeswitcher.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Treeswitcher.debug.xcconfig"; path = "Target Support Files/Pods-Treeswitcher/Pods-Treeswitcher.debug.xcconfig"; sourceTree = "<group>"; };
+		812F8D56E17DD6E59694B461 /* Pods_ANYmacOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ANYmacOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		BCC643F4C7808DDCCF70059B /* Pods-ANYmacOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ANYmacOS.debug.xcconfig"; path = "Target Support Files/Pods-ANYmacOS/Pods-ANYmacOS.debug.xcconfig"; sourceTree = "<group>"; };
+		C1920BEA8A7E9B40B6DCD74E /* Pods-ANYmacOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ANYmacOS.release.xcconfig"; path = "Target Support Files/Pods-ANYmacOS/Pods-ANYmacOS.release.xcconfig"; sourceTree = "<group>"; };
+		C835C23A99307DCD94F4A95A /* Pods-Treeswitcher.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Treeswitcher.release.xcconfig"; path = "Target Support Files/Pods-Treeswitcher/Pods-Treeswitcher.release.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		1FA7861A23002556002CDB52 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A8C7A519382814322114E58B /* Pods_ANYmacOS.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		1FA7861423002556002CDB52 = {
+			isa = PBXGroup;
+			children = (
+				1FA7861F23002556002CDB52 /* ANYmacOS */,
+				1FA7861E23002556002CDB52 /* Products */,
+				43259D35700C0A30740B20E6 /* Pods */,
+				85A61478E23DFD2BB84E96E4 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		1FA7861E23002556002CDB52 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				1FA7861D23002556002CDB52 /* ANYmacOS.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		1FA7861F23002556002CDB52 /* ANYmacOS */ = {
+			isa = PBXGroup;
+			children = (
+				2AC6612F239F852700E859D7 /* bashstrings */,
+				2A93CF3B23004097004C832D /* bin */,
+				2A93CF3623004091004C832D /* script */,
+				2ABDF3112550035A00B7647A /* About.swift */,
+				1FA7862023002556002CDB52 /* AppDelegate.swift */,
+				2A14A71C230322F80048B14A /* ChangeUpdateTree.swift */,
+				2A14A71F230322F80048B14A /* CreateUSBInstaller.swift */,
+				2A14A71A230322F80048B14A /* CreateUSBInstallerTerminal.swift */,
+				2A14A71B230322F80048B14A /* DownloadmacOS.swift */,
+				2A14A71D230322F80048B14A /* Settings.swift */,
+				2A14A71E230322F80048B14A /* Website.swift */,
+				1FA7862223002556002CDB52 /* ViewController.swift */,
+				2AC6612D239F84AE00E859D7 /* WindowController.swift */,
+				2A0A7D742347B3070081F997 /* anymacos.html */,
+				1FA7862423002558002CDB52 /* Assets.xcassets */,
+				1FA7862623002558002CDB52 /* Main.storyboard */,
+				1FA7862923002558002CDB52 /* Info.plist */,
+				2A8EB98F2544AD5500F79DED /* Localizable.strings */,
+				2A9CA38823003BCC0091C7FA /* Treeswitcher.entitlements */,
+			);
+			path = ANYmacOS;
+			sourceTree = "<group>";
+		};
+		2A93CF3623004091004C832D /* script */ = {
+			isa = PBXGroup;
+			children = (
+				2A93CF3723004091004C832D /* script.command */,
+				2A93CF3823004091004C832D /* scriptori.command */,
+			);
+			path = script;
+			sourceTree = "<group>";
+		};
+		2A93CF3B23004097004C832D /* bin */ = {
+			isa = PBXGroup;
+			children = (
+				2ABA6A5323042A140020ED1F /* anymacos */,
+				2A93CF3C23004097004C832D /* aria2c */,
+				2A93CF3E23004097004C832D /* PlistBuddy */,
+			);
+			path = bin;
+			sourceTree = "<group>";
+		};
+		2AC6612F239F852700E859D7 /* bashstrings */ = {
+			isa = PBXGroup;
+			children = (
+				2AC66130239F85B100E859D7 /* de.bashstrings */,
+				2AC66132239F85C100E859D7 /* en.bashstrings */,
+			);
+			path = bashstrings;
+			sourceTree = "<group>";
+		};
+		43259D35700C0A30740B20E6 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				4172A434EB3FB56BB45C514C /* Pods-Treeswitcher.debug.xcconfig */,
+				C835C23A99307DCD94F4A95A /* Pods-Treeswitcher.release.xcconfig */,
+				BCC643F4C7808DDCCF70059B /* Pods-ANYmacOS.debug.xcconfig */,
+				C1920BEA8A7E9B40B6DCD74E /* Pods-ANYmacOS.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		85A61478E23DFD2BB84E96E4 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				812F8D56E17DD6E59694B461 /* Pods_ANYmacOS.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		1FA7861C23002556002CDB52 /* ANYmacOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1FA7862D23002558002CDB52 /* Build configuration list for PBXNativeTarget "ANYmacOS" */;
+			buildPhases = (
+				450B6E2735A8E868DECFCF9F /* [CP] Check Pods Manifest.lock */,
+				1FA7861923002556002CDB52 /* Sources */,
+				1FA7861A23002556002CDB52 /* Frameworks */,
+				1FA7861B23002556002CDB52 /* Resources */,
+				2AC66134239F872C00E859D7 /* Copy Bashstrings */,
+				255429E7CDF65B34E150D186 /* [CP] Embed Pods Frameworks */,
+				2A14A726230325700048B14A /* Create Bash Binary */,
+				2AE5A76F23006BC000FFD472 /* CopyFiles */,
+				2AE5A77223006BD400FFD472 /* CopyFiles */,
+				2A6B431E230331ED009B3A47 /* Zip App and send to Homeshare */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ANYmacOS;
+			productName = Treeswitcher;
+			productReference = 1FA7861D23002556002CDB52 /* ANYmacOS.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		1FA7861523002556002CDB52 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1020;
+				LastUpgradeCheck = 1100;
+				ORGANIZATIONNAME = "";
+				TargetAttributes = {
+					1FA7861C23002556002CDB52 = {
+						CreatedOnToolsVersion = 10.2.1;
+						SystemCapabilities = {
+							com.apple.Sandbox = {
+								enabled = 0;
+							};
+						};
+					};
+				};
+			};
+			buildConfigurationList = 1FA7861823002556002CDB52 /* Build configuration list for PBXProject "ANYmacOS" */;
+			compatibilityVersion = "Xcode 11.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+				de,
+			);
+			mainGroup = 1FA7861423002556002CDB52;
+			productRefGroup = 1FA7861E23002556002CDB52 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				1FA7861C23002556002CDB52 /* ANYmacOS */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		1FA7861B23002556002CDB52 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1FA7862523002558002CDB52 /* Assets.xcassets in Resources */,
+				2A8EB9912544AD5500F79DED /* Localizable.strings in Resources */,
+				1FA7862823002558002CDB52 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		255429E7CDF65B34E150D186 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-ANYmacOS/Pods-ANYmacOS-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-ANYmacOS/Pods-ANYmacOS-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ANYmacOS/Pods-ANYmacOS-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		2A14A726230325700048B14A /* Create Bash Binary */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Create Bash Binary";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/bash;
+			shellScript = "#/bin/bash\n#\n\ncd /Users/luigi/Documents/Xcode/anymacos/ANYmacOS/script\nshc -r -f scriptori.command\nrm *.x.c\ncp scriptori.command.x ../bin/anymacos\nchmod u+x ../bin/anymacos\nrm scriptori.command.x\n";
+		};
+		2A6B431E230331ED009B3A47 /* Zip App and send to Homeshare */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Zip App and send to Homeshare";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/bash;
+			shellScript = "#/bin/bash\n#\n\ncp -r \"${TARGET_BUILD_DIR}\"/ANYmacOS.app /Applications/\nif [ -d /Volumes/Homeshare/Xcode/anymacos ]; then\n    cp \"/Users/luigi/Documents/Xcode/anymacos/ANYmacOS/anymacos.html\" \"/Volumes/Homeshare/Xcode/anymacos/upload/anymacos.html\"\n    rm /Volumes/Homeshare/Xcode/anymacos/upload/anymacos.zip 2> /dev/null\n    cd /Applications\n    ditto -c -k --sequesterRsrc --keepParent ANYmacOS.app /Volumes/Homeshare/Xcode/anymacos/upload/anymacos.zip\nfi\n\n\n";
+		};
+		450B6E2735A8E868DECFCF9F /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-ANYmacOS-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		1FA7861923002556002CDB52 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2A14A723230322F80048B14A /* Settings.swift in Sources */,
+				2A14A720230322F80048B14A /* CreateUSBInstallerTerminal.swift in Sources */,
+				2ABDF3122550035A00B7647A /* About.swift in Sources */,
+				2A14A724230322F80048B14A /* Website.swift in Sources */,
+				2A14A721230322F80048B14A /* DownloadmacOS.swift in Sources */,
+				2AC6612E239F84AE00E859D7 /* WindowController.swift in Sources */,
+				1FA7862323002556002CDB52 /* ViewController.swift in Sources */,
+				1FA7862123002556002CDB52 /* AppDelegate.swift in Sources */,
+				2A14A722230322F80048B14A /* ChangeUpdateTree.swift in Sources */,
+				2A14A725230322F80048B14A /* CreateUSBInstaller.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		1FA7862623002558002CDB52 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				1FA7862723002558002CDB52 /* Base */,
+				2A2879F423094D2F00C29553 /* de */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		2A8EB98F2544AD5500F79DED /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				2A8EB9902544AD5500F79DED /* de */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		1FA7862B23002558002CDB52 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_INJECT_BASE_ENTITLEMENTS = NO;
+				CODE_SIGN_STYLE = Manual;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = "";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				VALID_ARCHS = x86_64;
+			};
+			name = Debug;
+		};
+		1FA7862C23002558002CDB52 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_INJECT_BASE_ENTITLEMENTS = NO;
+				CODE_SIGN_STYLE = Manual;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = "";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = macosx;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALID_ARCHS = x86_64;
+			};
+			name = Release;
+		};
+		1FA7862E23002558002CDB52 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = BCC643F4C7808DDCCF70059B /* Pods-ANYmacOS.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "";
+				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_STYLE = Manual;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 122;
+				DEVELOPMENT_TEAM = "";
+				ENABLE_HARDENED_RUNTIME = YES;
+				INFOPLIST_FILE = ANYmacOS/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MARKETING_VERSION = 1.2.2;
+				PRODUCT_BUNDLE_IDENTIFIER = anymacos.slsoft.de;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_VERSION = 5.0;
+				VALID_ARCHS = x86_64;
+			};
+			name = Debug;
+		};
+		1FA7862F23002558002CDB52 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = C1920BEA8A7E9B40B6DCD74E /* Pods-ANYmacOS.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "";
+				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_STYLE = Manual;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 122;
+				DEVELOPMENT_TEAM = "";
+				ENABLE_HARDENED_RUNTIME = YES;
+				INFOPLIST_FILE = ANYmacOS/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MARKETING_VERSION = 1.2.2;
+				PRODUCT_BUNDLE_IDENTIFIER = anymacos.slsoft.de;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_VERSION = 5.0;
+				VALID_ARCHS = x86_64;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		1FA7861823002556002CDB52 /* Build configuration list for PBXProject "ANYmacOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1FA7862B23002558002CDB52 /* Debug */,
+				1FA7862C23002558002CDB52 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		1FA7862D23002558002CDB52 /* Build configuration list for PBXNativeTarget "ANYmacOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1FA7862E23002558002CDB52 /* Debug */,
+				1FA7862F23002558002CDB52 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 1FA7861523002556002CDB52 /* Project object */;
+}
