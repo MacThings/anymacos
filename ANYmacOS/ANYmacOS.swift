@@ -79,6 +79,56 @@ class ANYmacOS: NSViewController {
                 self.progress_wheel?.stopAnimation(self);
             }
         }
+        
+        UserDefaults.standard.set(NSUserName(), forKey: "User Name")
+        
+        let languageinit = UserDefaults.standard.string(forKey: "Language")
+        
+        let downloadpathinit = UserDefaults.standard.string(forKey: "Downloadpath")
+        if downloadpathinit == nil{
+            let defaultdir = "/Users/" + NSUserName() + "/Desktop/ANYmacOS/Download"
+            UserDefaults.standard.set(defaultdir, forKey: "Downloadpath")
+        }
+        
+        let paradlinit = UserDefaults.standard.string(forKey: "ParaDL")
+        if paradlinit == nil{
+            let defaultsize = "5"
+            UserDefaults.standard.set(defaultsize, forKey: "ParaDL")
+        }
+
+        let statustextusbinit = UserDefaults.standard.string(forKey: "StatustextUSB")
+        if statustextusbinit == nil{
+            if languageinit == "en" {
+                let defaultname = "Idle ..."
+                UserDefaults.standard.set(defaultname, forKey: "StatustextUSB")
+            } else {
+                let defaultname = "Warte ..."
+                UserDefaults.standard.set(defaultname, forKey: "StatustextUSB")
+            }
+        }
+        
+        let appvalidinit = UserDefaults.standard.string(forKey: "AppValid")
+        if appvalidinit == nil{
+            UserDefaults.standard.set(false, forKey: "AppValid")
+        }
+        
+        let defaults = UserDefaults.standard
+        defaults.removeObject(forKey: "DRVolName")
+        defaults.removeObject(forKey: "DRPartType")
+        defaults.removeObject(forKey: "DRFileSys")
+        defaults.removeObject(forKey: "DRDevLoc")
+        defaults.removeObject(forKey: "DRTotSpace")
+        defaults.removeObject(forKey: "DRFreeSpace")
+        defaults.removeObject(forKey: "DRMntPoint")
+        defaults.removeObject(forKey: "KillDL")
+        defaults.removeObject(forKey: "Applicationpath")
+        defaults.removeObject(forKey: "OnePhaseInstallPID")
+        defaults.removeObject(forKey: "AppValid")
+        defaults.removeObject(forKey: "OnePhaseInstall")
+        defaults.removeObject(forKey: "DLDone")
+        defaults.removeObject(forKey: "DLSize")
+        defaults.synchronize()
+        
     }
     
     @IBAction func donate(_ sender: Any) {

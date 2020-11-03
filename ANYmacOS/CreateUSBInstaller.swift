@@ -184,4 +184,9 @@ class CreateUSBInstaller: NSViewController {
             }
         }
     }
+    
+    @objc func cancel(_ sender: Any?) {
+        self.view.window?.close()
+    }
+    
 }

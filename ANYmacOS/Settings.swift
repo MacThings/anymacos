@@ -22,8 +22,15 @@ class Settings: NSViewController {
         super.viewDidLoad()
         // Do view setup here.
         self.preferredContentSize = NSMakeSize(self.view.frame.size.width, self.view.frame.size.height);
+
+        DispatchQueue.global(qos: .background).async {
+            self.syncShellExec(path: self.scriptPath, args: ["_initial"])
+            self.syncShellExec(path: self.scriptPath, args: ["_check_seed"])
+        }
         
         let seedinit = UserDefaults.standard.string(forKey: "CurrentSeed")
+       
+
     }
 
     @IBAction func set_download_path(_ sender: Any) {
@@ -125,6 +132,10 @@ class Settings: NSViewController {
         }
         process.waitUntilExit()
         filelHandler.readabilityHandler = nil
+    }
+    
+    @objc func cancel(_ sender: Any?) {
+        self.view.window?.close()
     }
     
 }

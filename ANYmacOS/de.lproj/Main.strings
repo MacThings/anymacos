@@ -46,6 +46,9 @@
 /* Class = "NSBox"; title = "Box"; ObjectID = "7nN-bg-Rpb"; */
 "7nN-bg-Rpb.title" = "Box";
 
+/* Class = "NSBox"; title = "Download path:"; ObjectID = "7Pp-D9-dCw"; */
+"7Pp-D9-dCw.title" = "Download Pfad:";
+
 /* Class = "NSViewController"; title = "Create USB Installer Terminal"; ObjectID = "7rv-PL-QFK"; */
 "7rv-PL-QFK.title" = "Create USB Installer Terminal";
 
@@ -103,6 +106,9 @@
 /* Class = "NSMenuItem"; title = "Preferences…"; ObjectID = "BOF-NM-1cW"; */
 "BOF-NM-1cW.title" = "Einstellungen…";
 
+/* Class = "NSButtonCell"; title = "Donate"; ObjectID = "Bpi-su-eEB"; */
+"Bpi-su-eEB.title" = "Spende";
+
 /* Class = "NSTextFieldCell"; title = "Image Name:"; ObjectID = "cGB-TJ-u88"; */
 "cGB-TJ-u88.title" = "Image Name:";
 
@@ -142,8 +148,8 @@
 /* Class = "NSMenuItem"; title = "ANYmacOS Help"; ObjectID = "FKE-Sm-Kum"; */
 "FKE-Sm-Kum.title" = "ANYmacOS Hilfe";
 
-/* Class = "NSTextFieldCell"; title = "Current Enrollment:"; ObjectID = "fN5-Aq-gRh"; */
-"fN5-Aq-gRh.title" = "Derzeitige Zugehörigkeit:";
+/* Class = "NSTextFieldCell"; title = "Currently with:"; ObjectID = "fN5-Aq-gRh"; */
+"fN5-Aq-gRh.title" = "Derzeit zugehörig:";
 
 /* Class = "NSTextFieldCell"; title = "Please select a Volume"; ObjectID = "g2O-9t-Kls"; */
 "g2O-9t-Kls.title" = "Bitte Volume auswählen";
@@ -174,6 +180,9 @@
 
 /* Class = "NSMenuItem"; title = "Show All"; ObjectID = "Kd2-mp-pUS"; */
 "Kd2-mp-pUS.title" = "Alle einblenden";
+
+/* Class = "NSBox"; title = "Download booster"; ObjectID = "keJ-9D-73B"; */
+"keJ-9D-73B.title" = "Download Beschleuniger";
 
 /* Class = "NSButtonCell"; title = "Refresh"; ObjectID = "kkE-Kh-B5J"; */
 "kkE-Kh-B5J.title" = "Auffrischen";
@@ -223,9 +232,6 @@
 /* Class = "NSButtonCell"; title = "Start"; ObjectID = "P2w-AE-vNC"; */
 "P2w-AE-vNC.title" = "Start";
 
-/* Class = "NSTextFieldCell"; title = "Download Path:"; ObjectID = "P2z-pg-DcK"; */
-"P2z-pg-DcK.title" = "Download Pfad:";
-
 /* Class = "NSTextFieldCell"; title = "Volume Name:"; ObjectID = "PDJ-64-zSh"; */
 "PDJ-64-zSh.title" = "Volume Name:";
 
@@ -243,6 +249,9 @@
 
 /* Class = "NSTextFieldCell"; title = "CPU Type:"; ObjectID = "rEJ-UN-aGJ"; */
 "rEJ-UN-aGJ.title" = "CPU Type:";
+
+/* Class = "NSBox"; title = "Change tree affiliation"; ObjectID = "SaL-gw-x2p"; */
+"SaL-gw-x2p.title" = "Ändere Zweigzugehörigkeit";
 
 /* Class = "NSTextFieldCell"; title = "Downloaded:"; ObjectID = "sas-98-6im"; */
 "sas-98-6im.title" = "Heruntergeladen:";
@@ -277,8 +286,8 @@
 /* Class = "NSMenuItem"; title = "Cut"; ObjectID = "uRl-iY-unG"; */
 "uRl-iY-unG.title" = "Cut";
 
-/* Class = "NSTextFieldCell"; title = "Parallel Downloads:"; ObjectID = "uZI-bI-JKp"; */
-"uZI-bI-JKp.title" = "Parallele Downloads:";
+/* Class = "NSTextFieldCell"; title = "Connections:"; ObjectID = "uZI-bI-JKp"; */
+"uZI-bI-JKp.title" = "Verbindungen:";
 
 /* Class = "NSMenuItem"; title = "Hide Others"; ObjectID = "Vdr-fp-XzO"; */
 "Vdr-fp-XzO.title" = "Andere ausblenden";
