@@ -84,7 +84,7 @@
 		2A93CF3823004091004C832D /* scriptori.command */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = scriptori.command; sourceTree = "<group>"; };
 		2A93CF3C23004097004C832D /* aria2c */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = aria2c; sourceTree = "<group>"; };
 		2A93CF3E23004097004C832D /* PlistBuddy */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = PlistBuddy; sourceTree = "<group>"; };
-		2A9CA38823003BCC0091C7FA /* Treeswitcher.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Treeswitcher.entitlements; sourceTree = "<group>"; };
+		2A9CA38823003BCC0091C7FA /* ANYmacOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ANYmacOS.entitlements; sourceTree = "<group>"; };
 		2ABA6A5323042A140020ED1F /* anymacos */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = anymacos; sourceTree = "<group>"; };
 		2ABDF3112550035A00B7647A /* About.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = About.swift; path = ANYmacOS/About.swift; sourceTree = SOURCE_ROOT; };
 		2AC6612D239F84AE00E859D7 /* WindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WindowController.swift; sourceTree = "<group>"; };
@@ -147,7 +147,7 @@
 				1FA7862623002558002CDB52 /* Main.storyboard */,
 				1FA7862923002558002CDB52 /* Info.plist */,
 				2A8EB98F2544AD5500F79DED /* Localizable.strings */,
-				2A9CA38823003BCC0091C7FA /* Treeswitcher.entitlements */,
+				2A9CA38823003BCC0091C7FA /* ANYmacOS.entitlements */,
 			);
 			path = ANYmacOS;
 			sourceTree = "<group>";
