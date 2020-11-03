@@ -184,10 +184,17 @@ function _download_counter()
             if [[ "$file_done" = "0" ]]; then
                 file_done=""
             fi
-            _helpDefaultWrite "DLDone" "$file_done"
             filesize=$( _helpDefaultRead "DLSize" )
+            if [[ "$file_done" -gt "$filesize" ]]; then
+                file_done="$filesize"
+            fi
+            _helpDefaultWrite "DLDone" "$file_done"
             percent=$( echo $(( file_done*100/filesize )) )
+            if [[ "$percent" -gt "100" ]]; then
+                percent="100"
+            fi
             _helpDefaultWrite "DLProgress" "$percent"
+
             sleep 0.5
 done
 
@@ -227,7 +234,7 @@ function _download_macos()
         if [[ "$syslang" = "en" ]]; then
             _helpDefaultWrite "Statustext" "Downloading ..."
         else
-            _helpDefaultWrite "Statustext" "Downloade: ..."
+            _helpDefaultWrite "Statustext" "Dateintransfer ..."
         fi
         echo "$line_progress" >> "$download_path"/.downloaded_files
     

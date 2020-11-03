@@ -11,7 +11,6 @@ import Cocoa
 class Settings: NSViewController {
 
     @IBOutlet weak var download_path_textfield: NSTextFieldCell!
-    @IBOutlet weak var image_path_textfield: NSTextField!
 
     let languageinit = UserDefaults.standard.string(forKey: "Language")
     let scriptPath = Bundle.main.path(forResource: "/script/script", ofType: "command")!
@@ -28,7 +27,7 @@ class Settings: NSViewController {
             self.syncShellExec(path: self.scriptPath, args: ["_check_seed"])
         }
         
-        let seedinit = UserDefaults.standard.string(forKey: "CurrentSeed")
+        //let seedinit = UserDefaults.standard.string(forKey: "CurrentSeed")
        
 
     }
@@ -59,32 +58,6 @@ class Settings: NSViewController {
         }
     }
 
-    @IBAction func set_image_path(_ sender: Any) {
-        let dialog = NSOpenPanel();
-        
-        dialog.title                   = NSLocalizedString("Choose a Folder", comment: "");
-        dialog.showsResizeIndicator    = true;
-        dialog.showsHiddenFiles        = false;
-        dialog.canChooseDirectories    = true;
-        dialog.canCreateDirectories    = true;
-        dialog.allowsMultipleSelection = false;
-        dialog.allowedFileTypes        = ["txt"];
-        
-        if (dialog.runModal() == NSApplication.ModalResponse.OK) {
-            let result = dialog.url // Pathname of the file
-            
-            if (result != nil) {
-                let path = result!.path
-                image_path_textfield.stringValue = path
-                let dlpath = (path as String)
-                UserDefaults.standard.set(dlpath, forKey: "Imagepath")
-            }
-        } else {
-            // User clicked on "Cancel"
-            return
-        }
-    }
-    
     @IBAction func seed_select(_ sender: Any) {
         let seedselect = (sender as AnyObject).selectedCell()!.tag
         if seedselect == 1 {
@@ -105,7 +78,7 @@ class Settings: NSViewController {
             self.syncShellExec(path: self.scriptPath, args: ["_setseed"])
             
             DispatchQueue.main.sync {
-                let seedinit = UserDefaults.standard.string(forKey: "CurrentSeed")
+                //let seedinit = UserDefaults.standard.string(forKey: "CurrentSeed")
                                 
             }
         }
