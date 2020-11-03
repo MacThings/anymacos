@@ -234,7 +234,7 @@ function _download_macos()
         if [[ "$syslang" = "en" ]]; then
             _helpDefaultWrite "Statustext" "Downloading ..."
         else
-            _helpDefaultWrite "Statustext" "Dateintransfer ..."
+            _helpDefaultWrite "Statustext" "Dateitransfer ..."
         fi
         echo "$line_progress" >> "$download_path"/.downloaded_files
     
