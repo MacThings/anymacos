@@ -211,8 +211,8 @@
 /* Class = "NSMenuItem"; title = "Services"; ObjectID = "NMo-om-nkz"; */
 "NMo-om-nkz.title" = "Services";
 
-/* Class = "NSBox"; title = "Progress"; ObjectID = "NN1-CH-htp"; */
-"NN1-CH-htp.title" = "Fortschritt";
+/* Class = "NSBox"; title = "Progress (in MB)"; ObjectID = "NN1-CH-htp"; */
+"NN1-CH-htp.title" = "Fortschritt (in MB)";
 
 /* Class = "NSTextFieldCell"; title = "Label"; ObjectID = "nRv-3y-4dZ"; */
 "nRv-3y-4dZ.title" = "Label";
@@ -253,8 +253,8 @@
 /* Class = "NSBox"; title = "Change tree affiliation"; ObjectID = "SaL-gw-x2p"; */
 "SaL-gw-x2p.title" = "Ändere Zweigzugehörigkeit";
 
-/* Class = "NSTextFieldCell"; title = "Downloaded:"; ObjectID = "sas-98-6im"; */
-"sas-98-6im.title" = "Heruntergeladen:";
+/* Class = "NSTextFieldCell"; title = "Loaded:"; ObjectID = "sas-98-6im"; */
+"sas-98-6im.title" = "Geladen:";
 
 /* Class = "NSButtonCell"; title = "Start"; ObjectID = "SLF-3F-5CL"; */
 "SLF-3F-5CL.title" = "Start";

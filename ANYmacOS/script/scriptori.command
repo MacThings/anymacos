@@ -144,28 +144,28 @@ function _setseed()
 function _select_seed_all()
 {
     mkdir "$temp_path" 2> /dev/null
-    curl https://kextupdater.slsoft.de/anymacos/seeds/selection > "$temp_path"/selection
+    curl https://www.sl-soft.de/extern/software/anymacos/seeds/selection > "$temp_path"/selection
     _helpDefaultWrite "Statustext" "$statustext"
 }
 
 function _select_seed_customer()
 {
     mkdir "$temp_path" 2> /dev/null
-    curl https://kextupdater.slsoft.de/anymacos/seeds/selection_customerseed > "$temp_path"/selection
+    curl https://www.sl-soft.de/extern/software/anymacos/seeds/selection_customerseed > "$temp_path"/selection
     _helpDefaultWrite "Statustext" "$statustext"
 }
 
 function _select_seed_developer()
 {
     mkdir "$temp_path" 2> /dev/null
-    curl https://kextupdater.slsoft.de/anymacos/seeds/selection_beta > "$temp_path"/selection
+    curl https://www.sl-soft.de/extern/software/anymacos/seeds/selection_beta > "$temp_path"/selection
     _helpDefaultWrite "Statustext" "$statustext"
 }
 
 function _select_seed_public()
 {
     mkdir "$temp_path" 2> /dev/null
-    curl https://kextupdater.slsoft.de/anymacos/seeds/selection_seed > "$temp_path"/selection
+    curl https://www.sl-soft.de/extern/software/anymacos/seeds/selection_seed > "$temp_path"/selection
     _helpDefaultWrite "Statustext" "$statustext"
 }
 
@@ -213,7 +213,7 @@ function _download_macos()
     
     rm "$temp_path"/files
     
-    curl https://kextupdater.slsoft.de/anymacos/seeds/"$choice" > "$temp_path"/files
+    curl https://www.sl-soft.de/extern/software/anymacos/seeds/"$choice" > "$temp_path"/files
 
     touch "$download_path"/.downloaded_files
     while IFS= read -r line
