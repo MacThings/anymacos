@@ -283,7 +283,7 @@ done < ""$temp_path"/files"
         exit
     fi
     
-    ### Checks if BigSur is downloading
+    ### Checks if BigSur is downloading ###
     
     if [ -f "$download_path/InstallAssistant.pkg" ]; then
         osascript -e 'do shell script "sudo /usr/sbin/installer -pkg '"'$download_path'"'/InstallAssistant.pkg -target /" with administrator privileges'
