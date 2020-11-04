@@ -282,7 +282,7 @@ done < ""$temp_path"/files"
     
     ### Checks if BigSur is downloading
 
-    _helpDefaultWrite "Stop" "Yes"
+    #_helpDefaultWrite "Stop" "Yes"
     
     if [ -f "$download_path/UpdateBrain.zip" ]; then
         osascript -e 'do shell script "sudo /usr/sbin/installer -pkg '"'$download_path'"'/InstallAssistant.pkg -target /" with administrator privileges'
