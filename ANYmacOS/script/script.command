@@ -194,11 +194,30 @@ function _download_counter()
 
             sleep 0.5
 done
-
 }
+
+function _check_sip
+{
+    sipcheck1=$( csrutil status | grep "Kext Signing" | sed "s/.*\://g" | xargs )
+    sipcheck2=$( csrutil status | grep "System Integrity Protection status" | sed -e "s/.*\://g" -e "s/\ (.*//g" -e "s/\.//g" | xargs )
+    if [[ $sipcheck1 = "disabled" ]]; then
+        sipcheck="disabled"
+    elif [[ $sipcheck2 = "disabled" ]]; then
+        sipcheck="disabled"
+    fi
+
+    if [[ $sipcheck != "disabled" ]]; then
+        _helpDefaultWrite "SIP" "On"
+    else
+        _helpDefaultWrite "SIP" "Off"
+    fi
+}
+
 function _download_macos()
 {
     _download_counter &
+    
+    _check_sip
 
     choice=$( _helpDefaultRead "Choice" )
     parallel_downloads=$( _helpDefaultRead "ParaDL" )
@@ -212,7 +231,7 @@ function _download_macos()
     
     curl https://www.sl-soft.de/extern/software/anymacos/seeds/"$choice" > "$temp_path"/files
 
-    touch "$download_path"/.downloaded_files
+    touch "$download_path"/.anymacos_download
     while IFS= read -r line
     do
     kill_download=$( _helpDefaultRead "KillDL" )
@@ -231,9 +250,9 @@ function _download_macos()
         if [[ "$syslang" = "en" ]]; then
             _helpDefaultWrite "Statustext" "Downloading ..."
         else
-            _helpDefaultWrite "Statustext" "Dateintransfer ..."
+            _helpDefaultWrite "Statustext" "Dateitransfer ..."
         fi
-        echo "$line_progress" >> "$download_path"/.downloaded_files
+        echo "$line_progress" >> "$download_path"/.anymacos_download
     
         dl_size=$( /usr/bin/curl -s -L -I "$line" | grep "ength:" | sed 's/.*th://g' | xargs | awk '{ byte =$1 /1024/1024; print byte " MB" }' | awk '{printf "%.0f\n", $1}' )
         if [[ "$dl_size" = "0" ]]; then
@@ -253,7 +272,7 @@ function _download_macos()
         
 done < ""$temp_path"/files"
 
-    echo Neu.dist >> "$download_path"/.downloaded_files
+    echo Neu.dist >> "$download_path"/.anymacos_download
 
     kill_download=$( _helpDefaultRead "KillDL" )
     _helpDefaultWrite "Stop" "Yes"
@@ -284,15 +303,27 @@ done < ""$temp_path"/files"
     fi
     
     ### Checks if BigSur is downloading ###
+    sip_status=$( _helpDefaultRead "SIP" )
     
     if [ -f "$download_path/InstallAssistant.pkg" ]; then
-        osascript -e 'do shell script "sudo /usr/sbin/installer -pkg '"'$download_path'"'/InstallAssistant.pkg -target /" with administrator privileges'
-        installok="$?"
+        if [[ "$sip_status" = "On" ]]; then
+            osascript -e 'do shell script "sudo /usr/sbin/installer -pkg '"'$download_path'"'/InstallAssistant.pkg -target /" with administrator privileges'
+            installok="$?"
+        else
+            echo extern
+            echo "sudo /usr/sbin/installer -pkg \"$download_path\"/InstallAssistant.pkg -target /" > "$temp_path"/build.command
+        fi
+        
     else
         sed '/installation-check/d' "$download_path"/*English.dist > "$download_path"/Neu.dist
-    
-        osascript -e 'do shell script "sudo /usr/sbin/installer -pkg '"'$download_path'"'/Neu.dist -target /" with administrator privileges'
-        installok="$?"
+        if [[ "$sip_status" = "On" ]]; then
+            osascript -e 'do shell script "sudo /usr/sbin/installer -pkg '"'$download_path'"'/Neu.dist -target /" with administrator privileges'
+            installok="$?"
+        else
+            echo "sudo /usr/sbin/installer -pkg \"$download_path\"/Neu.dist -target /" > "$temp_path"/build.command
+            
+        fi
+            
     fi
     
     if [[ "$installok" = "0" ]]; then
@@ -316,7 +347,7 @@ done < ""$temp_path"/files"
 function _remove_downloads()
 {
 
- if [ -f "$download_path"/.downloaded_files ]; then
+ if [ -f "$download_path"/.anymacos_download ]; then
         if [[ "$syslang" = "en" ]]; then
             _helpDefaultWrite "Statustext" "Cleaning Downloadfolder"
         else
@@ -325,10 +356,10 @@ function _remove_downloads()
         while IFS= read -r line
         do
             rm "$download_path"/"$line" 2> /dev/null
-        done < ""$download_path"/.downloaded_files"
+        done < ""$download_path"/.anymacos_download"
         rm "$download_path"/*English.dist 2> /dev/null
         rm "$download_path"/*.aria2 2> /dev/null
-        rm "$download_path"/.downloaded_files
+        rm "$download_path"/.anymacos_download
     fi
 
 }
@@ -449,24 +480,6 @@ function _check_if_valid()
 
 function _start_installer_creation()
 {
-
-    #sipcheck1=$( csrutil status | grep "Kext Signing" | sed "s/.*\://g" | xargs )
-    #sipcheck2=$( csrutil status | grep "System Integrity Protection status" | sed -e "s/.*\://g" -e "s/\ (.*//g" -e "s/\.//g" | xargs )
-    #if [[ $sipcheck1 = "disabled" ]]; then
-    #sipcheck="disabled"
-    #elif [[ $sipcheck2 = "disabled" ]]; then
-    #sipcheck="disabled"
-    #fi
-
-    #if [[ $sipcheck != "disabled" ]]; then
-        #if [[ "$syslang" = "en" ]]; then
-            #echo "🚫 Error. You must disable SIP first."
-            #exit
-        #else
-            #echo "🚫 Fehler. Du musst erst SIP deaktivieren."
-            #exit
-        #fi
-   #fi
 
     targetvolume=$( _helpDefaultRead "DRMntPoint" )
     targetvolumename=$( echo "$targetvolume" |sed 's/.*\///g' )
