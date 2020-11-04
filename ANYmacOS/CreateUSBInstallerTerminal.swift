@@ -38,14 +38,6 @@ class CreateUSBInstallerTerminal: NSViewController {
             self.start_button.isEnabled=false
         }
         
-        let onephaseinit = UserDefaults.standard.string(forKey: "OnePhaseInstall")
-        if onephaseinit == "0"{
-            self.start_button_one_phase.isHidden=true
-            self.start_button.isHidden=false
-        } else{
-            self.start_button_one_phase.isHidden=false
-            self.start_button.isHidden=true
-        }
     }
     
     @IBAction func start_button(_ sender: Any) {
@@ -122,28 +114,14 @@ class CreateUSBInstallerTerminal: NSViewController {
             
             DispatchQueue.main.async {
                 let applicationvalid = UserDefaults.standard.string(forKey: "AppValid")
-                if applicationvalid == nil{
-                    let applicationpathinit = UserDefaults.standard.string(forKey: "Applicationpath")
-                    if applicationpathinit != nil{
-                        let onephaseinit = UserDefaults.standard.string(forKey: "OnePhaseInstall")
-                        if onephaseinit == "0"{
-                            self.start_button_one_phase.isHidden=true
-                            self.start_button_one_phase.isEnabled=false
-                            self.start_button.isHidden=false
-                            self.start_button.isEnabled=true
-                        } else{
-                            self.start_button_one_phase.isHidden=false
-                            self.start_button_one_phase.isEnabled=true
-                            self.start_button.isHidden=true
-                            self.start_button.isEnabled=false
-                        }
+                if applicationvalid == "Yes"{
+                        self.start_button.isEnabled=true
+                    } else {
+                        self.start_button.isEnabled=false
                     }
                 }
-                if applicationvalid != nil {
-                    self.start_button_one_phase.isEnabled=false
-                    self.start_button.isEnabled=false
-                }
-            }
+             
+            
         }
     }
     

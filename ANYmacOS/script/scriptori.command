@@ -34,7 +34,7 @@ sparseimage_path=$( _helpDefaultRead "Imagepath" )
 seed_choice=$( _helpDefaultRead "CurrentSeed" )
 seedcatalog_path="/System/Library/PrivateFrameworks/Seeding.framework/Versions/Current/Resources/SeedCatalogs.plist"
 sucatalog="seed.sucatalog"
-#volume_name=$( _helpDefaultRead "Volumename" )
+volume_name=$( _helpDefaultRead "Volumename" )
 
 hwspecs=$( system_profiler SPHardwareDataType )
 osversion=$( sw_vers | grep ProductVersion | cut -d':' -f2 | xargs )
@@ -234,7 +234,7 @@ function _download_macos()
         if [[ "$syslang" = "en" ]]; then
             _helpDefaultWrite "Statustext" "Downloading ..."
         else
-            _helpDefaultWrite "Statustext" "Dateitransfer ..."
+            _helpDefaultWrite "Statustext" "Dateintransfer ..."
         fi
         echo "$line_progress" >> "$download_path"/.downloaded_files
     
@@ -290,7 +290,7 @@ done < ""$temp_path"/files"
     else
         sed '/installation-check/d' "$download_path"/*English.dist > "$download_path"/Neu.dist
     
-        osascript -e 'do shell script "sudo /usr/sbin/installer -pkg '"'$download_path'"'/Neu.dist -target /Applications" with administrator privileges'
+        osascript -e 'do shell script "sudo /usr/sbin/installer -pkg '"'$download_path'"'/Neu.dist -target /" with administrator privileges'
         installok="$?"
     fi
     
@@ -384,7 +384,6 @@ function _get_drives()
     done < ""$temp_path"/volumes"
 
     rm "$temp_path"/volumes 2> /dev/null
-    #cat "$temp_path"/volumes2 |grep -v "$volume_name" |grep -v "install_app" > "$temp_path"/volumes
     cat "$temp_path"/volumes2 |grep -v "install_app" > "$temp_path"/volumes
 
     perl -e 'truncate $ARGV[0], ((-s $ARGV[0]) - 1)' "$temp_path"/volumes  2> /dev/null
@@ -441,7 +440,7 @@ function _check_if_valid()
             echo "Die gewählte Applikation ist nicht gültig! ☝🏼 Bitte wähle eine Andere."
         fi
     else
-        _helpDefaultDelete "AppValid"
+        _helpDefaultWrite "AppValid" "Yes"
         if [[ "$syslang" = "en" ]]; then
             echo "Your App seems to be valid. 👍🏼 Let´s go and press \"Start\"."
         else
@@ -498,14 +497,9 @@ function _start_installer_creation()
 
 function _abort_installer_creation()
 {
-    onephasepid=$( _helpDefaultRead "OnePhaseInstallPID" )
-    if [ $onephasepid = 1 ]; then
-        diskutil unmountDisk force /Volumes/app_install 2> /dev/null
-        pkill anymacos
-    else
-        pkill anymacos
+        pkill  -f anymacos
+        exit
         osascript -e 'do shell script "sudo pkill createinstallmedia eraseVolume noverify && kill -kill '"'$onephasepid'"'" with administrator privileges'
-    fi
 }
 
 function _open_utilities()
