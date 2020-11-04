@@ -188,6 +188,7 @@ class ANYmacOS: NSViewController {
         self.abort_button.isHidden=false
 
         DispatchQueue.global(qos: .background).async {
+            self.syncShellExec(path: self.scriptPath, args: ["_remove_downloads"])
             self.syncShellExec(path: self.scriptPath, args: ["_download_macos"])
             
             DispatchQueue.main.async {
