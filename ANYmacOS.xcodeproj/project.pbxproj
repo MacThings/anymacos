@@ -17,18 +17,30 @@
 		2A14A724230322F80048B14A /* Website.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A14A71E230322F80048B14A /* Website.swift */; };
 		2A14A725230322F80048B14A /* CreateUSBInstaller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A14A71F230322F80048B14A /* CreateUSBInstaller.swift */; };
 		2A8EB9912544AD5500F79DED /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2A8EB98F2544AD5500F79DED /* Localizable.strings */; };
-		2ABA6A5523042A200020ED1F /* anymacos in CopyFiles */ = {isa = PBXBuildFile; fileRef = 2ABA6A5323042A140020ED1F /* anymacos */; };
+		2ABCD38925533AD00015E463 /* script.command in CopyFiles */ = {isa = PBXBuildFile; fileRef = 2A93CF3823004091004C832D /* script.command */; };
+		2ABCD39025533DC90015E463 /* kill.command in Resources */ = {isa = PBXBuildFile; fileRef = 2ABCD38F25533DC90015E463 /* kill.command */; };
+		2ABCD39225533DEF0015E463 /* kill.command in CopyFiles */ = {isa = PBXBuildFile; fileRef = 2ABCD38F25533DC90015E463 /* kill.command */; };
 		2ABDF3122550035A00B7647A /* About.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ABDF3112550035A00B7647A /* About.swift */; };
 		2AC6612E239F84AE00E859D7 /* WindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AC6612D239F84AE00E859D7 /* WindowController.swift */; };
 		2AC66135239F873C00E859D7 /* de.bashstrings in Copy Bashstrings */ = {isa = PBXBuildFile; fileRef = 2AC66130239F85B100E859D7 /* de.bashstrings */; };
 		2AC66136239F873C00E859D7 /* en.bashstrings in Copy Bashstrings */ = {isa = PBXBuildFile; fileRef = 2AC66132239F85C100E859D7 /* en.bashstrings */; };
-		2AE5A77023006BCE00FFD472 /* script.command in CopyFiles */ = {isa = PBXBuildFile; fileRef = 2A93CF3723004091004C832D /* script.command */; };
 		2AE5A77323006BDE00FFD472 /* aria2c in CopyFiles */ = {isa = PBXBuildFile; fileRef = 2A93CF3C23004097004C832D /* aria2c */; };
 		2AE5A77523006BDE00FFD472 /* PlistBuddy in CopyFiles */ = {isa = PBXBuildFile; fileRef = 2A93CF3E23004097004C832D /* PlistBuddy */; };
 		A8C7A519382814322114E58B /* Pods_ANYmacOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 812F8D56E17DD6E59694B461 /* Pods_ANYmacOS.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
+		2ABCD38825533ABF0015E463 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = script;
+			dstSubfolderSpec = 7;
+			files = (
+				2ABCD39225533DEF0015E463 /* kill.command in CopyFiles */,
+				2ABCD38925533AD00015E463 /* script.command in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		2AC66134239F872C00E859D7 /* Copy Bashstrings */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -41,23 +53,12 @@
 			name = "Copy Bashstrings";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		2AE5A76F23006BC000FFD472 /* CopyFiles */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = script;
-			dstSubfolderSpec = 7;
-			files = (
-				2AE5A77023006BCE00FFD472 /* script.command in CopyFiles */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		2AE5A77223006BD400FFD472 /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = bin;
 			dstSubfolderSpec = 7;
 			files = (
-				2ABA6A5523042A200020ED1F /* anymacos in CopyFiles */,
 				2AE5A77323006BDE00FFD472 /* aria2c in CopyFiles */,
 				2AE5A77523006BDE00FFD472 /* PlistBuddy in CopyFiles */,
 			);
@@ -81,12 +82,11 @@
 		2A14A71F230322F80048B14A /* CreateUSBInstaller.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateUSBInstaller.swift; sourceTree = "<group>"; };
 		2A2879F423094D2F00C29553 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Main.strings; sourceTree = "<group>"; };
 		2A8EB9902544AD5500F79DED /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
-		2A93CF3723004091004C832D /* script.command */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = script.command; sourceTree = "<group>"; };
-		2A93CF3823004091004C832D /* scriptori.command */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = scriptori.command; sourceTree = "<group>"; };
+		2A93CF3823004091004C832D /* script.command */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = script.command; sourceTree = "<group>"; };
 		2A93CF3C23004097004C832D /* aria2c */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = aria2c; sourceTree = "<group>"; };
 		2A93CF3E23004097004C832D /* PlistBuddy */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = PlistBuddy; sourceTree = "<group>"; };
 		2A9CA38823003BCC0091C7FA /* ANYmacOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ANYmacOS.entitlements; sourceTree = "<group>"; };
-		2ABA6A5323042A140020ED1F /* anymacos */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = anymacos; sourceTree = "<group>"; };
+		2ABCD38F25533DC90015E463 /* kill.command */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = kill.command; sourceTree = "<group>"; };
 		2ABDF3112550035A00B7647A /* About.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = About.swift; path = ANYmacOS/About.swift; sourceTree = SOURCE_ROOT; };
 		2AC6612D239F84AE00E859D7 /* WindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WindowController.swift; sourceTree = "<group>"; };
 		2AC66130239F85B100E859D7 /* de.bashstrings */ = {isa = PBXFileReference; lastKnownFileType = text; path = de.bashstrings; sourceTree = "<group>"; };
@@ -157,8 +157,8 @@
 		2A93CF3623004091004C832D /* script */ = {
 			isa = PBXGroup;
 			children = (
-				2A93CF3723004091004C832D /* script.command */,
-				2A93CF3823004091004C832D /* scriptori.command */,
+				2ABCD38F25533DC90015E463 /* kill.command */,
+				2A93CF3823004091004C832D /* script.command */,
 			);
 			path = script;
 			sourceTree = "<group>";
@@ -166,7 +166,6 @@
 		2A93CF3B23004097004C832D /* bin */ = {
 			isa = PBXGroup;
 			children = (
-				2ABA6A5323042A140020ED1F /* anymacos */,
 				2A93CF3C23004097004C832D /* aria2c */,
 				2A93CF3E23004097004C832D /* PlistBuddy */,
 			);
@@ -215,7 +214,7 @@
 				2AC66134239F872C00E859D7 /* Copy Bashstrings */,
 				255429E7CDF65B34E150D186 /* [CP] Embed Pods Frameworks */,
 				2A14A726230325700048B14A /* Create Bash Binary */,
-				2AE5A76F23006BC000FFD472 /* CopyFiles */,
+				2ABCD38825533ABF0015E463 /* CopyFiles */,
 				2AE5A77223006BD400FFD472 /* CopyFiles */,
 				2A6B431E230331ED009B3A47 /* Zip App and send to Homeshare */,
 			);
@@ -273,6 +272,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1FA7862523002558002CDB52 /* Assets.xcassets in Resources */,
+				2ABCD39025533DC90015E463 /* kill.command in Resources */,
 				2A8EB9912544AD5500F79DED /* Localizable.strings in Resources */,
 				1FA7862823002558002CDB52 /* Main.storyboard in Resources */,
 			);
@@ -314,7 +314,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/bash;
-			shellScript = "#/bin/bash\n#\n\ncd /Users/luigi/Documents/Xcode/anymacos/ANYmacOS/script\nshc -r -f scriptori.command\nrm *.x.c\ncp scriptori.command.x ../bin/anymacos\nchmod u+x ../bin/anymacos\nrm scriptori.command.x\n";
+			shellScript = "#/bin/bash\n#\nexit\ncd /Users/luigi/Documents/Xcode/anymacos/ANYmacOS/script\nshc -r -f scriptori.command\nrm *.x.c\ncp scriptori.command.x ../bin/anymacos\nchmod u+x ../bin/anymacos\nrm scriptori.command.x\n";
 		};
 		2A6B431E230331ED009B3A47 /* Zip App and send to Homeshare */ = {
 			isa = PBXShellScriptBuildPhase;
