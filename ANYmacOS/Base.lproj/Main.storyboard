@@ -407,7 +407,7 @@
                                 </textFieldCell>
                             </textField>
                             <box focusRingType="none" verticalHuggingPriority="750" fixedFrame="YES" boxType="separator" translatesAutoresizingMaskIntoConstraints="NO" id="ocf-ge-QVU">
-                                <rect key="frame" x="11" y="339" width="411" height="5"/>
+                                <rect key="frame" x="5" y="339" width="397" height="5"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                             </box>
                             <box fixedFrame="YES" boxType="custom" cornerRadius="4" title="Box" translatesAutoresizingMaskIntoConstraints="NO" id="9db-LC-h2T">
@@ -666,6 +666,11 @@
                                     <action selector="donate:" target="gJF-20-phu" id="oMH-cW-CaU"/>
                                 </connections>
                             </button>
+                            <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="u0a-VH-rP7">
+                                <rect key="frame" x="347" y="348" width="40" height="40"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="Logo" id="Ora-QZ-my2"/>
+                            </imageView>
                         </subviews>
                     </view>
                     <connections>
@@ -1387,7 +1392,7 @@ DQ
         </scene>
     </scenes>
     <resources>
-        <image name="Logo" width="482" height="481"/>
+        <image name="Logo" width="512" height="512"/>
         <image name="paypal-logo" width="16" height="18"/>
     </resources>
 </document>
