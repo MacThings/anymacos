@@ -34,7 +34,7 @@ sparseimage_path=$( _helpDefaultRead "Imagepath" )
 seed_choice=$( _helpDefaultRead "CurrentSeed" )
 seedcatalog_path="/System/Library/PrivateFrameworks/Seeding.framework/Versions/Current/Resources/SeedCatalogs.plist"
 sucatalog="seed.sucatalog"
-volume_name=$( _helpDefaultRead "Volumename" )
+#volume_name=$( _helpDefaultRead "Volumename" )
 
 hwspecs=$( system_profiler SPHardwareDataType )
 osversion=$( sw_vers | grep ProductVersion | cut -d':' -f2 | xargs )
@@ -384,7 +384,8 @@ function _get_drives()
     done < ""$temp_path"/volumes"
 
     rm "$temp_path"/volumes 2> /dev/null
-    cat "$temp_path"/volumes2 |grep -v "$volume_name" |grep -v "install_app" > "$temp_path"/volumes
+    #cat "$temp_path"/volumes2 |grep -v "$volume_name" |grep -v "install_app" > "$temp_path"/volumes
+    cat "$temp_path"/volumes2 |grep -v "install_app" > "$temp_path"/volumes
 
     perl -e 'truncate $ARGV[0], ((-s $ARGV[0]) - 1)' "$temp_path"/volumes  2> /dev/null
 
