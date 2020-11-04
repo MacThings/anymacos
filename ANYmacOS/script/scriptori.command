@@ -30,11 +30,8 @@ fi
 sys_language=$( defaults read -g AppleLocale )
 download_path=$( _helpDefaultRead "Downloadpath" )
 temp_path="/private/tmp/anymacos"
-sparseimage_path=$( _helpDefaultRead "Imagepath" )
 seed_choice=$( _helpDefaultRead "CurrentSeed" )
 seedcatalog_path="/System/Library/PrivateFrameworks/Seeding.framework/Versions/Current/Resources/SeedCatalogs.plist"
-sucatalog="seed.sucatalog"
-volume_name=$( _helpDefaultRead "Volumename" )
 
 hwspecs=$( system_profiler SPHardwareDataType )
 osversion=$( sw_vers | grep ProductVersion | cut -d':' -f2 | xargs )

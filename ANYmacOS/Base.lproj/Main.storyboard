@@ -154,34 +154,16 @@
             <objects>
                 <viewController title="About ANYmacOS" id="tkt-bG-Dha" customClass="About" customModule="ANYmacOS" sceneMemberID="viewController">
                     <view key="view" id="jGV-k0-K3I">
-                        <rect key="frame" x="0.0" y="0.0" width="248" height="274"/>
+                        <rect key="frame" x="0.0" y="0.0" width="248" height="222"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ZMs-Wo-FAT">
-                                <rect key="frame" x="-2" y="239" width="252" height="24"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <textFieldCell key="cell" lineBreakMode="clipping" alignment="center" title="ANYmacOS" id="sQk-hU-meB">
-                                    <font key="font" metaFont="systemBlack" size="20"/>
-                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                </textFieldCell>
-                            </textField>
                             <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jUd-VS-A4h">
-                                <rect key="frame" x="38" y="60" width="171" height="171"/>
+                                <rect key="frame" x="38" y="44" width="171" height="171"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="Logo" id="eTU-rZ-vOJ"/>
                             </imageView>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kvW-nE-fhp">
-                                <rect key="frame" x="-2" y="13" width="252" height="17"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <textFieldCell key="cell" lineBreakMode="clipping" alignment="center" title="Icon by &quot;Schorse&quot;" id="m4u-aM-gMG">
-                                    <font key="font" metaFont="system"/>
-                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                </textFieldCell>
-                            </textField>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="AaL-AX-3rV">
-                                <rect key="frame" x="-2" y="36" width="252" height="16"/>
+                                <rect key="frame" x="-2" y="20" width="252" height="16"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <textFieldCell key="cell" lineBreakMode="clipping" alignment="center" title="Label" id="f0A-ut-oLo">
                                     <font key="font" metaFont="systemBold" size="15"/>
@@ -197,7 +179,7 @@
                 </viewController>
                 <customObject id="WMg-hm-lqW" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-261" y="306"/>
+            <point key="canvasLocation" x="-261" y="280"/>
         </scene>
         <!--Window Controller-->
         <scene sceneID="R2V-B0-nI4">
@@ -593,7 +575,7 @@
                                             </connections>
                                         </progressIndicator>
                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="h0k-BR-C7T">
-                                            <rect key="frame" x="326" y="4" width="25" height="15"/>
+                                            <rect key="frame" x="324" y="3" width="25" height="15"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <textFieldCell key="cell" lineBreakMode="clipping" alignment="right" title="100" id="rnO-8J-pbA">
                                                 <font key="font" metaFont="cellTitle"/>
@@ -605,7 +587,7 @@
                                             </connections>
                                         </textField>
                                         <textField hidden="YES" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mIt-1J-fba">
-                                            <rect key="frame" x="348" y="4" width="15" height="15"/>
+                                            <rect key="frame" x="346" y="3" width="15" height="15"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <textFieldCell key="cell" lineBreakMode="clipping" alignment="left" title="%" id="wwB-G7-rKN">
                                                 <font key="font" metaFont="cellTitle"/>
