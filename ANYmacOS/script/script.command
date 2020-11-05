@@ -218,7 +218,8 @@ done
 function _download_macos()
 {
     _download_counter &
-
+    
+    sip_status=$( _helpDefaultRead "SIP" )
     choice=$( _helpDefaultRead "Choice" )
     parallel_downloads=$( _helpDefaultRead "ParaDL" )
     download_path=$( _helpDefaultRead "Downloadpath" )
@@ -272,7 +273,7 @@ function _download_macos()
         
 done < ""$temp_path"/files"
 
-    echo Neu.dist >> "$download_path"/.anymacos_download
+    echo English.dist >> "$download_path"/.anymacos_download
 
     kill_download=$( _helpDefaultRead "KillDL" )
     _helpDefaultWrite "Stop" "Yes"
@@ -285,10 +286,12 @@ done < ""$temp_path"/files"
         exit
     fi
 
-    if [[ "$syslang" = "en" ]]; then
-        _helpDefaultWrite "Statustext" "Creating Installer-Application ..."
-    else
-        _helpDefaultWrite "Statustext" "Erzeuge Installer-Application ..."
+    if [[ "$sip_status" = "Off" ]]; then
+        if [[ "$syslang" = "en" ]]; then
+            _helpDefaultWrite "Statustext" "Creating Installer-Application ..."
+        else
+            _helpDefaultWrite "Statustext" "Erzeuge Installer-Application ..."
+        fi
     fi
 
     kill_download=$( _helpDefaultRead "KillDL" )
@@ -303,44 +306,38 @@ done < ""$temp_path"/files"
     fi
     
     ### Checks if BigSur is downloading ###
-    sip_status=$( _helpDefaultRead "SIP" )
     
-    if [ -f "$download_path/InstallAssistant.pkg" ]; then
-        if [[ "$sip_status" = "On" ]]; then
-            osascript -e 'do shell script "sudo /usr/sbin/installer -pkg '"'$download_path'"'/InstallAssistant.pkg -target /" with administrator privileges'
-            installok="$?"
+    if [[ "$sip_status" = "Off" ]]; then
+        if [ -f "$download_path/InstallAssistant.pkg" ]; then
+            if [[ "$sip_status" = "Off" ]]; then
+                osascript -e 'do shell script "sudo /usr/sbin/installer -pkg '"'$download_path'"'/InstallAssistant.pkg -target /" with administrator privileges'
+                installok="$?"
+            fi
         else
-            echo extern
-            echo "sudo /usr/sbin/installer -pkg \"$download_path\"/InstallAssistant.pkg -target /" > "$temp_path"/build.command
+            sed '/installation-check/d' "$download_path"/*English.dist > "$download_path"/English.dist
+            if [[ "$sip_status" = "Off" ]]; then
+                osascript -e 'do shell script "sudo /usr/sbin/installer -pkg '"'$download_path'"'/English.dist -target /" with administrator privileges'
+                installok="$?"
+            fi
         fi
-        
-    else
-        sed '/installation-check/d' "$download_path"/*English.dist > "$download_path"/Neu.dist
-        if [[ "$sip_status" = "On" ]]; then
-            osascript -e 'do shell script "sudo /usr/sbin/installer -pkg '"'$download_path'"'/Neu.dist -target /" with administrator privileges'
-            installok="$?"
-        else
-            echo "sudo /usr/sbin/installer -pkg \"$download_path\"/Neu.dist -target /" > "$temp_path"/build.command
-            
-        fi
-            
-    fi
     
-    if [[ "$installok" = "0" ]]; then
-            _helpDefaultWrite "InstallerAppDone" "Yes"
-        if [[ "$syslang" = "en" ]]; then
-            _helpDefaultWrite "Statustext" "Done"
+        if [[ "$installok" = "0" ]]; then
+                _helpDefaultWrite "InstallerAppDone" "Yes"
+            if [[ "$syslang" = "en" ]]; then
+                _helpDefaultWrite "Statustext" "Done"
+            else
+                _helpDefaultWrite "Statustext" "Fertig"
+            fi
         else
-            _helpDefaultWrite "Statustext" "Fertig"
-        fi
-    else
-        _helpDefaultWrite "InstallerAppDone" "No"
-        if [[ "$syslang" = "en" ]]; then
-            _helpDefaultWrite "Statustext" "Creation failed! Please try again."
-        else
-            _helpDefaultWrite "Statustext" "Erstellung fehlgeschlagen. Bitte versuche es erneut."
+            _helpDefaultWrite "InstallerAppDone" "No"
+            if [[ "$syslang" = "en" ]]; then
+                _helpDefaultWrite "Statustext" "Creation failed! Please try again."
+            else
+                _helpDefaultWrite "Statustext" "Erstellung fehlgeschlagen. Bitte versuche es erneut."
+            fi
         fi
     fi
+
 }
 
 
@@ -480,7 +477,6 @@ function _check_if_valid()
 
 function _start_installer_creation()
 {
-
     targetvolume=$( _helpDefaultRead "DRMntPoint" )
     targetvolumename=$( echo "$targetvolume" |sed 's/.*\///g' )
     applicationpath=$( _helpDefaultRead "Applicationpath" )

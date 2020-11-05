@@ -2,9 +2,6 @@
 "An error has occured!" = "Ein Fehler ist aufgetreten!";
 
 /* No comment provided by engineer. */
-"ANYmacOS will only work to a limited extent now. You can only download the individual files for the installer application. You then have to assemble them yourself via the terminal. The same applies to the Installer Creator\n\nSorry." = "ANYmacOS wird jetzt nur eingeschränkt funktionieren. Du kannst lediglich die einzelnen Dateien für die Installer Applikation herunterladen. Zusammensetzen musst Du sie dann selber über das Terminal. Gleiches gilt für den Installer Creator\n\nSorry.";
-
-/* No comment provided by engineer. */
 "Canceling Operation ..." = "Breche Vorgang ab ...";
 
 /* No comment provided by engineer. */
@@ -12,6 +9,15 @@
 
 /* No comment provided by engineer. */
 "Choose an Application" = "Bitte wähle eine Applikation";
+
+/* No comment provided by engineer. */
+"Do you want to resume an old download or do you want download from scratch?" = "Möchtest Du einen alten Download fortsetzen oder soll ein gänzlich neuer Download gestartet werden?";
+
+/* No comment provided by engineer. */
+"Found already downloaded files!" = "Vorherigen Download gefunden!";
+
+/* No comment provided by engineer. */
+"From scratch" = "Neu";
 
 /* No comment provided by engineer. */
 "Getting Deviceinfos ..." = "Lese Geräteinformationen ...";
@@ -33,6 +39,9 @@
 
 /* No comment provided by engineer. */
 "Operation aborted." = "Vorgang abgebrochen.";
+
+/* No comment provided by engineer. */
+"Resume" = "Fortsetzen";
 
 /* No comment provided by engineer. */
 "Retrieving information ..." = "Hole Informationen ...";

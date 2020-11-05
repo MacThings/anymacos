@@ -124,22 +124,31 @@ class ANYmacOS: NSViewController {
         defaults.removeObject(forKey: "DLDone")
         defaults.removeObject(forKey: "DLSize")
         defaults.synchronize()
-        
+ 
+        let locale = Locale.current.languageCode
         
         let downloadpath = UserDefaults.standard.string(forKey: "Downloadpath")
         let sip_status = UserDefaults.standard.string(forKey: "SIP")
-        if sip_status == "Off" {
+        if sip_status == "On" {
             self.create_button.isEnabled=false
             let alert = NSAlert()
                 alert.messageText = NSLocalizedString("SIP is activated on your system!", comment: "")
-            alert.informativeText = NSLocalizedString("ANYmacOS will only work to a limited extent now. You can only download the individual files for the installer application. You then have to assemble them yourself via the terminal. The same applies to the Installer Creator\n\nBigSur:\nsudo /usr/sbin/installer -pkg " + downloadpath! + "/InstallAssistant.pkg -target /\n\n" + "Catalina and earlier:\nsudo /usr/sbin/installer -pkg " + downloadpath! + "/*English.dist -target /", comment: "")
+            if locale != "de" {
+                alert.informativeText = NSLocalizedString("ANYmacOS will only work to a limited extent now. You can only download the individual files for the installer application. You then have to assemble them yourself via the terminal. The same applies to the Installer Creator.\n\nTo copy the commands simply mark it, click right Mousebutton and select 'Copy'.\n\nBigSur:\nsudo /usr/sbin/installer -pkg " + downloadpath! + "/InstallAssistant.pkg -target /\n\n" + "Catalina and earlier:\nsudo /usr/sbin/installer -pkg " + downloadpath! + "/*English.dist -target /\n\n" + "To create an Installer Volume:\nsudo \"/Applications/NAME_OF_INSTALLER.app/Contents/Resources/createinstallmedia\" --volume \"TARGET_VOLUME\" --applicationpath \"/Applications/NAME_OF_INSTALLER.app\" --nointeraction", comment: "")
+                
+            } else {
+                alert.informativeText = NSLocalizedString("ANYmacOS kann damit nur noch eingeschränkt arbeiten. Du kannst lediglich die einzelnen Dateien für die Installer Applikationen herunterladen. Du musst sie dann selber im Terminal zusammensetzen. Das selbe gilt für die Erstellung eines Installationdatenträgers.\n\nUm die hier unten stehenden Befehle zu kopieren, einfach markieren, die rechte Maustaste drücken und 'Kopieren' auswählen.\n\nBigSur:\nsudo /usr/sbin/installer -pkg " + downloadpath! + "/InstallAssistant.pkg -target /\n\n" + "Catalina und davor:\nsudo /usr/sbin/installer -pkg " + downloadpath! + "/*English.dist -target /\n\n" + "Erstellung eines Installationdatenträgers:\nsudo \"/Applications/NAME_OF_INSTALLER.app/Contents/Resources/createinstallmedia\" --volume \"TARGET_VOLUME\" --applicationpath \"/Applications/NAME_OF_INSTALLER.app\" --nointeraction", comment: "")
+                
+            }
                 alert.alertStyle = .informational
                 alert.icon = NSImage(named: "NSError")
                 let Button = NSLocalizedString("Ok", comment: "")
                 alert.addButton(withTitle: Button)
                 alert.runModal()
                 return
-            }
+        }
+        
+
     }
    
     @IBAction func donate(_ sender: Any) {
@@ -191,6 +200,27 @@ class ANYmacOS: NSViewController {
     }
     
     @IBAction func download_os_button(_ sender: Any) {
+        let hidden_item = UserDefaults.standard.string(forKey: "Downloadpath")!
+        
+        let path = hidden_item + "/.anymacos_download"
+        let hasFile = FileManager().fileExists(atPath: path)
+        if hasFile {
+            let alert = NSAlert()
+                alert.messageText = NSLocalizedString("Found already downloaded files!", comment: "")
+                alert.informativeText = NSLocalizedString("Do you want to resume an old download or do you want download from scratch?", comment: "")
+                alert.alertStyle = .informational
+                alert.icon = NSImage(named: "NSInfo")
+                let Button = NSLocalizedString("From scratch", comment: "")
+                alert.addButton(withTitle: Button)
+                let CancelButtonText = NSLocalizedString("Resume", comment: "")
+                alert.addButton(withTitle: CancelButtonText)
+            
+            if alert.runModal() == .alertFirstButtonReturn {
+                self.syncShellExec(path: self.scriptPath, args: ["_remove_downloads"])
+            }
+            
+        }
+
         self.create_button.isEnabled=false
         self.progress_bar.isHidden=false
         self.percent_symbol.isHidden=false
@@ -247,6 +277,13 @@ class ANYmacOS: NSViewController {
                 defaults.synchronize()
                 self.syncShellExec(path: self.scriptPath, args: ["_remove_temp"])
                 //self.syncShellExec(path: self.scriptPath, args: ["_check_seed"])
+                if self.languageinit == "en" {
+                    let defaultname = "Idle ..."
+                    UserDefaults.standard.set(defaultname, forKey: "StatustextUSB")
+                } else {
+                    let defaultname = "Warte ..."
+                    UserDefaults.standard.set(defaultname, forKey: "StatustextUSB")
+                }
                 
             }
             
