@@ -19,6 +19,23 @@ function _helpDefaultRead()
     fi
 }
 
+function _check_sip
+{
+    sipcheck1=$( csrutil status | grep "Kext Signing" | sed "s/.*\://g" | xargs )
+    sipcheck2=$( csrutil status | grep "System Integrity Protection status" | sed -e "s/.*\://g" -e "s/\ (.*//g" -e "s/\.//g" | xargs )
+    if [[ $sipcheck1 = "disabled" ]]; then
+        sipcheck="disabled"
+    elif [[ $sipcheck2 = "disabled" ]]; then
+        sipcheck="disabled"
+    fi
+
+    if [[ $sipcheck != "disabled" ]]; then
+        _helpDefaultWrite "SIP" "On"
+    else
+        _helpDefaultWrite "SIP" "Off"
+    fi
+}
+
 ScriptHome=$(echo $HOME)
 MY_PATH="`dirname \"$0\"`"
 cd "$MY_PATH"
@@ -26,6 +43,8 @@ cd "$MY_PATH"
 if [ ! -d /private/tmp/anymacos ]; then
     mkdir /private/tmp/anymacos
 fi
+
+_check_sip
 
 sys_language=$( defaults read -g AppleLocale )
 download_path=$( _helpDefaultRead "Downloadpath" )
@@ -196,28 +215,9 @@ function _download_counter()
 done
 }
 
-function _check_sip
-{
-    sipcheck1=$( csrutil status | grep "Kext Signing" | sed "s/.*\://g" | xargs )
-    sipcheck2=$( csrutil status | grep "System Integrity Protection status" | sed -e "s/.*\://g" -e "s/\ (.*//g" -e "s/\.//g" | xargs )
-    if [[ $sipcheck1 = "disabled" ]]; then
-        sipcheck="disabled"
-    elif [[ $sipcheck2 = "disabled" ]]; then
-        sipcheck="disabled"
-    fi
-
-    if [[ $sipcheck != "disabled" ]]; then
-        _helpDefaultWrite "SIP" "On"
-    else
-        _helpDefaultWrite "SIP" "Off"
-    fi
-}
-
 function _download_macos()
 {
     _download_counter &
-    
-    _check_sip
 
     choice=$( _helpDefaultRead "Choice" )
     parallel_downloads=$( _helpDefaultRead "ParaDL" )

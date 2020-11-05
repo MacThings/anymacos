@@ -88,9 +88,6 @@
 /* Class = "NSTextFieldCell"; title = "ANYmacOS"; ObjectID = "auW-AD-WoR"; */
 "auW-AD-WoR.title" = "ANYmacOS";
 
-/* Class = "NSTextFieldCell"; title = "Image Size (GB):"; ObjectID = "AXx-VI-Gcr"; */
-"AXx-VI-Gcr.title" = "Image Größe (GB):";
-
 /* Class = "NSMenu"; title = "Main Menu"; ObjectID = "AYu-sK-qS6"; */
 "AYu-sK-qS6.title" = "Hauptmenu";
 
@@ -108,9 +105,6 @@
 
 /* Class = "NSButtonCell"; title = "Donate"; ObjectID = "Bpi-su-eEB"; */
 "Bpi-su-eEB.title" = "Spende";
-
-/* Class = "NSTextFieldCell"; title = "Image Name:"; ObjectID = "cGB-TJ-u88"; */
-"cGB-TJ-u88.title" = "Image Name:";
 
 /* Class = "NSButtonCell"; title = "Settings"; ObjectID = "D7G-pL-UZ7"; */
 "D7G-pL-UZ7.title" = "Einstellungen";
@@ -136,9 +130,6 @@
 /* Class = "NSTextFieldCell"; title = "Mount Point:"; ObjectID = "EFD-kn-Awf"; */
 "EFD-kn-Awf.title" = "Mount Point:";
 
-/* Class = "NSTextFieldCell"; title = "One Pass Install"; ObjectID = "EsK-Ub-wae"; */
-"EsK-Ub-wae.title" = "One Pass Install";
-
 /* Class = "NSMenu"; title = "Help"; ObjectID = "F2S-fz-NVQ"; */
 "F2S-fz-NVQ.title" = "Hilfe";
 
@@ -162,9 +153,6 @@
 
 /* Class = "NSTextFieldCell"; title = "File System:"; ObjectID = "hbG-vs-tlt"; */
 "hbG-vs-tlt.title" = "File System:";
-
-/* Class = "NSButtonCell"; title = "Select"; ObjectID = "hVR-lQ-SZT"; */
-"hVR-lQ-SZT.title" = "Auswählen";
 
 /* Class = "NSMenu"; title = "Services"; ObjectID = "hz9-B4-Xy5"; */
 "hz9-B4-Xy5.title" = "Services";
@@ -199,9 +187,6 @@
 /* Class = "NSTextFieldCell"; title = "Modelname:"; ObjectID = "lwv-7B-yD0"; */
 "lwv-7B-yD0.title" = "Modelname:";
 
-/* Class = "NSTextFieldCell"; title = "Icon by \"Schorse\""; ObjectID = "m4u-aM-gMG"; */
-"m4u-aM-gMG.title" = "Icon von \"Schorse\"";
-
 /* Class = "NSBox"; title = "Box"; ObjectID = "MNn-Gb-OGn"; */
 "MNn-Gb-OGn.title" = "Box";
 
@@ -232,9 +217,6 @@
 /* Class = "NSButtonCell"; title = "Start"; ObjectID = "P2w-AE-vNC"; */
 "P2w-AE-vNC.title" = "Start";
 
-/* Class = "NSTextFieldCell"; title = "Volume Name:"; ObjectID = "PDJ-64-zSh"; */
-"PDJ-64-zSh.title" = "Volume Name:";
-
 /* Class = "NSTextFieldCell"; title = "VOLUME_PART_TYPE"; ObjectID = "PH3-cc-nIP"; */
 "PH3-cc-nIP.title" = "VOLUME_PART_TYPE";
 
@@ -258,12 +240,6 @@
 
 /* Class = "NSButtonCell"; title = "Start"; ObjectID = "SLF-3F-5CL"; */
 "SLF-3F-5CL.title" = "Start";
-
-/* Class = "NSTextFieldCell"; title = "ANYmacOS"; ObjectID = "sQk-hU-meB"; */
-"sQk-hU-meB.title" = "ANYmacOS";
-
-/* Class = "NSTextFieldCell"; title = "Image Path:"; ObjectID = "SqQ-aT-41V"; */
-"SqQ-aT-41V.title" = "Image Pfad:";
 
 /* Class = "NSMenu"; title = "Window"; ObjectID = "Td7-aD-5lo"; */
 "Td7-aD-5lo.title" = "Fenster";

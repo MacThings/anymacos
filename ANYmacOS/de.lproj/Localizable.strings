@@ -2,6 +2,9 @@
 "An error has occured!" = "Ein Fehler ist aufgetreten!";
 
 /* No comment provided by engineer. */
+"ANYmacOS will only work to a limited extent now. You can only download the individual files for the installer application. You then have to assemble them yourself via the terminal. The same applies to the Installer Creator\n\nSorry." = "ANYmacOS wird jetzt nur eingeschränkt funktionieren. Du kannst lediglich die einzelnen Dateien für die Installer Applikation herunterladen. Zusammensetzen musst Du sie dann selber über das Terminal. Gleiches gilt für den Installer Creator\n\nSorry.";
+
+/* No comment provided by engineer. */
 "Canceling Operation ..." = "Breche Vorgang ab ...";
 
 /* No comment provided by engineer. */
@@ -33,6 +36,9 @@
 
 /* No comment provided by engineer. */
 "Retrieving information ..." = "Hole Informationen ...";
+
+/* No comment provided by engineer. */
+"SIP is activated on your system!" = "Aktivierte SIP im System gefunden!";
 
 /* No comment provided by engineer. */
 "The creation of the Installer App failed. Please try again. Do you want to clean up the ANYmacOS downloads?" = "Die Erstellung der Installer Applikation ist fehlgeschlagen. Bitte versuche es erneut. Möchtest Du die  heruntergeladenen ANYmacOS Dateien löschen?";

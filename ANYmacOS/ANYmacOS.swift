@@ -125,8 +125,23 @@ class ANYmacOS: NSViewController {
         defaults.removeObject(forKey: "DLSize")
         defaults.synchronize()
         
+        
+        let downloadpath = UserDefaults.standard.string(forKey: "Downloadpath")
+        let sip_status = UserDefaults.standard.string(forKey: "SIP")
+        if sip_status == "Off" {
+            self.create_button.isEnabled=false
+            let alert = NSAlert()
+                alert.messageText = NSLocalizedString("SIP is activated on your system!", comment: "")
+            alert.informativeText = NSLocalizedString("ANYmacOS will only work to a limited extent now. You can only download the individual files for the installer application. You then have to assemble them yourself via the terminal. The same applies to the Installer Creator\n\nBigSur:\nsudo /usr/sbin/installer -pkg " + downloadpath! + "/InstallAssistant.pkg -target /\n\n" + "Catalina and earlier:\nsudo /usr/sbin/installer -pkg " + downloadpath! + "/*English.dist -target /", comment: "")
+                alert.alertStyle = .informational
+                alert.icon = NSImage(named: "NSError")
+                let Button = NSLocalizedString("Ok", comment: "")
+                alert.addButton(withTitle: Button)
+                alert.runModal()
+                return
+            }
     }
-    
+   
     @IBAction func donate(_ sender: Any) {
         if let url = URL(string: "https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=paypal@sl-soft.de&item_name=ANYmacOS&currency_code=EUR"),
             NSWorkspace.shared.open(url) {
