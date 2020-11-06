@@ -31,6 +31,7 @@
       "size" : "128x128"
     },
     {
+      "filename" : "AppIcon.png",
       "idiom" : "mac",
       "scale" : "1x",
       "size" : "256x256"
@@ -41,7 +42,6 @@
       "size" : "256x256"
     },
     {
-      "filename" : "Logo.png",
       "idiom" : "mac",
       "scale" : "1x",
       "size" : "512x512"

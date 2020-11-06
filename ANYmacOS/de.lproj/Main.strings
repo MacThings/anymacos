@@ -157,6 +157,9 @@
 /* Class = "NSMenu"; title = "Services"; ObjectID = "hz9-B4-Xy5"; */
 "hz9-B4-Xy5.title" = "Services";
 
+/* Class = "NSTextFieldCell"; title = "App Icon by apfelnico"; ObjectID = "Img-B4-6Qb"; */
+"Img-B4-6Qb.title" = "App Icon von apfelnico";
+
 /* Class = "NSWindow"; title = "ANYmacOS"; ObjectID = "IQv-IB-iLA"; */
 "IQv-IB-iLA.title" = "ANYmacOS";
 
