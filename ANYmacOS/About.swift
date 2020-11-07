@@ -12,6 +12,7 @@ import Cocoa
 class About: NSViewController {
     
     @IBOutlet weak var copyright: NSTextField!
+    @IBOutlet weak var version: NSTextField!
     
     let appVersion = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String
     
@@ -22,6 +23,9 @@ class About: NSViewController {
         formatter.dateFormat = "yyyy"
         let dateStr = formatter.string(from: NSDate() as Date)
         self.copyright.stringValue = "© " + dateStr + " Sascha Lamprecht"
+
+        self.version.stringValue = "Version " + appVersion!
+        
     }
     
     override func viewDidLoad() {

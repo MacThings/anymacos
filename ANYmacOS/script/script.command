@@ -50,20 +50,20 @@ sys_language=$( defaults read -g AppleLocale )
 download_path=$( _helpDefaultRead "Downloadpath" )
 temp_path="/private/tmp/anymacos"
 seed_choice=$( _helpDefaultRead "CurrentSeed" )
-seedcatalog_path="/System/Library/PrivateFrameworks/Seeding.framework/Versions/Current/Resources/SeedCatalogs.plist"
+#seedcatalog_path="/System/Library/PrivateFrameworks/Seeding.framework/Versions/Current/Resources/SeedCatalogs.plist"
 
-hwspecs=$( system_profiler SPHardwareDataType )
-osversion=$( sw_vers | grep ProductVersion | cut -d':' -f2 | xargs )
-osbuild=$( sw_vers |tail -n1 | sed "s/.*://g" | xargs )
+#hwspecs=$( system_profiler SPHardwareDataType )
+#osversion=$( sw_vers | grep ProductVersion | cut -d':' -f2 | xargs )
+#osbuild=$( sw_vers |tail -n1 | sed "s/.*://g" | xargs )
 modelname=$( echo -e "$hwspecs" | grep "Model Name:" | sed "s/.*://g" | xargs )
-modelid=$( echo -e "$hwspecs" | grep "Model Identifier:" | sed "s/.*://g" | xargs )
-cputype=$( echo -e "$hwspecs" | grep "Processor Name:" | sed "s/.*://g" | xargs )
+#modelid=$( echo -e "$hwspecs" | grep "Model Identifier:" | sed "s/.*://g" | xargs )
+#cputype=$( echo -e "$hwspecs" | grep "Processor Name:" | sed "s/.*://g" | xargs )
 
-_helpDefaultWrite "OSVersion" "$osversion"
-_helpDefaultWrite "OSBuild" "$osbuild"
-_helpDefaultWrite "Modelname" "$modelname"
-_helpDefaultWrite "ModelID" "$modelid"
-_helpDefaultWrite "CPUType" "$cputype"
+#_helpDefaultWrite "OSVersion" "$osversion"
+#_helpDefaultWrite "OSBuild" "$osbuild"
+#_helpDefaultWrite "Modelname" "$modelname"
+#_helpDefaultWrite "ModelID" "$modelid"
+#_helpDefaultWrite "CPUType" "$cputype"
 
 _helpDefaultWrite "KillDL" "0"
 

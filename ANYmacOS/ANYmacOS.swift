@@ -20,11 +20,10 @@ class ANYmacOS: NSViewController {
     @IBOutlet weak var download_button: NSButton!
     @IBOutlet weak var abort_button: NSButton!
     @IBOutlet weak var create_button: NSButton!
-    @IBOutlet weak var percent_symbol: NSTextField!
-    @IBOutlet weak var progress_bar: NSProgressIndicator!
     @IBOutlet weak var paypal_button: NSButton!
     @IBOutlet weak var copyright: NSTextField!
-   
+    @IBOutlet weak var show_status: NSButton!
+    
     
     let scriptPath = Bundle.main.path(forResource: "/script/script", ofType: "command")!
     let languageinit = UserDefaults.standard.string(forKey: "Language")
@@ -37,8 +36,7 @@ class ANYmacOS: NSViewController {
 
     override func viewDidAppear() {
         super.viewDidAppear()
-        self.view.window?.title = "ANYmacOS v. " + appVersion!
-        
+        self.view.window?.title = "ANYmacOS"
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy"
         let dateStr = formatter.string(from: NSDate() as Date)
@@ -200,6 +198,9 @@ class ANYmacOS: NSViewController {
     }
     
     @IBAction func download_os_button(_ sender: Any) {
+      
+        self.show_status.performClick(nil)
+        
         let hidden_item = UserDefaults.standard.string(forKey: "Downloadpath")!
         
         let path = hidden_item + "/.anymacos_download"
@@ -222,15 +223,12 @@ class ANYmacOS: NSViewController {
         }
 
         self.create_button.isEnabled=false
-        self.progress_bar.isHidden=false
-        self.percent_symbol.isHidden=false
         self.pulldown_menu.isEnabled=false
         self.pulldown_seedmenu.isEnabled=false
         UserDefaults.standard.removeObject(forKey: "InstallerAppDone")
         UserDefaults.standard.set(false, forKey: "KillDL")
         UserDefaults.standard.set("No", forKey: "Stop")
-        self.download_button.isHidden=true
-        self.abort_button.isHidden=false
+        self.download_button.isEnabled=false
 
         DispatchQueue.global(qos: .background).async {
             //self.syncShellExec(path: self.scriptPath, args: ["_remove_downloads"])
@@ -265,10 +263,7 @@ class ANYmacOS: NSViewController {
                 
                 self.pulldown_menu.isEnabled=true
                 self.pulldown_seedmenu.isEnabled=true
-                self.download_button.isHidden=false
-                self.abort_button.isHidden=true
-                self.percent_symbol.isHidden=true
-                self.progress_bar.isHidden=false
+                self.download_button.isEnabled=true
                 self.create_button.isEnabled=true
                 let defaults = UserDefaults.standard
                 defaults.removeObject(forKey: "DLDone")
@@ -293,7 +288,6 @@ class ANYmacOS: NSViewController {
     
     @IBAction func stop_download(_ sender: Any) {
         UserDefaults.standard.set(true, forKey: "KillDL")
-        self.percent_symbol.isHidden=true
         self.create_button.isEnabled=false
         let defaults = UserDefaults.standard
         defaults.removeObject(forKey: "DLProgress")
@@ -311,7 +305,6 @@ class ANYmacOS: NSViewController {
             
             DispatchQueue.main.async {
                 self.download_button.isHidden=false
-                self.abort_button.isHidden=true
                 self.progress_wheel?.stopAnimation(self);
                 let defaultname = NSLocalizedString("Operation aborted.", comment: "")
                 UserDefaults.standard.set(defaultname, forKey: "Statustext")

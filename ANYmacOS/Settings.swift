@@ -107,6 +107,10 @@ class Settings: NSViewController {
         filelHandler.readabilityHandler = nil
     }
     
+    @IBAction func close(_ sender: Any) {
+        self.view.window?.close()
+    }
+    
     @objc func cancel(_ sender: Any?) {
         self.view.window?.close()
     }
