@@ -127,8 +127,8 @@
 /* Class = "NSTextFieldCell"; title = "Currently with:"; ObjectID = "fN5-Aq-gRh"; */
 "fN5-Aq-gRh.title" = "Derzeit zugehörig:";
 
-/* Class = "NSTextFieldCell"; title = "Please select a Volume"; ObjectID = "g2O-9t-Kls"; */
-"g2O-9t-Kls.title" = "Bitte Volume auswählen";
+/* Class = "NSTextFieldCell"; title = "Select a Volume"; ObjectID = "g2O-9t-Kls"; */
+"g2O-9t-Kls.title" = "Volume auswählen";
 
 /* Class = "NSButtonCell"; title = "Select"; ObjectID = "GSb-tD-mf9"; */
 "GSb-tD-mf9.title" = "Auswählen";
