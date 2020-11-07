@@ -7,6 +7,7 @@
 //
 
 import Cocoa
+import AVFoundation
 
 
 class Status: NSViewController {
@@ -25,6 +26,12 @@ class Status: NSViewController {
         super.viewDidLoad()
         // Do view setup here.
         self.percent_symbol.isHidden=false
+        
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(self.close_window),
+            name: NSNotification.Name(rawValue: "CloseWindow"),
+            object: nil)
 }
 
     
@@ -53,9 +60,11 @@ class Status: NSViewController {
         }
     }
     
-    @objc func cancel(_ sender: Any?) {
-        //self.view.window?.close()
+    @objc func close_window(notification: NSNotification) {
+        self.view.window?.close()
     }
+    
+    
     
     func syncShellExec(path: String, args: [String] = []) {
         let process            = Process()

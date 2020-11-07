@@ -307,10 +307,18 @@ done < ""$temp_path"/files"
     
     ### Checks if BigSur is downloading ###
     
-    if [[ "$sip_status" = "Off" ]]; then
+    #if [[ "$sip_status" = "Off" ]]; then
         if [ -f "$download_path/InstallAssistant.pkg" ]; then
             if [[ "$sip_status" = "Off" ]]; then
                 osascript -e 'do shell script "sudo /usr/sbin/installer -pkg '"'$download_path'"'/InstallAssistant.pkg -target /" with administrator privileges'
+                installok="$?"
+                
+            else
+                open "$download_path"/InstallAssistant.pkg
+                BACK_PID=$( pgrep "Installer" )
+                while kill -0 $BACK_PID ; do
+                    sleep 1
+                done
                 installok="$?"
             fi
         else
@@ -336,8 +344,8 @@ done < ""$temp_path"/files"
                 _helpDefaultWrite "Statustext" "Erstellung fehlgeschlagen. Bitte versuche es erneut."
             fi
         fi
-    fi
-
+    #fi
+    exit
 }
 
 

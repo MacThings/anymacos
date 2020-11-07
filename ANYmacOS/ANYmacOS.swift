@@ -7,6 +7,7 @@
 //
 
 import Cocoa
+import AVFoundation
 
 class ANYmacOS: NSViewController {
     
@@ -132,10 +133,10 @@ class ANYmacOS: NSViewController {
             let alert = NSAlert()
                 alert.messageText = NSLocalizedString("SIP is activated on your system!", comment: "")
             if locale != "de" {
-                alert.informativeText = NSLocalizedString("ANYmacOS will only work to a limited extent now. You can only download the individual files for the installer application. You then have to assemble them yourself via the terminal. The same applies to the Installer Creator.\n\nTo copy the commands simply mark it, click right Mousebutton and select 'Copy'.\n\nBigSur:\nsudo /usr/sbin/installer -pkg " + downloadpath! + "/InstallAssistant.pkg -target /\n\n" + "Catalina and earlier:\nsudo /usr/sbin/installer -pkg " + downloadpath! + "/English.dist -target /\n\n" + "To create an Installer Volume (must be HFS+ formatted):\nsudo \"/Applications/NAME_OF_INSTALLER.app/Contents/Resources/createinstallmedia\" --volume \"TARGET_VOLUME\" --applicationpath \"/Applications/NAME_OF_INSTALLER.app\" --nointeraction", comment: "")
+                alert.informativeText = NSLocalizedString("ANYmacOS will only work to a limited extent now. You can only download the individual files for the installer application. You then have to assemble them yourself via the terminal. The same applies to the Installer Creator.\n\nTo copy the commands simply mark it, click right Mousebutton and select 'Copy'.\n\n" + "Catalina and earlier:\nsudo /usr/sbin/installer -pkg " + downloadpath! + "/English.dist -target /\n\n" + "To create an Installer Volume (must be HFS+ formatted):\nsudo \"/Applications/NAME_OF_INSTALLER.app/Contents/Resources/createinstallmedia\" --volume \"TARGET_VOLUME\" --applicationpath \"/Applications/NAME_OF_INSTALLER.app\" --nointeraction", comment: "")
                 
             } else {
-                alert.informativeText = NSLocalizedString("ANYmacOS kann damit nur noch eingeschränkt arbeiten. Du kannst lediglich die einzelnen Dateien für die Installer Applikationen herunterladen. Du musst sie dann selber im Terminal zusammensetzen. Das selbe gilt für die Erstellung eines Installationdatenträgers.\n\nUm die hier unten stehenden Befehle zu kopieren, einfach markieren, die rechte Maustaste drücken und 'Kopieren' auswählen.\n\nBigSur:\nsudo /usr/sbin/installer -pkg " + downloadpath! + "/InstallAssistant.pkg -target /\n\n" + "Catalina und davor:\nsudo /usr/sbin/installer -pkg " + downloadpath! + "/English.dist -target /\n\n" + "Erstellung eines Installationdatenträgers (muss HFS+ formatiert sein):\nsudo \"/Applications/NAME_OF_INSTALLER.app/Contents/Resources/createinstallmedia\" --volume \"TARGET_VOLUME\" --applicationpath \"/Applications/NAME_OF_INSTALLER.app\" --nointeraction", comment: "")
+                alert.informativeText = NSLocalizedString("ANYmacOS kann damit nur noch eingeschränkt arbeiten. Du kannst lediglich die einzelnen Dateien für die Installer Applikationen herunterladen. Du musst sie dann selber im Terminal zusammensetzen. Das selbe gilt für die Erstellung eines Installationdatenträgers.\n\nUm die hier unten stehenden Befehle zu kopieren, einfach markieren, die rechte Maustaste drücken und 'Kopieren' auswählen.\n\n" + "Catalina und davor:\nsudo /usr/sbin/installer -pkg " + downloadpath! + "/English.dist -target /\n\n" + "Erstellung eines Installationdatenträgers (muss HFS+ formatiert sein):\nsudo \"/Applications/NAME_OF_INSTALLER.app/Contents/Resources/createinstallmedia\" --volume \"TARGET_VOLUME\" --applicationpath \"/Applications/NAME_OF_INSTALLER.app\" --nointeraction", comment: "")
                 
             }
                 alert.alertStyle = .informational
@@ -260,7 +261,7 @@ class ANYmacOS: NSViewController {
                 if alert.runModal() == .alertFirstButtonReturn {
                     self.syncShellExec(path: self.scriptPath, args: ["_remove_downloads"])
                 }
-                
+                                
                 self.pulldown_menu.isEnabled=true
                 self.pulldown_seedmenu.isEnabled=true
                 self.download_button.isEnabled=true
@@ -279,11 +280,11 @@ class ANYmacOS: NSViewController {
                     let defaultname = "Warte ..."
                     UserDefaults.standard.set(defaultname, forKey: "StatustextUSB")
                 }
+                NotificationCenter.default.post(name: NSNotification.Name(rawValue: "CloseWindow"), object: nil, userInfo: ["name" : Status.close_window as Any])
                 
             }
             
         }
-        
     }
     
     @IBAction func stop_download(_ sender: Any) {
