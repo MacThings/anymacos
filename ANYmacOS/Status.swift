@@ -24,6 +24,7 @@ class Status: NSViewController {
         super.viewDidLoad()
         // Do view setup here.
         self.percent_symbol.isHidden=false
+        self.view.window?.title = NSLocalizedString("Download", comment: "")
 }
 
     

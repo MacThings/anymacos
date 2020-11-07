@@ -275,7 +275,7 @@
 "xaj-On-nK9.title" = "Box";
 
 /* Class = "NSTextFieldCell"; title = "Select an OS"; ObjectID = "xfj-Ly-bLM"; */
-"xfj-Ly-bLM.title" = "Bitte wähle ein OS aus";
+"xfj-Ly-bLM.title" = "OS auswählen";
 
 /* Class = "NSTextFieldCell"; title = "VOLUME_TOT_SPACE"; ObjectID = "Yf4-Ct-QNd"; */
 "Yf4-Ct-QNd.title" = "VOLUME_TOT_SPACE";
