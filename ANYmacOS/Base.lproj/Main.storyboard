@@ -499,10 +499,10 @@
             </objects>
             <point key="canvasLocation" x="979.5" y="950"/>
         </scene>
-        <!--Settings-->
+        <!--Preferences-->
         <scene sceneID="4eR-DO-yfJ">
             <objects>
-                <viewController id="sm2-XH-wbw" customClass="Settings" customModule="ANYmacOS" sceneMemberID="viewController">
+                <viewController title="Preferences" id="sm2-XH-wbw" customClass="Settings" customModule="ANYmacOS" sceneMemberID="viewController">
                     <view key="view" id="QTc-LW-ST2">
                         <rect key="frame" x="0.0" y="0.0" width="465" height="169"/>
                         <autoresizingMask key="autoresizingMask"/>

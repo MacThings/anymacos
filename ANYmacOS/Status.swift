@@ -18,13 +18,13 @@ class Status: NSViewController {
     
     
     override func viewDidAppear() {
+        self.view.window?.title = NSLocalizedString("Download", comment: "")
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do view setup here.
         self.percent_symbol.isHidden=false
-        self.view.window?.title = NSLocalizedString("Download", comment: "")
 }
 
     
