@@ -281,7 +281,7 @@
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="SIf-0H-MJQ">
-                                <rect key="frame" x="19" y="88" width="165" height="17"/>
+                                <rect key="frame" x="18" y="88" width="165" height="17"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <textFieldCell key="cell" lineBreakMode="clipping" title="Select an OS" id="xfj-Ly-bLM">
                                     <font key="font" metaFont="systemMedium" size="13"/>
@@ -299,7 +299,7 @@
                                 </textFieldCell>
                             </textField>
                             <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Vjj-l5-8zK">
-                                <rect key="frame" x="8" y="17" width="155" height="32"/>
+                                <rect key="frame" x="8" y="17" width="156" height="32"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <buttonCell key="cell" type="push" title="Download" bezelStyle="rounded" alignment="center" enabled="NO" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="TKB-Kt-2kB">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -310,7 +310,7 @@
                                 </connections>
                             </button>
                             <popUpButton focusRingType="none" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7SY-L3-eGc">
-                                <rect key="frame" x="16" y="113" width="139" height="20"/>
+                                <rect key="frame" x="15" y="113" width="144" height="20"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <popUpButtonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" alignment="left" lineBreakMode="truncatingTail" borderStyle="border" focusRingType="none" imageScaling="proportionallyDown" inset="2" id="ieh-7z-p4x">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -337,7 +337,7 @@
                                 </connections>
                             </popUpButton>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dvW-dN-Ial">
-                                <rect key="frame" x="19" y="134" width="159" height="17"/>
+                                <rect key="frame" x="18" y="134" width="159" height="17"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <textFieldCell key="cell" lineBreakMode="clipping" title="Update tree" id="87T-tG-CCh">
                                     <font key="font" metaFont="systemMedium" size="13"/>
@@ -346,7 +346,7 @@
                                 </textFieldCell>
                             </textField>
                             <popUpButton focusRingType="none" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Xpi-ph-pMY">
-                                <rect key="frame" x="16" y="67" width="139" height="20"/>
+                                <rect key="frame" x="15" y="67" width="144" height="20"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <popUpButtonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" alignment="left" lineBreakMode="truncatingTail" enabled="NO" borderStyle="border" focusRingType="none" imageScaling="proportionallyDown" inset="2" id="LoI-T1-RiS">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -354,10 +354,6 @@
                                     <menu key="menu" id="tlF-uV-qMe"/>
                                 </popUpButtonCell>
                             </popUpButton>
-                            <progressIndicator wantsLayer="YES" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" maxValue="100" displayedWhenStopped="NO" bezeled="NO" indeterminate="YES" controlSize="small" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="txK-Nu-ec1">
-                                <rect key="frame" x="187" y="98" width="16" height="16"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                            </progressIndicator>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Mvv-93-X9s">
                                 <rect key="frame" x="-2" y="160" width="341" height="16"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
@@ -368,11 +364,11 @@
                                 </textFieldCell>
                             </textField>
                             <box focusRingType="none" verticalHuggingPriority="750" fixedFrame="YES" boxType="separator" translatesAutoresizingMaskIntoConstraints="NO" id="ocf-ge-QVU">
-                                <rect key="frame" x="7" y="155" width="317" height="5"/>
+                                <rect key="frame" x="10" y="154" width="317" height="5"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                             </box>
                             <button focusRingType="none" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yQN-J9-uVD">
-                                <rect key="frame" x="260" y="3" width="65" height="18"/>
+                                <rect key="frame" x="259" y="3" width="65" height="18"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <buttonCell key="cell" type="square" title="Donate" bezelStyle="shadowlessSquare" image="paypal-logo" imagePosition="left" alignment="left" state="on" focusRingType="none" imageScaling="proportionallyUpOrDown" inset="2" id="Bpi-su-eEB">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -381,7 +377,7 @@
                                 <color key="contentTintColor" name="selectedControlTextColor" catalog="System" colorSpace="catalog"/>
                             </button>
                             <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="alA-98-hyO" userLabel="Paypal Button">
-                                <rect key="frame" x="260" y="3" width="65" height="18"/>
+                                <rect key="frame" x="259" y="3" width="65" height="18"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" imagePosition="only" alignment="center" imageScaling="proportionallyUpOrDown" inset="2" id="6ZU-EP-2G7">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -403,7 +399,7 @@
                                 </connections>
                             </button>
                             <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nAu-ph-wcv">
-                                <rect key="frame" x="174" y="17" width="154" height="32"/>
+                                <rect key="frame" x="173" y="17" width="156" height="32"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <buttonCell key="cell" type="push" title="Create Installer" bezelStyle="rounded" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="DAF-gX-jWX">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -414,11 +410,11 @@
                                 </connections>
                             </button>
                             <box focusRingType="none" verticalHuggingPriority="750" fixedFrame="YES" boxType="separator" translatesAutoresizingMaskIntoConstraints="NO" id="ADH-9p-g6K">
-                                <rect key="frame" x="7" y="53" width="317" height="5"/>
+                                <rect key="frame" x="9" y="53" width="317" height="5"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                             </box>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="DgU-13-iEN">
-                                <rect key="frame" x="14" y="4" width="166" height="16"/>
+                                <rect key="frame" x="13" y="4" width="166" height="16"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <textFieldCell key="cell" lineBreakMode="clipping" alignment="left" title="Label" id="AK7-eE-oBr">
                                     <font key="font" metaFont="smallSystem"/>
@@ -427,14 +423,14 @@
                                 </textFieldCell>
                             </textField>
                             <box fixedFrame="YES" title="OS Build" translatesAutoresizingMaskIntoConstraints="NO" id="rUS-hY-Yjj">
-                                <rect key="frame" x="229" y="63" width="91" height="38"/>
+                                <rect key="frame" x="220" y="63" width="106" height="38"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <view key="contentView" id="2I2-BL-pxR">
-                                    <rect key="frame" x="3" y="3" width="85" height="20"/>
+                                    <rect key="frame" x="3" y="3" width="100" height="20"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vTZ-GE-KyX">
-                                            <rect key="frame" x="10" y="3" width="54" height="17"/>
+                                            <rect key="frame" x="10" y="3" width="84" height="17"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <textFieldCell key="cell" lineBreakMode="clipping" title="Label" id="Nwz-E9-xSc">
                                                 <font key="font" metaFont="systemMedium" size="13"/>
@@ -449,14 +445,14 @@
                                 </view>
                             </box>
                             <box fixedFrame="YES" title="OS Version" translatesAutoresizingMaskIntoConstraints="NO" id="sCF-gF-hhz">
-                                <rect key="frame" x="229" y="109" width="91" height="38"/>
+                                <rect key="frame" x="220" y="109" width="106" height="38"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <view key="contentView" id="1jz-QB-qrf">
-                                    <rect key="frame" x="3" y="3" width="85" height="20"/>
+                                    <rect key="frame" x="3" y="3" width="100" height="20"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="snS-a0-mXu">
-                                            <rect key="frame" x="10" y="3" width="54" height="17"/>
+                                            <rect key="frame" x="10" y="3" width="72" height="17"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <textFieldCell key="cell" lineBreakMode="clipping" title="Label" id="Mic-Sc-cT7">
                                                 <font key="font" metaFont="systemMedium" size="13"/>
@@ -471,10 +467,14 @@
                                 </view>
                             </box>
                             <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="aXM-gO-Ohk">
-                                <rect key="frame" x="14" y="163" width="40" height="40"/>
+                                <rect key="frame" x="14" y="162" width="40" height="40"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="Logo" id="w2p-eX-DcV"/>
                             </imageView>
+                            <progressIndicator wantsLayer="YES" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" maxValue="100" displayedWhenStopped="NO" bezeled="NO" indeterminate="YES" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="txK-Nu-ec1">
+                                <rect key="frame" x="175" y="88" width="32" height="32"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            </progressIndicator>
                         </subviews>
                     </view>
                     <connections>
