@@ -36,7 +36,7 @@ class ANYmacOS: NSViewController {
 
     override func viewDidAppear() {
         super.viewDidAppear()
-        self.view.window?.title = "ANYmacOS"
+        self.view.window?.title = NSLocalizedString("Main Window", comment: "")
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy"
         let dateStr = formatter.string(from: NSDate() as Date)
