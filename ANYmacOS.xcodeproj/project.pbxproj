@@ -18,7 +18,6 @@
 		2A14A725230322F80048B14A /* CreateUSBInstaller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A14A71F230322F80048B14A /* CreateUSBInstaller.swift */; };
 		2A8EB9912544AD5500F79DED /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2A8EB98F2544AD5500F79DED /* Localizable.strings */; };
 		2ABCD38925533AD00015E463 /* script.command in CopyFiles */ = {isa = PBXBuildFile; fileRef = 2A93CF3823004091004C832D /* script.command */; };
-		2ABCD39025533DC90015E463 /* kill.command in Resources */ = {isa = PBXBuildFile; fileRef = 2ABCD38F25533DC90015E463 /* kill.command */; };
 		2ABCD39225533DEF0015E463 /* kill.command in CopyFiles */ = {isa = PBXBuildFile; fileRef = 2ABCD38F25533DC90015E463 /* kill.command */; };
 		2ABDF3122550035A00B7647A /* About.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ABDF3112550035A00B7647A /* About.swift */; };
 		2AC6612E239F84AE00E859D7 /* WindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AC6612D239F84AE00E859D7 /* WindowController.swift */; };
@@ -275,7 +274,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				1FA7862523002558002CDB52 /* Assets.xcassets in Resources */,
-				2ABCD39025533DC90015E463 /* kill.command in Resources */,
 				2A8EB9912544AD5500F79DED /* Localizable.strings in Resources */,
 				1FA7862823002558002CDB52 /* Main.storyboard in Resources */,
 			);
