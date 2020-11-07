@@ -55,15 +55,15 @@ seed_choice=$( _helpDefaultRead "CurrentSeed" )
 hwspecs=$( system_profiler SPHardwareDataType )
 osversion=$( sw_vers | grep ProductVersion | cut -d':' -f2 | xargs )
 osbuild=$( sw_vers |tail -n1 | sed "s/.*://g" | xargs )
-modelname=$( echo -e "$hwspecs" | grep "Model Name:" | sed "s/.*://g" | xargs )
-modelid=$( echo -e "$hwspecs" | grep "Model Identifier:" | sed "s/.*://g" | xargs )
-cputype=$( echo -e "$hwspecs" | grep "Processor Name:" | sed "s/.*://g" | xargs )
+#modelname=$( echo -e "$hwspecs" | grep "Model Name:" | sed "s/.*://g" | xargs )
+#modelid=$( echo -e "$hwspecs" | grep "Model Identifier:" | sed "s/.*://g" | xargs )
+#cputype=$( echo -e "$hwspecs" | grep "Processor Name:" | sed "s/.*://g" | xargs )
 
 _helpDefaultWrite "OSVersion" "$osversion"
 _helpDefaultWrite "OSBuild" "$osbuild"
-_helpDefaultWrite "Modelname" "$modelname"
-_helpDefaultWrite "ModelID" "$modelid"
-_helpDefaultWrite "CPUType" "$cputype"
+#_helpDefaultWrite "Modelname" "$modelname"
+#_helpDefaultWrite "ModelID" "$modelid"
+#_helpDefaultWrite "CPUType" "$cputype"
 
 _helpDefaultWrite "KillDL" "0"
 
