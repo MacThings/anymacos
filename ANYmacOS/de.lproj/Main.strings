@@ -190,6 +190,9 @@
 /* Class = "NSMenuItem"; title = "Hide ANYmacOS"; ObjectID = "Olw-nP-bQN"; */
 "Olw-nP-bQN.title" = "Verstecke ANYmacOS";
 
+/* Class = "NSTextFieldCell"; title = "Simply select your desired macOS Installer within the Applicatiosn folder!"; ObjectID = "Owc-H6-0sU"; */
+"Owc-H6-0sU.title" = "Wähle einfach den gewünschten macOS Installer im Programme-Ordner aus!";
+
 /* Class = "NSMenuItem"; title = "Minimize"; ObjectID = "OY7-WF-poV"; */
 "OY7-WF-poV.title" = "Minimize";
 
@@ -219,6 +222,9 @@
 
 /* Class = "NSMenu"; title = "Window"; ObjectID = "Td7-aD-5lo"; */
 "Td7-aD-5lo.title" = "Fenster";
+
+/* Class = "NSButtonCell"; title = "I understand"; ObjectID = "TIW-xQ-X0a"; */
+"TIW-xQ-X0a.title" = "Verstanden";
 
 /* Class = "NSButtonCell"; title = "Download"; ObjectID = "TKB-Kt-2kB"; */
 "TKB-Kt-2kB.title" = "Download";

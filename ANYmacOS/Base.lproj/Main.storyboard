@@ -1169,6 +1169,49 @@ DQ
             </objects>
             <point key="canvasLocation" x="736" y="635"/>
         </scene>
+        <!--App Help-->
+        <scene sceneID="COb-e8-4EW">
+            <objects>
+                <viewController id="Zfg-5U-IVQ" customClass="AppHelp" customModule="ANYmacOS" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" id="npf-8q-4Ul">
+                        <rect key="frame" x="0.0" y="0.0" width="575" height="342"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pcC-C3-t2z">
+                                <rect key="frame" x="6" y="0.0" width="551" height="299"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="AppHelp" id="8T8-aB-qvV"/>
+                            </imageView>
+                            <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="RWV-cz-Nab">
+                                <rect key="frame" x="21" y="284" width="514" height="54"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <textFieldCell key="cell" selectable="YES" alignment="left" title="Simply select your desired macOS Installer within the Applications folder!" id="Owc-H6-0sU">
+                                    <font key="font" metaFont="systemBold" size="18"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <button hidden="YES" focusRingType="none" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1Nt-88-fEp">
+                                <rect key="frame" x="238" y="-26" width="116" height="32"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <buttonCell key="cell" type="push" title="I understand" bezelStyle="rounded" alignment="center" borderStyle="border" focusRingType="none" imageScaling="proportionallyDown" inset="2" id="TIW-xQ-X0a">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                    <string key="keyEquivalent" base64-UTF8="YES">
+DQ
+</string>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="dismissController:" target="Zfg-5U-IVQ" id="599-m5-AI5"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                    </view>
+                </viewController>
+                <customObject id="ZJl-cX-4BJ" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2138.5" y="321"/>
+        </scene>
         <!--Create USB Installer Terminal-->
         <scene sceneID="SJh-34-mZ3">
             <objects>
@@ -1260,7 +1303,7 @@ DQ
                                 </textFieldCell>
                             </textField>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3AP-ng-UkJ">
-                                <rect key="frame" x="23" y="207" width="574" height="24"/>
+                                <rect key="frame" x="23" y="208" width="574" height="24"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <textFieldCell key="cell" lineBreakMode="clipping" title="Watch out! All data currently on this volume will be irretrievably deleted." id="o09-aX-pRm">
                                     <font key="font" metaFont="systemBlack" size="14"/>
@@ -1289,7 +1332,7 @@ DQ
                             <textField focusRingType="none" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="iFf-tj-cSg">
                                 <rect key="frame" x="20" y="167" width="495" height="22"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" focusRingType="none" drawsBackground="YES" id="gFK-xt-bKj">
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" focusRingType="none" placeholderString="/Applications/APPLE_INSTALLER.app" drawsBackground="YES" id="gFK-xt-bKj">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -1321,7 +1364,7 @@ DQ
                                 </connections>
                             </button>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dfa-br-gev">
-                                <rect key="frame" x="23" y="191" width="231" height="16"/>
+                                <rect key="frame" x="23" y="194" width="208" height="16"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <textFieldCell key="cell" lineBreakMode="clipping" title="Choose macOS Installer Path:" id="Vkd-Gu-W7a">
                                     <font key="font" metaFont="systemBlack" size="13"/>
@@ -1329,6 +1372,17 @@ DQ
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
+                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="A02-b8-ycG">
+                                <rect key="frame" x="230" y="187" width="25" height="25"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <buttonCell key="cell" type="help" bezelStyle="helpButton" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="GFA-1z-sQC">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <segue destination="Zfg-5U-IVQ" kind="popover" popoverAnchorView="A02-b8-ycG" popoverBehavior="t" preferredEdge="maxY" id="mCR-YN-IfT"/>
+                                </connections>
+                            </button>
                         </subviews>
                     </view>
                     <connections>
@@ -1350,6 +1404,7 @@ DQ
         </scene>
     </scenes>
     <resources>
+        <image name="AppHelp" width="546" height="288"/>
         <image name="Logo" width="512" height="512"/>
         <image name="buttonCell:kIs-F1-INf:image" width="1" height="1">
             <mutableData key="keyedArchiveRepresentation">

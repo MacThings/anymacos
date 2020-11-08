@@ -11,6 +11,7 @@
 		1FA7862323002556002CDB52 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FA7862223002556002CDB52 /* ViewController.swift */; };
 		1FA7862523002558002CDB52 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1FA7862423002558002CDB52 /* Assets.xcassets */; };
 		1FA7862823002558002CDB52 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1FA7862623002558002CDB52 /* Main.storyboard */; };
+		2A1435232558031100D7315D /* AppHelp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A1435222558031100D7315D /* AppHelp.swift */; };
 		2A14A720230322F80048B14A /* CreateUSBInstallerTerminal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A14A71A230322F80048B14A /* CreateUSBInstallerTerminal.swift */; };
 		2A14A721230322F80048B14A /* ANYmacOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A14A71B230322F80048B14A /* ANYmacOS.swift */; };
 		2A14A723230322F80048B14A /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A14A71D230322F80048B14A /* Settings.swift */; };
@@ -75,6 +76,7 @@
 		1FA7862923002558002CDB52 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2A097A712553314600A5A461 /* Logo.psd */ = {isa = PBXFileReference; lastKnownFileType = file; path = Logo.psd; sourceTree = "<group>"; };
 		2A0A7D742347B3070081F997 /* anymacos.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = anymacos.html; sourceTree = "<group>"; };
+		2A1435222558031100D7315D /* AppHelp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppHelp.swift; sourceTree = "<group>"; };
 		2A14A71A230322F80048B14A /* CreateUSBInstallerTerminal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateUSBInstallerTerminal.swift; sourceTree = "<group>"; };
 		2A14A71B230322F80048B14A /* ANYmacOS.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ANYmacOS.swift; sourceTree = "<group>"; };
 		2A14A71D230322F80048B14A /* Settings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
@@ -137,6 +139,7 @@
 				2A93CF3623004091004C832D /* script */,
 				2ABDF3112550035A00B7647A /* About.swift */,
 				1FA7862023002556002CDB52 /* AppDelegate.swift */,
+				2A1435222558031100D7315D /* AppHelp.swift */,
 				2A14A71F230322F80048B14A /* CreateUSBInstaller.swift */,
 				2A14A71A230322F80048B14A /* CreateUSBInstallerTerminal.swift */,
 				2A14A71B230322F80048B14A /* ANYmacOS.swift */,
@@ -373,6 +376,7 @@
 				2AC6612E239F84AE00E859D7 /* WindowController.swift in Sources */,
 				1FA7862323002556002CDB52 /* ViewController.swift in Sources */,
 				1FA7862123002556002CDB52 /* AppDelegate.swift in Sources */,
+				2A1435232558031100D7315D /* AppHelp.swift in Sources */,
 				2A14A725230322F80048B14A /* CreateUSBInstaller.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -534,7 +538,7 @@
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 104;
+				CURRENT_PROJECT_VERSION = 105;
 				DEVELOPMENT_TEAM = "";
 				ENABLE_HARDENED_RUNTIME = YES;
 				INFOPLIST_FILE = ANYmacOS/Info.plist;
@@ -542,7 +546,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MARKETING_VERSION = 1.0.4;
+				MARKETING_VERSION = 1.0.5;
 				PRODUCT_BUNDLE_IDENTIFIER = anymacos.slsoft.de;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -560,7 +564,7 @@
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 104;
+				CURRENT_PROJECT_VERSION = 105;
 				DEVELOPMENT_TEAM = "";
 				ENABLE_HARDENED_RUNTIME = YES;
 				INFOPLIST_FILE = ANYmacOS/Info.plist;
@@ -568,7 +572,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MARKETING_VERSION = 1.0.4;
+				MARKETING_VERSION = 1.0.5;
 				PRODUCT_BUNDLE_IDENTIFIER = anymacos.slsoft.de;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";

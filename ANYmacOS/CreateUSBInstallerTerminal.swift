@@ -86,6 +86,10 @@ class CreateUSBInstallerTerminal: NSViewController {
     @IBAction func set_applicationpath(_ sender: Any) {
         self.output_window.textStorage?.mutableString.setString("")
         
+        let launcherLogPathWithTilde = "/Applications" as NSString
+        let expandedLauncherLogPath = launcherLogPathWithTilde.expandingTildeInPath
+        
+        
         let dialog = NSOpenPanel();
         dialog.title                   = NSLocalizedString("Choose an Application", comment: "")
         dialog.showsResizeIndicator    = true;
@@ -94,6 +98,7 @@ class CreateUSBInstallerTerminal: NSViewController {
         dialog.canCreateDirectories    = true;
         dialog.allowsMultipleSelection = false;
         dialog.allowedFileTypes        = ["app"];
+        dialog.directoryURL = NSURL.fileURL(withPath: expandedLauncherLogPath, isDirectory: true)
         
         if (dialog.runModal() == NSApplication.ModalResponse.OK) {
             let result = dialog.url // Pathname of the file

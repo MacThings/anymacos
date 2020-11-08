@@ -23,6 +23,9 @@
 "Getting Deviceinfos ..." = "Lese Geräteinformationen ...";
 
 /* No comment provided by engineer. */
+"Help" = "Hilfe";
+
+/* No comment provided by engineer. */
 "Idle ..." = "Warte ...";
 
 /* No comment provided by engineer. */
@@ -32,6 +35,9 @@
 "macOS Installer App creation done." = "macOS Installer App wurde erstellt.";
 
 /* No comment provided by engineer. */
+"Main Window" = "Hauptfenster";
+
+/* No comment provided by engineer. */
 "No" = "Nein";
 
 /* No comment provided by engineer. */
@@ -39,6 +45,9 @@
 
 /* No comment provided by engineer. */
 "Operation aborted." = "Vorgang abgebrochen.";
+
+/* No comment provided by engineer. */
+"Preferences" = "Einstellungen";
 
 /* No comment provided by engineer. */
 "Resume" = "Fortsetzen";
@@ -58,8 +67,4 @@
 /* No comment provided by engineer. */
 "You can find it Applications Folder. Do you want to clean up the ANYmacOS downloads?" = "Die findest sie im Applikationen Ordner. Möchtest Du die heruntergeladenen ANYmacOS Dateien löschen?";
 
-/* No comment provided by engineer. */
-"Main Window" = "Hauptfenster";
 
-/* No comment provided by engineer. */
-"Preferences" = "Einstellungen";
