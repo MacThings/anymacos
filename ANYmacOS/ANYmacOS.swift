@@ -25,6 +25,8 @@ class ANYmacOS: NSViewController {
     @IBOutlet weak var copyright: NSTextField!
     @IBOutlet weak var show_status: NSButton!
     
+    @IBOutlet weak var show_set_sys_seed: NSButton!
+    
     
     let scriptPath = Bundle.main.path(forResource: "/script/script", ofType: "command")!
     let languageinit = UserDefaults.standard.string(forKey: "Language")
@@ -42,7 +44,12 @@ class ANYmacOS: NSViewController {
         formatter.dateFormat = "yyyy"
         let dateStr = formatter.string(from: NSDate() as Date)
         self.copyright.stringValue = "© " + dateStr + " Sascha Lamprecht"
-
+        
+        let botherseed = UserDefaults.standard.string(forKey: "BotherSeed")
+        if botherseed == "NO" {
+            show_set_sys_seed.performClick(nil)
+        }
+        
     }
     
     override func viewDidLoad() {
@@ -81,6 +88,11 @@ class ANYmacOS: NSViewController {
         
         let languageinit = UserDefaults.standard.string(forKey: "Language")
         
+        let botherseed = UserDefaults.standard.string(forKey: "BotherSeed")
+        if botherseed == nil{
+            UserDefaults.standard.set("NO", forKey: "BotherSeed")
+        }
+        
         let downloadpathinit = UserDefaults.standard.string(forKey: "Downloadpath")
         if downloadpathinit == nil{
             let defaultdir = "/Users/" + NSUserName() + "/Desktop/ANYmacOS/Download"
@@ -108,7 +120,7 @@ class ANYmacOS: NSViewController {
         if appvalidinit == nil{
             UserDefaults.standard.set(false, forKey: "AppValid")
         }
-        
+ 
         let defaults = UserDefaults.standard
         defaults.removeObject(forKey: "DRVolName")
         defaults.removeObject(forKey: "DRPartType")
@@ -146,8 +158,6 @@ class ANYmacOS: NSViewController {
                 alert.runModal()
                 return
         }
-        
-
     }
    
     @IBAction func donate(_ sender: Any) {
@@ -311,6 +321,10 @@ class ANYmacOS: NSViewController {
                 UserDefaults.standard.set(defaultname, forKey: "Statustext")
             }
         }
+    }
+    
+    @objc private func ShowSetSysSeed(notification: NSNotification){
+        show_set_sys_seed.performClick(nil)
     }
     
     func syncShellExec(path: String, args: [String] = []) {

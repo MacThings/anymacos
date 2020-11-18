@@ -19,6 +19,16 @@ function _helpDefaultRead()
     fi
 }
 
+
+function _helpDefaultDelete()
+{
+    VAL=$1
+
+    if [ ! -z "$VAL" ]; then
+        defaults delete "${ScriptHome}/Library/Preferences/anymacos.slsoft.de.plist" "$VAL"
+    fi
+}
+
 function _check_sip
 {
     sipcheck1=$( csrutil status | grep "Kext Signing" | sed "s/.*\://g" | xargs )
@@ -100,15 +110,6 @@ function _initial()
     fi
 }
 
-function _helpDefaultDelete()
-{
-    VAL=$1
-
-    if [ ! -z "$VAL" ]; then
-    defaults delete "${ScriptHome}/Library/Preferences/com.slsoft.anymacos.plist" "$VAL"
-    fi
-}
-
 function _check_seed()
 {
 
@@ -155,6 +156,8 @@ function _setseed()
             _helpDefaultWrite "CurrentSeed" "Unenroll"
             fi
     fi
+    
+    _helpDefaultDelete "NewSeed"
 }
 
 function _select_seed_all()

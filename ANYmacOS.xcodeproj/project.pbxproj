@@ -17,6 +17,7 @@
 		2A14A723230322F80048B14A /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A14A71D230322F80048B14A /* Settings.swift */; };
 		2A14A724230322F80048B14A /* Website.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A14A71E230322F80048B14A /* Website.swift */; };
 		2A14A725230322F80048B14A /* CreateUSBInstaller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A14A71F230322F80048B14A /* CreateUSBInstaller.swift */; };
+		2A7AD8B325659BA1003800A9 /* ShowSetSysSeed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A7AD8B225659BA1003800A9 /* ShowSetSysSeed.swift */; };
 		2A8EB9912544AD5500F79DED /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2A8EB98F2544AD5500F79DED /* Localizable.strings */; };
 		2ABCD38925533AD00015E463 /* script.command in CopyFiles */ = {isa = PBXBuildFile; fileRef = 2A93CF3823004091004C832D /* script.command */; };
 		2ABCD39225533DEF0015E463 /* kill.command in CopyFiles */ = {isa = PBXBuildFile; fileRef = 2ABCD38F25533DC90015E463 /* kill.command */; };
@@ -83,6 +84,7 @@
 		2A14A71E230322F80048B14A /* Website.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Website.swift; sourceTree = "<group>"; };
 		2A14A71F230322F80048B14A /* CreateUSBInstaller.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateUSBInstaller.swift; sourceTree = "<group>"; };
 		2A2879F423094D2F00C29553 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Main.strings; sourceTree = "<group>"; };
+		2A7AD8B225659BA1003800A9 /* ShowSetSysSeed.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShowSetSysSeed.swift; sourceTree = "<group>"; };
 		2A8EB9902544AD5500F79DED /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
 		2A93CF3823004091004C832D /* script.command */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = script.command; sourceTree = "<group>"; };
 		2A93CF3C23004097004C832D /* aria2c */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = aria2c; sourceTree = "<group>"; };
@@ -144,6 +146,7 @@
 				2A14A71A230322F80048B14A /* CreateUSBInstallerTerminal.swift */,
 				2A14A71B230322F80048B14A /* ANYmacOS.swift */,
 				2A14A71D230322F80048B14A /* Settings.swift */,
+				2A7AD8B225659BA1003800A9 /* ShowSetSysSeed.swift */,
 				2AD98C1E25568C7F002ADA3E /* Status.swift */,
 				2A14A71E230322F80048B14A /* Website.swift */,
 				1FA7862223002556002CDB52 /* ViewController.swift */,
@@ -375,6 +378,7 @@
 				2A14A721230322F80048B14A /* ANYmacOS.swift in Sources */,
 				2AC6612E239F84AE00E859D7 /* WindowController.swift in Sources */,
 				1FA7862323002556002CDB52 /* ViewController.swift in Sources */,
+				2A7AD8B325659BA1003800A9 /* ShowSetSysSeed.swift in Sources */,
 				1FA7862123002556002CDB52 /* AppDelegate.swift in Sources */,
 				2A1435232558031100D7315D /* AppHelp.swift in Sources */,
 				2A14A725230322F80048B14A /* CreateUSBInstaller.swift in Sources */,

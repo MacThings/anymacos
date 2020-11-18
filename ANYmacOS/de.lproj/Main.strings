@@ -55,6 +55,9 @@
 /* Class = "NSBox"; title = "Current Status"; ObjectID = "9HU-Td-exC"; */
 "9HU-Td-exC.title" = "Derzeitiger Status";
 
+/* Class = "NSButtonCell"; title = "I understand"; ObjectID = "9nh-o2-JAb"; */
+"9nh-o2-JAb.title" = "Verstanden";
+
 /* Class = "NSButtonCell"; title = "Close"; ObjectID = "9u4-xS-pzm"; */
 "9u4-xS-pzm.title" = "Schließen";
 
@@ -139,6 +142,9 @@
 /* Class = "NSTextFieldCell"; title = "File System:"; ObjectID = "hbG-vs-tlt"; */
 "hbG-vs-tlt.title" = "File System:";
 
+/* Class = "NSButtonCell"; title = "Don't bother me again"; ObjectID = "hLN-JU-dTL"; */
+"hLN-JU-dTL.title" = "Nicht erneut anzeigen";
+
 /* Class = "NSMenu"; title = "Services"; ObjectID = "hz9-B4-Xy5"; */
 "hz9-B4-Xy5.title" = "Services";
 
@@ -190,7 +196,7 @@
 /* Class = "NSMenuItem"; title = "Hide ANYmacOS"; ObjectID = "Olw-nP-bQN"; */
 "Olw-nP-bQN.title" = "Verstecke ANYmacOS";
 
-/* Class = "NSTextFieldCell"; title = "Simply select your desired macOS Installer within the Applicatiosn folder!"; ObjectID = "Owc-H6-0sU"; */
+/* Class = "NSTextFieldCell"; title = "Simply select your desired macOS Installer within the Applications folder!"; ObjectID = "Owc-H6-0sU"; */
 "Owc-H6-0sU.title" = "Wähle einfach den gewünschten macOS Installer im Programme-Ordner aus!";
 
 /* Class = "NSMenuItem"; title = "Minimize"; ObjectID = "OY7-WF-poV"; */
@@ -219,6 +225,9 @@
 
 /* Class = "NSButtonCell"; title = "Start"; ObjectID = "SLF-3F-5CL"; */
 "SLF-3F-5CL.title" = "Start";
+
+/* Class = "NSViewController"; title = "Preferences"; ObjectID = "sm2-XH-wbw"; */
+"sm2-XH-wbw.title" = "Einstellungen";
 
 /* Class = "NSMenu"; title = "Window"; ObjectID = "Td7-aD-5lo"; */
 "Td7-aD-5lo.title" = "Fenster";
@@ -285,6 +294,9 @@
 
 /* Class = "NSTextFieldCell"; title = "VOLUME_TOT_SPACE"; ObjectID = "Yf4-Ct-QNd"; */
 "Yf4-Ct-QNd.title" = "VOLUME_TOT_SPACE";
+
+/* Class = "NSTextFieldCell"; title = "If you want to change the seed for the update chanels in your Systemconfiguration you must open the Preferences (⌘ + ,) of ANYmacOS and set it there."; ObjectID = "yHS-Ob-8m1"; */
+"yHS-Ob-8m1.title" = "Wenn Du die Updatekanäle im System ändern möchtest, so musst Du das in den Einstellungen (⌘ + ,) von ANYmacOS machen.";
 
 /* Class = "NSTextFieldCell"; title = "Device Location:"; ObjectID = "yIR-l7-gOP"; */
 "yIR-l7-gOP.title" = "Device Location:";
