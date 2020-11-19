@@ -1,6 +1,9 @@
 /* Class = "NSButtonCell"; title = "Open Disk Utility"; ObjectID = "0BM-UY-UT7"; */
 "0BM-UY-UT7.title" = "Öffne Disk Utility";
 
+/* Class = "NSImageView"; ibShadowedToolTip = "If you found a bug please make sure to check with disabled SIP first again. If the Bug persists you can report it."; ObjectID = "0f5-zN-Lqf"; */
+"0f5-zN-Lqf.ibShadowedToolTip" = "Wenn Du einen Fehler gefunden hast, überprüfe  dies bitte zuerst mit deaktivierter SIP noch einmal. Wenn der Fehler weiterhin besteht, kannst Du ihn melden.";
+
 /* Class = "NSTextFieldCell"; title = "VOLUME_NAME"; ObjectID = "0j1-Cf-0xP"; */
 "0j1-Cf-0xP.title" = "VOLUME_NAME";
 
@@ -18,6 +21,9 @@
 
 /* Class = "NSTextFieldCell"; title = "Fetch macOS easily"; ObjectID = "3lL-bs-QCd"; */
 "3lL-bs-QCd.title" = "Ganz einfach macOS holen";
+
+/* Class = "NSTextField"; ibShadowedToolTip = "If you found a bug please make sure to check with disabled SIP first again. If the Bug persists you can report it."; ObjectID = "3pH-9K-K3q"; */
+"3pH-9K-K3q.ibShadowedToolTip" = "Wenn Du einen Fehler gefunden hast, überprüfe  dies bitte zuerst mit deaktivierter SIP noch einmal. Wenn der Fehler weiterhin besteht, kannst Du ihn melden.";
 
 /* Class = "NSMenuItem"; title = "Quit ANYmacOS"; ObjectID = "4sb-4s-VLi"; */
 "4sb-4s-VLi.title" = "Beende ANYmacOS";
@@ -231,6 +237,9 @@
 
 /* Class = "NSMenu"; title = "Window"; ObjectID = "Td7-aD-5lo"; */
 "Td7-aD-5lo.title" = "Fenster";
+
+/* Class = "NSTextFieldCell"; title = "SIP enabled!"; ObjectID = "TEu-2J-JzS"; */
+"TEu-2J-JzS.title" = "SIP aktiv!";
 
 /* Class = "NSButtonCell"; title = "I understand"; ObjectID = "TIW-xQ-X0a"; */
 "TIW-xQ-X0a.title" = "Verstanden";

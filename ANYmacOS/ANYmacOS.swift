@@ -27,6 +27,9 @@ class ANYmacOS: NSViewController {
     
     @IBOutlet weak var show_set_sys_seed: NSButton!
     
+    @IBOutlet weak var sip_alert: NSImageView!
+    @IBOutlet weak var sip_alert_label: NSTextField!
+    
     
     let scriptPath = Bundle.main.path(forResource: "/script/script", ofType: "command")!
     let languageinit = UserDefaults.standard.string(forKey: "Language")
@@ -157,6 +160,12 @@ class ANYmacOS: NSViewController {
                 alert.addButton(withTitle: Button)
                 alert.runModal()
                 return
+        }
+        
+        let sip_alert = UserDefaults.standard.string(forKey: "SIP")
+        if sip_alert == "On" {
+            self.sip_alert.isHidden = false
+            self.sip_alert_label.isHidden = false
         }
     }
    
