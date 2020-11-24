@@ -500,6 +500,22 @@
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
+                            <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="j9l-Sc-LLt" userLabel="Prefs Image">
+                                <rect key="frame" x="311" y="183" width="20" height="20"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="NSSmartBadgeTemplate" id="vDS-Hd-QFX"/>
+                            </imageView>
+                            <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2jv-iQ-9JG" userLabel="Prefs Button">
+                                <rect key="frame" x="311" y="183" width="20" height="20"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" imagePosition="only" alignment="center" imageScaling="proportionallyUpOrDown" inset="2" id="ch6-a6-D4l">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <segue destination="sm2-XH-wbw" kind="sheet" id="aa0-Wf-ZUe"/>
+                                </connections>
+                            </button>
                         </subviews>
                     </view>
                     <connections>
@@ -877,7 +893,7 @@ DQ
                 <customObject id="Vbe-PG-jpc" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
                 <userDefaultsController id="UTv-3r-Pv2"/>
             </objects>
-            <point key="canvasLocation" x="1563.5" y="1238.5"/>
+            <point key="canvasLocation" x="1478" y="1412"/>
         </scene>
         <!--Create USB Installer-->
         <scene sceneID="XZy-Co-th3">
@@ -1496,9 +1512,13 @@ DQ
             <point key="canvasLocation" x="969" y="1275"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="aa0-Wf-ZUe"/>
+    </inferredMetricsTieBreakers>
     <resources>
         <image name="AppHelp" width="546" height="288"/>
         <image name="Logo" width="512" height="512"/>
+        <image name="NSSmartBadgeTemplate" width="14" height="14"/>
         <image name="alert" width="339" height="309"/>
         <image name="buttonCell:kIs-F1-INf:image" width="1" height="1">
             <mutableData key="keyedArchiveRepresentation">
