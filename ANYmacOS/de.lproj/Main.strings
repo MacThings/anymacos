@@ -305,7 +305,7 @@
 "Yf4-Ct-QNd.title" = "VOLUME_TOT_SPACE";
 
 /* Class = "NSTextFieldCell"; title = "If you want to change the seed for the update chanels in your Systemconfiguration you must open the Preferences (⌘ + ,) of ANYmacOS and set it there."; ObjectID = "yHS-Ob-8m1"; */
-"yHS-Ob-8m1.title" = "Wenn Du die Updatekanäle im System ändern möchtest, so musst Du das in den Einstellungen (⌘ + ,) von ANYmacOS machen.";
+"yHS-Ob-8m1.title" = "Wenn Du die Updatekanäle im System ändern möchtest, so musst Du das in den Einstellungen (⌘ + ,) von ANYmacOS tun.";
 
 /* Class = "NSTextFieldCell"; title = "Device Location:"; ObjectID = "yIR-l7-gOP"; */
 "yIR-l7-gOP.title" = "Device Location:";
