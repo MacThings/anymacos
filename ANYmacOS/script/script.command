@@ -29,6 +29,18 @@ function _helpDefaultDelete()
     fi
 }
 
+function _check_arch
+{
+
+    check_arch=$( sysctl -a | grep hw.optional | grep "x86_64" )
+    if [[ "$check_arch" = "" ]]; then
+        _helpDefaultWrite "Arch" "Apple"
+    else
+        _helpDefaultWrite "Arch" "Intel"
+    fi
+
+}
+
 function _check_sip
 {
     sipcheck1=$( csrutil status | grep "Kext Signing" | sed "s/.*\://g" | xargs )
@@ -224,6 +236,7 @@ function _download_macos()
     
     sip_status=$( _helpDefaultRead "SIP" )
     choice=$( _helpDefaultRead "Choice" )
+    arch=$( _helpDefaultRead "Arch" )
     parallel_downloads=$( _helpDefaultRead "ParaDL" )
     download_path=$( _helpDefaultRead "Downloadpath" )
 
@@ -267,7 +280,11 @@ function _download_macos()
         
         killed=$( _helpDefaultRead "KillDL" )
         if [[ "$killed" != "1" ]]; then
-            ../bin/./aria2c --file-allocation=none -c -q -x "$parallel_downloads" -d "$download_path" "$line"
+            if [[ "$arch" = "Intel" ]]; then
+                ../bin/./aria2c --file-allocation=none -c -q -x "$parallel_downloads" -d "$download_path" "$line"
+            else
+                ../bin/./aria2c_arm64 --file-allocation=none -c -q -x "$parallel_downloads" -d "$download_path" "$line"
+            fi
         else
             exit
         fi

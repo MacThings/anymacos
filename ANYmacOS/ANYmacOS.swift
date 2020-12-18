@@ -66,6 +66,7 @@ class ANYmacOS: NSViewController {
 				UserDefaults.standard.set(defaultname, forKey: "Statustext")
         DispatchQueue.global(qos: .background).async {
             self.syncShellExec(path: self.scriptPath, args: ["_select_seed_all"])
+            self.syncShellExec(path: self.scriptPath, args: ["_check_arch"])
             
             DispatchQueue.main.sync {
                 let location = NSString(string:"/private/tmp/anymacos/selection").expandingTildeInPath
