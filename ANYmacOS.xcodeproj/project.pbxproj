@@ -300,7 +300,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/bash;
-			shellScript = "#/bin/bash\n#\nrm -r \"${TARGET_BUILD_DIR}\"/ANYmacOS.app/Contents/Resources/bashstrings/Sparkle.framework\nrm -r \"${TARGET_BUILD_DIR}\"/ANYmacOS.app/Contents/Resources/bin/Sparkle.framework\nrm -r \"${TARGET_BUILD_DIR}\"/ANYmacOS.app/Contents/Resources/script/Sparkle.framework\ncp -r \"${TARGET_BUILD_DIR}\"/ANYmacOS.app /Applications/\nif [ -d /Volumes/Homeshare/Xcode/anymacos ]; then\n    cp \"/Users/luigi/Documents/Xcode/anymacos/ANYmacOS/anymacos.html\" \"/Volumes/Homeshare/Xcode/anymacos/upload/anymacos.html\"\n    rm /Volumes/Homeshare/Xcode/anymacos/upload/anymacos.zip 2> /dev/null\n    cd /Applications\n    ditto -c -k --sequesterRsrc --keepParent ANYmacOS.app /Volumes/Homeshare/Xcode/anymacos/upload/anymacos.zip\nfi\n\n\n";
+			shellScript = "#/bin/bash\n#\nrm -r /Applications/ANYmacOS.app\nrm -r \"${TARGET_BUILD_DIR}\"/ANYmacOS.app/Contents/Resources/bashstrings/Sparkle.framework\nrm -r \"${TARGET_BUILD_DIR}\"/ANYmacOS.app/Contents/Resources/bin/Sparkle.framework\nrm -r \"${TARGET_BUILD_DIR}\"/ANYmacOS.app/Contents/Resources/script/Sparkle.framework\ncp -r \"${TARGET_BUILD_DIR}\"/ANYmacOS.app /Applications/\nif [ -d /Volumes/Homeshare/Xcode/anymacos ]; then\n    cp \"/Users/luigi/Documents/Xcode/anymacos/ANYmacOS/anymacos.html\" \"/Volumes/Homeshare/Xcode/anymacos/upload/anymacos.html\"\n    rm /Volumes/Homeshare/Xcode/anymacos/upload/anymacos.zip 2> /dev/null\n    cd /Applications\n    ditto -c -k --sequesterRsrc --keepParent ANYmacOS.app /Volumes/Homeshare/Xcode/anymacos/upload/anymacos.zip\nfi\n\n\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
