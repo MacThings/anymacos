@@ -2,6 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "self:/Users/luigi/Documents/treeswitcher_new/Treeswitcher.xcodeproj">
+      location = "self:">
    </FileRef>
 </Workspace>
