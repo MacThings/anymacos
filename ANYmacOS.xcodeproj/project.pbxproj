@@ -18,6 +18,7 @@
 		2A14A724230322F80048B14A /* Website.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A14A71E230322F80048B14A /* Website.swift */; };
 		2A14A725230322F80048B14A /* CreateUSBInstaller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A14A71F230322F80048B14A /* CreateUSBInstaller.swift */; };
 		2A605B032664E7590043D793 /* Sparkle in Frameworks */ = {isa = PBXBuildFile; productRef = 2A605B022664E7590043D793 /* Sparkle */; };
+		2A6FEA57266F9BF000B4B508 /* LetsMoveIt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A6FEA56266F9BF000B4B508 /* LetsMoveIt.swift */; };
 		2A7AD8B325659BA1003800A9 /* ShowSetSysSeed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A7AD8B225659BA1003800A9 /* ShowSetSysSeed.swift */; };
 		2A8EB9912544AD5500F79DED /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2A8EB98F2544AD5500F79DED /* Localizable.strings */; };
 		2ABCD38925533AD00015E463 /* script.command in CopyFiles */ = {isa = PBXBuildFile; fileRef = 2A93CF3823004091004C832D /* script.command */; };
@@ -84,6 +85,7 @@
 		2A14A71E230322F80048B14A /* Website.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Website.swift; sourceTree = "<group>"; };
 		2A14A71F230322F80048B14A /* CreateUSBInstaller.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateUSBInstaller.swift; sourceTree = "<group>"; };
 		2A2879F423094D2F00C29553 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Main.strings; sourceTree = "<group>"; };
+		2A6FEA56266F9BF000B4B508 /* LetsMoveIt.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LetsMoveIt.swift; sourceTree = "<group>"; };
 		2A7AD8B225659BA1003800A9 /* ShowSetSysSeed.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShowSetSysSeed.swift; sourceTree = "<group>"; };
 		2A8EB9902544AD5500F79DED /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
 		2A93CF3823004091004C832D /* script.command */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = script.command; sourceTree = "<group>"; };
@@ -138,6 +140,7 @@
 				2A14A71F230322F80048B14A /* CreateUSBInstaller.swift */,
 				2A14A71A230322F80048B14A /* CreateUSBInstallerTerminal.swift */,
 				2A14A71B230322F80048B14A /* ANYmacOS.swift */,
+				2A6FEA56266F9BF000B4B508 /* LetsMoveIt.swift */,
 				2A14A71D230322F80048B14A /* Settings.swift */,
 				2A7AD8B225659BA1003800A9 /* ShowSetSysSeed.swift */,
 				2AD98C1E25568C7F002ADA3E /* Status.swift */,
@@ -300,7 +303,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/bash;
-			shellScript = "#/bin/bash\n#\nrm -r /Applications/ANYmacOS.app\nrm -r \"${TARGET_BUILD_DIR}\"/ANYmacOS.app/Contents/Resources/bashstrings/Sparkle.framework\nrm -r \"${TARGET_BUILD_DIR}\"/ANYmacOS.app/Contents/Resources/bin/Sparkle.framework\nrm -r \"${TARGET_BUILD_DIR}\"/ANYmacOS.app/Contents/Resources/script/Sparkle.framework\ncp -r \"${TARGET_BUILD_DIR}\"/ANYmacOS.app /Applications/\nif [ -d /Volumes/Homeshare/Xcode/anymacos ]; then\n    cp \"/Users/luigi/Documents/Xcode/anymacos/ANYmacOS/anymacos.html\" \"/Volumes/Homeshare/Xcode/anymacos/upload/anymacos.html\"\n    rm /Volumes/Homeshare/Xcode/anymacos/upload/anymacos.zip 2> /dev/null\n    cd /Applications\n    ditto -c -k --sequesterRsrc --keepParent ANYmacOS.app /Volumes/Homeshare/Xcode/anymacos/upload/anymacos.zip\nfi\n\n\n";
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\nfind \"${TARGET_BUILD_DIR}\"/\"${PRODUCT_NAME}.app\"/Contents/Resources -type d -name \"Sparkle.framework\" -exec rm -r \"{}\" \\;\nrm -r /Applications/\"${PRODUCT_NAME}.app\"\ncp -r \"${TARGET_BUILD_DIR}\"/\"${PRODUCT_NAME}.app\" /Applications/\nif [ -d /Volumes/Homeshare/Xcode/anymacos ]; then\n    newname=$( echo \"${PRODUCT_NAME}\" |tr '[:upper:]' '[:lower:]' |sed 's/\\ //g' )\n    cp \"/Users/luigi/Documents/Xcode/$newname/ANYmacOS/anymacos.html\" \"/Volumes/Homeshare/Xcode/$newname/upload/$newname.html\"\n    rm /Volumes/Homeshare/Xcode/anymacos/upload/$newname.zip 2> /dev/null\n    cd /Applications\n    ditto -c -k --sequesterRsrc --keepParent \"${PRODUCT_NAME}.app\" /Volumes/Homeshare/Xcode/$newname/upload/$newname.zip\n    ditto -c -k --sequesterRsrc --keepParent \"${PRODUCT_NAME}.app\" ~/Desktop/\"${PRODUCT_NAME} ${MARKETING_VERSION}.zip\"\nfi\n\n\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -321,6 +324,7 @@
 				1FA7862123002556002CDB52 /* AppDelegate.swift in Sources */,
 				2A1435232558031100D7315D /* AppHelp.swift in Sources */,
 				2A14A725230322F80048B14A /* CreateUSBInstaller.swift in Sources */,
+				2A6FEA57266F9BF000B4B508 /* LetsMoveIt.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -474,13 +478,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = "";
+				CODE_SIGN_ENTITLEMENTS = ANYmacOS/ANYmacOS.entitlements;
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 108;
 				DEVELOPMENT_TEAM = "";
-				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_HARDENED_RUNTIME = NO;
 				INFOPLIST_FILE = ANYmacOS/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -498,13 +502,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = "";
+				CODE_SIGN_ENTITLEMENTS = ANYmacOS/ANYmacOS.entitlements;
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 108;
 				DEVELOPMENT_TEAM = "";
-				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_HARDENED_RUNTIME = NO;
 				INFOPLIST_FILE = ANYmacOS/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

@@ -7,7 +7,6 @@
 //
 
 import Cocoa
-import AVFoundation
 
 class ANYmacOS: NSViewController {
     
