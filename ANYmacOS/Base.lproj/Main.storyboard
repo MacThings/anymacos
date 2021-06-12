@@ -306,7 +306,7 @@
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
                                 <connections>
-                                    <action selector="download_os_button:" target="gJF-20-phu" id="wi1-kY-5so"/>
+                                    <segue destination="0d9-HT-mEB" kind="sheet" id="yCu-TN-fLw"/>
                                 </connections>
                             </button>
                             <popUpButton focusRingType="none" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7SY-L3-eGc">
@@ -883,7 +883,13 @@ DQ
                         </subviews>
                     </view>
                     <connections>
+                        <outlet property="dl_filename" destination="EOP-LH-zEQ" id="PZ0-EB-V5L"/>
+                        <outlet property="dl_filesize" destination="1IM-YH-Dkc" id="DDL-Mn-xSf"/>
+                        <outlet property="dl_loaded" destination="b2Q-vQ-zHH" id="Y6j-pZ-MZt"/>
+                        <outlet property="dl_percent" destination="h0k-BR-C7T" id="dfX-tS-J7v"/>
+                        <outlet property="dl_progressbar" destination="OAD-WS-zZc" id="Nnl-CV-VeJ"/>
                         <outlet property="percent_symbol" destination="mIt-1J-fba" id="bTS-yP-06y"/>
+                        <outlet property="statustext_label" destination="N6X-jG-zaH" id="9VF-2K-qcB"/>
                     </connections>
                 </viewController>
                 <customObject id="Vbe-PG-jpc" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
@@ -1509,6 +1515,7 @@ DQ
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
+        <segue reference="yCu-TN-fLw"/>
         <segue reference="aa0-Wf-ZUe"/>
     </inferredMetricsTieBreakers>
     <resources>
