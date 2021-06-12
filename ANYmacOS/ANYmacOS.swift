@@ -7,13 +7,17 @@
 //
 
 import Cocoa
+import Foundation
 
 class ANYmacOS: NSViewController {
     
     var process:Process!
     var out:FileHandle?
     var outputTimer: Timer?
-    
+    var cmd_result = ""
+    var temp_path = "/private/tmp/anymacos"
+    let fileManager = FileManager.default
+
     @IBOutlet weak var progress_wheel: NSProgressIndicator!
     @IBOutlet weak var pulldown_seedmenu: NSPopUpButton!
     @IBOutlet weak var pulldown_menu: NSPopUpButton!
@@ -23,6 +27,10 @@ class ANYmacOS: NSViewController {
     @IBOutlet weak var paypal_button: NSButton!
     @IBOutlet weak var copyright: NSTextField!
     @IBOutlet weak var show_status: NSButton!
+    
+    @IBOutlet weak var osversion_label: NSTextField!
+    @IBOutlet weak var osbuild_label: NSTextField!
+    
     
     @IBOutlet weak var show_set_sys_seed: NSButton!
     
@@ -57,6 +65,43 @@ class ANYmacOS: NSViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do view setup here.
+
+        let url = URL(fileURLWithPath: temp_path)
+        do {
+            try FileManager.default.createDirectory(at: url, withIntermediateDirectories: true)
+        } catch _ {
+            print("")
+        }
+        
+        filesize(file: "/private/tmp/anymacos/test.zip", f: "B")
+        
+        shell(cmd: #"csrutil status | grep "Kext Signing" | sed "s/.*\://g" | xargs"#)
+        let sipcheck1 = cmd_result
+        shell(cmd: #"csrutil status | grep "System Integrity Protection status" | sed -e "s/.*\://g" -e "s/\ (.*//g" -e "s/\.//g" | xargs"#)
+        let sipcheck2 = cmd_result
+        
+        if sipcheck1 == "disabled" || sipcheck2 == "disabled" || sipcheck2 == "unknown" {
+            UserDefaults.standard.set(false, forKey: "SIP")
+        } else {
+            UserDefaults.standard.set(true, forKey: "SIP")
+        }
+
+        if "\(Locale.preferredLanguages)".contains("de-DE") {
+            UserDefaults.standard.set("de", forKey: "Language")
+        } else {
+            UserDefaults.standard.set("en", forKey: "Language")
+        }
+        
+        let systemVersion = ProcessInfo.processInfo.operatingSystemVersionString
+        if let index = (systemVersion.range(of: "(")?.upperBound)
+        {
+            let osvesion = String(systemVersion.prefix(upTo: index))
+            osversion_label.stringValue = osvesion.replacingOccurrences(of: "Version ", with: "").replacingOccurrences(of: " (", with: "")
+            let osbuild = String(systemVersion.suffix(from: index))
+            osbuild_label.stringValue = osbuild.replacingOccurrences(of: "Build ", with: "").replacingOccurrences(of: ")", with: "")
+        }
+        
+
         self.preferredContentSize = NSMakeSize(self.view.frame.size.width, self.view.frame.size.height);
         self.progress_wheel?.startAnimation(self);
         UserDefaults.standard.removeObject(forKey: "Choice")
@@ -142,8 +187,8 @@ class ANYmacOS: NSViewController {
         let locale = Locale.current.languageCode
         
         let downloadpath = UserDefaults.standard.string(forKey: "Downloadpath")
-        let sip_status = UserDefaults.standard.string(forKey: "SIP")
-        if sip_status == "On" {
+        let sip_status = UserDefaults.standard.bool(forKey: "SIP")
+        if sip_status == true {
             self.create_button.isEnabled=false
             let alert = NSAlert()
                 alert.messageText = NSLocalizedString("SIP is activated on your system!", comment: "")
@@ -162,8 +207,8 @@ class ANYmacOS: NSViewController {
                 return
         }
         
-        let sip_alert = UserDefaults.standard.string(forKey: "SIP")
-        if sip_alert == "On" {
+        let sip_alert = UserDefaults.standard.bool(forKey: "SIP")
+        if sip_alert == true {
             self.sip_alert.isHidden = false
             self.sip_alert_label.isHidden = false
         }
@@ -192,19 +237,19 @@ class ANYmacOS: NSViewController {
         self.pulldown_menu.isEnabled=false
         
         if (sender as AnyObject).title.contains("ll"){
-            self.syncShellExec(path: self.scriptPath, args: ["_select_seed_all"])
+            shell(cmd: "/usr/bin/curl https://www.sl-soft.de/extern/software/anymacos/seeds/selection > " + temp_path + "/selection")
         }
         if (sender as AnyObject).title.contains("Customer"){
-            self.syncShellExec(path: self.scriptPath, args: ["_select_seed_customer"])
+            shell(cmd: "/usr/bin/curl https://www.sl-soft.de/extern/software/anymacos/seeds/selection_customerseed > " + temp_path + "/selection")
         }
         if (sender as AnyObject).title.contains("Developer"){
-            self.syncShellExec(path: self.scriptPath, args: ["_select_seed_developer"])
+            shell(cmd: "/usr/bin/curl https://www.sl-soft.de/extern/software/anymacos/seeds/selection_beta > " + temp_path + "/selection")
         }
         if (sender as AnyObject).title.contains("Public"){
-            self.syncShellExec(path: self.scriptPath, args: ["_select_seed_public"])
+            shell(cmd: "/usr/bin/curl https://www.sl-soft.de/extern/software/anymacos/seeds/selection_seed > " + temp_path + "/selection")
         }
         
-        let location = NSString(string:"/private/tmp/anymacos/selection").expandingTildeInPath
+        let location = NSString(string:temp_path + "/selection").expandingTildeInPath
         self.pulldown_menu.menu?.removeAllItems()
         let fileContent = try? NSString(contentsOfFile: location, encoding: String.Encoding.utf8.rawValue)
         self.pulldown_menu.menu?.addItem(withTitle: "", action: #selector(ANYmacOS.menuItemClicked(_:)), keyEquivalent: "")
@@ -223,6 +268,13 @@ class ANYmacOS: NSViewController {
         
         let hidden_item = UserDefaults.standard.string(forKey: "Downloadpath")!
         
+        let url = URL(fileURLWithPath: hidden_item)
+        do {
+            try FileManager.default.createDirectory(at: url, withIntermediateDirectories: true)
+        } catch _ {
+            print("")
+        }
+        
         let path = hidden_item + "/.anymacos_download"
         let hasFile = FileManager().fileExists(atPath: path)
         if hasFile {
@@ -237,11 +289,18 @@ class ANYmacOS: NSViewController {
                 alert.addButton(withTitle: CancelButtonText)
             
             if alert.runModal() == .alertFirstButtonReturn {
-                self.syncShellExec(path: self.scriptPath, args: ["_remove_downloads"])
+                let filename = path
+                let contents = try! String(contentsOfFile: filename)
+                let files = contents.split(separator:"\n")
+                for line in files {
+                    try! fileManager.removeItem(atPath: hidden_item+"/"+line)
+                }
+                try! fileManager.removeItem(atPath: hidden_item+"/.anymacos_download")
             }
             
         }
 
+        
         self.create_button.isEnabled=false
         self.pulldown_menu.isEnabled=false
         self.pulldown_seedmenu.isEnabled=false
@@ -250,9 +309,23 @@ class ANYmacOS: NSViewController {
         UserDefaults.standard.set("No", forKey: "Stop")
         self.download_button.isEnabled=false
 
+        return
+        
         DispatchQueue.global(qos: .background).async {
-            //self.syncShellExec(path: self.scriptPath, args: ["_remove_downloads"])
-            self.syncShellExec(path: self.scriptPath, args: ["_download_macos"])
+
+            do {
+                try self.fileManager.removeItem(atPath: self.temp_path+"/files")
+            } catch _ {
+                print("")
+            }
+            let choice = UserDefaults.standard.string(forKey: "Choice")!
+            
+            self.shell(cmd: "/usr/bin/curl https://www.sl-soft.de/extern/software/anymacos/seeds/\"" + choice + "\" > \"" + self.temp_path + "\"/files")
+    
+            
+            
+            
+            //self.syncShellExec(path: self.scriptPath, args: ["_download_macos"])
             
             DispatchQueue.main.async {
                 let installerapp_done = UserDefaults.standard.string(forKey: "InstallerAppDone")
@@ -336,6 +409,20 @@ class ANYmacOS: NSViewController {
         show_set_sys_seed.performClick(nil)
     }
     
+    func filesize(file: String, f: String) {
+        let MyUrl = NSURL(fileURLWithPath: file)
+        let fileAttributes = try! FileManager.default.attributesOfItem(atPath: MyUrl.path!)
+        let fileSizeNumber = fileAttributes[FileAttributeKey.size] as! NSNumber
+        let fileSize = fileSizeNumber.int64Value
+        if f == "MB" {
+        var sizeMB = Double(fileSize / 1024)
+        sizeMB = Double(sizeMB / 1024)
+        print(String(sizeMB))
+        } else if f == "B" {
+            print(String(fileSize))
+        }
+    }
+    
     func syncShellExec(path: String, args: [String] = []) {
         let process            = Process()
         process.launchPath     = "/bin/bash"
@@ -358,6 +445,34 @@ class ANYmacOS: NSViewController {
             process.waitUntilExit()
         }
         
+    }
+    
+    func shell(cmd: String) {
+        let process            = Process()
+        process.launchPath     = "/bin/bash"
+        process.arguments      = ["-c", cmd]
+        let outputPipe         = Pipe()
+        let filelHandler       = outputPipe.fileHandleForReading
+        process.standardOutput = outputPipe
+        let group = DispatchGroup()
+        group.enter()
+        filelHandler.readabilityHandler = { pipe in
+            let data = pipe.availableData
+            if data.isEmpty { // EOF
+                filelHandler.readabilityHandler = nil
+                group.leave()
+                return
+            }
+            if let line = String(data: data, encoding: String.Encoding.utf8) {
+                DispatchQueue.main.sync {
+                    self.cmd_result = line.replacingOccurrences(of: "\n", with: "")
+                }
+            } else {
+                print("Error decoding data: \(data.base64EncodedString())")
+            }
+        }
+        process.launch() // Start process
+        process.waitUntilExit() // Wait for process to terminate.
     }
     
     override var representedObject: Any? {
