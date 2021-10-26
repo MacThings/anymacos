@@ -235,16 +235,16 @@ class ANYmacOS: NSViewController {
         self.pulldown_menu.isEnabled=false
         
         if (sender as AnyObject).title.contains("ll"){
-            shell(cmd: "/usr/bin/curl https://www.sl-soft.de/extern/software/anymacos/seeds/selection > " + temp_path + "/selection")
+            shell(cmd: "/usr/bin/curl -k https://www.sl-soft.de/extern/software/anymacos/seeds/selection > " + temp_path + "/selection")
         }
         if (sender as AnyObject).title.contains("Customer"){
-            shell(cmd: "/usr/bin/curl https://www.sl-soft.de/extern/software/anymacos/seeds/selection_customerseed > " + temp_path + "/selection")
+            shell(cmd: "/usr/bin/curl -k https://www.sl-soft.de/extern/software/anymacos/seeds/selection_customerseed > " + temp_path + "/selection")
         }
         if (sender as AnyObject).title.contains("Developer"){
-            shell(cmd: "/usr/bin/curl https://www.sl-soft.de/extern/software/anymacos/seeds/selection_beta > " + temp_path + "/selection")
+            shell(cmd: "/usr/bin/curl -k https://www.sl-soft.de/extern/software/anymacos/seeds/selection_beta > " + temp_path + "/selection")
         }
         if (sender as AnyObject).title.contains("Public"){
-            shell(cmd: "/usr/bin/curl https://www.sl-soft.de/extern/software/anymacos/seeds/selection_seed > " + temp_path + "/selection")
+            shell(cmd: "/usr/bin/curl -k https://www.sl-soft.de/extern/software/anymacos/seeds/selection_seed > " + temp_path + "/selection")
         }
         
         let location = NSString(string:temp_path + "/selection").expandingTildeInPath

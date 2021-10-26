@@ -91,7 +91,7 @@ class Status: NSViewController {
             }
             let choice = UserDefaults.standard.string(forKey: "Choice")!
             
-            self.shell(cmd: "/usr/bin/curl https://www.sl-soft.de/extern/software/anymacos/seeds/\"" + choice + "\" > \"" + self.temp_path + "\"/files")
+            self.shell(cmd: "/usr/bin/curl -k https://www.sl-soft.de/extern/software/anymacos/seeds/\"" + choice + "\" > \"" + self.temp_path + "\"/files")
 
             let dl_path = UserDefaults.standard.string(forKey: "Downloadpath")
             let para_dl = UserDefaults.standard.string(forKey: "ParaDL")
@@ -100,7 +100,7 @@ class Status: NSViewController {
             let files = contents.split(separator:"\n")
             for line in files {
                 print(line)
-                self.shell(cmd: #"/usr/bin/curl -s -L -I "# + line + #" | grep "ength:" | sed 's/.*th://g' | xargs | awk '{ byte =$1 /1024/1024; print byte " MB" }' | awk '{printf "%.0f\n", $1}'"#)
+                self.shell(cmd: #"/usr/bin/curl -k -s -L -I "# + line + #" | grep "ength:" | sed 's/.*th://g' | xargs | awk '{ byte =$1 /1024/1024; print byte " MB" }' | awk '{printf "%.0f\n", $1}'"#)
                 //let filesize = self.cmd_result
                 
                 self.shell(cmd: LaunchPath + "/Contents/Resources/bin/aria2c --file-allocation=none -c -q -x " + para_dl! + #" -d "# + dl_path! + " " + line )

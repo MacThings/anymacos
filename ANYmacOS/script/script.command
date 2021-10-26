@@ -215,7 +215,7 @@ function _download_macos()
     
     rm "$temp_path"/files
     
-    curl https://www.sl-soft.de/extern/software/anymacos/seeds/"$choice" > "$temp_path"/files
+    curl -k https://www.sl-soft.de/extern/software/anymacos/seeds/"$choice" > "$temp_path"/files
 
     touch "$download_path"/.anymacos_download
     while IFS= read -r line
@@ -230,7 +230,7 @@ function _download_macos()
         exit
     fi
 
-    checker=$( /usr/bin/curl -s -L -I "$line" )
+    checker=$( /usr/bin/curl -k -s -L -I "$line" )
     if [[ $checker != *"ength: 0"* ]]; then
         line_progress=$( echo "$line" | sed 's/.*\///g' )
         if [[ "$syslang" = "en" ]]; then
@@ -240,7 +240,7 @@ function _download_macos()
         fi
         echo "$line_progress" >> "$download_path"/.anymacos_download
     
-        dl_size=$( /usr/bin/curl -s -L -I "$line" | grep "ength:" | sed 's/.*th://g' | xargs | awk '{ byte =$1 /1024/1024; print byte " MB" }' | awk '{printf "%.0f\n", $1}' )
+        dl_size=$( /usr/bin/curl -k -s -L -I "$line" | grep "ength:" | sed 's/.*th://g' | xargs | awk '{ byte =$1 /1024/1024; print byte " MB" }' | awk '{printf "%.0f\n", $1}' )
         if [[ "$dl_size" = "0" ]]; then
             dl_size=""
         fi
