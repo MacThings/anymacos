@@ -62,26 +62,30 @@ ScriptHome=$(echo $HOME)
 MY_PATH="`dirname \"$0\"`"
 cd "$MY_PATH"
 
-#if [ ! -d /private/tmp/anymacos ]; then
-#    mkdir /private/tmp/anymacos
-#fi
+if [ ! -d /private/tmp/anymacos ]; then
+    mkdir /private/tmp/anymacos
+fi
 
-#_check_sip
+_check_sip
 
-#sys_language=$( defaults read -g AppleLocale )
+sys_language=$( defaults read -g AppleLocale )
 download_path=$( _helpDefaultRead "Downloadpath" )
-#temp_path="/private/tmp/anymacos"
+temp_path="/private/tmp/anymacos"
 seed_choice=$( _helpDefaultRead "CurrentSeed" )
 #seedcatalog_path="/System/Library/PrivateFrameworks/Seeding.framework/Versions/Current/Resources/SeedCatalogs.plist"
 
-#hwspecs=$( system_profiler SPHardwareDataType )
-#osversion=$( sw_vers | grep ProductVersion | cut -d':' -f2 | xargs )
-#osbuild=$( sw_vers |tail -n1 | sed "s/.*://g" | xargs )
+hwspecs=$( system_profiler SPHardwareDataType )
+osversion=$( sw_vers | grep ProductVersion | cut -d':' -f2 | xargs )
+osbuild=$( sw_vers |tail -n1 | sed "s/.*://g" | xargs )
+#modelname=$( echo -e "$hwspecs" | grep "Model Name:" | sed "s/.*://g" | xargs )
+#modelid=$( echo -e "$hwspecs" | grep "Model Identifier:" | sed "s/.*://g" | xargs )
+#cputype=$( echo -e "$hwspecs" | grep "Processor Name:" | sed "s/.*://g" | xargs )
 
-
-#_helpDefaultWrite "OSVersion" "$osversion"
-#_helpDefaultWrite "OSBuild" "$osbuild"
-
+_helpDefaultWrite "OSVersion" "$osversion"
+_helpDefaultWrite "OSBuild" "$osbuild"
+#_helpDefaultWrite "Modelname" "$modelname"
+#_helpDefaultWrite "ModelID" "$modelid"
+#_helpDefaultWrite "CPUType" "$cputype"
 
 _helpDefaultWrite "KillDL" "0"
 
@@ -168,6 +172,33 @@ function _setseed()
     _helpDefaultDelete "NewSeed"
 }
 
+function _select_seed_all()
+{
+    mkdir "$temp_path" 2> /dev/null
+    curl -k https://www.sl-soft.de/extern/software/anymacos/seeds/selection > "$temp_path"/selection
+    _helpDefaultWrite "Statustext" "$statustext"
+}
+
+function _select_seed_customer()
+{
+    mkdir "$temp_path" 2> /dev/null
+    curl -k https://www.sl-soft.de/extern/software/anymacos/seeds/selection_customerseed > "$temp_path"/selection
+    _helpDefaultWrite "Statustext" "$statustext"
+}
+
+function _select_seed_developer()
+{
+    mkdir "$temp_path" 2> /dev/null
+    curl -k https://www.sl-soft.de/extern/software/anymacos/seeds/selection_beta > "$temp_path"/selection
+    _helpDefaultWrite "Statustext" "$statustext"
+}
+
+function _select_seed_public()
+{
+    mkdir "$temp_path" 2> /dev/null
+    curl -k https://www.sl-soft.de/extern/software/anymacos/seeds/selection_seed > "$temp_path"/selection
+    _helpDefaultWrite "Statustext" "$statustext"
+}
 
 function _download_counter()
 {
