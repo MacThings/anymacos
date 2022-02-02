@@ -29,7 +29,6 @@
 		2AC66136239F873C00E859D7 /* en.bashstrings in Copy Bashstrings */ = {isa = PBXBuildFile; fileRef = 2AC66132239F85C100E859D7 /* en.bashstrings */; };
 		2AD98C1F25568C7F002ADA3E /* Status.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AD98C1E25568C7F002ADA3E /* Status.swift */; };
 		2AE5A77323006BDE00FFD472 /* aria2c in CopyFiles */ = {isa = PBXBuildFile; fileRef = 2A93CF3C23004097004C832D /* aria2c */; };
-		2AEC690D258C936D00AE2C8D /* aria2c_arm64 in CopyFiles */ = {isa = PBXBuildFile; fileRef = 2AEC690A258C913B00AE2C8D /* aria2c_arm64 */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -62,7 +61,6 @@
 			dstPath = bin;
 			dstSubfolderSpec = 7;
 			files = (
-				2AEC690D258C936D00AE2C8D /* aria2c_arm64 in CopyFiles */,
 				2AE5A77323006BDE00FFD472 /* aria2c in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -97,7 +95,6 @@
 		2AC66130239F85B100E859D7 /* de.bashstrings */ = {isa = PBXFileReference; lastKnownFileType = text; path = de.bashstrings; sourceTree = "<group>"; };
 		2AC66132239F85C100E859D7 /* en.bashstrings */ = {isa = PBXFileReference; lastKnownFileType = text; path = en.bashstrings; sourceTree = "<group>"; };
 		2AD98C1E25568C7F002ADA3E /* Status.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Status.swift; sourceTree = "<group>"; };
-		2AEC690A258C913B00AE2C8D /* aria2c_arm64 */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = aria2c_arm64; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -171,7 +168,6 @@
 			isa = PBXGroup;
 			children = (
 				2A93CF3C23004097004C832D /* aria2c */,
-				2AEC690A258C913B00AE2C8D /* aria2c_arm64 */,
 			);
 			path = bin;
 			sourceTree = "<group>";
@@ -482,7 +478,7 @@
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 110;
+				CURRENT_PROJECT_VERSION = 111;
 				DEVELOPMENT_TEAM = "";
 				ENABLE_HARDENED_RUNTIME = NO;
 				INFOPLIST_FILE = ANYmacOS/Info.plist;
@@ -490,7 +486,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MARKETING_VERSION = 1.1.0;
+				MARKETING_VERSION = 1.1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = anymacos.slsoft.de;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -506,7 +502,7 @@
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 110;
+				CURRENT_PROJECT_VERSION = 111;
 				DEVELOPMENT_TEAM = "";
 				ENABLE_HARDENED_RUNTIME = NO;
 				INFOPLIST_FILE = ANYmacOS/Info.plist;
@@ -514,7 +510,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MARKETING_VERSION = 1.1.0;
+				MARKETING_VERSION = 1.1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = anymacos.slsoft.de;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";

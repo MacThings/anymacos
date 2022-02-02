@@ -283,7 +283,7 @@ function _download_macos()
             if [[ "$arch" = "Intel" ]]; then
                 ../bin/./aria2c --file-allocation=none -c -q -x "$parallel_downloads" -d "$download_path" "$line"
             else
-                ../bin/./aria2c_arm64 --file-allocation=none -c -q -x "$parallel_downloads" -d "$download_path" "$line"
+                ../bin/./aria2c --file-allocation=none -c -q -x "$parallel_downloads" -d "$download_path" "$line"
             fi
         else
             exit
