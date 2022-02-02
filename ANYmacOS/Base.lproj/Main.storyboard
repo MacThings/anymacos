@@ -523,8 +523,6 @@
                         <outlet property="create_button" destination="nAu-ph-wcv" id="NKf-o6-vTY"/>
                         <outlet property="download_button" destination="Vjj-l5-8zK" id="2yt-ql-Bum"/>
                         <outlet property="paypal_button" destination="alA-98-hyO" id="W3E-vP-z64"/>
-                        <outlet property="percent_symbol" destination="mIt-1J-fba" id="kFX-95-fg9"/>
-                        <outlet property="progress_bar" destination="OAD-WS-zZc" id="47T-T0-PoC"/>
                         <outlet property="progress_wheel" destination="txK-Nu-ec1" id="P4u-pN-hHU"/>
                         <outlet property="pulldown_menu" destination="Xpi-ph-pMY" id="Lsj-pM-6qd"/>
                         <outlet property="pulldown_seedmenu" destination="7SY-L3-eGc" id="yXx-nz-Ha5"/>
