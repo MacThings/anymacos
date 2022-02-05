@@ -373,6 +373,9 @@ function _remove_downloads()
 {
 
  if [ -f "$download_path"/.anymacos_download ]; then
+        
+        pkill -f aria2c
+        
         if [[ "$syslang" = "en" ]]; then
             _helpDefaultWrite "Statustext" "Cleaning Downloadfolder"
         else
@@ -382,7 +385,7 @@ function _remove_downloads()
         do
             rm "$download_path"/"$line" 2> /dev/null
         done < ""$download_path"/.anymacos_download"
-        rm "$download_path"/*English.dist "$download_path"/InstallAssistant.pkg 2> /dev/null
+        rm "$download_path"/English.dist "$download_path"/*English.dist "$download_path"/InstallAssistant.pkg 2> /dev/null
         rm "$download_path"/*.aria2 2> /dev/null
         rm "$download_path"/.anymacos_download
         
