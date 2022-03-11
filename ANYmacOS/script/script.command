@@ -255,7 +255,8 @@ function _download_macos()
     
     rm "$temp_path"/files
     
-    curl -k https://www.sl-soft.de/extern/software/anymacos/seeds/"$choice" > "$temp_path"/files
+    #curl -k https://www.sl-soft.de/extern/software/anymacos/seeds/"$choice" > "$temp_path"/files
+    ../bin/./aria2c https://www.sl-soft.de/extern/software/anymacos/seeds/"$choice" -d "$temp_path" -o files
 
     touch "$download_path"/.anymacos_download
     while IFS= read -r line
