@@ -1,5 +1,7 @@
 #!/bin/bash
 
+
+
 function _helpDefaultWrite()
 {
     VAL=$1
@@ -64,6 +66,13 @@ cd "$MY_PATH"
 
 if [ ! -d /private/tmp/anymacos ]; then
     mkdir /private/tmp/anymacos
+fi
+
+write_log=$( _helpDefaultRead "WriteLog" )
+
+if [ "$write_log" = "1" ]; then
+    exec 1>> "$HOME"/Desktop/anymacos.txt 2>&1
+    set -x
 fi
 
 _check_sip

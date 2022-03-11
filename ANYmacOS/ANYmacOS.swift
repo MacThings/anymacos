@@ -123,6 +123,11 @@ class ANYmacOS: NSViewController {
         if appvalidinit == nil{
             UserDefaults.standard.set(false, forKey: "AppValid")
         }
+        
+        let write_log = UserDefaults.standard.string(forKey: "WriteLog")
+        if write_log == nil{
+            UserDefaults.standard.set(false, forKey: "WriteLog")
+        }
  
         let defaults = UserDefaults.standard
         defaults.removeObject(forKey: "DRVolName")
