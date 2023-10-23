@@ -1,6 +1,11 @@
 #!/bin/bash
+#
+#
 
-
+ScriptHome=$(echo $HOME)
+MY_PATH="`dirname \"$0\"`"
+cd "$MY_PATH"
+user=$( id -un )
 
 function _helpDefaultWrite()
 {
@@ -31,39 +36,6 @@ function _helpDefaultDelete()
     fi
 }
 
-function _check_arch
-{
-
-    check_arch=$( sysctl -a | grep hw.optional | grep "x86_64" )
-    if [[ "$check_arch" = "" ]]; then
-        _helpDefaultWrite "Arch" "Apple"
-    else
-        _helpDefaultWrite "Arch" "Intel"
-    fi
-
-}
-
-function _check_sip
-{
-    sipcheck1=$( csrutil status | grep "Kext Signing" | sed "s/.*\://g" | xargs )
-    sipcheck2=$( csrutil status | grep "System Integrity Protection status" | sed -e "s/.*\://g" -e "s/\ (.*//g" -e "s/\.//g" | xargs )
-    if [[ $sipcheck1 = "disabled" ]]; then
-        sipcheck="disabled"
-    elif [[ $sipcheck2 = "disabled" ]]; then
-        sipcheck="disabled"
-    fi
-
-    if [[ $sipcheck != "disabled" ]]; then
-        _helpDefaultWrite "SIP" "On"
-    else
-        _helpDefaultWrite "SIP" "Off"
-    fi
-}
-
-ScriptHome=$(echo $HOME)
-MY_PATH="`dirname \"$0\"`"
-cd "$MY_PATH"
-
 if [ ! -d /private/tmp/anymacos ]; then
     mkdir /private/tmp/anymacos
 fi
@@ -75,26 +47,17 @@ if [ "$write_log" = "1" ]; then
     set -x
 fi
 
-_check_sip
-
 sys_language=$( defaults read -g AppleLocale )
 download_path=$( _helpDefaultRead "Downloadpath" )
 temp_path="/private/tmp/anymacos"
 seed_choice=$( _helpDefaultRead "CurrentSeed" )
-#seedcatalog_path="/System/Library/PrivateFrameworks/Seeding.framework/Versions/Current/Resources/SeedCatalogs.plist"
 
 hwspecs=$( system_profiler SPHardwareDataType )
 osversion=$( sw_vers | grep ProductVersion | cut -d':' -f2 | xargs )
 osbuild=$( sw_vers |tail -n1 | sed "s/.*://g" | xargs )
-#modelname=$( echo -e "$hwspecs" | grep "Model Name:" | sed "s/.*://g" | xargs )
-#modelid=$( echo -e "$hwspecs" | grep "Model Identifier:" | sed "s/.*://g" | xargs )
-#cputype=$( echo -e "$hwspecs" | grep "Processor Name:" | sed "s/.*://g" | xargs )
 
 _helpDefaultWrite "OSVersion" "$osversion"
 _helpDefaultWrite "OSBuild" "$osbuild"
-#_helpDefaultWrite "Modelname" "$modelname"
-#_helpDefaultWrite "ModelID" "$modelid"
-#_helpDefaultWrite "CPUType" "$cputype"
 
 _helpDefaultWrite "KillDL" "0"
 
@@ -123,6 +86,46 @@ function _languageselect()
     source ${temp_path}/locale.tmp
 }
 
+function _check_user()
+{
+
+
+
+
+    if [[ "$syslang" = "en" ]]; then
+        _helpDefaultWrite "Statustext" ""
+    else
+        _helpDefaultWrite "Statustext" ""
+    fi
+############ Prüft ob der User Adminrechte hat und das Passwort korrekt ist
+    groups "$user" | grep -q -w admin
+    if [ $? = 1 ]; then
+        user=$(osascript -e "display dialog \"Der User mit dem Du gerade angemeldet bist hat keine Administrativen Rechte. Bitte gib nun einen User an der diese Rechte hat.\" default answer \"$user\"" -e 'text returned of result')
+    fi
+
+    password=$(osascript -e 'display dialog "Gib hier Dein Benutzer-Passwort ein:" default answer "" with hidden answer' -e 'text returned of result')
+
+    if [ ! -n "$password" ]; then
+        osascript -e 'display dialog "Du hast kein Passwort eingegeben! Versuche es noch einmal." buttons {"OK"}'
+        exit 1
+    fi
+    ###
+
+    groups "$user" | grep -q -w admin
+    if [ $? = 1 ]; then
+        osascript -e 'display dialog "Der User mit dem Du gerade angemeldet bist hat keine Administrativen Rechte. Versuche es noch einmal." buttons {"OK"}'
+        exit 1
+    fi
+    
+    echo "$password" | sudo -S dscl /Local/Default -u "$user" >/dev/null 2>&1
+    
+    if [ $? != 0 ]; then
+        osascript -e 'display dialog "Das eingegebene Password ist nicht korrekt. Versuche es noch einmal." buttons {"OK"}'
+        exit 1
+    fi
+####################################################################################
+
+}
 
 function _initial()
 {
@@ -241,11 +244,11 @@ done
 
 function _download_macos()
 {
+    _check_user
+    
     _download_counter &
     
-    sip_status=$( _helpDefaultRead "SIP" )
     choice=$( _helpDefaultRead "Choice" )
-    arch=$( _helpDefaultRead "Arch" )
     parallel_downloads=$( _helpDefaultRead "ParaDL" )
     download_path=$( _helpDefaultRead "Downloadpath" )
 
@@ -254,8 +257,7 @@ function _download_macos()
     fi
     
     rm "$temp_path"/files
-    
-    #curl -k https://www.sl-soft.de/extern/software/anymacos/seeds/"$choice" > "$temp_path"/files
+
     ../bin/./aria2c https://www.sl-soft.de/extern/software/anymacos/seeds/"$choice" -d "$temp_path" -o files
 
     touch "$download_path"/.anymacos_download
@@ -290,16 +292,11 @@ function _download_macos()
         
         killed=$( _helpDefaultRead "KillDL" )
         if [[ "$killed" != "1" ]]; then
-            if [[ "$arch" = "Intel" ]]; then
-                ../bin/./aria2c --file-allocation=none -c -q -x "$parallel_downloads" -d "$download_path" "$line"
-            else
-                ../bin/./aria2c --file-allocation=none -c -q -x "$parallel_downloads" -d "$download_path" "$line"
-            fi
+            ../bin/./aria2c --file-allocation=none -c -q -x "$parallel_downloads" -d "$download_path" "$line"
         else
             exit
         fi
     fi
-    
         
 done < ""$temp_path"/files"
 
@@ -316,13 +313,13 @@ done < ""$temp_path"/files"
         exit
     fi
 
-    if [[ "$sip_status" = "Off" ]]; then
-        if [[ "$syslang" = "en" ]]; then
-            _helpDefaultWrite "Statustext" "Creating Installer-Application ..."
-        else
-            _helpDefaultWrite "Statustext" "Erzeuge Installer-Application ..."
-        fi
+
+    if [[ "$syslang" = "en" ]]; then
+        _helpDefaultWrite "Statustext" "Creating Installer-Application ..."
+    else
+        _helpDefaultWrite "Statustext" "Erzeuge Installer-Application ..."
     fi
+
 
     kill_download=$( _helpDefaultRead "KillDL" )
     if [[ $kill_download = 1 ]]; then
@@ -337,29 +334,32 @@ done < ""$temp_path"/files"
     
     ### Checks if BigSur is downloading ###
     
-    #if [[ "$sip_status" = "Off" ]]; then
+        diskutil eject /Volumes/Install-App*
+        unzip -o ../Install-App.zip -d "$download_path"
+        open "$download_path"/Install-App.sparseimage
+        
+        sleep 3
+
+        if [ -d /Volumes/Install-AppApplications ]; then
+              echo "$password" | sudo -S rm -r /Volumes/Install-AppApplications
+        fi
+    
         if [ -f "$download_path/InstallAssistant.pkg" ]; then
-            if [[ "$sip_status" = "Off" ]]; then
-                osascript -e 'do shell script "sudo /usr/sbin/installer -pkg '"'$download_path'"'/InstallAssistant.pkg -target /" with administrator privileges'
+                echo "$password" | sudo -u root -S /usr/sbin/installer -pkg "$download_path"/InstallAssistant.pkg -target /Volumes/Install-App/
                 installok="$?"
-                
-            else
-                open "$download_path"/InstallAssistant.pkg
-                BACK_PID=$( pgrep "Installer" )
-                while kill -0 $BACK_PID ; do
-                    sleep 1
-                done
-                installok="$?"
-            fi
         else
             sed '/installation-check/d' "$download_path"/*English.dist > "$download_path"/English.dist
-            if [[ "$sip_status" = "Off" ]]; then
-                osascript -e 'do shell script "sudo /usr/sbin/installer -pkg '"'$download_path'"'/English.dist -target /" with administrator privileges'
+                echo "$password" | sudo -u root -S /usr/sbin/installer -pkg "$download_path"/English.dist -target /Volumes/Install-App/
                 installok="$?"
-            fi
         fi
     
         if [[ "$installok" = "0" ]]; then
+
+                echo "$password" | sudo -u "$user" -S mv /Volumes/Install-AppApplications/Install*.app/Contents/SharedSupport /Volumes/Install-App/Applications/Install*/Contents/
+                echo "$password" | sudo -u "$user" -S rm -r /Volumes/Install-AppApplications
+                echo "$password" | sudo -u "$user" -S mv /Volumes/Install-App/Applications/Install*.app /Volumes/Install-App/
+                echo "$password" | sudo -u "$user" -S rm -r /Volumes/Install-App/Library /Volumes/Install-App/Applications
+
                 _helpDefaultWrite "InstallerAppDone" "Yes"
             if [[ "$syslang" = "en" ]]; then
                 _helpDefaultWrite "Statustext" "Done"
@@ -374,7 +374,6 @@ done < ""$temp_path"/files"
                 _helpDefaultWrite "Statustext" "Erstellung fehlgeschlagen. Bitte versuche es erneut."
             fi
         fi
-    #fi
     exit
 }
 
