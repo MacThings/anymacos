@@ -17,6 +17,7 @@
 		2A14A723230322F80048B14A /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A14A71D230322F80048B14A /* Settings.swift */; };
 		2A14A724230322F80048B14A /* Website.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A14A71E230322F80048B14A /* Website.swift */; };
 		2A14A725230322F80048B14A /* CreateUSBInstaller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A14A71F230322F80048B14A /* CreateUSBInstaller.swift */; };
+		2A43E2322AE6D56E00CDCFE0 /* Install-App.zip in Resources */ = {isa = PBXBuildFile; fileRef = 2A43E2312AE6D56E00CDCFE0 /* Install-App.zip */; };
 		2A605B032664E7590043D793 /* Sparkle in Frameworks */ = {isa = PBXBuildFile; productRef = 2A605B022664E7590043D793 /* Sparkle */; };
 		2A6FEA57266F9BF000B4B508 /* LetsMoveIt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A6FEA56266F9BF000B4B508 /* LetsMoveIt.swift */; };
 		2A7AD8B325659BA1003800A9 /* ShowSetSysSeed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A7AD8B225659BA1003800A9 /* ShowSetSysSeed.swift */; };
@@ -83,6 +84,7 @@
 		2A14A71E230322F80048B14A /* Website.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Website.swift; sourceTree = "<group>"; };
 		2A14A71F230322F80048B14A /* CreateUSBInstaller.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateUSBInstaller.swift; sourceTree = "<group>"; };
 		2A2879F423094D2F00C29553 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Main.strings; sourceTree = "<group>"; };
+		2A43E2312AE6D56E00CDCFE0 /* Install-App.zip */ = {isa = PBXFileReference; lastKnownFileType = archive.zip; path = "Install-App.zip"; sourceTree = "<group>"; };
 		2A6FEA56266F9BF000B4B508 /* LetsMoveIt.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LetsMoveIt.swift; sourceTree = "<group>"; };
 		2A7AD8B225659BA1003800A9 /* ShowSetSysSeed.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShowSetSysSeed.swift; sourceTree = "<group>"; };
 		2A8EB9902544AD5500F79DED /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -146,6 +148,7 @@
 				2AC6612D239F84AE00E859D7 /* WindowController.swift */,
 				2A0A7D742347B3070081F997 /* anymacos.html */,
 				1FA7862423002558002CDB52 /* Assets.xcassets */,
+				2A43E2312AE6D56E00CDCFE0 /* Install-App.zip */,
 				1FA7862623002558002CDB52 /* Main.storyboard */,
 				1FA7862923002558002CDB52 /* Info.plist */,
 				2A8EB98F2544AD5500F79DED /* Localizable.strings */,
@@ -257,6 +260,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1FA7862523002558002CDB52 /* Assets.xcassets in Resources */,
+				2A43E2322AE6D56E00CDCFE0 /* Install-App.zip in Resources */,
 				2A8EB9912544AD5500F79DED /* Localizable.strings in Resources */,
 				1FA7862823002558002CDB52 /* Main.storyboard in Resources */,
 			);
@@ -478,7 +482,7 @@
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 112;
+				CURRENT_PROJECT_VERSION = 113;
 				DEVELOPMENT_TEAM = "";
 				ENABLE_HARDENED_RUNTIME = NO;
 				INFOPLIST_FILE = ANYmacOS/Info.plist;
@@ -486,7 +490,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MARKETING_VERSION = 1.1.2;
+				MARKETING_VERSION = 1.1.3;
 				PRODUCT_BUNDLE_IDENTIFIER = anymacos.slsoft.de;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -502,7 +506,7 @@
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 112;
+				CURRENT_PROJECT_VERSION = 113;
 				DEVELOPMENT_TEAM = "";
 				ENABLE_HARDENED_RUNTIME = NO;
 				INFOPLIST_FILE = ANYmacOS/Info.plist;
@@ -510,7 +514,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MARKETING_VERSION = 1.1.2;
+				MARKETING_VERSION = 1.1.3;
 				PRODUCT_BUNDLE_IDENTIFIER = anymacos.slsoft.de;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";

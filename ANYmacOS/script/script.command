@@ -88,39 +88,53 @@ function _languageselect()
 
 function _check_user()
 {
-
-
-
-
-    if [[ "$syslang" = "en" ]]; then
-        _helpDefaultWrite "Statustext" ""
-    else
-        _helpDefaultWrite "Statustext" ""
-    fi
 ############ Prüft ob der User Adminrechte hat und das Passwort korrekt ist
+    if [[ "$syslang" = "en" ]]; then
+        string="The user you are currently logged in with does not have administrative rights. Please enter a user who has these rights."
+    else
+        string="Der User mit dem Du gerade angemeldet bist hat keine Administrativen Rechte. Bitte gib nun einen User an der diese Rechte hat."
+    fi
     groups "$user" | grep -q -w admin
     if [ $? = 1 ]; then
-        user=$(osascript -e "display dialog \"Der User mit dem Du gerade angemeldet bist hat keine Administrativen Rechte. Bitte gib nun einen User an der diese Rechte hat.\" default answer \"$user\"" -e 'text returned of result')
+        user=$(osascript -e "display dialog \"$string\" default answer \"$user\"" -e 'text returned of result')
     fi
-
-    password=$(osascript -e 'display dialog "Gib hier Dein Benutzer-Passwort ein:" default answer "" with hidden answer' -e 'text returned of result')
-
+######
+    if [[ "$syslang" = "en" ]]; then
+        string="Please enter your user password."
+    else
+        string="Gib hier Dein Benutzer-Passwort ein."
+    fi
+    password=$(osascript -e "display dialog \"$string\" default answer \"\" with hidden answer" -e 'text returned of result')
+    if [[ "$syslang" = "en" ]]; then
+        string="You have not entered a password! Try again."
+    else
+        string="Du hast kein Passwort eingegeben! Versuche es noch einmal."
+    fi
     if [ ! -n "$password" ]; then
-        osascript -e 'display dialog "Du hast kein Passwort eingegeben! Versuche es noch einmal." buttons {"OK"}'
+        osascript -e "display dialog \"$string\" buttons {\"OK\"}"
         exit 1
     fi
-    ###
-
+######
+    if [[ "$syslang" = "en" ]]; then
+        string="The user you are currently logged in with does not have administrative rights. Try again."
+    else
+        string="Der User mit dem Du gerade angemeldet bist hat keine Administrativen Rechte. Versuche es noch einmal."
+    fi
     groups "$user" | grep -q -w admin
     if [ $? = 1 ]; then
-        osascript -e 'display dialog "Der User mit dem Du gerade angemeldet bist hat keine Administrativen Rechte. Versuche es noch einmal." buttons {"OK"}'
+        osascript -e "display dialog \"$string\" buttons {\"OK\"}"
         exit 1
     fi
-    
+######
+    if [[ "$syslang" = "en" ]]; then
+        string="The password you entered is not correct. Try again.."
+    else
+        string="Das eingegebene Password ist nicht korrekt. Versuche es noch einmal."
+    fi
     echo "$password" | sudo -S dscl /Local/Default -u "$user" >/dev/null 2>&1
     
     if [ $? != 0 ]; then
-        osascript -e 'display dialog "Das eingegebene Password ist nicht korrekt. Versuche es noch einmal." buttons {"OK"}'
+        osascript -e "display dialog \"$string\" buttons {\"OK\"}"
         exit 1
     fi
 ####################################################################################
@@ -266,21 +280,28 @@ function _download_macos()
     kill_download=$( _helpDefaultRead "KillDL" )
     if [[ $kill_download = 1 ]]; then
         if [[ "$syslang" = "en" ]]; then
-            _helpDefaultWrite "Statustext" "Downloading aborted"
-        else
-            _helpDefaultWrite "Statustext" "Download abgebrochen"
+        string="Downloading aborted"
+            else
+        string="Download abgebrochen"
         fi
+
+        _helpDefaultWrite "Statustext" "$string"
+
         exit
     fi
 
     checker=$( /usr/bin/curl -k -s -L -I "$line" )
     if [[ $checker != *"ength: 0"* ]]; then
         line_progress=$( echo "$line" | sed 's/.*\///g' )
+
         if [[ "$syslang" = "en" ]]; then
-            _helpDefaultWrite "Statustext" "Downloading ..."
-        else
-            _helpDefaultWrite "Statustext" "Dateitransfer ..."
+        string="Downloading ..."
+            else
+        string="Dateitransfer ..."
         fi
+        
+        _helpDefaultWrite "Statustext" "$string"
+
         echo "$line_progress" >> "$download_path"/.anymacos_download
     
         dl_size=$( /usr/bin/curl -k -s -L -I "$line" | grep "ength:" | sed 's/.*th://g' | xargs | awk '{ byte =$1 /1024/1024; print byte " MB" }' | awk '{printf "%.0f\n", $1}' )
@@ -306,29 +327,36 @@ done < ""$temp_path"/files"
     _helpDefaultWrite "Stop" "Yes"
     if [[ $kill_download = 1 ]]; then
         if [[ "$syslang" = "en" ]]; then
-            _helpDefaultWrite "Statustext" "Downloading aborted"
-        else
-            _helpDefaultWrite "Statustext" "Download abgebrochen"
+        string="Downloading aborted"
+            else
+        string="Download abgebrochen"
         fi
+    
+        _helpDefaultWrite "Statustext" "$string"
+
         exit
     fi
 
-
     if [[ "$syslang" = "en" ]]; then
-        _helpDefaultWrite "Statustext" "Creating Installer-Application ..."
+        string="Creating Installer-Application ..."
     else
-        _helpDefaultWrite "Statustext" "Erzeuge Installer-Application ..."
+        string="Erzeuge Installer-Applikation ..."
     fi
+    
+    _helpDefaultWrite "Statustext" "$string"
 
 
     kill_download=$( _helpDefaultRead "KillDL" )
     if [[ $kill_download = 1 ]]; then
         _helpDefaultWrite "Stop" "Yes"
         if [[ "$syslang" = "en" ]]; then
-            _helpDefaultWrite "Statustext" "Downloading aborted"
-        else
-            _helpDefaultWrite "Statustext" "Download abgebrochen"
+        string="Downloading aborted"
+            else
+        string="Download abgebrochen"
         fi
+    
+        _helpDefaultWrite "Statustext" "$string"
+        
         exit
     fi
     
@@ -355,24 +383,31 @@ done < ""$temp_path"/files"
     
         if [[ "$installok" = "0" ]]; then
 
-                echo "$password" | sudo -u "$user" -S mv /Volumes/Install-AppApplications/Install*.app/Contents/SharedSupport /Volumes/Install-App/Applications/Install*/Contents/
-                echo "$password" | sudo -u "$user" -S rm -r /Volumes/Install-AppApplications
-                echo "$password" | sudo -u "$user" -S mv /Volumes/Install-App/Applications/Install*.app /Volumes/Install-App/
-                echo "$password" | sudo -u "$user" -S rm -r /Volumes/Install-App/Library /Volumes/Install-App/Applications
+            echo "$password" | sudo -u "$user" -S mv /Volumes/Install-AppApplications/Install*.app/Contents/SharedSupport /Volumes/Install-App/Applications/Install*/Contents/
+            echo "$password" | sudo -u "$user" -S rm -r /Volumes/Install-AppApplications
+            echo "$password" | sudo -u "$user" -S mv /Volumes/Install-App/Applications/Install*.app /Volumes/Install-App/
+            echo "$password" | sudo -u "$user" -S rm -r /Volumes/Install-App/Library /Volumes/Install-App/Applications
 
-                _helpDefaultWrite "InstallerAppDone" "Yes"
+            _helpDefaultWrite "InstallerAppDone" "Yes"
             if [[ "$syslang" = "en" ]]; then
-                _helpDefaultWrite "Statustext" "Done"
+                string="Done"
             else
-                _helpDefaultWrite "Statustext" "Fertig"
+                string="Fertig"
             fi
+    
+            _helpDefaultWrite "Statustext" "$string"
         else
             _helpDefaultWrite "InstallerAppDone" "No"
+            
+            
             if [[ "$syslang" = "en" ]]; then
-                _helpDefaultWrite "Statustext" "Creation failed! Please try again."
+                string="Creation failed! Please try again."
             else
-                _helpDefaultWrite "Statustext" "Erstellung fehlgeschlagen. Bitte versuche es erneut."
+                string="Erstellung fehlgeschlagen. Bitte versuche es erneut."
             fi
+    
+            _helpDefaultWrite "Statustext" "$string"
+
         fi
     exit
 }
@@ -386,10 +421,14 @@ function _remove_downloads()
         pkill -f aria2c
         
         if [[ "$syslang" = "en" ]]; then
-            _helpDefaultWrite "Statustext" "Cleaning Downloadfolder"
+            string="Cleaning Downloadfolder"
         else
-            _helpDefaultWrite "Statustext" "Bereinige Downloadordner"
+            string="Bereinige Downloadordner"
         fi
+        
+        _helpDefaultWrite "Statustext" "$string"
+        
+        
         while IFS= read -r line
         do
             rm "$download_path"/"$line" 2> /dev/null
@@ -417,10 +456,12 @@ function _kill_aria()
 #        kill -term $KILLPID;
 #    done
     if [[ "$syslang" = "en" ]]; then
-        _helpDefaultWrite "Statustext" "Done"
+        string="Done"
     else
-        _helpDefaultWrite "Statustext" "Fertig"
+        string="Fertig"
     fi
+    
+    _helpDefaultWrite "Statustext" "$string"
     
     bash kill.command &
 
@@ -532,10 +573,12 @@ function _start_installer_creation()
     fi
 
     if [[ "$syslang" = "en" ]]; then
-        _helpDefaultWrite "Statustext" "Please enter your Root Password to start the Process."
+        string="Please enter your Root Password to start the Process."
     else
-        _helpDefaultWrite "Statustext" "Bitte gib Dein Rootpasswort ein um den Prozess zu starten."
+        string="Bitte gib Dein Rootpasswort ein um den Prozess zu starten."
     fi
+    
+    _helpDefaultWrite "Statustext" "$string"
 
     diskutil eraseVolume JHFS+ "$targetvolumename" "$targetvolume"
 

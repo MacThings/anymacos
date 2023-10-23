@@ -24,6 +24,12 @@ a:active { color:#000 }
 </head>
 <body>
 
+    <p><span class="header" lang="en">New in 1.1.3</span></p>
+    <ul>
+    <span class="newstext">
+        <li>It is now possible to create an installer application without SIP disabled. This is no longer created directly in "/Applications" but in a sparse image which is created, mounted and filled by ANYmacOS in the download path stored by the user. This has the advantage that you don't have to write to a system protected directory (/Applications) anymore. You end up with a volume named "Installer-App" on your desktop where the installer application is located.</li>
+    </ul></span>
+
     <p><span class="header" lang="en">New in 1.1.2</span></p>
     <ul>
     <span class="newstext">
@@ -48,7 +54,13 @@ a:active { color:#000 }
     <span class="newstext">
         <li>Removed: Update channel selection (for downloads) has been removed because Apple's catalogs no longer allow differentiation. You can now always see everything in the OS selection.</li>
     </ul></span>
-    
+ 
+ <p><span class="header" lang="en">New in 1.0.9/span></p>
+ <ul>
+ <span class="newstext">
+     <li>Installer Application is now created in an Disk-Image, named Installer-App, which is beside the ANYmacOS Download Folder. That means SIP can be enabled and the installer could be created in Userland which has no restrictions.</li>
+ </ul></span>
+ 
     <p><span class="header" lang="en">New in 1.0.8</span></p>
     <ul>
     <span class="newstext">
