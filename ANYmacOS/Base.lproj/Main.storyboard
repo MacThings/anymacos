@@ -33,7 +33,7 @@
                                         <menuItem title="Check for Updates..." id="zuH-W6-fgc">
                                             <modifierMask key="keyEquivalentModifierMask"/>
                                             <connections>
-                                                <action selector="checkForUpdates:" target="ZSk-4w-Zx6" id="9gF-i0-snQ"/>
+                                                <action selector="checkForUpdates:" target="AuW-vb-zYG" id="bHs-IT-RRe"/>
                                             </connections>
                                         </menuItem>
                                         <menuItem title="Reset Settings..." id="EAs-TM-q5v">
@@ -147,7 +147,7 @@
                     </connections>
                 </application>
                 <customObject id="Voe-Tx-rLC" customClass="AppDelegate" customModule="ANYmacOS" customModuleProvider="target"/>
-                <customObject id="ZSk-4w-Zx6" customClass="SUUpdater"/>
+                <customObject id="AuW-vb-zYG" customClass="SPUStandardUpdaterController"/>
                 <customObject id="YLy-65-1bz" customClass="NSFontManager"/>
                 <customObject id="Ady-hI-5gd" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1524,7 +1524,7 @@ DQ
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="aa0-Wf-ZUe"/>
+        <segue reference="dhz-g2-oMG"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="AppHelp" width="546" height="288"/>

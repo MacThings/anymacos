@@ -18,7 +18,7 @@
 		2A14A724230322F80048B14A /* Website.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A14A71E230322F80048B14A /* Website.swift */; };
 		2A14A725230322F80048B14A /* CreateUSBInstaller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A14A71F230322F80048B14A /* CreateUSBInstaller.swift */; };
 		2A43E2322AE6D56E00CDCFE0 /* Install-App.zip in Resources */ = {isa = PBXBuildFile; fileRef = 2A43E2312AE6D56E00CDCFE0 /* Install-App.zip */; };
-		2A605B032664E7590043D793 /* Sparkle in Frameworks */ = {isa = PBXBuildFile; productRef = 2A605B022664E7590043D793 /* Sparkle */; };
+		2A6A97922AE7A88000261586 /* Sparkle in Frameworks */ = {isa = PBXBuildFile; productRef = 2A6A97912AE7A88000261586 /* Sparkle */; };
 		2A6FEA57266F9BF000B4B508 /* LetsMoveIt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A6FEA56266F9BF000B4B508 /* LetsMoveIt.swift */; };
 		2A7AD8B325659BA1003800A9 /* ShowSetSysSeed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A7AD8B225659BA1003800A9 /* ShowSetSysSeed.swift */; };
 		2A8EB9912544AD5500F79DED /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2A8EB98F2544AD5500F79DED /* Localizable.strings */; };
@@ -104,7 +104,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2A605B032664E7590043D793 /* Sparkle in Frameworks */,
+				2A6A97922AE7A88000261586 /* Sparkle in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -206,7 +206,7 @@
 			);
 			name = ANYmacOS;
 			packageProductDependencies = (
-				2A605B022664E7590043D793 /* Sparkle */,
+				2A6A97912AE7A88000261586 /* Sparkle */,
 			);
 			productName = Treeswitcher;
 			productReference = 1FA7861D23002556002CDB52 /* ANYmacOS.app */;
@@ -243,7 +243,7 @@
 			);
 			mainGroup = 1FA7861423002556002CDB52;
 			packageReferences = (
-				2A605B012664E7590043D793 /* XCRemoteSwiftPackageReference "Sparkle" */,
+				2A6A97902AE7A88000261586 /* XCRemoteSwiftPackageReference "Sparkle" */,
 			);
 			productRefGroup = 1FA7861E23002556002CDB52 /* Products */;
 			projectDirPath = "";
@@ -406,7 +406,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -465,7 +465,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = macosx;
@@ -550,20 +550,20 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		2A605B012664E7590043D793 /* XCRemoteSwiftPackageReference "Sparkle" */ = {
+		2A6A97902AE7A88000261586 /* XCRemoteSwiftPackageReference "Sparkle" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/sparkle-project/Sparkle";
 			requirement = {
 				kind = exactVersion;
-				version = 2.5.1;
+				version = 2.5.0;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		2A605B022664E7590043D793 /* Sparkle */ = {
+		2A6A97912AE7A88000261586 /* Sparkle */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 2A605B012664E7590043D793 /* XCRemoteSwiftPackageReference "Sparkle" */;
+			package = 2A6A97902AE7A88000261586 /* XCRemoteSwiftPackageReference "Sparkle" */;
 			productName = Sparkle;
 		};
 /* End XCSwiftPackageProductDependency section */
