@@ -65,7 +65,6 @@ class ANYmacOS: NSViewController {
 				UserDefaults.standard.set(defaultname, forKey: "Statustext")
         DispatchQueue.global(qos: .background).async {
             self.syncShellExec(path: self.scriptPath, args: ["_select_seed_all"])
-            self.syncShellExec(path: self.scriptPath, args: ["_check_arch"])
             
             DispatchQueue.main.sync {
                 let location = NSString(string:"/private/tmp/anymacos/selection").expandingTildeInPath
@@ -256,7 +255,6 @@ class ANYmacOS: NSViewController {
         self.download_button.isEnabled=false
 
         DispatchQueue.global(qos: .background).async {
-            //self.syncShellExec(path: self.scriptPath, args: ["_remove_downloads"])
             self.syncShellExec(path: self.scriptPath, args: ["_download_macos"])
             
             DispatchQueue.main.async {
@@ -296,7 +294,6 @@ class ANYmacOS: NSViewController {
                 defaults.removeObject(forKey: "DLFile")
                 defaults.synchronize()
                 self.syncShellExec(path: self.scriptPath, args: ["_remove_temp"])
-                //self.syncShellExec(path: self.scriptPath, args: ["_check_seed"])
                 if self.languageinit == "en" {
                     let defaultname = "Idle ..."
                     UserDefaults.standard.set(defaultname, forKey: "StatustextUSB")
@@ -326,7 +323,6 @@ class ANYmacOS: NSViewController {
         DispatchQueue.global(qos: .background).async {
             self.syncShellExec(path: self.scriptPath, args: ["_kill_aria"])
             self.syncShellExec(path: self.scriptPath, args: ["_remove_temp"])
-            //self.syncShellExec(path: self.scriptPath, args: ["_check_seed"])
             
             DispatchQueue.main.async {
                 self.download_button.isHidden=false

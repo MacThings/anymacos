@@ -12,6 +12,8 @@ class Settings: NSViewController {
 
     @IBOutlet weak var download_path_textfield: NSTextFieldCell!
 
+    @IBOutlet weak var seed_box: NSBox!
+    
     let languageinit = UserDefaults.standard.string(forKey: "Language")
     let scriptPath = Bundle.main.path(forResource: "/script/script", ofType: "command")!
     
@@ -19,6 +21,10 @@ class Settings: NSViewController {
     
     override func viewDidAppear() {
         self.view.window?.title = NSLocalizedString("Preferences", comment: "")
+        
+        if #available(macOS 13.0, *) {
+            self.seed_box.isHidden = true
+        }
     }
     
     override func viewDidLoad() {

@@ -743,6 +743,7 @@ DQ
                     </view>
                     <connections>
                         <outlet property="download_path_textfield" destination="O8R-Hr-hOm" id="YpR-Nj-9zy"/>
+                        <outlet property="seed_box" destination="SaL-gw-x2p" id="pnR-N8-7bH"/>
                     </connections>
                 </viewController>
                 <customObject id="KJI-ON-ZeI" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
