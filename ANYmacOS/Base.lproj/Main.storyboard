@@ -156,6 +156,7 @@
         <!--About ANYmacOS-->
         <scene sceneID="cro-BX-8Fo">
             <objects>
+                <customObject id="WMg-hm-lqW" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
                 <viewController title="About ANYmacOS" id="tkt-bG-Dha" customClass="About" customModule="ANYmacOS" sceneMemberID="viewController">
                     <view key="view" id="jGV-k0-K3I">
                         <rect key="frame" x="0.0" y="0.0" width="248" height="244"/>
@@ -182,7 +183,7 @@
                             <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kOx-an-a2n">
                                 <rect key="frame" x="40" y="70" width="170" height="170"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="Logo" id="7So-JD-mvK"/>
+                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="NSApplicationIcon" id="7So-JD-mvK"/>
                             </imageView>
                             <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7Nl-wT-lCb">
                                 <rect key="frame" x="0.0" y="58" width="250" height="16"/>
@@ -200,7 +201,6 @@
                         <outlet property="version" destination="7Nl-wT-lCb" id="IXV-cJ-JLa"/>
                     </connections>
                 </viewController>
-                <customObject id="WMg-hm-lqW" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1626" y="474"/>
         </scene>
@@ -433,7 +433,7 @@
                             <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="aXM-gO-Ohk">
                                 <rect key="frame" x="14" y="162" width="40" height="40"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="Logo" id="w2p-eX-DcV"/>
+                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="NSApplicationIcon" id="w2p-eX-DcV"/>
                             </imageView>
                             <progressIndicator wantsLayer="YES" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" maxValue="100" displayedWhenStopped="NO" bezeled="NO" indeterminate="YES" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="txK-Nu-ec1">
                                 <rect key="frame" x="175" y="88" width="32" height="32"/>
@@ -1524,11 +1524,11 @@ DQ
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="dhz-g2-oMG"/>
+        <segue reference="aa0-Wf-ZUe"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="AppHelp" width="546" height="288"/>
-        <image name="Logo" width="512" height="512"/>
+        <image name="NSApplicationIcon" width="32" height="32"/>
         <image name="NSSmartBadgeTemplate" width="14" height="14"/>
         <image name="alert" width="339" height="309"/>
         <image name="buttonCell:kIs-F1-INf:image" width="1" height="1">
