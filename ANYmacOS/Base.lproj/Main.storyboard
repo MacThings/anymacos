@@ -643,7 +643,7 @@ DQ
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="N6X-jG-zaH">
-                                            <rect key="frame" x="9" y="6" width="266" height="17"/>
+                                            <rect key="frame" x="9" y="3" width="266" height="17"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <textFieldCell key="cell" lineBreakMode="clipping" title="Statustext" usesSingleLineMode="YES" id="8iR-xQ-CHK">
                                                 <font key="font" metaFont="systemMedium" size="13"/>

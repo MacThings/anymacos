@@ -186,7 +186,7 @@ function _download_counter()
             _helpDefaultWrite "DLProgress" "$percent"
 
             sleep 0.5
-done
+        done
 }
 
 function _download_macos()
@@ -270,6 +270,8 @@ function _download_macos()
     fi
         
 done < ""$temp_path"/files"
+
+    _helpDefaultWrite "DLFile" ""
 
     echo English.dist >> "$download_path"/.anymacos_download
     cat "$download_path"/.anymacos_download | uniq > "$download_path"/.anymacos_download2
