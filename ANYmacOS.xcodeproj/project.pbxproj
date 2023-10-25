@@ -14,19 +14,15 @@
 		2A14A720230322F80048B14A /* CreateUSBInstallerTerminal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A14A71A230322F80048B14A /* CreateUSBInstallerTerminal.swift */; };
 		2A14A721230322F80048B14A /* ANYmacOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A14A71B230322F80048B14A /* ANYmacOS.swift */; };
 		2A14A723230322F80048B14A /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A14A71D230322F80048B14A /* Settings.swift */; };
-		2A14A724230322F80048B14A /* Website.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A14A71E230322F80048B14A /* Website.swift */; };
 		2A14A725230322F80048B14A /* CreateUSBInstaller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A14A71F230322F80048B14A /* CreateUSBInstaller.swift */; };
 		2A43E2322AE6D56E00CDCFE0 /* Install-App.zip in Resources */ = {isa = PBXBuildFile; fileRef = 2A43E2312AE6D56E00CDCFE0 /* Install-App.zip */; };
 		2A6A97922AE7A88000261586 /* Sparkle in Frameworks */ = {isa = PBXBuildFile; productRef = 2A6A97912AE7A88000261586 /* Sparkle */; };
 		2A6FEA57266F9BF000B4B508 /* LetsMoveIt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A6FEA56266F9BF000B4B508 /* LetsMoveIt.swift */; };
-		2A7AD8B325659BA1003800A9 /* ShowSetSysSeed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A7AD8B225659BA1003800A9 /* ShowSetSysSeed.swift */; };
 		2A8EB9912544AD5500F79DED /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2A8EB98F2544AD5500F79DED /* Localizable.strings */; };
 		2ABCD38925533AD00015E463 /* script.command in CopyFiles */ = {isa = PBXBuildFile; fileRef = 2A93CF3823004091004C832D /* script.command */; };
 		2ABCD39225533DEF0015E463 /* kill.command in CopyFiles */ = {isa = PBXBuildFile; fileRef = 2ABCD38F25533DC90015E463 /* kill.command */; };
 		2ABDF3122550035A00B7647A /* About.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ABDF3112550035A00B7647A /* About.swift */; };
 		2AC6612E239F84AE00E859D7 /* WindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AC6612D239F84AE00E859D7 /* WindowController.swift */; };
-		2AC66135239F873C00E859D7 /* de.bashstrings in Copy Bashstrings */ = {isa = PBXBuildFile; fileRef = 2AC66130239F85B100E859D7 /* de.bashstrings */; };
-		2AC66136239F873C00E859D7 /* en.bashstrings in Copy Bashstrings */ = {isa = PBXBuildFile; fileRef = 2AC66132239F85C100E859D7 /* en.bashstrings */; };
 		2AD98C1F25568C7F002ADA3E /* Status.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AD98C1E25568C7F002ADA3E /* Status.swift */; };
 		2AE5A77323006BDE00FFD472 /* aria2c in CopyFiles */ = {isa = PBXBuildFile; fileRef = 2A93CF3C23004097004C832D /* aria2c */; };
 /* End PBXBuildFile section */
@@ -41,18 +37,6 @@
 				2ABCD39225533DEF0015E463 /* kill.command in CopyFiles */,
 				2ABCD38925533AD00015E463 /* script.command in CopyFiles */,
 			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		2AC66134239F872C00E859D7 /* Copy Bashstrings */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = bashstrings;
-			dstSubfolderSpec = 7;
-			files = (
-				2AC66135239F873C00E859D7 /* de.bashstrings in Copy Bashstrings */,
-				2AC66136239F873C00E859D7 /* en.bashstrings in Copy Bashstrings */,
-			);
-			name = "Copy Bashstrings";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		2AE5A77223006BD400FFD472 /* CopyFiles */ = {
@@ -74,26 +58,20 @@
 		1FA7862423002558002CDB52 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1FA7862723002558002CDB52 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		1FA7862923002558002CDB52 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		2A097A712553314600A5A461 /* Logo.psd */ = {isa = PBXFileReference; lastKnownFileType = file; path = Logo.psd; sourceTree = "<group>"; };
 		2A0A7D742347B3070081F997 /* anymacos.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = anymacos.html; sourceTree = "<group>"; };
 		2A14A71A230322F80048B14A /* CreateUSBInstallerTerminal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateUSBInstallerTerminal.swift; sourceTree = "<group>"; };
 		2A14A71B230322F80048B14A /* ANYmacOS.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ANYmacOS.swift; sourceTree = "<group>"; };
 		2A14A71D230322F80048B14A /* Settings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
-		2A14A71E230322F80048B14A /* Website.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Website.swift; sourceTree = "<group>"; };
 		2A14A71F230322F80048B14A /* CreateUSBInstaller.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateUSBInstaller.swift; sourceTree = "<group>"; };
 		2A2879F423094D2F00C29553 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Main.strings; sourceTree = "<group>"; };
 		2A43E2312AE6D56E00CDCFE0 /* Install-App.zip */ = {isa = PBXFileReference; lastKnownFileType = archive.zip; path = "Install-App.zip"; sourceTree = "<group>"; };
 		2A6FEA56266F9BF000B4B508 /* LetsMoveIt.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LetsMoveIt.swift; sourceTree = "<group>"; };
-		2A7AD8B225659BA1003800A9 /* ShowSetSysSeed.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShowSetSysSeed.swift; sourceTree = "<group>"; };
 		2A8EB9902544AD5500F79DED /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
 		2A93CF3823004091004C832D /* script.command */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = script.command; sourceTree = "<group>"; };
 		2A93CF3C23004097004C832D /* aria2c */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = aria2c; sourceTree = "<group>"; };
-		2A9CA38823003BCC0091C7FA /* ANYmacOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ANYmacOS.entitlements; sourceTree = "<group>"; };
 		2ABCD38F25533DC90015E463 /* kill.command */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = kill.command; sourceTree = "<group>"; };
 		2ABDF3112550035A00B7647A /* About.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = About.swift; path = ANYmacOS/About.swift; sourceTree = SOURCE_ROOT; };
 		2AC6612D239F84AE00E859D7 /* WindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WindowController.swift; sourceTree = "<group>"; };
-		2AC66130239F85B100E859D7 /* de.bashstrings */ = {isa = PBXFileReference; lastKnownFileType = text; path = de.bashstrings; sourceTree = "<group>"; };
-		2AC66132239F85C100E859D7 /* en.bashstrings */ = {isa = PBXFileReference; lastKnownFileType = text; path = en.bashstrings; sourceTree = "<group>"; };
 		2AD98C1E25568C7F002ADA3E /* Status.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Status.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -128,7 +106,6 @@
 		1FA7861F23002556002CDB52 /* ANYmacOS */ = {
 			isa = PBXGroup;
 			children = (
-				2AC6612F239F852700E859D7 /* bashstrings */,
 				2A93CF3B23004097004C832D /* bin */,
 				2A93CF3623004091004C832D /* script */,
 				2ABDF3112550035A00B7647A /* About.swift */,
@@ -138,9 +115,7 @@
 				2A14A71B230322F80048B14A /* ANYmacOS.swift */,
 				2A6FEA56266F9BF000B4B508 /* LetsMoveIt.swift */,
 				2A14A71D230322F80048B14A /* Settings.swift */,
-				2A7AD8B225659BA1003800A9 /* ShowSetSysSeed.swift */,
 				2AD98C1E25568C7F002ADA3E /* Status.swift */,
-				2A14A71E230322F80048B14A /* Website.swift */,
 				1FA7862223002556002CDB52 /* ViewController.swift */,
 				2AC6612D239F84AE00E859D7 /* WindowController.swift */,
 				2A0A7D742347B3070081F997 /* anymacos.html */,
@@ -149,8 +124,6 @@
 				1FA7862623002558002CDB52 /* Main.storyboard */,
 				1FA7862923002558002CDB52 /* Info.plist */,
 				2A8EB98F2544AD5500F79DED /* Localizable.strings */,
-				2A097A712553314600A5A461 /* Logo.psd */,
-				2A9CA38823003BCC0091C7FA /* ANYmacOS.entitlements */,
 			);
 			path = ANYmacOS;
 			sourceTree = "<group>";
@@ -172,15 +145,6 @@
 			path = bin;
 			sourceTree = "<group>";
 		};
-		2AC6612F239F852700E859D7 /* bashstrings */ = {
-			isa = PBXGroup;
-			children = (
-				2AC66130239F85B100E859D7 /* de.bashstrings */,
-				2AC66132239F85C100E859D7 /* en.bashstrings */,
-			);
-			path = bashstrings;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -191,7 +155,6 @@
 				1FA7861923002556002CDB52 /* Sources */,
 				1FA7861A23002556002CDB52 /* Frameworks */,
 				1FA7861B23002556002CDB52 /* Resources */,
-				2AC66134239F872C00E859D7 /* Copy Bashstrings */,
 				2A14A726230325700048B14A /* Create Bash Binary */,
 				2ABCD38825533ABF0015E463 /* CopyFiles */,
 				2AE5A77223006BD400FFD472 /* CopyFiles */,
@@ -313,11 +276,9 @@
 				2AD98C1F25568C7F002ADA3E /* Status.swift in Sources */,
 				2A14A720230322F80048B14A /* CreateUSBInstallerTerminal.swift in Sources */,
 				2ABDF3122550035A00B7647A /* About.swift in Sources */,
-				2A14A724230322F80048B14A /* Website.swift in Sources */,
 				2A14A721230322F80048B14A /* ANYmacOS.swift in Sources */,
 				2AC6612E239F84AE00E859D7 /* WindowController.swift in Sources */,
 				1FA7862323002556002CDB52 /* ViewController.swift in Sources */,
-				2A7AD8B325659BA1003800A9 /* ShowSetSysSeed.swift in Sources */,
 				1FA7862123002556002CDB52 /* AppDelegate.swift in Sources */,
 				2A14A725230322F80048B14A /* CreateUSBInstaller.swift in Sources */,
 				2A6FEA57266F9BF000B4B508 /* LetsMoveIt.swift in Sources */,
@@ -478,7 +439,7 @@
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
 				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 123;
+				CURRENT_PROJECT_VERSION = 124;
 				DEVELOPMENT_TEAM = "";
 				ENABLE_HARDENED_RUNTIME = NO;
 				INFOPLIST_FILE = ANYmacOS/Info.plist;
@@ -488,7 +449,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
-				MARKETING_VERSION = 1.2.3;
+				MARKETING_VERSION = 1.2.4;
 				PRODUCT_BUNDLE_IDENTIFIER = anymacos.slsoft.de;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -504,7 +465,7 @@
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
 				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 123;
+				CURRENT_PROJECT_VERSION = 124;
 				DEVELOPMENT_TEAM = "";
 				ENABLE_HARDENED_RUNTIME = NO;
 				INFOPLIST_FILE = ANYmacOS/Info.plist;
@@ -514,7 +475,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
-				MARKETING_VERSION = 1.2.3;
+				MARKETING_VERSION = 1.2.4;
 				PRODUCT_BUNDLE_IDENTIFIER = anymacos.slsoft.de;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";

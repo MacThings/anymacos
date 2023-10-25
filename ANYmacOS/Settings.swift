@@ -12,8 +12,6 @@ class Settings: NSViewController {
 
     @IBOutlet weak var download_path_textfield: NSTextFieldCell!
 
-    @IBOutlet weak var seed_box: NSBox!
-    
     let languageinit = UserDefaults.standard.string(forKey: "Language")
     let scriptPath = Bundle.main.path(forResource: "/script/script", ofType: "command")!
     
@@ -21,10 +19,6 @@ class Settings: NSViewController {
     
     override func viewDidAppear() {
         self.view.window?.title = NSLocalizedString("Preferences", comment: "")
-        
-        if #available(macOS 13.0, *) {
-            self.seed_box.isHidden = true
-        }
     }
     
     override func viewDidLoad() {
@@ -68,30 +62,10 @@ class Settings: NSViewController {
         }
     }
 
-    @IBAction func seed_select(_ sender: Any) {
-        let seedselect = (sender as AnyObject).selectedCell()!.tag
-        if seedselect == 1 {
-            UserDefaults.standard.set("Customer", forKey: "NewSeed")
-        } else if seedselect == 2 {
-            UserDefaults.standard.set("Developer", forKey: "NewSeed")
-        } else if seedselect == 3 {
-            UserDefaults.standard.set("Public", forKey: "NewSeed")
-        } else if seedselect == 4 {
-            UserDefaults.standard.set("Unenroll", forKey: "NewSeed")
-        } else {
-            return
-        }
-        
-        //self.output_window.textStorage?.mutableString.setString("")
-        
-        DispatchQueue.global(qos: .background).async {
-            self.syncShellExec(path: self.scriptPath, args: ["_setseed"])
-            
-            DispatchQueue.main.sync {
-                //let seedinit = UserDefaults.standard.string(forKey: "CurrentSeed")
-                                
-            }
-        }
+    @IBAction func reset_download_path(_ sender: Any) {
+        let downloadpathinit = UserDefaults.standard.string(forKey: "Downloadpath")
+            let defaultdir = "/Users/" + NSUserName() + "/Desktop/ANYmacOS/Download"
+            UserDefaults.standard.set(defaultdir, forKey: "Downloadpath")
     }
     
     func syncShellExec(path: String, args: [String] = []) {

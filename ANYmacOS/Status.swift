@@ -50,7 +50,6 @@ class Status: NSViewController {
         DispatchQueue.global(qos: .background).async {
             self.syncShellExec(path: self.scriptPath, args: ["_kill_aria"])
             self.syncShellExec(path: self.scriptPath, args: ["_remove_temp"])
-            //self.syncShellExec(path: self.scriptPath, args: ["_check_seed"])
             
             DispatchQueue.main.async {
                 let defaultname = NSLocalizedString("Operation aborted.", comment: "")

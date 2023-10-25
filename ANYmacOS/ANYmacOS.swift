@@ -312,10 +312,7 @@ class ANYmacOS: NSViewController {
         }
     }
     
-    @objc private func ShowSetSysSeed(notification: NSNotification){
-        show_set_sys_seed.performClick(nil)
-    }
-    
+   
     func syncShellExec(path: String, args: [String] = []) {
         let process            = Process()
         process.launchPath     = "/bin/bash"
