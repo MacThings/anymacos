@@ -446,24 +446,7 @@
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
-                                <connections>
-                                    <segue destination="G02-op-Bio" kind="show" id="b1x-oM-ha7"/>
-                                </connections>
                             </button>
-                            <imageView hidden="YES" toolTip="If you found a bug please make sure to check with disabled SIP first again. If the Bug persists you can report it." horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0f5-zN-Lqf">
-                                <rect key="frame" x="273" y="179" width="28" height="28"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="alert" id="Yk0-bb-vGb"/>
-                            </imageView>
-                            <textField hidden="YES" toolTip="If you found a bug please make sure to check with disabled SIP first again. If the Bug persists you can report it." focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3pH-9K-K3q">
-                                <rect key="frame" x="246" y="163" width="85" height="16"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <textFieldCell key="cell" lineBreakMode="clipping" alignment="center" title="SIP enabled!" id="TEu-2J-JzS">
-                                    <font key="font" metaFont="systemBold"/>
-                                    <color key="textColor" name="systemRedColor" catalog="System" colorSpace="catalog"/>
-                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                </textFieldCell>
-                            </textField>
                             <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="j9l-Sc-LLt" userLabel="Prefs Image">
                                 <rect key="frame" x="311" y="183" width="20" height="20"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
@@ -480,42 +463,6 @@
                                     <segue destination="sm2-XH-wbw" kind="sheet" id="aa0-Wf-ZUe"/>
                                 </connections>
                             </button>
-                            <popUpButton hidden="YES" focusRingType="none" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7SY-L3-eGc">
-                                <rect key="frame" x="55" y="126" width="144" height="20"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <popUpButtonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" alignment="left" lineBreakMode="truncatingTail" borderStyle="border" focusRingType="none" imageScaling="proportionallyDown" inset="2" id="ieh-7z-p4x">
-                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                    <font key="font" metaFont="menu"/>
-                                    <menu key="menu" id="ePv-DZ-aYw">
-                                        <items>
-                                            <menuItem title="Show all" id="6Yv-f5-50N">
-                                                <modifierMask key="keyEquivalentModifierMask"/>
-                                            </menuItem>
-                                            <menuItem title="Customer seed" tag="1" id="Eff-Tj-ycJ">
-                                                <modifierMask key="keyEquivalentModifierMask"/>
-                                            </menuItem>
-                                            <menuItem title="Developer seed" tag="2" id="Xxg-j2-A3x">
-                                                <modifierMask key="keyEquivalentModifierMask"/>
-                                            </menuItem>
-                                            <menuItem title="Public seed" tag="3" id="TWq-9j-A4O">
-                                                <modifierMask key="keyEquivalentModifierMask"/>
-                                            </menuItem>
-                                        </items>
-                                    </menu>
-                                </popUpButtonCell>
-                                <connections>
-                                    <action selector="tree_select:" target="gJF-20-phu" id="Uxj-8h-l07"/>
-                                </connections>
-                            </popUpButton>
-                            <textField hidden="YES" focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dvW-dN-Ial">
-                                <rect key="frame" x="58" y="144" width="159" height="17"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <textFieldCell key="cell" lineBreakMode="clipping" title="Update tree" id="87T-tG-CCh">
-                                    <font key="font" metaFont="systemMedium" size="13"/>
-                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                </textFieldCell>
-                            </textField>
                             <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Lrp-Iv-3pL">
                                 <rect key="frame" x="18" y="66" width="191" height="16"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
@@ -536,11 +483,8 @@
                         <outlet property="paypal_button" destination="alA-98-hyO" id="W3E-vP-z64"/>
                         <outlet property="progress_wheel" destination="txK-Nu-ec1" id="P4u-pN-hHU"/>
                         <outlet property="pulldown_menu" destination="Xpi-ph-pMY" id="Lsj-pM-6qd"/>
-                        <outlet property="pulldown_seedmenu" destination="7SY-L3-eGc" id="yXx-nz-Ha5"/>
                         <outlet property="show_set_sys_seed" destination="Ilp-YW-vtN" id="nhd-vL-xsm"/>
                         <outlet property="show_status" destination="8nB-Je-Kin" id="3uO-U9-4vl"/>
-                        <outlet property="sip_alert" destination="0f5-zN-Lqf" id="VgP-Gz-Rld"/>
-                        <outlet property="sip_alert_label" destination="3pH-9K-K3q" id="pBJ-7X-QSu"/>
                     </connections>
                 </viewController>
                 <customObject id="i8U-KP-qWl" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
@@ -1224,49 +1168,6 @@ DQ
             </objects>
             <point key="canvasLocation" x="736" y="635"/>
         </scene>
-        <!--App Help-->
-        <scene sceneID="COb-e8-4EW">
-            <objects>
-                <viewController id="Zfg-5U-IVQ" customClass="AppHelp" customModule="ANYmacOS" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" id="npf-8q-4Ul">
-                        <rect key="frame" x="0.0" y="0.0" width="575" height="342"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                        <subviews>
-                            <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pcC-C3-t2z">
-                                <rect key="frame" x="6" y="0.0" width="551" height="299"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="AppHelp" id="8T8-aB-qvV"/>
-                            </imageView>
-                            <textField focusRingType="none" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="RWV-cz-Nab">
-                                <rect key="frame" x="21" y="284" width="514" height="54"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <textFieldCell key="cell" selectable="YES" alignment="left" title="Simply select your desired macOS Installer within the Applications folder!" id="Owc-H6-0sU">
-                                    <font key="font" metaFont="systemBold" size="18"/>
-                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                </textFieldCell>
-                            </textField>
-                            <button hidden="YES" focusRingType="none" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1Nt-88-fEp">
-                                <rect key="frame" x="238" y="-26" width="116" height="32"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <buttonCell key="cell" type="push" title="I understand" bezelStyle="rounded" alignment="center" borderStyle="border" focusRingType="none" imageScaling="proportionallyDown" inset="2" id="TIW-xQ-X0a">
-                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                    <font key="font" metaFont="system"/>
-                                    <string key="keyEquivalent" base64-UTF8="YES">
-DQ
-</string>
-                                </buttonCell>
-                                <connections>
-                                    <action selector="dismissController:" target="Zfg-5U-IVQ" id="599-m5-AI5"/>
-                                </connections>
-                            </button>
-                        </subviews>
-                    </view>
-                </viewController>
-                <customObject id="ZJl-cX-4BJ" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2138.5" y="321"/>
-        </scene>
         <!--Create USB Installer Terminal-->
         <scene sceneID="SJh-34-mZ3">
             <objects>
@@ -1408,7 +1309,7 @@ DQ
                                 </connections>
                             </button>
                             <button focusRingType="none" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jXh-0l-D7T">
-                                <rect key="frame" x="517" y="160" width="100" height="32"/>
+                                <rect key="frame" x="517" y="161" width="100" height="32"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <buttonCell key="cell" type="push" title="Select" bezelStyle="rounded" alignment="center" borderStyle="border" focusRingType="none" imageScaling="proportionallyDown" inset="2" id="q6W-Ij-YDa">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -1427,17 +1328,14 @@ DQ
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
-                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="A02-b8-ycG">
-                                <rect key="frame" x="230" y="187" width="25" height="25"/>
+                            <box fixedFrame="YES" title="Box" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="7DB-f8-QEh">
+                                <rect key="frame" x="55" y="289" width="289" height="39"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <buttonCell key="cell" type="help" bezelStyle="helpButton" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="GFA-1z-sQC">
-                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                    <font key="font" metaFont="system"/>
-                                </buttonCell>
-                                <connections>
-                                    <segue destination="Zfg-5U-IVQ" kind="popover" popoverAnchorView="A02-b8-ycG" popoverBehavior="t" preferredEdge="maxY" id="mCR-YN-IfT"/>
-                                </connections>
-                            </button>
+                                <view key="contentView" id="Tmm-pd-6OV">
+                                    <rect key="frame" x="4" y="5" width="281" height="31"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                </view>
+                            </box>
                         </subviews>
                     </view>
                     <connections>
@@ -1457,80 +1355,13 @@ DQ
             </objects>
             <point key="canvasLocation" x="2149.5" y="784"/>
         </scene>
-        <!--Systemseed Info-->
-        <scene sceneID="ZkJ-Gu-O9Q">
-            <objects>
-                <viewController title="Systemseed Info" id="G02-op-Bio" customClass="ShowSetSysSeed" customModule="ANYmacOS" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" id="Ale-qU-rRp">
-                        <rect key="frame" x="0.0" y="0.0" width="506" height="118"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                        <subviews>
-                            <button hidden="YES" focusRingType="none" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uFl-t3-r25">
-                                <rect key="frame" x="238" y="-250" width="116" height="32"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <buttonCell key="cell" type="push" title="I understand" bezelStyle="rounded" alignment="center" borderStyle="border" focusRingType="none" imageScaling="proportionallyDown" inset="2" id="9nh-o2-JAb">
-                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                    <font key="font" metaFont="system"/>
-                                    <string key="keyEquivalent" base64-UTF8="YES">
-DQ
-</string>
-                                </buttonCell>
-                                <connections>
-                                    <action selector="dismissController:" target="G02-op-Bio" id="E6z-dQ-cWl"/>
-                                </connections>
-                            </button>
-                            <textField focusRingType="none" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zgt-gu-HdQ">
-                                <rect key="frame" x="20" y="42" width="468" height="60"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <textFieldCell key="cell" selectable="YES" id="yHS-Ob-8m1">
-                                    <font key="font" metaFont="system"/>
-                                    <string key="title">If you want to change the seed for the update chanels in your Systemconfiguration you must open the Preferences (⌘ + ,) of ANYmacOS and set it there.</string>
-                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                </textFieldCell>
-                            </textField>
-                            <button focusRingType="none" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xj9-nz-5tn">
-                                <rect key="frame" x="18" y="18" width="157" height="18"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <buttonCell key="cell" type="check" title="Don't bother me again" bezelStyle="regularSquare" imagePosition="left" state="on" focusRingType="none" inset="2" id="hLN-JU-dTL">
-                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                                    <font key="font" metaFont="system"/>
-                                </buttonCell>
-                                <connections>
-                                    <binding destination="jTp-rW-diN" name="value" keyPath="values.BotherSeed" id="ySK-vG-LXv"/>
-                                </connections>
-                            </button>
-                            <button focusRingType="none" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="S3R-6d-oJ3">
-                                <rect key="frame" x="433" y="9" width="59" height="32"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <buttonCell key="cell" type="push" title="OK" bezelStyle="rounded" alignment="center" borderStyle="border" focusRingType="none" imageScaling="proportionallyDown" inset="2" id="SUt-3Y-T3V">
-                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                    <font key="font" metaFont="system"/>
-                                    <string key="keyEquivalent" base64-UTF8="YES">
-DQ
-</string>
-                                </buttonCell>
-                                <connections>
-                                    <action selector="close_window:" target="G02-op-Bio" id="mWx-Wp-50m"/>
-                                </connections>
-                            </button>
-                        </subviews>
-                    </view>
-                </viewController>
-                <customObject id="4tI-t0-olh" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
-                <userDefaultsController id="jTp-rW-diN"/>
-            </objects>
-            <point key="canvasLocation" x="969" y="1275"/>
-        </scene>
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="aa0-Wf-ZUe"/>
     </inferredMetricsTieBreakers>
     <resources>
-        <image name="AppHelp" width="546" height="288"/>
         <image name="NSApplicationIcon" width="32" height="32"/>
         <image name="NSSmartBadgeTemplate" width="14" height="14"/>
-        <image name="alert" width="339" height="309"/>
         <image name="buttonCell:kIs-F1-INf:image" width="1" height="1">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGBwpYJHZlcnNpb25ZJGFyY2hpdmVyVCR0b3BYJG9iamVjdHMSAAGGoF8QD05T

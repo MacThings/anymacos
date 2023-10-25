@@ -19,8 +19,6 @@ class CreateUSBInstaller: NSViewController {
     @IBOutlet weak var start_button: NSButton!
     @IBOutlet weak var select_volume_label: NSTextField!
     @IBOutlet weak var refresh_button: NSButton!
-    @IBOutlet weak var one_pass_checkbox: NSButton!
-    @IBOutlet weak var one_pass_label: NSTextField!
     
     let scriptPath = Bundle.main.path(forResource: "/script/script", ofType: "command")!
     let languageinit = UserDefaults.standard.string(forKey: "Language")

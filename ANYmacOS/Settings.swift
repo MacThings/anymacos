@@ -34,9 +34,7 @@ class Settings: NSViewController {
 
         DispatchQueue.global(qos: .background).async {
             self.syncShellExec(path: self.scriptPath, args: ["_initial"])
-            self.syncShellExec(path: self.scriptPath, args: ["_check_seed"])
         }
-        
         self.view.window?.title = NSLocalizedString("Preferences", comment: "")
         
         //let seedinit = UserDefaults.standard.string(forKey: "CurrentSeed")

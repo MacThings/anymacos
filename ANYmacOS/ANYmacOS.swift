@@ -15,20 +15,14 @@ class ANYmacOS: NSViewController {
     var outputTimer: Timer?
     
     @IBOutlet weak var progress_wheel: NSProgressIndicator!
-    @IBOutlet weak var pulldown_seedmenu: NSPopUpButton!
     @IBOutlet weak var pulldown_menu: NSPopUpButton!
     @IBOutlet weak var download_button: NSButton!
-    @IBOutlet weak var abort_button: NSButton!
     @IBOutlet weak var create_button: NSButton!
     @IBOutlet weak var paypal_button: NSButton!
     @IBOutlet weak var copyright: NSTextField!
     @IBOutlet weak var show_status: NSButton!
     
     @IBOutlet weak var show_set_sys_seed: NSButton!
-    
-    @IBOutlet weak var sip_alert: NSImageView!
-    @IBOutlet weak var sip_alert_label: NSTextField!
-    
     
     let scriptPath = Bundle.main.path(forResource: "/script/script", ofType: "command")!
     let languageinit = UserDefaults.standard.string(forKey: "Language")
@@ -46,12 +40,6 @@ class ANYmacOS: NSViewController {
         formatter.dateFormat = "yyyy"
         let dateStr = formatter.string(from: NSDate() as Date)
         self.copyright.stringValue = "© " + dateStr + " Sascha Lamprecht"
-        
-        let botherseed = UserDefaults.standard.string(forKey: "BotherSeed")
-        if botherseed == "NO" {
-            show_set_sys_seed.performClick(nil)
-        }
-        
     }
     
     override func viewDidLoad() {
@@ -64,7 +52,8 @@ class ANYmacOS: NSViewController {
                 let defaultname = NSLocalizedString("Retrieving information ...", comment: "")
 				UserDefaults.standard.set(defaultname, forKey: "Statustext")
         DispatchQueue.global(qos: .background).async {
-            self.syncShellExec(path: self.scriptPath, args: ["_select_seed_all"])
+            self.syncShellExec(path: self.scriptPath, args: ["_initial"])
+            self.syncShellExec(path: self.scriptPath, args: ["_get_selection"])
             
             DispatchQueue.main.sync {
                 let location = NSString(string:"/private/tmp/anymacos/selection").expandingTildeInPath
@@ -165,12 +154,6 @@ class ANYmacOS: NSViewController {
                 alert.runModal()
                 return
         }
-        
-        let sip_alert = UserDefaults.standard.string(forKey: "SIP")
-        if sip_alert == "On" {
-            self.sip_alert.isHidden = false
-            self.sip_alert_label.isHidden = false
-        }
     }
    
     @IBAction func donate(_ sender: Any) {
@@ -191,7 +174,6 @@ class ANYmacOS: NSViewController {
 
     @IBAction func tree_select(_ sender: Any) {
         self.download_button.isEnabled=false
-        self.pulldown_seedmenu.isEnabled=false
         self.progress_wheel?.startAnimation(self);
         self.pulldown_menu.isEnabled=false
         
@@ -217,7 +199,6 @@ class ANYmacOS: NSViewController {
         }
         
         self.pulldown_menu.isEnabled=true
-        self.pulldown_seedmenu.isEnabled=true
         self.progress_wheel?.stopAnimation(self);
     }
     
@@ -248,7 +229,6 @@ class ANYmacOS: NSViewController {
 
         self.create_button.isEnabled=false
         self.pulldown_menu.isEnabled=false
-        self.pulldown_seedmenu.isEnabled=false
         UserDefaults.standard.removeObject(forKey: "InstallerAppDone")
         UserDefaults.standard.set(false, forKey: "KillDL")
         UserDefaults.standard.set("No", forKey: "Stop")
@@ -285,7 +265,6 @@ class ANYmacOS: NSViewController {
                 }
                                 
                 self.pulldown_menu.isEnabled=true
-                self.pulldown_seedmenu.isEnabled=true
                 self.download_button.isEnabled=true
                 self.create_button.isEnabled=true
                 let defaults = UserDefaults.standard

@@ -50,7 +50,7 @@ fi
 sys_language=$( defaults read -g AppleLocale )
 download_path=$( _helpDefaultRead "Downloadpath" )
 temp_path="/private/tmp/anymacos"
-seed_choice=$( _helpDefaultRead "CurrentSeed" )
+
 
 hwspecs=$( system_profiler SPHardwareDataType )
 osversion=$( sw_vers | grep ProductVersion | cut -d':' -f2 | xargs )
@@ -148,82 +148,15 @@ function _initial()
     fi
 }
 
-function _check_seed()
+function _get_selection()
 {
 
-    seed=$( _helpDefaultRead "CurrentSeed" )
-    if [[ $seed = "" ]]; then
-        seed=$( osascript -e 'do shell script "sudo /System/Library/PrivateFrameworks/Seeding.framework/Resources/seedutil current |grep \"Currently enrolled in\" |sed \"s/.*: //g\"" with administrator privileges' )
-    fi
-
-    if [[ $seed = *null* ]]; then
-        _helpDefaultWrite "CurrentSeed" "Unenroll"
-    else
-        if [[ $seed != "" ]]; then
-            _helpDefaultWrite "CurrentSeed" "$seed"
-        fi
-    fi
-}
-
-function _setseed()
-{
-
-    seed=$( _helpDefaultRead "NewSeed" )
-
-    if [[ $seed = "Customer" ]]; then
-        osascript -e 'do shell script "sudo /System/Library/PrivateFrameworks/Seeding.framework/Resources/seedutil enroll CustomerSeed" with administrator privileges'
-        if [[ $? = "0" ]]; then
-            _helpDefaultWrite "CurrentSeed" "CustomerSeed"
-        fi
-    fi
-    if [[ $seed = "Developer" ]]; then
-        osascript -e 'do shell script "sudo /System/Library/PrivateFrameworks/Seeding.framework/Resources/seedutil enroll DeveloperSeed" with administrator privileges'
-            if [[ $? = "0" ]]; then
-                _helpDefaultWrite "CurrentSeed" "DeveloperSeed"
-            fi
-    fi
-    if [[ $seed = "Public" ]]; then
-        osascript -e 'do shell script "sudo /System/Library/PrivateFrameworks/Seeding.framework/Resources/seedutil enroll PublicSeed" with administrator privileges'
-            if [[ $? = "0" ]]; then
-            _helpDefaultWrite "CurrentSeed" "PublicSeed"
-            fi
-    fi
-    if [[ $seed = "Unenroll" ]]; then
-        osascript -e 'do shell script "sudo /System/Library/PrivateFrameworks/Seeding.framework/Resources/seedutil unenroll" with administrator privileges'
-            if [[ $? = "0" ]]; then
-            _helpDefaultWrite "CurrentSeed" "Unenroll"
-            fi
+    if [ -f "$temp_path"/selection ]; then
+        rm "$temp_path"/selection
     fi
     
-    _helpDefaultDelete "NewSeed"
-}
+    ../bin/./aria2c https://www.sl-soft.de/extern/software/anymacos/seeds/selection -d "$temp_path"
 
-function _select_seed_all()
-{
-    mkdir "$temp_path" 2> /dev/null
-    curl -k https://www.sl-soft.de/extern/software/anymacos/seeds/selection > "$temp_path"/selection
-    _helpDefaultWrite "Statustext" "$statustext"
-}
-
-function _select_seed_customer()
-{
-    mkdir "$temp_path" 2> /dev/null
-    curl -k https://www.sl-soft.de/extern/software/anymacos/seeds/selection_customerseed > "$temp_path"/selection
-    _helpDefaultWrite "Statustext" "$statustext"
-}
-
-function _select_seed_developer()
-{
-    mkdir "$temp_path" 2> /dev/null
-    curl -k https://www.sl-soft.de/extern/software/anymacos/seeds/selection_beta > "$temp_path"/selection
-    _helpDefaultWrite "Statustext" "$statustext"
-}
-
-function _select_seed_public()
-{
-    mkdir "$temp_path" 2> /dev/null
-    curl -k https://www.sl-soft.de/extern/software/anymacos/seeds/selection_seed > "$temp_path"/selection
-    _helpDefaultWrite "Statustext" "$statustext"
 }
 
 function _download_counter()
@@ -258,7 +191,16 @@ done
 
 function _download_macos()
 {
+
     _check_user
+    
+    image_node=$( diskutil list Install-App | grep "disk image" | sed 's/\ .*//g' )
+    echo "$password" | sudo -u "$user" -S diskutil unmountDisk force "$image_node"
+    diskutil eject /Volumes/Install-App*
+        
+    image_node=$( diskutil list "Shared Support" | grep "disk image" | sed 's/\ .*//g' )
+    echo "$password" | sudo -u "$user" -S diskutil unmountDisk force "$image_node"
+    diskutil eject /Volumes/"Shared Support"
     
     _download_counter &
     
@@ -270,9 +212,17 @@ function _download_macos()
         mkdir "$download_path"
     fi
     
+    if [ -f  "$download_path"/English.dist ]; then
+        rm "$download_path"/English.dist
+    fi
+    
     rm "$temp_path"/files
 
     ../bin/./aria2c https://www.sl-soft.de/extern/software/anymacos/seeds/"$choice" -d "$temp_path" -o files
+
+    cat "$temp_path"/files | grep -v "\.pkm" |grep -v "\.smd" |grep -v "\.msmd"|grep -v "\.mpkm" |grep -v "\.chunklist"| grep -v "\.dmg" | grep -v "\.plist"| grep -v "\.mpkg"| grep -v "MajorOSInfo.pkg"| grep -v "UpdateBrain.zip" > "$temp_path"/files2
+    rm "$temp_path"/files
+    mv "$temp_path"/files2 "$temp_path"/files
 
     touch "$download_path"/.anymacos_download
     while IFS= read -r line
@@ -291,7 +241,7 @@ function _download_macos()
     fi
 
     checker=$( /usr/bin/curl -k -s -L -I "$line" )
-    if [[ $checker != *"ength: 0"* ]]; then
+    if [[ $checker != *"ength: 0"* ]] || [[ "$line" != *".smd" ]] || [[ "$line" != *".pkm" ]]; then
         line_progress=$( echo "$line" | sed 's/.*\///g' )
 
         if [[ "$syslang" = "en" ]]; then
@@ -322,6 +272,9 @@ function _download_macos()
 done < ""$temp_path"/files"
 
     echo English.dist >> "$download_path"/.anymacos_download
+    cat "$download_path"/.anymacos_download | uniq > "$download_path"/.anymacos_download2
+    rm "$download_path"/.anymacos_download
+    mv "$download_path"/.anymacos_download2 "$download_path"/.anymacos_download
 
     kill_download=$( _helpDefaultRead "KillDL" )
     _helpDefaultWrite "Stop" "Yes"
@@ -360,9 +313,16 @@ done < ""$temp_path"/files"
         exit
     fi
     
-    ### Checks if BigSur is downloading ###
     
+        image_node=$( diskutil list Install-App | grep "disk image" | sed 's/\ .*//g' )
+        echo "$password" | sudo -u "$user" -S diskutil unmountDisk force "$image_node"
         diskutil eject /Volumes/Install-App*
+        
+        image_node=$( diskutil list "Shared Support" | grep "disk image" | sed 's/\ .*//g' )
+        echo "$password" | sudo -u "$user" -S diskutil unmountDisk force "$image_node"
+        diskutil eject /Volumes/"Shared Support"
+        
+        
         unzip -o ../Install-App.zip -d "$download_path"
         open "$download_path"/Install-App.sparseimage
         
@@ -384,7 +344,7 @@ done < ""$temp_path"/files"
         if [[ "$installok" = "0" ]]; then
 
             echo "$password" | sudo -u "$user" -S mv /Volumes/Install-AppApplications/Install*.app/Contents/SharedSupport /Volumes/Install-App/Applications/Install*/Contents/
-            echo "$password" | sudo -u "$user" -S rm -r /Volumes/Install-AppApplications
+            echo "$password" | sudo -S rm -r /Volumes/Install-AppApplications
             echo "$password" | sudo -u "$user" -S mv /Volumes/Install-App/Applications/Install*.app /Volumes/Install-App/
             echo "$password" | sudo -u "$user" -S rm -r /Volumes/Install-App/Library /Volumes/Install-App/Applications
 
@@ -533,25 +493,19 @@ function _check_if_valid()
 
     applicationpath=$( _helpDefaultRead "Applicationpath" )
 
-    if [[ "$syslang" = "en" ]]; then
-        echo -e "Checking if your Application is valid ...\n"
-    else
-        echo -e "Es wird geprüft ob die gewählte Applikation gültig ist ...\n"
-    fi
-
-    if [ ! -f "$applicationpath/Contents/Info.plist" ]; then
+    if [ ! -f "$applicationpath/Contents/MacOS/InstallAssistant" ]; then
         _helpDefaultWrite "AppValid" "No"
         if [[ "$syslang" = "en" ]]; then
-            echo "You selected a non valid Application! ☝🏼 Please choose another one."
+            echo -e "\n🚫 You selected a non valid Application! 🚫 Please choose another one."
         else
-            echo "Die gewählte Applikation ist nicht gültig! ☝🏼 Bitte wähle eine Andere."
+            echo -e "\n🚫 Die gewählte Applikation ist nicht gültig! 🚫 Bitte wähle eine Andere."
         fi
     else
         _helpDefaultWrite "AppValid" "Yes"
         if [[ "$syslang" = "en" ]]; then
-            echo "Your App seems to be valid. 👍🏼 Let´s go and press \"Start\"."
+            echo -e "\nYour App seems to be valid. 👍🏼 Let´s go and press \"Start\"."
         else
-            echo "Die gewählte Applikation scheint gültig zu sein. 👍🏼 Dann lass uns loslegen und drücke auf \"Start\"."
+            echo -e "\nDie gewählte Applikation scheint gültig zu sein. 👍🏼 Dann lass uns loslegen und drücke auf \"Start\"."
         fi
     fi
 
