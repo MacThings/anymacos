@@ -49,7 +49,7 @@ fi
 
 sys_language=$( defaults read -g AppleLocale )
 download_path=$( _helpDefaultRead "Downloadpath" )
-temp_path="/private/tmp/anymacos"
+temp_path="/private/tmp/anymacos_$user"
 
 
 hwspecs=$( system_profiler SPHardwareDataType )
@@ -131,7 +131,8 @@ function _check_user()
     else
         string="Das eingegebene Password ist nicht korrekt. Versuche es noch einmal."
     fi
-    echo "$password" | sudo -S dscl /Local/Default -u "$user" >/dev/null 2>&1
+    
+    dscl . auth "$user" "$password"
     
     if [ $? != 0 ]; then
         osascript -e "display dialog \"$string\" buttons {\"OK\"}"
@@ -144,7 +145,7 @@ function _check_user()
 function _initial()
 {
     if [ -d "$temp_path" ]; then
-        rm "$temp_path"/*  2> /dev/null
+        rm "$temp_path"/*
     fi
 }
 
@@ -195,12 +196,10 @@ function _download_macos()
     _check_user
     
     image_node=$( diskutil list Install-App | grep "disk image" | sed 's/\ .*//g' )
-    echo "$password" | sudo -u "$user" -S diskutil unmountDisk force "$image_node"
-    diskutil eject /Volumes/Install-App*
+    osascript -e 'do shell script "sudo diskutil unmountDisk force '"'$image_node'"'" user name "'"$user"'" password "'"$password"'" with administrator privileges'
         
     image_node=$( diskutil list "Shared Support" | grep "disk image" | sed 's/\ .*//g' )
-    echo "$password" | sudo -u "$user" -S diskutil unmountDisk force "$image_node"
-    diskutil eject /Volumes/"Shared Support"
+    osascript -e 'do shell script "sudo diskutil unmountDisk force '"'$image_node'"'" user name "'"$user"'" password "'"$password"'" with administrator privileges'
     
     _download_counter &
     
@@ -317,13 +316,10 @@ done < ""$temp_path"/files"
     
     
         image_node=$( diskutil list Install-App | grep "disk image" | sed 's/\ .*//g' )
-        echo "$password" | sudo -u "$user" -S diskutil unmountDisk force "$image_node"
-        diskutil eject /Volumes/Install-App*
-        
+        osascript -e 'do shell script "sudo diskutil unmountDisk force '"'$image_node'"'" user name "'"$user"'" password "'"$password"'" with administrator privileges'
+            
         image_node=$( diskutil list "Shared Support" | grep "disk image" | sed 's/\ .*//g' )
-        echo "$password" | sudo -u "$user" -S diskutil unmountDisk force "$image_node"
-        diskutil eject /Volumes/"Shared Support"
-        
+        osascript -e 'do shell script "sudo diskutil unmountDisk force '"'$image_node'"'" user name "'"$user"'" password "'"$password"'" with administrator privileges'
         
         unzip -o ../Install-App.zip -d "$download_path"
         open "$download_path"/Install-App.sparseimage
@@ -331,24 +327,24 @@ done < ""$temp_path"/files"
         sleep 3
 
         if [ -d /Volumes/Install-AppApplications ]; then
-              echo "$password" | sudo -S rm -r /Volumes/Install-AppApplications
+            osascript -e 'do shell script "sudo rm -r /Volumes/Install-AppApplications" user name "'"$user"'" password "'"$password"'" with administrator privileges'
         fi
     
         if [ -f "$download_path/InstallAssistant.pkg" ]; then
-                echo "$password" | sudo -u root -S /usr/sbin/installer -pkg "$download_path"/InstallAssistant.pkg -target /Volumes/Install-App/
+                osascript -e 'do shell script "sudo /usr/sbin/installer -pkg '"'$download_path'"'/InstallAssistant.pkg -target /Volumes/Install-App/" user name "'"$user"'" password "'"$password"'" with administrator privileges'
                 installok="$?"
         else
             sed '/installation-check/d' "$download_path"/*English.dist > "$download_path"/English.dist
-                echo "$password" | sudo -u root -S /usr/sbin/installer -pkg "$download_path"/English.dist -target /Volumes/Install-App/
+                osascript -e 'do shell script "sudo /usr/sbin/installer -pkg '"'$download_path'"'/English.dist -target /Volumes/Install-App/" user name "'"$user"'" password "'"$password"'" with administrator privileges'
                 installok="$?"
         fi
     
         if [[ "$installok" = "0" ]]; then
 
-            echo "$password" | sudo -u "$user" -S mv /Volumes/Install-AppApplications/Install*.app/Contents/SharedSupport /Volumes/Install-App/Applications/Install*/Contents/
-            echo "$password" | sudo -S rm -r /Volumes/Install-AppApplications
-            echo "$password" | sudo -u "$user" -S mv /Volumes/Install-App/Applications/Install*.app /Volumes/Install-App/
-            echo "$password" | sudo -u "$user" -S rm -r /Volumes/Install-App/Library /Volumes/Install-App/Applications
+            osascript -e 'do shell script "sudo mv /Volumes/Install-AppApplications/Install*.app/Contents/SharedSupport /Volumes/Install-App/Applications/Install*/Contents/" user name "'"$user"'" password "'"$password"'" with administrator privileges'
+            osascript -e 'do shell script "sudo rm -r /Volumes/Install-AppApplications" user name "'"$user"'" password "'"$password"'" with administrator privileges'
+            mv /Volumes/Install-App/Applications/Install*.app /Volumes/Install-App/
+            rm -r /Volumes/Install-App/Library /Volumes/Install-App/Applications
 
             _helpDefaultWrite "InstallerAppDone" "Yes"
             if [[ "$syslang" = "en" ]]; then
@@ -371,6 +367,9 @@ done < ""$temp_path"/files"
             _helpDefaultWrite "Statustext" "$string"
 
         fi
+        
+        image_node=$( diskutil list "Shared Support" | grep "disk image" | sed 's/\ .*//g' )
+        osascript -e 'do shell script "sudo diskutil unmountDisk force '"'$image_node'"'" user name "'"$user"'" password "'"$password"'" with administrator privileges'
     exit
 }
 
