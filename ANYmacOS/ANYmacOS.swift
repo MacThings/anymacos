@@ -22,8 +22,6 @@ class ANYmacOS: NSViewController {
     @IBOutlet weak var copyright: NSTextField!
     @IBOutlet weak var show_status: NSButton!
     
-    @IBOutlet weak var show_set_sys_seed: NSButton!
-    
     let scriptPath = Bundle.main.path(forResource: "/script/script", ofType: "command")!
     let languageinit = UserDefaults.standard.string(forKey: "Language")
     let appVersion = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String
@@ -79,11 +77,6 @@ class ANYmacOS: NSViewController {
         
         let languageinit = UserDefaults.standard.string(forKey: "Language")
         
-        let botherseed = UserDefaults.standard.string(forKey: "BotherSeed")
-        if botherseed == nil{
-            UserDefaults.standard.set("NO", forKey: "BotherSeed")
-        }
-        
         let downloadpathinit = UserDefaults.standard.string(forKey: "Downloadpath")
         if downloadpathinit == nil{
             let defaultdir = "/Users/" + NSUserName() + "/Desktop/ANYmacOS/Download"
@@ -131,29 +124,6 @@ class ANYmacOS: NSViewController {
         defaults.removeObject(forKey: "DLDone")
         defaults.removeObject(forKey: "DLSize")
         defaults.synchronize()
- 
-        let locale = Locale.current.languageCode
-        
-        let downloadpath = UserDefaults.standard.string(forKey: "Downloadpath")
-        let sip_status = UserDefaults.standard.string(forKey: "SIP")
-        if sip_status == "On" {
-            self.create_button.isEnabled=false
-            let alert = NSAlert()
-                alert.messageText = NSLocalizedString("SIP is activated on your system!", comment: "")
-            if locale != "de" {
-                alert.informativeText = NSLocalizedString("ANYmacOS will only work to a limited extent now. You can only download the individual files for the installer application. You then have to assemble them yourself via the terminal. The same applies to the Installer Creator.\n\nTo copy the commands simply mark it, click right Mousebutton and select 'Copy'.\n\n" + "Catalina and earlier:\nsudo /usr/sbin/installer -pkg " + downloadpath! + "/English.dist -target /\n\n" + "To create an Installer Volume (must be HFS+ formatted):\nsudo \"/Applications/NAME_OF_INSTALLER.app/Contents/Resources/createinstallmedia\" --volume \"TARGET_VOLUME\" --applicationpath \"/Applications/NAME_OF_INSTALLER.app\" --nointeraction", comment: "")
-                
-            } else {
-                alert.informativeText = NSLocalizedString("ANYmacOS kann damit nur noch eingeschränkt arbeiten. Du kannst lediglich die einzelnen Dateien für die Installer Applikationen herunterladen. Du musst sie dann selber im Terminal zusammensetzen. Das selbe gilt für die Erstellung eines Installationdatenträgers.\n\nUm die hier unten stehenden Befehle zu kopieren, einfach markieren, die rechte Maustaste drücken und 'Kopieren' auswählen.\n\n" + "Catalina und davor:\nsudo /usr/sbin/installer -pkg " + downloadpath! + "/English.dist -target /\n\n" + "Erstellung eines Installationdatenträgers (muss HFS+ formatiert sein):\nsudo \"/Applications/NAME_OF_INSTALLER.app/Contents/Resources/createinstallmedia\" --volume \"TARGET_VOLUME\" --applicationpath \"/Applications/NAME_OF_INSTALLER.app\" --nointeraction", comment: "")
-                
-            }
-                alert.alertStyle = .informational
-                alert.icon = NSImage(named: "NSError")
-                let Button = NSLocalizedString("Ok", comment: "")
-                alert.addButton(withTitle: Button)
-                alert.runModal()
-                return
-        }
     }
    
     @IBAction func donate(_ sender: Any) {
@@ -172,35 +142,6 @@ class ANYmacOS: NSViewController {
         }
     }
 
-    @IBAction func tree_select(_ sender: Any) {
-        self.download_button.isEnabled=false
-        self.progress_wheel?.startAnimation(self);
-        self.pulldown_menu.isEnabled=false
-        
-        if (sender as AnyObject).title.contains("ll"){
-            self.syncShellExec(path: self.scriptPath, args: ["_select_seed_all"])
-        }
-        if (sender as AnyObject).title.contains("Customer"){
-            self.syncShellExec(path: self.scriptPath, args: ["_select_seed_customer"])
-        }
-        if (sender as AnyObject).title.contains("Developer"){
-            self.syncShellExec(path: self.scriptPath, args: ["_select_seed_developer"])
-        }
-        if (sender as AnyObject).title.contains("Public"){
-            self.syncShellExec(path: self.scriptPath, args: ["_select_seed_public"])
-        }
-        
-        let location = NSString(string:"/private/tmp/anymacos/selection").expandingTildeInPath
-        self.pulldown_menu.menu?.removeAllItems()
-        let fileContent = try? NSString(contentsOfFile: location, encoding: String.Encoding.utf8.rawValue)
-        self.pulldown_menu.menu?.addItem(withTitle: "", action: #selector(ANYmacOS.menuItemClicked(_:)), keyEquivalent: "")
-        for (_, seed) in (fileContent?.components(separatedBy: "\n").enumerated())! {
-            self.pulldown_menu.menu?.addItem(withTitle: seed, action: #selector(ANYmacOS.menuItemClicked(_:)), keyEquivalent: "")
-        }
-        
-        self.pulldown_menu.isEnabled=true
-        self.progress_wheel?.stopAnimation(self);
-    }
     
     @IBAction func download_os_button(_ sender: Any) {
       
@@ -242,7 +183,7 @@ class ANYmacOS: NSViewController {
                 let alert = NSAlert()
                 if installerapp_done == "Yes"{
                     alert.messageText = NSLocalizedString("macOS Installer App creation done.", comment: "")
-                    alert.informativeText = NSLocalizedString("You can find it Applications Folder. Do you want to clean up the ANYmacOS downloads?", comment: "")
+                    alert.informativeText = NSLocalizedString("You can find it in ANYmacOS Sparseimage. Do you want to clean up the ANYmacOS downloads?", comment: "")
                     alert.alertStyle = .informational
                     alert.icon = NSImage(named: "NSInfo")
                     let Button = NSLocalizedString("Yes", comment: "")

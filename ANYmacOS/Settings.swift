@@ -30,10 +30,6 @@ class Settings: NSViewController {
             self.syncShellExec(path: self.scriptPath, args: ["_initial"])
         }
         self.view.window?.title = NSLocalizedString("Preferences", comment: "")
-        
-        //let seedinit = UserDefaults.standard.string(forKey: "CurrentSeed")
-       
-
     }
 
     @IBAction func set_download_path(_ sender: Any) {
@@ -63,9 +59,8 @@ class Settings: NSViewController {
     }
 
     @IBAction func reset_download_path(_ sender: Any) {
-        let downloadpathinit = UserDefaults.standard.string(forKey: "Downloadpath")
-            let defaultdir = "/Users/" + NSUserName() + "/Desktop/ANYmacOS/Download"
-            UserDefaults.standard.set(defaultdir, forKey: "Downloadpath")
+        let defaultdir = "/Users/" + NSUserName() + "/Desktop/ANYmacOS/Download"
+        UserDefaults.standard.set(defaultdir, forKey: "Downloadpath")
     }
     
     func syncShellExec(path: String, args: [String] = []) {
