@@ -72,6 +72,7 @@ fi
 #========================= Language Detection =========================#
 function _languageselect()
 {
+
     if [[ $lan2 = de* ]]; then
     export LC_ALL=de_DE
     language="de"
@@ -84,10 +85,13 @@ function _languageselect()
     fi
     cat ../bashstrings/$language.bashstrings > ${temp_path}/locale.tmp
     source ${temp_path}/locale.tmp
+    
 }
+
 
 function _check_user()
 {
+
 ############ Prüft ob der User Adminrechte hat und das Passwort korrekt ist
     if [[ "$syslang" = "en" ]]; then
         string="The user you are currently logged in with does not have administrative rights. Please enter a user who has these rights."
@@ -142,12 +146,14 @@ function _check_user()
 
 }
 
+
 function _initial()
 {
     if [ -d "$temp_path" ]; then
         rm "$temp_path"/*
     fi
 }
+
 
 function _get_selection()
 {
@@ -160,8 +166,10 @@ function _get_selection()
 
 }
 
+
 function _download_counter()
 {
+
         TAB=$(printf '\t')
        
         until [[ $stop_loop = "1" ]]
@@ -188,7 +196,9 @@ function _download_counter()
 
             sleep 0.5
         done
+        
 }
+
 
 function _download_macos()
 {
@@ -268,7 +278,7 @@ function _download_macos()
         fi
     fi
         
-done < ""$temp_path"/files"
+    done < ""$temp_path"/files"
 
     _helpDefaultWrite "DLFile" ""
 
@@ -371,6 +381,7 @@ done < ""$temp_path"/files"
         image_node=$( diskutil list "Shared Support" | grep "disk image" | sed 's/\ .*//g' )
         osascript -e 'do shell script "sudo diskutil unmountDisk force '"'$image_node'"'" user name "'"$user"'" password "'"$password"'" with administrator privileges'
     exit
+    
 }
 
 
@@ -402,20 +413,18 @@ function _remove_downloads()
 
 }
 
+
 function _remove_temp()
 {
 
     rm -f /private/tmp/anymacos_"$user"/files
 
 }
+
+
 function _kill_aria()
 {
 
-
-    
-# for KILLPID in `ps ax | grep 'script.command _download_os' | awk ' { print $1;}'`; do
-#        kill -term $KILLPID;
-#    done
     if [[ "$syslang" = "en" ]]; then
         string="Done"
     else
@@ -427,8 +436,6 @@ function _kill_aria()
     bash kill.command &
 
     exit
-
-
 
 }
 
@@ -464,6 +471,7 @@ function _get_drives()
 
 }
 
+
 function _get_drive_info()
 {
 
@@ -489,6 +497,7 @@ function _get_drive_info()
 
 }
 
+
 function _check_if_valid()
 {
 
@@ -512,8 +521,10 @@ function _check_if_valid()
 
 }
 
+
 function _start_installer_creation()
 {
+
     targetvolume=$( _helpDefaultRead "DRMntPoint" )
     targetvolumename=$( echo "$targetvolume" |sed 's/.*\///g' )
     applicationpath=$( _helpDefaultRead "Applicationpath" )
@@ -538,21 +549,28 @@ function _start_installer_creation()
     diskutil eraseVolume JHFS+ "$targetvolumename" "$targetvolume"
 
     osascript -e 'do shell script "sudo '"'$applicationpath'"''"'/Contents/Resources/createinstallmedia'"' --volume '"'$targetvolume'"' --applicationpath '"'$applicationpath'"' --nointeraction" with administrator privileges'
+
 }
+
 
 function _abort_installer_creation()
 {
+
         pkill  -f anymacos
         exit
         osascript -e 'do shell script "sudo pkill createinstallmedia eraseVolume noverify && kill -kill '"'$onephasepid'"'" with administrator privileges'
+
 }
+
 
 function _open_utilities()
 {
+ 
     open -a "/System/Applications/Utilities/Disk Utility.app/Contents/MacOS/Disk Utility"
     if [[ "$?" != "0" ]]; then
         open -a "/Applications/Utilities/Disk Utility.app/Contents/MacOS/Disk Utility"
     fi
+
 }
 
 $1

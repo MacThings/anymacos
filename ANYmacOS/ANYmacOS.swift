@@ -42,7 +42,6 @@ class ANYmacOS: NSViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print(NSUserName())
         // Do view setup here.
         self.preferredContentSize = NSMakeSize(self.view.frame.size.width, self.view.frame.size.height);
         self.progress_wheel?.startAnimation(self);
