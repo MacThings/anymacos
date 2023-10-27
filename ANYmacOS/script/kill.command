@@ -1,6 +1,8 @@
 #!/bin/bash
 
-temp_path="/private/tmp/anymacos"
+user=$( id -un )
+
+temp_path="/private/tmp/anymacos_$user"
 
 
 for KILLPID in `ps ax | grep 'aria' | awk ' { print $1;}'`; do

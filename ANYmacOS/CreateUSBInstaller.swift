@@ -53,14 +53,14 @@ class CreateUSBInstaller: NSViewController {
             self.syncShellExec(path: self.scriptPath, args: ["_get_drives"])
             
             DispatchQueue.main.sync {
-                let filePath = "/private/tmp/anymacos/volumes"
+                let filePath = "/private/tmp/anymacos_" + NSUserName() + "/volumes"
                 if (FileManager.default.fileExists(atPath: filePath)) {
                     print("")
                 } else{
                     return
                 }
 
-                let location = NSString(string:"/private/tmp/anymacos/volumes").expandingTildeInPath
+                let location = NSString(string:"/private/tmp/anymacos_" + NSUserName() +  "/volumes").expandingTildeInPath
                 self.pulldown_menu.menu?.removeAllItems()
                 let fileContent = try? NSString(contentsOfFile: location, encoding: String.Encoding.utf8.rawValue)
                 self.pulldown_menu.menu?.addItem(withTitle: "", action: #selector(ANYmacOS.menuItemClicked(_:)), keyEquivalent: "")
@@ -70,7 +70,7 @@ class CreateUSBInstaller: NSViewController {
             }
             
             DispatchQueue.main.async {
-                let filePath = "/private/tmp/anymacos/volumes"
+                let filePath = "/private/tmp/anymacos_" + NSUserName() + "/volumes"
                 if (FileManager.default.fileExists(atPath: filePath)) {
                     print("")
                 } else{

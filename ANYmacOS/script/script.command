@@ -36,8 +36,8 @@ function _helpDefaultDelete()
     fi
 }
 
-if [ ! -d /private/tmp/anymacos ]; then
-    mkdir /private/tmp/anymacos
+if [ ! -d /private/tmp/anymacos_"$user" ]; then
+    mkdir /private/tmp/anymacos_"$user"
 fi
 
 write_log=$( _helpDefaultRead "WriteLog" )
@@ -405,7 +405,7 @@ function _remove_downloads()
 function _remove_temp()
 {
 
-    rm -f /private/tmp/anymacos/files
+    rm -f /private/tmp/anymacos_"$user"/files
 
 }
 function _kill_aria()

@@ -42,6 +42,7 @@ class ANYmacOS: NSViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        print(NSUserName())
         // Do view setup here.
         self.preferredContentSize = NSMakeSize(self.view.frame.size.width, self.view.frame.size.height);
         self.progress_wheel?.startAnimation(self);
@@ -54,7 +55,7 @@ class ANYmacOS: NSViewController {
             self.syncShellExec(path: self.scriptPath, args: ["_get_selection"])
             
             DispatchQueue.main.sync {
-                let location = NSString(string:"/private/tmp/anymacos/selection").expandingTildeInPath
+                let location = NSString(string:"/private/tmp/anymacos_" + NSUserName() + "/selection").expandingTildeInPath
                 self.pulldown_menu.menu?.removeAllItems()
                 let fileContent = try? NSString(contentsOfFile: location, encoding: String.Encoding.utf8.rawValue)
                 self.pulldown_menu.menu?.addItem(withTitle: "", action: #selector(ANYmacOS.menuItemClicked(_:)), keyEquivalent: "")
