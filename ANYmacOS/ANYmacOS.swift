@@ -42,36 +42,42 @@ class ANYmacOS: NSViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         // Do view setup here.
-        self.preferredContentSize = NSMakeSize(self.view.frame.size.width, self.view.frame.size.height);
-        self.progress_wheel?.startAnimation(self);
+        self.preferredContentSize = NSMakeSize(self.view.frame.size.width, self.view.frame.size.height)
+        self.progress_wheel?.startAnimation(self)
         UserDefaults.standard.removeObject(forKey: "Choice")
         UserDefaults.standard.removeObject(forKey: "DLFile")
-                let defaultname = NSLocalizedString("Retrieving information ...", comment: "")
-				UserDefaults.standard.set(defaultname, forKey: "Statustext")
+        let defaultname = NSLocalizedString("Retrieving information ...", comment: "")
+        UserDefaults.standard.set(defaultname, forKey: "Statustext")
+        
         DispatchQueue.global(qos: .background).async {
             self.syncShellExec(path: self.scriptPath, args: ["_initial"])
             self.syncShellExec(path: self.scriptPath, args: ["_get_selection"])
             
             DispatchQueue.main.sync {
-                let location = NSString(string:"/private/tmp/anymacos_" + NSUserName() + "/selection").expandingTildeInPath
+                let location = NSString(string: "/private/tmp/anymacos_" + NSUserName() + "/selection").expandingTildeInPath
                 self.pulldown_menu.menu?.removeAllItems()
-                let fileContent = try? NSString(contentsOfFile: location, encoding: String.Encoding.utf8.rawValue)
-                self.pulldown_menu.menu?.addItem(withTitle: "", action: #selector(ANYmacOS.menuItemClicked(_:)), keyEquivalent: "")
-                for (_, seed) in (fileContent?.components(separatedBy: "\n").enumerated())! {
-                    self.pulldown_menu.menu?.addItem(withTitle: seed, action: #selector(ANYmacOS.menuItemClicked(_:)), keyEquivalent: "")
+                if let fileContent = try? NSString(contentsOfFile: location, encoding: String.Encoding.utf8.rawValue) {
+                    self.pulldown_menu.menu?.addItem(withTitle: "", action: #selector(ANYmacOS.menuItemClicked(_:)), keyEquivalent: "")
+                    let seeds = fileContent.components(separatedBy: "\n")
+                    for (index, seed) in seeds.enumerated() {
+                        self.pulldown_menu.menu?.addItem(withTitle: seed, action: #selector(ANYmacOS.menuItemClicked(_:)), keyEquivalent: "")
+                    }
+                    self.pulldown_menu?.isEnabled = true
+                    self.download_button?.isEnabled = false
+                    let defaultname = NSLocalizedString("Idle ...", comment: "")
+                    UserDefaults.standard.set(defaultname, forKey: "Statustext")
+                    self.progress_wheel?.stopAnimation(self)
+                } else {
+                    self.pulldown_menu.menu?.addItem(withTitle: "🚫", action: #selector(ANYmacOS.menuItemClicked(_:)), keyEquivalent: "")
+                    self.pulldown_menu.isEnabled = false
+                    self.progress_wheel?.stopAnimation(self)
                 }
-              
-            }
-            
-            DispatchQueue.main.async {
-                self.pulldown_menu?.isEnabled=true
-                self.download_button?.isEnabled=false
-                let defaultname = NSLocalizedString("Idle ...", comment: "")
-                UserDefaults.standard.set(defaultname, forKey: "Statustext")
-                self.progress_wheel?.stopAnimation(self);
             }
         }
+    
+
         
         UserDefaults.standard.set(NSUserName(), forKey: "User Name")
         
