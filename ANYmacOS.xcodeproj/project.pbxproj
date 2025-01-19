@@ -7,18 +7,31 @@
 	objects = {
 
 /* Begin PBXAggregateTarget section */
-		2A9D311B2D3D29600095DF1A /* Lipo aria2c */ = {
+		2A1E97FB2D3D55BC0081419C /* Bundle aria2c */ = {
 			isa = PBXAggregateTarget;
-			buildConfigurationList = 2A9D311C2D3D29600095DF1A /* Build configuration list for PBXAggregateTarget "Lipo aria2c" */;
+			buildConfigurationList = 2A1E97FC2D3D55BC0081419C /* Build configuration list for PBXAggregateTarget "Bundle aria2c" */;
 			buildPhases = (
-				2A9D311F2D3D296A0095DF1A /* Lipo aria2c */,
+				2A1E97FF2D3D55C00081419C /* ShellScript */,
 			);
 			dependencies = (
 			);
-			name = "Lipo aria2c";
+			name = "Bundle aria2c";
 			packageProductDependencies = (
 			);
-			productName = "Prepare Build";
+			productName = "Bundle aria2c";
+		};
+		2A9D32682D3D32470095DF1A /* Publish */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = 2A9D32692D3D32470095DF1A /* Build configuration list for PBXAggregateTarget "Publish" */;
+			buildPhases = (
+				2A9D326C2D3D324B0095DF1A /* ShellScript */,
+			);
+			dependencies = (
+			);
+			name = Publish;
+			packageProductDependencies = (
+			);
+			productName = Publish;
 		};
 /* End PBXAggregateTarget section */
 
@@ -31,6 +44,11 @@
 		2A14A721230322F80048B14A /* ANYmacOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A14A71B230322F80048B14A /* ANYmacOS.swift */; };
 		2A14A723230322F80048B14A /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A14A71D230322F80048B14A /* Settings.swift */; };
 		2A14A725230322F80048B14A /* CreateUSBInstaller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A14A71F230322F80048B14A /* CreateUSBInstaller.swift */; };
+		2A1E980A2D3D566B0081419C /* libcrypto.3.dylib in Copy aria2c */ = {isa = PBXBuildFile; fileRef = 2A1E98002D3D565D0081419C /* libcrypto.3.dylib */; };
+		2A1E980B2D3D566B0081419C /* libintl.8.dylib in Copy aria2c */ = {isa = PBXBuildFile; fileRef = 2A1E98012D3D565D0081419C /* libintl.8.dylib */; };
+		2A1E980C2D3D566B0081419C /* libsqlite3.0.dylib in Copy aria2c */ = {isa = PBXBuildFile; fileRef = 2A1E98022D3D565D0081419C /* libsqlite3.0.dylib */; };
+		2A1E980D2D3D566B0081419C /* libssh2.1.dylib in Copy aria2c */ = {isa = PBXBuildFile; fileRef = 2A1E98032D3D565D0081419C /* libssh2.1.dylib */; };
+		2A1E980E2D3D566B0081419C /* libssl.3.dylib in Copy aria2c */ = {isa = PBXBuildFile; fileRef = 2A1E98042D3D565D0081419C /* libssl.3.dylib */; };
 		2A43E2322AE6D56E00CDCFE0 /* Install-App.zip in Resources */ = {isa = PBXBuildFile; fileRef = 2A43E2312AE6D56E00CDCFE0 /* Install-App.zip */; };
 		2A6A97922AE7A88000261586 /* Sparkle in Frameworks */ = {isa = PBXBuildFile; productRef = 2A6A97912AE7A88000261586 /* Sparkle */; };
 		2A6FEA57266F9BF000B4B508 /* LetsMoveIt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A6FEA56266F9BF000B4B508 /* LetsMoveIt.swift */; };
@@ -61,6 +79,11 @@
 			dstPath = bin;
 			dstSubfolderSpec = 7;
 			files = (
+				2A1E980A2D3D566B0081419C /* libcrypto.3.dylib in Copy aria2c */,
+				2A1E980B2D3D566B0081419C /* libintl.8.dylib in Copy aria2c */,
+				2A1E980C2D3D566B0081419C /* libsqlite3.0.dylib in Copy aria2c */,
+				2A1E980D2D3D566B0081419C /* libssh2.1.dylib in Copy aria2c */,
+				2A1E980E2D3D566B0081419C /* libssl.3.dylib in Copy aria2c */,
 				2AE5A77323006BDE00FFD472 /* aria2c in Copy aria2c */,
 			);
 			name = "Copy aria2c";
@@ -80,6 +103,11 @@
 		2A14A71B230322F80048B14A /* ANYmacOS.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ANYmacOS.swift; sourceTree = "<group>"; };
 		2A14A71D230322F80048B14A /* Settings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		2A14A71F230322F80048B14A /* CreateUSBInstaller.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateUSBInstaller.swift; sourceTree = "<group>"; };
+		2A1E98002D3D565D0081419C /* libcrypto.3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; path = libcrypto.3.dylib; sourceTree = "<group>"; };
+		2A1E98012D3D565D0081419C /* libintl.8.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; path = libintl.8.dylib; sourceTree = "<group>"; };
+		2A1E98022D3D565D0081419C /* libsqlite3.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; path = libsqlite3.0.dylib; sourceTree = "<group>"; };
+		2A1E98032D3D565D0081419C /* libssh2.1.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; path = libssh2.1.dylib; sourceTree = "<group>"; };
+		2A1E98042D3D565D0081419C /* libssl.3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; path = libssl.3.dylib; sourceTree = "<group>"; };
 		2A2879F423094D2F00C29553 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Main.strings; sourceTree = "<group>"; };
 		2A43E2312AE6D56E00CDCFE0 /* Install-App.zip */ = {isa = PBXFileReference; lastKnownFileType = archive.zip; path = "Install-App.zip"; sourceTree = "<group>"; };
 		2A6FEA56266F9BF000B4B508 /* LetsMoveIt.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LetsMoveIt.swift; sourceTree = "<group>"; };
@@ -158,6 +186,11 @@
 			isa = PBXGroup;
 			children = (
 				2A93CF3C23004097004C832D /* aria2c */,
+				2A1E98002D3D565D0081419C /* libcrypto.3.dylib */,
+				2A1E98012D3D565D0081419C /* libintl.8.dylib */,
+				2A1E98022D3D565D0081419C /* libsqlite3.0.dylib */,
+				2A1E98032D3D565D0081419C /* libssh2.1.dylib */,
+				2A1E98042D3D565D0081419C /* libssl.3.dylib */,
 			);
 			path = bin;
 			sourceTree = "<group>";
@@ -207,7 +240,10 @@
 							};
 						};
 					};
-					2A9D311B2D3D29600095DF1A = {
+					2A1E97FB2D3D55BC0081419C = {
+						CreatedOnToolsVersion = 16.2;
+					};
+					2A9D32682D3D32470095DF1A = {
 						CreatedOnToolsVersion = 16.2;
 					};
 				};
@@ -230,7 +266,8 @@
 			projectRoot = "";
 			targets = (
 				1FA7861C23002556002CDB52 /* ANYmacOS */,
-				2A9D311B2D3D29600095DF1A /* Lipo aria2c */,
+				2A1E97FB2D3D55BC0081419C /* Bundle aria2c */,
+				2A9D32682D3D32470095DF1A /* Publish */,
 			);
 		};
 /* End PBXProject section */
@@ -268,7 +305,7 @@
 			shellPath = /bin/bash;
 			shellScript = "#/bin/bash\n#\nexit\ncd /Users/luigi/Documents/Xcode/anymacos/ANYmacOS/script\nshc -r -f scriptori.command\nrm *.x.c\ncp scriptori.command.x ../bin/anymacos\nchmod u+x ../bin/anymacos\nrm scriptori.command.x\n";
 		};
-		2A9D311F2D3D296A0095DF1A /* Lipo aria2c */ = {
+		2A1E97FF2D3D55C00081419C /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -277,14 +314,13 @@
 			);
 			inputPaths = (
 			);
-			name = "Lipo aria2c";
 			outputFileListPaths = (
 			);
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "#!/bin/sh\n\n# Needs:\n# arch -x86_64 /usr/local/bin/./brew install aria2\n# arch -arm64 /opt/homebrew/bin/./brew install aria2\n\nbin=\"aria2c\"\ndest_path=\"$PROJECT_DIR/ANYmacOS/bin\"\n\nexport PATH=\"/opt/homebrew/bin:$PATH\"\narm_path=\"/opt/homebrew/bin\"\nx86_path=\"/usr/local/bin\"\n\ncd \"$dest_path\"\n\ncp \"$arm_path\"/\"$bin\" \"$bin\"_arm\ncp \"$x86_path\"/\"$bin\" \"$bin\"_x86\n\nlipo \"$bin\"_arm \"$bin\"_x86 -output \"$bin\" -create\n\nrm \"$bin\"_*\n\nchmod +x \"$bin\"\n";
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n\n#!/bin/bash\n\n# Erforderliche Abhängigkeiten:\n# ARM: /opt/homebrew/bin/brew install aria2 dylibbundler\n# x86: arch -x86_64 /usr/local/bin/./brew install aria2 dylibbundler\n\nexport PATH=\"/opt/homebrew/bin:$PATH\"\n\n# Variablen definieren\nBIN=\"aria2c\"\nDEST_PATH=\"$PROJECT_DIR/ANYmacOS/bin\"\nARM_PATH=\"/opt/homebrew/bin\"\nX86_PATH=\"/usr/local/bin\"\nARM_BUILD=\"arm\"\nX86_BUILD=\"x86\"\n\n# Zielpfad vorbereiten\ncd \"$DEST_PATH\" || exit 1\nmkdir -p \"$X86_BUILD\" \"$ARM_BUILD\"\n\n# Binärdateien für ARM und x86 kopieren\ncp \"$ARM_PATH/$BIN\" \"${BIN}_arm\"\ncp \"$X86_PATH/$BIN\" \"${BIN}_x86\"\n\n# Abhängigkeiten bündeln\nfor ARCH in arm x86; do\n    dylibbundler -of -cd -b -x \"${BIN}_$ARCH\" -d \"$ARCH\" -p \"@executable_path/\"\ndone\n\n# ARM- und x86-Bibliotheken kombinieren\ncd \"$ARM_BUILD\" || exit 1\nfor LIB in *.dylib; do\n    lipo \"$LIB\" \"../$X86_BUILD/$LIB\" -output \"../$LIB\" -create\ndone\n\ncd ..\n\n# ARM- und x86-Binärdateien kombinieren\nlipo \"${BIN}_arm\" \"${BIN}_x86\" -output \"$BIN\" -create\n\n# Temporäre Dateien und Verzeichnisse entfernen\nrm -r \"$X86_BUILD\" \"$ARM_BUILD\" \"${BIN}_\"*\n\n";
 		};
 		2A9D318D2D3D2A370095DF1A /* Prepare Build */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -302,7 +338,24 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n\n\nSYS_USER=$(id -un)\n\nif [ -d \"/Volumes/Homeshare/Xcode/anymacos/upload\" ]; then\n    cp \"/Users/$SYS_USER/Documents/Xcode/anymacos/anymacos/anymacos.html\" \"/Volumes/Homeshare/Xcode/anymacos/upload/\"\n  \n    codesign --force --deep --sign \"Apple Development: s.lamprecht@sl-soft.de (85JZW6284R)\" \"${TARGET_BUILD_DIR}\"/\"${PRODUCT_NAME}.app\"\n    ditto -c -k --sequesterRsrc --keepParent \"${TARGET_BUILD_DIR}/${PRODUCT_NAME}.app\" \"/Volumes/Homeshare/Xcode/anymacos/upload/anymacos.zip\"\n\nfi\n\nif [ -d \"/Users/$SYS_USER/Desktop/${PRODUCT_NAME}.app\" ]; then\n    rm -r \"/Users/$SYS_USER/Desktop/${PRODUCT_NAME}.app\"\nfi\n\ncp -a \"${TARGET_BUILD_DIR}/${PRODUCT_NAME}.app\" \"/Users/$SYS_USER/Desktop/.\"\ncodesign --force --deep --sign \"Apple Development: s.lamprecht@sl-soft.de (85JZW6284R)\" /Users/$SYS_USER/Desktop/\"${PRODUCT_NAME}.app\"\n";
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n\n\nSYS_USER=$(id -un)\n\ncodesign --force --deep --sign \"Apple Development: s.lamprecht@sl-soft.de (85JZW6284R)\" \"${TARGET_BUILD_DIR}\"/\"${PRODUCT_NAME}.app\"\n\nditto -c -k --sequesterRsrc --keepParent \"${TARGET_BUILD_DIR}/${PRODUCT_NAME}.app\" \"/Users/$USER/Desktop/anymacos.zip\"\n\nif [ -d \"/Volumes/Homeshar/Xcode/anymacos/upload\" ]; then\n    cp \"/Users/$SYS_USER/Documents/Xcode/anymacos/anymacos/anymacos.html\" \"/Volumes/Homeshare/Xcode/anymacos/upload/\"\n  \n    cp \"/Users/$USER/Desktop/anymacos.zip\" \"/Volumes/Homeshare/Xcode/anymacos/upload/\"\n\nfi\n\nif [ -d \"/Users/$SYS_USER/Desktop/${PRODUCT_NAME}.app\" ]; then\n    rm -r \"/Users/$SYS_USER/Desktop/${PRODUCT_NAME}.app\"\nfi\n\ncp -a \"${TARGET_BUILD_DIR}/${PRODUCT_NAME}.app\" \"/Users/$SYS_USER/Desktop/.\"\ncodesign --force --deep --sign \"Apple Development: s.lamprecht@sl-soft.de (85JZW6284R)\" /Users/$SYS_USER/Desktop/\"${PRODUCT_NAME}.app\"\n";
+		};
+		2A9D326C2D3D324B0095DF1A /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n\nbash /Volumes/Homeshare/Xcode/anymacos/push.command\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -477,7 +530,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 129;
+				CURRENT_PROJECT_VERSION = 130;
 				DEVELOPMENT_TEAM = 4ATFWV7M4B;
 				ENABLE_HARDENED_RUNTIME = NO;
 				INFOPLIST_FILE = ANYmacOS/Info.plist;
@@ -486,8 +539,12 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/ANYmacOS/bin",
+				);
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
-				MARKETING_VERSION = 1.2.9;
+				MARKETING_VERSION = 1.3.0;
 				PRODUCT_BUNDLE_IDENTIFIER = anymacos.slsoft.de;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -502,7 +559,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 129;
+				CURRENT_PROJECT_VERSION = 130;
 				DEVELOPMENT_TEAM = 4ATFWV7M4B;
 				ENABLE_HARDENED_RUNTIME = NO;
 				INFOPLIST_FILE = ANYmacOS/Info.plist;
@@ -511,8 +568,12 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/ANYmacOS/bin",
+				);
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
-				MARKETING_VERSION = 1.2.9;
+				MARKETING_VERSION = 1.3.0;
 				PRODUCT_BUNDLE_IDENTIFIER = anymacos.slsoft.de;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -520,7 +581,7 @@
 			};
 			name = Release;
 		};
-		2A9D311D2D3D29600095DF1A /* Debug */ = {
+		2A1E97FD2D3D55BC0081419C /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
@@ -529,7 +590,25 @@
 			};
 			name = Debug;
 		};
-		2A9D311E2D3D29600095DF1A /* Release */ = {
+		2A1E97FE2D3D55BC0081419C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 4ATFWV7M4B;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		2A9D326A2D3D32470095DF1A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 4ATFWV7M4B;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		2A9D326B2D3D32470095DF1A /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
@@ -559,11 +638,20 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		2A9D311C2D3D29600095DF1A /* Build configuration list for PBXAggregateTarget "Lipo aria2c" */ = {
+		2A1E97FC2D3D55BC0081419C /* Build configuration list for PBXAggregateTarget "Bundle aria2c" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				2A9D311D2D3D29600095DF1A /* Debug */,
-				2A9D311E2D3D29600095DF1A /* Release */,
+				2A1E97FD2D3D55BC0081419C /* Debug */,
+				2A1E97FE2D3D55BC0081419C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		2A9D32692D3D32470095DF1A /* Build configuration list for PBXAggregateTarget "Publish" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2A9D326A2D3D32470095DF1A /* Debug */,
+				2A9D326B2D3D32470095DF1A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
