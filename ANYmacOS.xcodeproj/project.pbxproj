@@ -7,15 +7,15 @@
 	objects = {
 
 /* Begin PBXAggregateTarget section */
-		2A9D311B2D3D29600095DF1A /* Bundle Libs */ = {
+		2A9D311B2D3D29600095DF1A /* Lipo aria2c */ = {
 			isa = PBXAggregateTarget;
-			buildConfigurationList = 2A9D311C2D3D29600095DF1A /* Build configuration list for PBXAggregateTarget "Bundle Libs" */;
+			buildConfigurationList = 2A9D311C2D3D29600095DF1A /* Build configuration list for PBXAggregateTarget "Lipo aria2c" */;
 			buildPhases = (
-				2A9D311F2D3D296A0095DF1A /* Bundle Libs */,
+				2A9D311F2D3D296A0095DF1A /* Lipo aria2c */,
 			);
 			dependencies = (
 			);
-			name = "Bundle Libs";
+			name = "Lipo aria2c";
 			packageProductDependencies = (
 			);
 			productName = "Prepare Build";
@@ -40,7 +40,7 @@
 		2ABDF3122550035A00B7647A /* About.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ABDF3112550035A00B7647A /* About.swift */; };
 		2AC6612E239F84AE00E859D7 /* WindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AC6612D239F84AE00E859D7 /* WindowController.swift */; };
 		2AD98C1F25568C7F002ADA3E /* Status.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AD98C1E25568C7F002ADA3E /* Status.swift */; };
-		2AE5A77323006BDE00FFD472 /* aria2c in CopyFiles */ = {isa = PBXBuildFile; fileRef = 2A93CF3C23004097004C832D /* aria2c */; };
+		2AE5A77323006BDE00FFD472 /* aria2c in Copy aria2c */ = {isa = PBXBuildFile; fileRef = 2A93CF3C23004097004C832D /* aria2c */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -55,14 +55,15 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		2AE5A77223006BD400FFD472 /* CopyFiles */ = {
+		2AE5A77223006BD400FFD472 /* Copy aria2c */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = bin;
 			dstSubfolderSpec = 7;
 			files = (
-				2AE5A77323006BDE00FFD472 /* aria2c in CopyFiles */,
+				2AE5A77323006BDE00FFD472 /* aria2c in Copy aria2c */,
 			);
+			name = "Copy aria2c";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
@@ -173,7 +174,7 @@
 				1FA7861B23002556002CDB52 /* Resources */,
 				2A14A726230325700048B14A /* Create Bash Binary */,
 				2ABCD38825533ABF0015E463 /* CopyFiles */,
-				2AE5A77223006BD400FFD472 /* CopyFiles */,
+				2AE5A77223006BD400FFD472 /* Copy aria2c */,
 				2A9D318D2D3D2A370095DF1A /* Prepare Build */,
 			);
 			buildRules = (
@@ -229,7 +230,7 @@
 			projectRoot = "";
 			targets = (
 				1FA7861C23002556002CDB52 /* ANYmacOS */,
-				2A9D311B2D3D29600095DF1A /* Bundle Libs */,
+				2A9D311B2D3D29600095DF1A /* Lipo aria2c */,
 			);
 		};
 /* End PBXProject section */
@@ -267,7 +268,7 @@
 			shellPath = /bin/bash;
 			shellScript = "#/bin/bash\n#\nexit\ncd /Users/luigi/Documents/Xcode/anymacos/ANYmacOS/script\nshc -r -f scriptori.command\nrm *.x.c\ncp scriptori.command.x ../bin/anymacos\nchmod u+x ../bin/anymacos\nrm scriptori.command.x\n";
 		};
-		2A9D311F2D3D296A0095DF1A /* Bundle Libs */ = {
+		2A9D311F2D3D296A0095DF1A /* Lipo aria2c */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -276,7 +277,7 @@
 			);
 			inputPaths = (
 			);
-			name = "Bundle Libs";
+			name = "Lipo aria2c";
 			outputFileListPaths = (
 			);
 			outputPaths = (
@@ -558,7 +559,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		2A9D311C2D3D29600095DF1A /* Build configuration list for PBXAggregateTarget "Bundle Libs" */ = {
+		2A9D311C2D3D29600095DF1A /* Build configuration list for PBXAggregateTarget "Lipo aria2c" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				2A9D311D2D3D29600095DF1A /* Debug */,

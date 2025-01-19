@@ -16,8 +16,8 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "2A9D311B2D3D29600095DF1A"
-               BuildableName = "Bundle Libs"
-               BlueprintName = "Bundle Libs"
+               BuildableName = "Lipo aria2c"
+               BlueprintName = "Lipo aria2c"
                ReferencedContainer = "container:ANYmacOS.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -51,8 +51,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "2A9D311B2D3D29600095DF1A"
-            BuildableName = "Bundle Libs"
-            BlueprintName = "Bundle Libs"
+            BuildableName = "Lipo aria2c"
+            BlueprintName = "Lipo aria2c"
             ReferencedContainer = "container:ANYmacOS.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
