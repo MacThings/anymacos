@@ -197,18 +197,23 @@ class ANYmacOS: NSViewController {
                     let CancelButtonText = NSLocalizedString("No", comment: "")
                     alert.addButton(withTitle: CancelButtonText)
                 } else {
-                    alert.messageText = NSLocalizedString("An error has occured!", comment: "")
-                    alert.informativeText = NSLocalizedString("The creation of the Installer App failed. Please try again. Do you want to clean up the ANYmacOS downloads?", comment: "")
+                    alert.messageText = NSLocalizedString("Creation of the Installer-App failed!", comment: "")
+                    alert.informativeText = NSLocalizedString("The creation of the Installer-App failed. It's 99,9% a SIP problem. But you can start the main-PKG by hand (if you don't aborted the download by hand before) and than the creation of the Install-App in the Application folder should be done.", comment: "")
                     alert.alertStyle = .warning
                     alert.icon = NSImage(named: "NSError")
-                    let Button = NSLocalizedString("Yes", comment: "")
-                    alert.addButton(withTitle: Button)
-                    let CancelButtonText = NSLocalizedString("No", comment: "")
+                    //let Button = NSLocalizedString("Yes", comment: "")
+                    //alert.addButton(withTitle: Button)
+                    let CancelButtonText = NSLocalizedString("OK", comment: "")
                     alert.addButton(withTitle: CancelButtonText)
                 }
                 
                 if alert.runModal() == .alertFirstButtonReturn {
-                    self.syncShellExec(path: self.scriptPath, args: ["_remove_downloads"])
+                    let url = URL(fileURLWithPath: UserDefaults.standard.string(forKey: "Downloadpath") ?? "")
+                    if FileManager.default.fileExists(atPath: UserDefaults.standard.string(forKey: "Downloadpath") ?? "") {
+                        NSWorkspace.shared.activateFileViewerSelecting([url])
+                    } else {
+                        print("Dateipfad existiert nicht: \(url)")
+                    }
                 }
                                 
                 self.pulldown_menu.isEnabled=true

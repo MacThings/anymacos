@@ -1,5 +1,5 @@
 /* No comment provided by engineer. */
-"An error has occured!" = "Ein Fehler ist aufgetreten!";
+"Creation of the Installer-App failed!" = "Fehler bei Erstellung der Installer-App!";
 
 /* No comment provided by engineer. */
 "Canceling Operation ..." = "Breche Vorgang ab ...";
@@ -59,7 +59,7 @@
 "SIP is activated on your system!" = "Aktivierte SIP im System gefunden!";
 
 /* No comment provided by engineer. */
-"The creation of the Installer App failed. Please try again. Do you want to clean up the ANYmacOS downloads?" = "Die Erstellung der Installer Applikation ist fehlgeschlagen. Bitte versuche es erneut. Möchtest Du die  heruntergeladenen ANYmacOS Dateien löschen?";
+"The creation of the Installer-App failed. It's 99,9% a SIP problem. But you can start the main-PKG by hand (if you don't aborted the download by hand before) and than the creation of the Install-App in the Application folder should be done." = "Die Erstellung der Installer Applikation ist fehlgeschlagen. Du kannst Sie aber manuell starten (sofern Du den Download nicht von hand abgebrochen hast) und die Erstellung der Installer-App im Programme-Ordner sollte dann funktionieren.";
 
 /* No comment provided by engineer. */
 "Yes" = "Ja";

@@ -6,6 +6,22 @@
 	objectVersion = 60;
 	objects = {
 
+/* Begin PBXAggregateTarget section */
+		2A9D311B2D3D29600095DF1A /* Bundle Libs */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = 2A9D311C2D3D29600095DF1A /* Build configuration list for PBXAggregateTarget "Bundle Libs" */;
+			buildPhases = (
+				2A9D311F2D3D296A0095DF1A /* Bundle Libs */,
+			);
+			dependencies = (
+			);
+			name = "Bundle Libs";
+			packageProductDependencies = (
+			);
+			productName = "Prepare Build";
+		};
+/* End PBXAggregateTarget section */
+
 /* Begin PBXBuildFile section */
 		1FA7862123002556002CDB52 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FA7862023002556002CDB52 /* AppDelegate.swift */; };
 		1FA7862323002556002CDB52 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FA7862223002556002CDB52 /* ViewController.swift */; };
@@ -158,7 +174,7 @@
 				2A14A726230325700048B14A /* Create Bash Binary */,
 				2ABCD38825533ABF0015E463 /* CopyFiles */,
 				2AE5A77223006BD400FFD472 /* CopyFiles */,
-				2A6B431E230331ED009B3A47 /* Zip App and send to Homeshare */,
+				2A9D318D2D3D2A370095DF1A /* Prepare Build */,
 			);
 			buildRules = (
 			);
@@ -190,6 +206,9 @@
 							};
 						};
 					};
+					2A9D311B2D3D29600095DF1A = {
+						CreatedOnToolsVersion = 16.2;
+					};
 				};
 			};
 			buildConfigurationList = 1FA7861823002556002CDB52 /* Build configuration list for PBXProject "ANYmacOS" */;
@@ -210,6 +229,7 @@
 			projectRoot = "";
 			targets = (
 				1FA7861C23002556002CDB52 /* ANYmacOS */,
+				2A9D311B2D3D29600095DF1A /* Bundle Libs */,
 			);
 		};
 /* End PBXProject section */
@@ -247,7 +267,7 @@
 			shellPath = /bin/bash;
 			shellScript = "#/bin/bash\n#\nexit\ncd /Users/luigi/Documents/Xcode/anymacos/ANYmacOS/script\nshc -r -f scriptori.command\nrm *.x.c\ncp scriptori.command.x ../bin/anymacos\nchmod u+x ../bin/anymacos\nrm scriptori.command.x\n";
 		};
-		2A6B431E230331ED009B3A47 /* Zip App and send to Homeshare */ = {
+		2A9D311F2D3D296A0095DF1A /* Bundle Libs */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -256,14 +276,32 @@
 			);
 			inputPaths = (
 			);
-			name = "Zip App and send to Homeshare";
+			name = "Bundle Libs";
 			outputFileListPaths = (
 			);
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/bash;
-			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n#\n\ncp /Users/luigi/Documents/Xcode/anymacos/ANYmacOS/anymacos.html /Volumes/Homeshare/Xcode/anymacos/upload/\n\n#find \"${TARGET_BUILD_DIR}\"/\"${PRODUCT_NAME}.app\"/Contents/Resources -type d -name \"Sparkle.framework\" -exec rm -r \"{}\" \\;\n#rm -r /Applications/\"${PRODUCT_NAME}.app\"\n#cp -r \"${TARGET_BUILD_DIR}\"/\"${PRODUCT_NAME}.app\" /Applications/\n#newname=$( echo \"${PRODUCT_NAME}\" |tr '[:upper:]' '[:lower:]' |sed -e 's/\\ //g' -e 's/-//g' )\n#if [ -d /Volumes/Homeshare/Xcode/$newname ]; then\n#    cp \"/Users/luigi/Documents/Xcode/$newname/${PRODUCT_NAME}/$newname.html\" \"/Volumes/Homeshare/Xcode/$newname/upload/$newname.html\"\n #   rm /Volumes/Homeshare/Xcode/$newname/upload/$newname.zip 2> /dev/null\n #   cd /Applications\n #   ditto -c -k --sequesterRsrc --keepParent \"${PRODUCT_NAME}.app\" /Volumes/Homeshare/Xcode/$newname/upload/$newname.zip\n  #  ditto -c -k --sequesterRsrc --keepParent \"${PRODUCT_NAME}.app\" ~/Desktop/\"${PRODUCT_NAME} ${MARKETING_VERSION}.zip\"\n#fi\n";
+			shellPath = /bin/sh;
+			shellScript = "bin=\"aria2c\"\ndest_path=\"$PROJECT_DIR/ANYmacOS/bin\"\n\nexport PATH=\"/opt/homebrew/bin:$PATH\"\narm_path=\"/opt/homebrew/bin\"\nx86_path=\"/usr/local/bin\"\n\ncd \"$dest_path\"\n\ncp \"$arm_path\"/\"$bin\" \"$bin\"_arm\ncp \"$x86_path\"/\"$bin\" \"$bin\"_x86\n\nlipo \"$bin\"_arm \"$bin\"_x86 -output \"$bin\" -create\n\nrm \"$bin\"_*\n\nchmod +x \"$bin\"\n";
+		};
+		2A9D318D2D3D2A370095DF1A /* Prepare Build */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Prepare Build";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n\n\nSYS_USER=$(id -un)\n\nif [ -d \"/Volumes/Homeshare/Xcode/anymacos/upload\" ]; then\n    cp \"/Users/$SYS_USER/Documents/Xcode/anymacos/anymacos/anymacos.html\" \"/Volumes/Homeshare/Xcode/anymacos/upload/\"\n  \n    codesign --force --deep --sign \"Apple Development: s.lamprecht@sl-soft.de (85JZW6284R)\" \"${TARGET_BUILD_DIR}\"/\"${PRODUCT_NAME}.app\"\n    ditto -c -k --sequesterRsrc --keepParent \"${TARGET_BUILD_DIR}/${PRODUCT_NAME}.app\" \"/Volumes/Homeshare/Xcode/anymacos/upload/anymacos.zip\"\n\nfi\n\nif [ -d \"/Users/$SYS_USER/Desktop/${PRODUCT_NAME}.app\" ]; then\n    rm -r \"/Users/$SYS_USER/Desktop/${PRODUCT_NAME}.app\"\nfi\n\ncp -a \"${TARGET_BUILD_DIR}/${PRODUCT_NAME}.app\" \"/Users/$SYS_USER/Desktop/.\"\ncodesign --force --deep --sign \"Apple Development: s.lamprecht@sl-soft.de (85JZW6284R)\" /Users/$SYS_USER/Desktop/\"${PRODUCT_NAME}.app\"\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -435,12 +473,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
-				CODE_SIGN_STYLE = Manual;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 128;
-				DEVELOPMENT_TEAM = "";
+				CURRENT_PROJECT_VERSION = 129;
+				DEVELOPMENT_TEAM = 4ATFWV7M4B;
 				ENABLE_HARDENED_RUNTIME = NO;
 				INFOPLIST_FILE = ANYmacOS/Info.plist;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
@@ -449,7 +486,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
-				MARKETING_VERSION = 1.2.8;
+				MARKETING_VERSION = 1.2.9;
 				PRODUCT_BUNDLE_IDENTIFIER = anymacos.slsoft.de;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -461,12 +498,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
-				CODE_SIGN_STYLE = Manual;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 128;
-				DEVELOPMENT_TEAM = "";
+				CURRENT_PROJECT_VERSION = 129;
+				DEVELOPMENT_TEAM = 4ATFWV7M4B;
 				ENABLE_HARDENED_RUNTIME = NO;
 				INFOPLIST_FILE = ANYmacOS/Info.plist;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
@@ -475,11 +511,29 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
-				MARKETING_VERSION = 1.2.8;
+				MARKETING_VERSION = 1.2.9;
 				PRODUCT_BUNDLE_IDENTIFIER = anymacos.slsoft.de;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+		2A9D311D2D3D29600095DF1A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 4ATFWV7M4B;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		2A9D311E2D3D29600095DF1A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 4ATFWV7M4B;
+				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
 		};
@@ -504,6 +558,15 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
+		2A9D311C2D3D29600095DF1A /* Build configuration list for PBXAggregateTarget "Bundle Libs" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2A9D311D2D3D29600095DF1A /* Debug */,
+				2A9D311E2D3D29600095DF1A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
@@ -512,7 +575,7 @@
 			repositoryURL = "https://github.com/sparkle-project/Sparkle";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 2.5.2;
+				minimumVersion = 2.6.4;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
