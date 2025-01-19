@@ -284,7 +284,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "bin=\"aria2c\"\ndest_path=\"$PROJECT_DIR/ANYmacOS/bin\"\n\nexport PATH=\"/opt/homebrew/bin:$PATH\"\narm_path=\"/opt/homebrew/bin\"\nx86_path=\"/usr/local/bin\"\n\ncd \"$dest_path\"\n\ncp \"$arm_path\"/\"$bin\" \"$bin\"_arm\ncp \"$x86_path\"/\"$bin\" \"$bin\"_x86\n\nlipo \"$bin\"_arm \"$bin\"_x86 -output \"$bin\" -create\n\nrm \"$bin\"_*\n\nchmod +x \"$bin\"\n";
+			shellScript = "#!/bin/sh\n\n# Needs:\n# arch -x86_64 /usr/local/bin/./brew install aria2\n# arch -arm64 /opt/homebrew/bin/./brew install aria2\n\nbin=\"aria2c\"\ndest_path=\"$PROJECT_DIR/ANYmacOS/bin\"\n\nexport PATH=\"/opt/homebrew/bin:$PATH\"\narm_path=\"/opt/homebrew/bin\"\nx86_path=\"/usr/local/bin\"\n\ncd \"$dest_path\"\n\ncp \"$arm_path\"/\"$bin\" \"$bin\"_arm\ncp \"$x86_path\"/\"$bin\" \"$bin\"_x86\n\nlipo \"$bin\"_arm \"$bin\"_x86 -output \"$bin\" -create\n\nrm \"$bin\"_*\n\nchmod +x \"$bin\"\n";
 		};
 		2A9D318D2D3D2A370095DF1A /* Prepare Build */ = {
 			isa = PBXShellScriptBuildPhase;
