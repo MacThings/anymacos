@@ -264,6 +264,11 @@ class ANYmacOS: NSViewController {
         }
     }
     
+    @IBAction func open_discord(_ sender: Any) {
+        if let url = URL(string: "https://discord.gg/6M57hVh9cQ") {
+                NSWorkspace.shared.open(url)
+            }
+    }
    
     func syncShellExec(path: String, args: [String] = []) {
         let process            = Process()

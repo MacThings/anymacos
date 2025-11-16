@@ -53,6 +53,7 @@
 		2A6A97922AE7A88000261586 /* Sparkle in Frameworks */ = {isa = PBXBuildFile; productRef = 2A6A97912AE7A88000261586 /* Sparkle */; };
 		2A6FEA57266F9BF000B4B508 /* LetsMoveIt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A6FEA56266F9BF000B4B508 /* LetsMoveIt.swift */; };
 		2A8EB9912544AD5500F79DED /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2A8EB98F2544AD5500F79DED /* Localizable.strings */; };
+		2A9FB0D02EC9E4C100C78F2A /* aria2c_old in Copy aria2c */ = {isa = PBXBuildFile; fileRef = 2A9FB0CE2EC9E4BA00C78F2A /* aria2c_old */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		2ABCD38925533AD00015E463 /* script.command in CopyFiles */ = {isa = PBXBuildFile; fileRef = 2A93CF3823004091004C832D /* script.command */; };
 		2ABCD39225533DEF0015E463 /* kill.command in CopyFiles */ = {isa = PBXBuildFile; fileRef = 2ABCD38F25533DC90015E463 /* kill.command */; };
 		2ABDF3122550035A00B7647A /* About.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ABDF3112550035A00B7647A /* About.swift */; };
@@ -79,6 +80,7 @@
 			dstPath = bin;
 			dstSubfolderSpec = 7;
 			files = (
+				2A9FB0D02EC9E4C100C78F2A /* aria2c_old in Copy aria2c */,
 				2A1E980A2D3D566B0081419C /* libcrypto.3.dylib in Copy aria2c */,
 				2A1E980B2D3D566B0081419C /* libintl.8.dylib in Copy aria2c */,
 				2A1E980C2D3D566B0081419C /* libsqlite3.0.dylib in Copy aria2c */,
@@ -114,6 +116,7 @@
 		2A8EB9902544AD5500F79DED /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
 		2A93CF3823004091004C832D /* script.command */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = script.command; sourceTree = "<group>"; };
 		2A93CF3C23004097004C832D /* aria2c */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = aria2c; sourceTree = "<group>"; };
+		2A9FB0CE2EC9E4BA00C78F2A /* aria2c_old */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = aria2c_old; sourceTree = "<group>"; };
 		2ABCD38F25533DC90015E463 /* kill.command */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = kill.command; sourceTree = "<group>"; };
 		2ABDF3112550035A00B7647A /* About.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = About.swift; path = ANYmacOS/About.swift; sourceTree = SOURCE_ROOT; };
 		2AC6612D239F84AE00E859D7 /* WindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WindowController.swift; sourceTree = "<group>"; };
@@ -186,6 +189,7 @@
 			isa = PBXGroup;
 			children = (
 				2A93CF3C23004097004C832D /* aria2c */,
+				2A9FB0CE2EC9E4BA00C78F2A /* aria2c_old */,
 				2A1E98002D3D565D0081419C /* libcrypto.3.dylib */,
 				2A1E98012D3D565D0081419C /* libintl.8.dylib */,
 				2A1E98022D3D565D0081419C /* libsqlite3.0.dylib */,
@@ -338,7 +342,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n\n\nSYS_USER=$(id -un)\n\ncodesign --force --deep --sign \"Apple Development: s.lamprecht@sl-soft.de (85JZW6284R)\" \"${TARGET_BUILD_DIR}\"/\"${PRODUCT_NAME}.app\"\n\nditto -c -k --sequesterRsrc --keepParent \"${TARGET_BUILD_DIR}/${PRODUCT_NAME}.app\" \"/Users/$USER/Desktop/anymacos.zip\"\n\nif [ -d \"/Volumes/Homeshar/Xcode/anymacos/upload\" ]; then\n    cp \"/Users/$SYS_USER/Documents/Xcode/anymacos/anymacos/anymacos.html\" \"/Volumes/Homeshare/Xcode/anymacos/upload/\"\n  \n    cp \"/Users/$USER/Desktop/anymacos.zip\" \"/Volumes/Homeshare/Xcode/anymacos/upload/\"\n\nfi\n\nif [ -d \"/Users/$SYS_USER/Desktop/${PRODUCT_NAME}.app\" ]; then\n    rm -r \"/Users/$SYS_USER/Desktop/${PRODUCT_NAME}.app\"\nfi\n\ncp -a \"${TARGET_BUILD_DIR}/${PRODUCT_NAME}.app\" \"/Users/$SYS_USER/Desktop/.\"\ncodesign --force --deep --sign \"Apple Development: s.lamprecht@sl-soft.de (85JZW6284R)\" /Users/$SYS_USER/Desktop/\"${PRODUCT_NAME}.app\"\n";
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n\n\nSYS_USER=$(id -un)\n\ncodesign --force --deep --sign \"Apple Development: apple@slsoft.de (85JZW6284R)\" \"${TARGET_BUILD_DIR}\"/\"${PRODUCT_NAME}.app\"\n\nditto -c -k --sequesterRsrc --keepParent \"${TARGET_BUILD_DIR}/${PRODUCT_NAME}.app\" \"/Users/$USER/Desktop/anymacos.zip\"\n\nif [ -d \"/Volumes/Homeshar/Xcode/anymacos/upload\" ]; then\n    cp \"/Users/$SYS_USER/Documents/Xcode/anymacos/anymacos/anymacos.html\" \"/Volumes/Homeshare/Xcode/anymacos/upload/\"\n  \n    cp \"/Users/$USER/Desktop/anymacos.zip\" \"/Volumes/Homeshare/Xcode/anymacos/upload/\"\n\nfi\n\nif [ -d \"/Users/$SYS_USER/Desktop/${PRODUCT_NAME}.app\" ]; then\n    rm -r \"/Users/$SYS_USER/Desktop/${PRODUCT_NAME}.app\"\nfi\n\ncp -a \"${TARGET_BUILD_DIR}/${PRODUCT_NAME}.app\" \"/Users/$SYS_USER/Desktop/.\"\ncodesign --force --deep --sign \"Apple Development: apple@slsoft.de (85JZW6284R)\" /Users/$SYS_USER/Desktop/\"${PRODUCT_NAME}.app\"\n";
 		};
 		2A9D326C2D3D324B0095DF1A /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -440,7 +444,7 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEVELOPMENT_TEAM = "";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				ENABLE_TESTABILITY = YES;
+				ENABLE_TESTABILITY = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -506,6 +510,7 @@
 				DEVELOPMENT_TEAM = "";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -530,7 +535,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 130;
+				CURRENT_PROJECT_VERSION = 131;
 				DEVELOPMENT_TEAM = 4ATFWV7M4B;
 				ENABLE_HARDENED_RUNTIME = NO;
 				INFOPLIST_FILE = ANYmacOS/Info.plist;
@@ -544,7 +549,7 @@
 					"$(PROJECT_DIR)/ANYmacOS/bin",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
-				MARKETING_VERSION = 1.3.0;
+				MARKETING_VERSION = 1.3.1;
 				PRODUCT_BUNDLE_IDENTIFIER = anymacos.slsoft.de;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -559,7 +564,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 130;
+				CURRENT_PROJECT_VERSION = 131;
 				DEVELOPMENT_TEAM = 4ATFWV7M4B;
 				ENABLE_HARDENED_RUNTIME = NO;
 				INFOPLIST_FILE = ANYmacOS/Info.plist;
@@ -573,7 +578,7 @@
 					"$(PROJECT_DIR)/ANYmacOS/bin",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
-				MARKETING_VERSION = 1.3.0;
+				MARKETING_VERSION = 1.3.1;
 				PRODUCT_BUNDLE_IDENTIFIER = anymacos.slsoft.de;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -664,7 +669,7 @@
 			repositoryURL = "https://github.com/sparkle-project/Sparkle";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 2.6.4;
+				minimumVersion = 2.7.0;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */

@@ -47,6 +47,14 @@ if [ "$write_log" = "1" ]; then
     set -x
 fi
 
+../bin/./aria2c 2> /dev/null
+
+if [ "$?" != 0 ]; then
+    aria2c_bin="../bin/aria2c_old"
+else
+    aria2c_bin="../bin/aria2c"
+fi
+
 sys_language=$( defaults read -g AppleLocale )
 download_path=$( _helpDefaultRead "Downloadpath" )
 temp_path="/private/tmp/anymacos_$user"
@@ -162,7 +170,7 @@ function _get_selection()
         rm "$temp_path"/selection
     fi
     
-    ../bin/./aria2c https://www.sl-soft.de/extern/software/anymacos/seeds/selection -d "$temp_path"
+    "$aria2c_bin" https://www.sl-soft.de/extern/software/anymacos/seeds/selection -d "$temp_path"
 
 }
 
@@ -227,7 +235,7 @@ function _download_macos()
     
     rm "$temp_path"/files
 
-    ../bin/./aria2c https://www.sl-soft.de/extern/software/anymacos/seeds/"$choice" -d "$temp_path" -o files
+    "$aria2c_bin" https://www.sl-soft.de/extern/software/anymacos/seeds/"$choice" -d "$temp_path" -o files
 
     cat "$temp_path"/files | grep -v "\.pkm" |grep -v "\.smd" |grep -v "\.msmd"|grep -v "\.mpkm" |grep -v "\.chunklist"| grep -v "\.dmg" | grep -v "\.plist"| grep -v "\.mpkg"| grep -v "MajorOSInfo.pkg"| grep -v "UpdateBrain.zip" > "$temp_path"/files2
     rm "$temp_path"/files
@@ -272,7 +280,7 @@ function _download_macos()
         
         killed=$( _helpDefaultRead "KillDL" )
         if [[ "$killed" != "1" ]]; then
-            ../bin/./aria2c --file-allocation=none -c -q -x "$parallel_downloads" -d "$download_path" "$line"
+            "$aria2c_bin" --file-allocation=none -c -q -x "$parallel_downloads" -d "$download_path" "$line"
         else
             exit
         fi
