@@ -453,11 +453,11 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                             </progressIndicator>
                             <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nxw-FO-ktn">
-                                <rect key="frame" x="170" y="0.0" width="71" height="24"/>
+                                <rect key="frame" x="185" y="2" width="45" height="19"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <buttonCell key="cell" type="squareTextured" title="Discord" bezelStyle="texturedSquare" alignment="center" controlSize="mini" imageScaling="proportionallyDown" inset="2" id="tEr-fv-h5q">
                                     <behavior key="behavior" pushIn="YES" changeContents="YES" lightByContents="YES"/>
-                                    <font key="font" metaFont="system" size="12"/>
+                                    <font key="font" metaFont="system" size="11"/>
                                 </buttonCell>
                                 <connections>
                                     <action selector="open_discord:" target="gJF-20-phu" id="CzD-cJ-PdF"/>
